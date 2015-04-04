@@ -328,7 +328,7 @@ iframe {
 }
 /* Git section */
 .ghfeed {
-  height: 600px;
+  height: 350px;
 }
 .ghfeed,
 .ghfeed *,
@@ -545,3 +545,4 @@ iframe {
     width: 1360px;
   }
 }
+

@@ -53,7 +53,7 @@ jQuery(document).ready(function($) {
     );*/
     
     /* Github Activity Feed - https://github.com/caseyscarborough/github-activity */
-    GitHubActivity.feed({ username: "wilspi", selector: "#ghfeed", limit: 10 });
+    GitHubActivity.feed({ username: "wilspi", selector: "#ghfeed", limit: 5 });
 
 
 });
