@@ -54,6 +54,34 @@ jQuery(document).ready(function($) {
     
     /* Github Activity Feed - https://github.com/caseyscarborough/github-activity */
     GitHubActivity.feed({ username: "wilspi", selector: "#ghfeed", limit: 5 });
+    
+    /* Google Maps*/
+    function mapInitialize() 
+    {	
+        var myLatLng = new google.maps.LatLng(19.0200,73.0200); //Navi Mumbai
+        var mapOptions = 
+        {
+            zoom: 10,
+            center: myLatLng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById('map_canvas'),mapOptions);
+        var beachMarker = new google.maps.Marker(
+        {
+            position: myLatLng,
+            icon: '',
+            map: map
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', mapInitialize);
+    
+    /* Google Analytics */
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+    ga('create', 'UA-51915090-1', 'wilspi.github.io');
+    ga('send', 'pageview');
 
 });
