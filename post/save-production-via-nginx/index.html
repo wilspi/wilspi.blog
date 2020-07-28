@@ -123,7 +123,7 @@ It will take some time to do the RCA and fix the issue. A quick hack is to have 
   proxy_next_upstream error timeout invalid_header http_502 http_503 http_504;
   proxy_pass &lt;http://myserver&gt;;
 }
-</code></pre><p>Read about <code>proxy_next_upstream</code> here.</p>
+</code></pre><p>Read about <code>proxy_next_upstream</code> <a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_next_upstream">here</a>.</p>
 </li>
 <li>
 <h4 id="reload-nginx">Reload nginx</h4>
@@ -133,7 +133,7 @@ It will take some time to do the RCA and fix the issue. A quick hack is to have 
 </ul>
 <hr>
 <p>In my case, it was our rust web service which was getting stuck, failing all the subsequent requests. I created an health-check service which monitored and restarted the rust service whenever that happened. But I knew during this downtime period many of the requests would fail, we didn&rsquo;t want that. So I added three processes of this service on different ports and proxied them the way shown above.</p>
-<p>Image for post Image for post</p>
+<p><img src="/images/55hLpaQtG75YuLZs3bmO1kdg.png" alt="rust services"></p>
 
     </div>
     <div class="post-footer">
