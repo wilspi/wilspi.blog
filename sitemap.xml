@@ -3,23 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://wilspi.com/posts/hello/</loc>
+    <loc>https://wilspi.com/posts/hello/</loc>
   </url>
   
   <url>
-    <loc>http://wilspi.com/categories/</loc>
+    <loc>https://wilspi.com/categories/</loc>
   </url>
   
   <url>
-    <loc>http://wilspi.com/posts/</loc>
+    <loc>https://wilspi.com/posts/</loc>
   </url>
   
   <url>
-    <loc>http://wilspi.com/</loc>
+    <loc>https://wilspi.com/</loc>
   </url>
   
   <url>
-    <loc>http://wilspi.com/tags/</loc>
+    <loc>https://wilspi.com/tags/</loc>
   </url>
   
 </urlset>

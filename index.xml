@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sourabh Deokar | wilspi</title>
-    <link>http://wilspi.com/</link>
+    <link>https://wilspi.com/</link>
     <description>Recent content on Sourabh Deokar | wilspi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="http://wilspi.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wilspi.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>http://wilspi.com/posts/hello/</link>
+      <link>https://wilspi.com/posts/hello/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://wilspi.com/posts/hello/</guid>
+      <guid>https://wilspi.com/posts/hello/</guid>
       <description></description>
     </item>
     
