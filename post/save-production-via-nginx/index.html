@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light"><head>
-    <title> wilspi | Categories </title>
+    <title> wilspi | Save the production via nginx! </title>
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.73.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="">
     
@@ -10,16 +10,16 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://wilspi.com/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
-    <link rel="canonical" href="https://wilspi.com/categories/">
-    <link rel="alternate" type="application/rss+xml" href="https://wilspi.com/categories/index.xml" title="Sourabh Deokar | wilspi" />
+    <link rel="canonical" href="https://wilspi.com/post/save-production-via-nginx/">
     
     
     <script type="text/javascript" src="https://wilspi.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
-<meta name="twitter:title" content="Categories"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Save the production via nginx!"/>
+<meta name="twitter:description" content="Quick nginx hack to save your production web server in case the web service starts crashing.
+If you have been working in production environment, you know at certain times your web service can crash due to some unknown reason. It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down."/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -77,11 +77,77 @@
 
             <div class="autopagerize_page_element">
                 <div class="content">
-<div class="archive animated fadeInDown">
-   
-    <ul class="list-with-title">
-      
-  </div>
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Save the production via nginx!
+        </h3>
+        
+        <div class="info">
+          
+          <i class="fa fa-clock-o"></i><span class="reading-time">2-minute read</span>
+        </div>
+        
+        </div>
+
+    <p>Quick nginx hack to save your production web server in case the web service starts crashing.</p>
+<p>If you have been working in production environment, you know at certain times your web service can crash due to some unknown reason.
+It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down. You should anyways have this as a backup tactic for your service failure.</p>
+<hr>
+<p>Here goes the how-to steps:</p>
+<ul>
+<li>
+<h4 id="start-the-services">Start the services</h4>
+<p>Start 3 processes of the web service on multiple ports (in below gist: <code>3000</code>, <code>3002</code>, <code>3004</code> )</p>
+</li>
+<li>
+<h4 id="upstream-conf">Upstream conf</h4>
+<p>Add your upstream in nginx conf file (here <code>myserver</code>):</p>
+<pre><code>upstream myserver {
+  server 127.0.0.1:3000 fail_timeout=0;
+  server 127.0.0.1:3002 fail_timeout=0;
+  server 127.0.0.1:3004 backup;
+}
+</code></pre><p>Here nginx and web services are running on the same box. If you are running your services on a different machine, you can replace <code>127.0.0.1</code> with the machine&rsquo;s ip.</p>
+<p>Two services (ones running on ports <code>3000</code> and <code>3002</code>) to distribute the load and one (on <code>3004</code>) as backup if either crashes.</p>
+</li>
+<li>
+<h4 id="update-path">Update path</h4>
+<p>In your location block, add the following code block in your nginx conf replacing</p>
+<ul>
+<li><code>myroute</code> with your route</li>
+<li><code>myserver</code> with your upstream name</li>
+</ul>
+<pre><code>location ~ ^/myroute/(.*) {
+  proxy_next_upstream error timeout invalid_header http_502 http_503 http_504;
+  proxy_pass &lt;http://myserver&gt;;
+}
+</code></pre><p>Read about <code>proxy_next_upstream</code> here.</p>
+</li>
+<li>
+<h4 id="reload-nginx">Reload nginx</h4>
+<p>Run to reload the configuration:</p>
+<pre><code>sudo systemctl nginx reload
+</code></pre></li>
+</ul>
+<hr>
+<p>In my case, it was our rust web service which was getting stuck, failing all the subsequent requests. I created an health-check service which monitored and restarted the rust service whenever that happened. But I knew during this downtime period many of the requests would fail, we didn&rsquo;t want that. So I added three processes of this service on different ports and proxied them the way shown above.</p>
+<p>Image for post Image for post</p>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+        
+      </div>
+    </div>
+
+    
+    
+    
+</div>
+
 
                 </div>
             </div>

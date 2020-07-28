@@ -3,10 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://wilspi.com/posts/hello/</loc>
-  </url>
-  
-  <url>
     <loc>https://wilspi.com/readme/</loc>
     <priority>0</priority>
   </url>
@@ -16,7 +12,11 @@
   </url>
   
   <url>
-    <loc>https://wilspi.com/posts/</loc>
+    <loc>https://wilspi.com/post/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/save-production-via-nginx/</loc>
   </url>
   
   <url>
