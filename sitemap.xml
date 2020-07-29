@@ -25,23 +25,11 @@
   </url>
   
   <url>
-    <loc>https://wilspi.com/post/tech/hello-hugo/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/tags/hugo/</loc>
-  </url>
-  
-  <url>
     <loc>https://wilspi.com/tags/middleware/</loc>
   </url>
   
   <url>
     <loc>https://wilspi.com/tags/nginx/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/post/tech/nix-shell-and-awesomeness/</loc>
   </url>
   
   <url>
@@ -57,15 +45,7 @@
   </url>
   
   <url>
-    <loc>https://wilspi.com/post/tech/setup-nix-arch-linux/</loc>
-  </url>
-  
-  <url>
     <loc>https://wilspi.com/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/tags/static-site-generator/</loc>
   </url>
   
   <url>
