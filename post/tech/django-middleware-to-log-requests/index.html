@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+    <title> wilspi | Django Middleware: log requests and responses </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.73.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="">
+    
+    <link rel="stylesheet" href="https://wilspi.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="https://wilspi.com/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://wilspi.com/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
+    <link rel="canonical" href="https://wilspi.com/post/tech/django-middleware-to-log-requests/">
+    
+    
+    <script type="text/javascript" src="https://wilspi.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
+
+<meta name="twitter:title" content="Django Middleware: log requests and responses"/>
+<meta name="twitter:description" content="From Django&rsquo;s context:
+ Middleware is a framework of hooks into Django’s request/response processing.
+It’s a light, low-level “plugin” system for globally altering Django’s input or output.
+ Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware level which will log every request.
+Here, we are using Django&rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://wilspi.com/images/dp.jpg" alt="profile picture">
+        <h3 title=""><a href="/">नमस्ते</a></h3>
+        <div class="description">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+        <li>
+        <a href="https://github.com/wilspi/" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.instagram.com/wilspi/" rel="me" aria-label="Instagram">
+          <i class="fa fa-2x fa-instagram" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.twitter.com/iamwilspi" rel="me" aria-label="Twitter">
+          <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; wilspi 2020 </div>
+      </div>
+    </div>
+</div><div class="main">
+            <div class="page-top animated fadeInDown">
+    <ul class="nav">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+    </ul>
+    <div class="themeswitcher">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Django Middleware: log requests and responses
+        </h3>
+        
+        <div class="info">
+          
+          <i class="fa fa-clock-o"></i><span class="reading-time">2-minute read</span>
+        </div>
+        
+        </div>
+
+    <p>From <a href="https://www.djangoproject.com/">Django</a>&rsquo;s context:</p>
+<blockquote>
+<p>Middleware is a framework of hooks into Django’s request/response processing.<br>
+It’s a light, low-level “plugin” system for globally altering Django’s input or output.</p>
+</blockquote>
+<p>Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. <a href="https://docs.djangoproject.com/en/3.0/topics/http/views/">views</a>, its better to do at middleware level which will log every request.</p>
+<p>Here, we are using Django&rsquo;s <a href="https://docs.djangoproject.com/en/3.0/topics/http/middleware/#writing-your-own-middleware">middleware semantics</a> to construct a middleware which will log all requests and corresponding responses.</p>
+<hr>
+<ul>
+<li>
+<h4 id="create-a-middleware-file">Create a middleware file</h4>
+<p>We will create a <code>RequestLogMiddleware</code> class in <code>&lt;application_name&gt;/middleware/request_log.py</code>, like:</p>
+<pre><code>
+&quot;&quot;&quot;
+Middleware to log `*/api/*` requests and responses.
+&quot;&quot;&quot;
+import socket
+import time
+import json
+import logging
+
+request_logger = logging.getLogger(__name__)
+
+class RequestLogMiddleware:
+    &quot;&quot;&quot;Request Logging Middleware.&quot;&quot;&quot;
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        start_time = time.time()
+        log_data = {
+            &quot;remote_address&quot;: request.META[&quot;REMOTE_ADDR&quot;],
+            &quot;server_hostname&quot;: socket.gethostname(),
+            &quot;request_method&quot;: request.method,
+            &quot;request_path&quot;: request.get_full_path(),
+        }
+
+        # Only logging &quot;*/api/*&quot; patterns
+        if &quot;/api/&quot; in str(request.get_full_path()):
+            req_body = json.loads(request.body.decode(&quot;utf-8&quot;)) if request.body else {}
+            log_data[&quot;request_body&quot;] = req_body
+
+        response = self.get_response(request)
+
+        if response and response[&quot;content-type&quot;] == &quot;application/json&quot;:
+            response_body = json.loads(response.content.decode(&quot;utf-8&quot;))
+            log_data[&quot;response_body&quot;] = response_body
+        log_data[&quot;run_time&quot;] = time.time() - start_time
+
+        request_logger.info(msg=log_data)
+
+        return response
+
+    # Log unhandled exceptions as well
+    def process_exception(self, request, exception):
+        try:
+            raise exception
+        except Exception as e:
+            request_logger.exception(&quot;Unhandled Exception: &quot; + str(e))
+        return exception
+</code></pre><p>Here we are logging only requests with <code>/api/</code> in its path.
+All the processing is done in <code>__call__</code> method.<br>
+Note: Do add <code>__init__.py</code> in <code>middleware</code> folder.</p>
+</li>
+<li>
+<h4 id="activate-the-middleware">Activate the middleware</h4>
+<p><a href="https://docs.djangoproject.com/en/3.0/topics/http/middleware/#activating-middleware">Activate the middleware</a> by adding its path in <code>MIDDLEWARE</code> list in your Django&rsquo;s application <code>settings.py</code> (here: last value):</p>
+<pre><code>MIDDLEWARE = [
+    &quot;django.middleware.security.SecurityMiddleware&quot;,
+    &quot;django.contrib.sessions.middleware.SessionMiddleware&quot;,
+    &quot;django.middleware.common.CommonMiddleware&quot;,
+    &quot;django.contrib.auth.middleware.AuthenticationMiddleware&quot;,
+    &quot;django.contrib.messages.middleware.MessageMiddleware&quot;,
+    # Request Logger
+    &quot;&lt;application_name&gt;.middleware.request_log.RequestLogMiddleware&quot;,
+]
+</code></pre><p>Replace <code>&lt;application_name&gt;</code> with your application name.</p>
+<hr>
+</li>
+</ul>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+<span class="separator"><a class="category" href="/categories/tech/">tech</a></span>
+
+        
+    <span class="separator"><a class="tag" href="/tags/django/">django</a><a class="tag" href="/tags/middleware/">middleware</a></span>
+
+      </div>
+    </div>
+
+    
+    
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body>
+
+
+
+<script type="text/javascript" src="https://wilspi.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js" integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw=" crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript" src="https://wilspi.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js" integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://wilspi.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js" integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro=" crossorigin="anonymous"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-51915090-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</html></body>
+
+</html>

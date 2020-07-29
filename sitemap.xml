@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://wilspi.com/_about/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://wilspi.com/readme/</loc>
     <priority>0</priority>
   </url>
@@ -12,11 +17,47 @@
   </url>
   
   <url>
+    <loc>https://wilspi.com/tags/django/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/django-middleware-to-log-requests/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/hello-hugo/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/hugo/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/middleware/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/nginx/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/nix-shell-and-awesomeness/</loc>
+  </url>
+  
+  <url>
     <loc>https://wilspi.com/post/</loc>
   </url>
   
   <url>
-    <loc>https://wilspi.com/post/save-production-via-nginx/</loc>
+    <loc>https://wilspi.com/tags/production/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/save-production-via-nginx/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/setup-nix-arch-linux/</loc>
   </url>
   
   <url>
@@ -24,7 +65,15 @@
   </url>
   
   <url>
+    <loc>https://wilspi.com/tags/static-site-generator/</loc>
+  </url>
+  
+  <url>
     <loc>https://wilspi.com/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/categories/tech/</loc>
   </url>
   
 </urlset>
