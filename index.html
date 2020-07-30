@@ -87,8 +87,8 @@
     <div class="post-content"><div class="p_part"><p>From Django&rsquo;s context:
  Middleware is a framework of hooks into Django’s request/response processing.
 It’s a light, low-level “plugin” system for globally altering Django’s input or output.
- Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware level which will log every request.
-Here, we are using Django&rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses.</p></div>
+ Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware layer which will log every incoming request. Why better?
+ it will log unhandled requests/views one time job, no need to configure for every request/view  Here, we are using Django&rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses.</p></div>
 
   <div class="p_part"><p></p></div></div>
     <div class="post-footer">
@@ -96,6 +96,27 @@ Here, we are using Django&rsquo;s middleware semantics to construct a middleware
         <div class="info">
           
           <a class="tag" href="/tags/django/">django</a><a class="tag" href="/tags/middleware/">middleware</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="post animated fadeInDown">
+    <div class="post-title">
+      <h3><a href="/post/tech/nix-shell-and-awesomeness/">Nix shell and awesomeness</a>
+      </h3>
+    </div>
+    <div class="post-content"><div class="p_part"><p>Last year while working with @amitu, I came across this wonderful tool called Nix.
+About Nix, its wiki says:
+ Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation
+ Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through nix-shell command, we will see below).</p></div>
+
+  <div class="p_part"><p></p></div></div>
+    <div class="post-footer">
+      <div class="meta">
+        <div class="info">
+          
+          <a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/package-manager/">package-manager</a>
         </div>
       </div>
     </div>

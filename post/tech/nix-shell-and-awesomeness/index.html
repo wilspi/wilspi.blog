@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+    <title> wilspi | Nix shell and awesomeness </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.73.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="">
+    
+    <link rel="stylesheet" href="https://wilspi.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="https://wilspi.com/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://wilspi.com/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
+    <link rel="canonical" href="https://wilspi.com/post/tech/nix-shell-and-awesomeness/">
+    
+    
+    <script type="text/javascript" src="https://wilspi.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
+
+<meta name="twitter:title" content="Nix shell and awesomeness"/>
+<meta name="twitter:description" content="Last year while working with @amitu, I came across this wonderful tool called Nix.
+About Nix, its wiki says:
+ Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation
+ Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through nix-shell command, we will see below)."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://wilspi.com/images/dp.jpg" alt="profile picture">
+        <h3 title=""><a href="/">नमस्ते</a></h3>
+        <div class="description">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+        <li>
+        <a href="https://github.com/wilspi/" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.instagram.com/wilspi/" rel="me" aria-label="Instagram">
+          <i class="fa fa-2x fa-instagram" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.twitter.com/iamwilspi" rel="me" aria-label="Twitter">
+          <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; wilspi 2020 </div>
+      </div>
+    </div>
+</div><div class="main">
+            <div class="page-top animated fadeInDown">
+    <ul class="nav">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+    </ul>
+    <div class="themeswitcher">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Nix shell and awesomeness
+        </h3>
+        
+        <div class="info">
+          
+          <i class="fa fa-clock-o"></i><span class="reading-time">3-minute read</span>
+        </div>
+        
+        </div>
+
+    <p>Last year while working with <a href="https://github.com/amitu/">@amitu</a>, I came across this wonderful tool called <a href="https://nixos.wiki/wiki/Nix">Nix</a>.</p>
+<p>About Nix, its wiki says:</p>
+<blockquote>
+<p>Nix is a package manager and build system that parses reproducible build instructions specified in the <a href="https://nixos.wiki/wiki/Nix_Expression_Language">Nix Expression Language</a>, a pure functional language with lazy evaluation</p>
+</blockquote>
+<p>Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through <code>nix-shell</code> command, we will see below).
+This way, Nix can be used to create some kind of virtual environment.</p>
+<h4 id="lets-dive-into-nix-shell">Lets dive into <code>nix-shell</code></h4>
+<p>This is a recipe for <code>Python 3.7</code>.</p>
+<ul>
+<li>
+<p>Lets create:<br>
+<code>shell.nix</code> file</p>
+<pre><code>with import &lt;nixpkgs&gt; {};
+with pkgs.python27Packages;
+
+stdenv.mkDerivation {
+  name = &quot;wilspi-python-env&quot;;
+
+  buildInputs = [
+    python37
+    python37Packages.pip
+    python37Packages.virtualenv
+  ];
+
+  SOURCE_DATE_EPOCH = 315532800;
+  PROJDIR = &quot;${toString ./.}&quot;;
+
+  shellHook = ''
+    echo &quot;Using ${python37.name}&quot;
+
+    [ ! -d '$PROJDIR/wilspi-python-dev' ] &amp;&amp; virtualenv wilspi-python-dev &amp;&amp; echo &quot;SETUP wilspi-python-dev: DONE&quot;
+    source wilspi-python-dev/bin/activate
+    # python -m pip install -r requirements.txt
+
+    echo &quot;ENV: wilspi-python-dev ACTIVATED&quot;;
+  '';
+}
+</code></pre></li>
+<li>
+<p>Run:<br>
+<code>nix-shell --pure shell.nix</code></p>
+<p><code>--pure</code> flag  will create an environment that more closely corresponds to the &ldquo;real&rdquo; Nix build</p>
+</li>
+</ul>
+<p>This will start a nix virtual environment with <code>Python 3.7</code></p>
+<h4 id="with-nix-life-is-awesome">With Nix, Life is Awesome</h4>
+<ul>
+<li>Nix allows to have <strong>multiple versions or variants of a package</strong> installed at the same time, especially important when different applications have dependencies on different versions of the same package</li>
+<li>Nix <strong>never uses host dependencies</strong> (“global” locations like <code>/usr/bin</code>), it always builds with exactly precise dependencies every time, and will always refer to them from then on.</li>
+<li>Nix lets you <strong>roll back changes atomically</strong>, even upgrades are atomic.</li>
+<li><code>nix-shell</code> lets you make build environments that are totally <strong>reproducible across machines</strong>, and don’t interfere with each other.</li>
+</ul>
+<p>Read all features <a href="https://nixos.org/features.html">here</a>.</p>
+<h4 id="issues-i-faced">Issues I faced</h4>
+<ul>
+<li>Nix will store multiple versions of your builds, this will use lot of your disk space. You need to clean-up regularly using Nix <a href="https://nixos.org/nixos/nix-pills/garbage-collector.html">garbage-collector</a></li>
+<li>Configuration (toolchain etc) for CLion/PyCharm gets reset whenever I update the packages, or switch between projects with different versions.</li>
+</ul>
+<p>That is the price of having multiple generations, multiple profiles, multiple versions of software, the <strong>price of having many possibilities</strong>.</p>
+<h4 id="experience-with-nix">Experience with Nix</h4>
+<p>I have been using Nix for almost all my projects now. I have written nix recipes for:<br>
+<code>rust</code>, <code>python</code>, <code>nodejs</code>, <code>elm</code>, <code>postgres</code>, <code>react</code>, <code>react-native</code>.</p>
+<h4 id="nix-as-home-manager">Nix as Home Manager</h4>
+<p>Nix can also be used as your <a href="https://nixos.wiki/wiki/Home_Manager">home manager</a> but I am yet to try nix as my home manager.</p>
+<p>I have read/heard not-so-great reviews about nix as home manager, and since I already have a simple <a href="https://github.com/wilspi/dotfiles">dotfiles</a> configured, I am reluctant to try nix as home manager.</p>
+<h4 id="extra">Extra</h4>
+<ul>
+<li><a href="https://nixos.wiki/wiki/NixOS">NixOS</a> based on the Nix package manager and build system.</li>
+<li><a href="https://nixos.wiki/wiki/Nix_Expression_Language">Nix Expression Language</a> is a pure, lazy, functional language, to describe packages, compositions of packages, and the variability within packages.
+We do use this for writing our nix recipes, but it is simple to understand unless you are doing very complicated stuff.</li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+<span class="separator"><a class="category" href="/categories/tech/">tech</a></span>
+
+        
+    <span class="separator"><a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/package-manager/">package-manager</a></span>
+
+      </div>
+    </div>
+
+    
+    
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body>
+
+
+
+<script type="text/javascript" src="https://wilspi.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js" integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw=" crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript" src="https://wilspi.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js" integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://wilspi.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js" integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro=" crossorigin="anonymous"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-51915090-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</html></body>
+
+</html>

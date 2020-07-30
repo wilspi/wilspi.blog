@@ -38,8 +38,20 @@
       <description>From Django&amp;rsquo;s context:
  Middleware is a framework of hooks into Django’s request/response processing.
 It’s a light, low-level “plugin” system for globally altering Django’s input or output.
- Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware level which will log every request.
-Here, we are using Django&amp;rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses.</description>
+ Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware layer which will log every incoming request. Why better?
+ it will log unhandled requests/views one time job, no need to configure for every request/view  Here, we are using Django&amp;rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses.</description>
+    </item>
+    
+    <item>
+      <title>Nix shell and awesomeness</title>
+      <link>https://wilspi.com/post/tech/nix-shell-and-awesomeness/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/nix-shell-and-awesomeness/</guid>
+      <description>Last year while working with @amitu, I came across this wonderful tool called Nix.
+About Nix, its wiki says:
+ Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation
+ Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through nix-shell command, we will see below).</description>
     </item>
     
     <item>

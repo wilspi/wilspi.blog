@@ -21,8 +21,8 @@
 <meta name="twitter:description" content="From Django&rsquo;s context:
  Middleware is a framework of hooks into Django’s request/response processing.
 It’s a light, low-level “plugin” system for globally altering Django’s input or output.
- Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware level which will log every request.
-Here, we are using Django&rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses."/>
+ Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware layer which will log every incoming request. Why better?
+ it will log unhandled requests/views one time job, no need to configure for every request/view  Here, we are using Django&rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses."/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -99,13 +99,18 @@ Here, we are using Django&rsquo;s middleware semantics to construct a middleware
 <p>Middleware is a framework of hooks into Django’s request/response processing.<br>
 It’s a light, low-level “plugin” system for globally altering Django’s input or output.</p>
 </blockquote>
-<p>Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. <a href="https://docs.djangoproject.com/en/3.0/topics/http/views/">views</a>, its better to do at middleware level which will log every request.</p>
+<p>Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. <a href="https://docs.djangoproject.com/en/3.0/topics/http/views/">views</a>, its better to do at middleware layer which will log every incoming request.
+Why better?</p>
+<ul>
+<li>it will log unhandled requests/views</li>
+<li>one time job, no need to configure for every request/view</li>
+</ul>
 <p>Here, we are using Django&rsquo;s <a href="https://docs.djangoproject.com/en/3.0/topics/http/middleware/#writing-your-own-middleware">middleware semantics</a> to construct a middleware which will log all requests and corresponding responses.</p>
 <hr>
 <ul>
 <li>
 <h4 id="create-a-middleware-file">Create a middleware file</h4>
-<p>We will create a <code>RequestLogMiddleware</code> class in <code>&lt;application_name&gt;/middleware/request_log.py</code>, like:</p>
+<p>We will create a <code>RequestLogMiddleware</code> class in <code>/middleware/request_log.py</code> in your <code>&lt;application&gt;</code> folder, like:</p>
 <pre><code>
 &quot;&quot;&quot;
 Middleware to log `*/api/*` requests and responses.
@@ -169,9 +174,9 @@ Note: Do add <code>__init__.py</code> in <code>middleware</code> folder.</p>
     &quot;django.contrib.auth.middleware.AuthenticationMiddleware&quot;,
     &quot;django.contrib.messages.middleware.MessageMiddleware&quot;,
     # Request Logger
-    &quot;&lt;application_name&gt;.middleware.request_log.RequestLogMiddleware&quot;,
+    &quot;&lt;application&gt;.middleware.request_log.RequestLogMiddleware&quot;,
 ]
-</code></pre><p>Replace <code>&lt;application_name&gt;</code> with your application name.</p>
+</code></pre><p>Replace <code>&lt;application&gt;</code> with your application name.</p>
 <hr>
 </li>
 </ul>

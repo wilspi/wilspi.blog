@@ -19,8 +19,8 @@
       <description>From Django&amp;rsquo;s context:
  Middleware is a framework of hooks into Django’s request/response processing.
 It’s a light, low-level “plugin” system for globally altering Django’s input or output.
- Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware level which will log every request.
-Here, we are using Django&amp;rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses.</description>
+ Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware layer which will log every incoming request. Why better?
+ it will log unhandled requests/views one time job, no need to configure for every request/view  Here, we are using Django&amp;rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses.</description>
     </item>
     
   </channel>
