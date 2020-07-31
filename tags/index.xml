@@ -11,11 +11,29 @@
     
     
     <item>
+      <title>database</title>
+      <link>https://wilspi.com/tags/database/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wilspi.com/tags/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>django</title>
       <link>https://wilspi.com/tags/django/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wilspi.com/tags/django/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jinja</title>
+      <link>https://wilspi.com/tags/jinja/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wilspi.com/tags/jinja/</guid>
       <description></description>
     </item>
     

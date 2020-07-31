@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+    <title> wilspi | Jinja templates Inheritance using Database </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.73.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="">
+    
+    <link rel="stylesheet" href="https://wilspi.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="https://wilspi.com/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://wilspi.com/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
+    <link rel="canonical" href="https://wilspi.com/post/tech/jinja-inheritance-using-db/">
+    
+    
+    <script type="text/javascript" src="https://wilspi.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
+
+<meta name="twitter:title" content="Jinja templates Inheritance using Database"/>
+<meta name="twitter:description" content="Jinja is a web template engine for the Python programming language. A Jinja template is simply a text file. Jinja can generate any text-based format (HTML, XML, CSV, LaTeX, etc.). A template contains variables and/or expressions, which get replaced with values when a template is rendered, thus serving dynamic content.
+Commonly, templates are stored as files, either in git repo or s3 buckets. Depending on your use case, you can store the templates in database as well."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://wilspi.com/images/dp.jpg" alt="profile picture">
+        <h3 title=""><a href="/">नमस्ते</a></h3>
+        <div class="description">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+        <li>
+        <a href="https://github.com/wilspi/" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.instagram.com/wilspi/" rel="me" aria-label="Instagram">
+          <i class="fa fa-2x fa-instagram" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.twitter.com/iamwilspi" rel="me" aria-label="Twitter">
+          <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; wilspi 2020 </div>
+      </div>
+    </div>
+</div><div class="main">
+            <div class="page-top animated fadeInDown">
+    <ul class="nav">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+    </ul>
+    <div class="themeswitcher">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Jinja templates Inheritance using Database
+        </h3>
+        
+        <div class="info">
+          
+          <i class="fa fa-clock-o"></i><span class="reading-time">2-minute read</span>
+        </div>
+        
+        </div>
+
+    <p>Jinja is a web template engine for the Python programming language.
+A Jinja template is simply a text file. Jinja can generate any text-based format (HTML, XML, CSV, LaTeX, etc.).
+A template contains variables and/or expressions, which get replaced with values when a template is rendered, thus serving dynamic content.</p>
+<p>Commonly, templates are stored as files, either in git repo or s3 buckets. Depending on your use case, you can store the templates in database as well.</p>
+<h4 id="templates-in-database">Templates in Database</h4>
+<ul>
+<li>
+<p>Template is a text file and hence can be simply saved in the <code>text</code> field of the database.</p>
+</li>
+<li>
+<p>Now Jinja can be used to render, like this</p>
+<pre><code>from jinja2 import Template
+print(Template(template).render(context))
+</code></pre><p>This will give a rendered template output.</p>
+</li>
+</ul>
+<h4 id="template-inheritance-and-database">Template Inheritance and Database</h4>
+<p>Jinja allows <a href="https://jinja.palletsprojects.com/en/2.11.x/templates/?highlight=nesting#template-inheritance">template inheritance</a> via many techniques, few of which are listed below:</p>
+<ul>
+<li><a href="https://jinja.palletsprojects.com/en/2.11.x/templates/#blocks">blocks</a></li>
+<li><a href="https://jinja.palletsprojects.com/en/2.11.x/templates/#extends">extends</a></li>
+<li><a href="https://jinja.palletsprojects.com/en/2.11.x/templates/#include">include</a></li>
+</ul>
+<p>But all these ways require templates to be present in the same <a href="https://jinja.palletsprojects.com/en/2.11.x/api/?highlight=loader#jinja2.Environment">Jinja environment</a>
+Thats how Jinja picks up the other templates while using all these inheritance techniques.</p>
+<p>The most common way to use inheritance is to use <a href="https://jinja.palletsprojects.com/en/2.11.x/api/?highlight=loader#jinja2.FileSystemLoader">file system loader</a> which puts base directory path in the environment and jinja uses this env to load templates. In our use case, we need to load templates from database which is not supported by Jinja.</p>
+<p><a href="https://jinja.palletsprojects.com/en/2.11.x/api/?highlight=loader#jinja2.DictLoader">DictLoader</a> is another loader which loads key value pairs in Jinja env.
+Using DictLoader, we can create a dictionary of templates. We will have to load these templates from db to dictionary, and then we can use Jinja language syntax to render the template by passing this dictionary to the DictLoader.</p>
+<p>Example:</p>
+<pre><code>template_map = {
+  &quot;header&quot;: &quot;header template&quot;,
+  &quot;base&quot;: &quot;base template with {{name}}&quot;,
+  &quot;footer&quot;: &quot;footer template&quot;,
+}
+
+from jinja2 import Environment, DictLoader
+env = Environment(loader=DictLoader(template_map))
+
+print(env.get_template(&quot;base&quot;).render({&quot;name&quot;:&quot;wilspi&quot;})))
+</code></pre><h4 id="extra">Extra</h4>
+<p>If you are looking for a kickass template storage and editor tool, check out <a href="https://github.com/wilspi/django-templatestore">django-templatestore</a>.</p>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+<span class="separator"><a class="category" href="/categories/tech/">tech</a></span>
+
+        
+    <span class="separator"><a class="tag" href="/tags/database/">database</a><a class="tag" href="/tags/jinja/">jinja</a></span>
+
+      </div>
+    </div>
+
+    
+    
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body>
+
+
+
+<script type="text/javascript" src="https://wilspi.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js" integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw=" crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript" src="https://wilspi.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js" integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://wilspi.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js" integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro=" crossorigin="anonymous"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-51915090-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</html></body>
+
+</html>

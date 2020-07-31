@@ -17,11 +17,23 @@
   </url>
   
   <url>
+    <loc>https://wilspi.com/tags/database/</loc>
+  </url>
+  
+  <url>
     <loc>https://wilspi.com/tags/django/</loc>
   </url>
   
   <url>
     <loc>https://wilspi.com/post/tech/django-middleware-to-log-requests/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/jinja/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/jinja-inheritance-using-db/</loc>
   </url>
   
   <url>

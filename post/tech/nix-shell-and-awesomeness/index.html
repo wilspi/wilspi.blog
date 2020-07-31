@@ -138,7 +138,7 @@ stdenv.mkDerivation {
 <p><code>--pure</code> flag  will create an environment that more closely corresponds to the &ldquo;real&rdquo; Nix build</p>
 </li>
 </ul>
-<p>This will start a nix virtual environment with <code>Python 3.7</code></p>
+<p>This will download <code>Python 3.7</code> and all its dependencies, build it and start a nix virtual environment.</p>
 <h4 id="with-nix-life-is-awesome">With Nix, Life is Awesome</h4>
 <ul>
 <li>Nix allows to have <strong>multiple versions or variants of a package</strong> installed at the same time, especially important when different applications have dependencies on different versions of the same package</li>
@@ -158,7 +158,7 @@ stdenv.mkDerivation {
 <code>rust</code>, <code>python</code>, <code>nodejs</code>, <code>elm</code>, <code>postgres</code>, <code>react</code>, <code>react-native</code>.</p>
 <h4 id="nix-as-home-manager">Nix as Home Manager</h4>
 <p>Nix can also be used as your <a href="https://nixos.wiki/wiki/Home_Manager">home manager</a> but I am yet to try it.
-I have read/heard not-so-great reviews about nix as home manager, and since I already have a simple <a href="https://github.com/wilspi/dotfiles">dotfiles</a> configured, I am reluctant to try.
+I have read/heard not-so-great reviews about nix as home manager, and since I already have a simple <a href="https://github.com/wilspi/dotfiles">dotfiles</a> configured, I am reluctant to try also.
 🤞</p>
 <h4 id="extra">Extra</h4>
 <ul>
