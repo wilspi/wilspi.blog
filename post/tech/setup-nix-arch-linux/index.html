@@ -19,7 +19,7 @@
 
 <meta name="twitter:title" content="Setup multi user nix for Arch Linux"/>
 <meta name="twitter:description" content="Here we are setting up nix for Arch Linux.
-From nix&rsquo;s page:
+Multi User Setup From nix&rsquo;s page:
  To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users."/>
 
 </head><body><div class="sidebar animated fadeInDown">
@@ -93,12 +93,13 @@ From nix&rsquo;s page:
         </div>
 
     <p>Here we are setting up <a href="/post/tech/nix-shell-and-awesomeness">nix</a> for <a href="https://www.archlinux.org/">Arch Linux</a>.</p>
+<h4 id="multi-user-setup">Multi User Setup</h4>
 <p>From <a href="https://nixos.org/nix/manual/#ssec-multi-user">nix</a>&rsquo;s page:</p>
 <blockquote>
 <p>To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.</p>
 <p>To prevent this, the Nix store and database are owned by some privileged user (usually root) and builders are executed under special user accounts (usually named nixbld1, nixbld2, etc.). When a unprivileged user runs a Nix command, actions that operate on the Nix store (such as builds) are forwarded to a Nix daemon running under the owner of the Nix store/database that performs the operation</p>
 </blockquote>
-<h4 id="multi-user-setup">Multi User Setup</h4>
+<p>Steps:</p>
 <ul>
 <li>
 <p>Install nix via <a href="https://aur.archlinux.org/packages/yay/">yay</a> (<a href="https://wiki.archlinux.org/index.php/AUR_helpers">AUR helper</a>)</p>

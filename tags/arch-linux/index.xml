@@ -17,7 +17,7 @@
       
       <guid>https://wilspi.com/post/tech/setup-nix-arch-linux/</guid>
       <description>Here we are setting up nix for Arch Linux.
-From nix&amp;rsquo;s page:
+Multi User Setup From nix&amp;rsquo;s page:
  To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.</description>
     </item>
     
