@@ -22,5 +22,16 @@ About Nix, its wiki says:
  Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through nix-shell command, we will see below).</description>
     </item>
     
+    <item>
+      <title>Setup multi user nix for Arch Linux</title>
+      <link>https://wilspi.com/post/tech/setup-nix-arch-linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/setup-nix-arch-linux/</guid>
+      <description>Here we are setting up nix for Arch Linux.
+From nix&amp;rsquo;s page:
+ To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.</description>
+    </item>
+    
   </channel>
 </rss>

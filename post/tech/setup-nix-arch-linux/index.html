@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light"><head>
-    <title> wilspi </title>
+    <title> wilspi | Setup multi user nix for Arch Linux </title>
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="">
     
@@ -10,16 +10,17 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://wilspi.com/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
-    <link rel="canonical" href="https://wilspi.com/_about/">
+    <link rel="canonical" href="https://wilspi.com/post/tech/setup-nix-arch-linux/">
     
     
     <script type="text/javascript" src="https://wilspi.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="About wilspi.com is
- written in Hugo with Anatole theme hosted by Google domain and Github Pages  "/>
+<meta name="twitter:title" content="Setup multi user nix for Arch Linux"/>
+<meta name="twitter:description" content="Here we are setting up nix for Arch Linux.
+From nix&rsquo;s page:
+ To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users."/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -81,26 +82,68 @@
     <div class="post-content">
 
       <div class="post-title">
-        <h3>
+        <h3>Setup multi user nix for Arch Linux
         </h3>
+        
+        <div class="info">
+          
+          <i class="fa fa-clock-o"></i><span class="reading-time">2-minute read</span>
+        </div>
         
         </div>
 
-    <h3 id="about">About</h3>
-<p><strong><a href="https://wilspi.com">wilspi.com</a></strong> is</p>
+    <p>Here we are setting up <a href="/post/tech/nix-shell-and-awesomeness">nix</a> for <a href="https://www.archlinux.org/">Arch Linux</a>.</p>
+<p>From <a href="https://nixos.org/nix/manual/#ssec-multi-user">nix</a>&rsquo;s page:</p>
+<blockquote>
+<p>To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.</p>
+<p>To prevent this, the Nix store and database are owned by some privileged user (usually root) and builders are executed under special user accounts (usually named nixbld1, nixbld2, etc.). When a unprivileged user runs a Nix command, actions that operate on the Nix store (such as builds) are forwarded to a Nix daemon running under the owner of the Nix store/database that performs the operation</p>
+</blockquote>
+<h4 id="multi-user-setup">Multi User Setup</h4>
 <ul>
-<li>written in <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/lxndrblz/anatole/">Anatole</a> theme</li>
-<li>hosted by <a href="https://domains.google.com">Google domain</a> and <a href="https://pages.github.com/">Github Pages</a></li>
+<li>
+<p>Install nix via <a href="https://aur.archlinux.org/packages/yay/">yay</a> (<a href="https://wiki.archlinux.org/index.php/AUR_helpers">AUR helper</a>)</p>
+<pre><code>yay -S archlinux-nix
+</code></pre></li>
+<li>
+<p>Add nix builder groups</p>
+<pre><code>sudo groupadd -r nixbld
+for n in $(seq 1 10); do sudo useradd -c &quot;Nix build user $n&quot; \
+    -d /var/empty -g nixbld -G nixbld -M -N -r -s &quot;$(which nologin)&quot; \
+    nixbld$n; done
+</code></pre></li>
+<li>
+<p>Source <code>env</code> variables</p>
+<pre><code>. /etc/profile.d/nix.sh
+</code></pre></li>
+<li>
+<p>Running the daemon</p>
+<pre><code>sudo nix-daemon &amp; disown
+export NIX_REMOTE=daemon
+</code></pre></li>
+<li>
+<p>Add and update channel</p>
+<pre><code>nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+sudo nix-channel --update
+nix-env -u
+</code></pre></li>
 </ul>
-
+<p>We are all done, run following to check if nix-deamon is running:</p>
+<pre><code>nix-shell -p hello --run hello
+</code></pre>
     </div>
     <div class="post-footer">
       <div class="info">
         
+<span class="separator"><a class="category" href="/categories/tech/">tech</a></span>
+
         
+    <span class="separator"><a class="tag" href="/tags/arch-linux/">arch-linux</a><a class="tag" href="/tags/nix/">nix</a></span>
+
       </div>
     </div>
 
+    
+    
     
 </div>
 

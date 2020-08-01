@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light"><head>
     <title> wilspi | Save the production via nginx! </title>
-    <meta charset="utf-8"><meta name="generator" content="Hugo 0.73.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="">
     
     <link rel="stylesheet" href="https://wilspi.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -19,7 +19,7 @@
 
 <meta name="twitter:title" content="Save the production via nginx!"/>
 <meta name="twitter:description" content="Quick nginx hack to save your production web server in case the web service starts crashing.
-If you have been working in production environment, you know at certain times your web service can crash due to some unknown reason. It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down."/>
+If you have been working in production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down."/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -92,8 +92,10 @@ If you have been working in production environment, you know at certain times yo
         </div>
 
     <p>Quick nginx hack to save your production web server in case the web service starts crashing.</p>
-<p>If you have been working in production environment, you know at certain times your web service can crash due to some unknown reason.
-It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down. You should anyways have this as a backup tactic for your service failure.</p>
+<p>If you have been working in production environment, you know at certain times your web service can crash due to some unknown reason (code failure).
+It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down. You should anyways have this as a backup tactic for your service failure.
+Devops generally use autoscaling at such times.</p>
+<p>Note: This won&rsquo;t work if there is data inconsistency, since all service will crash.</p>
 <hr>
 <p>Here goes the how-to steps:</p>
 <ul>
@@ -132,7 +134,7 @@ It will take some time to do the RCA and fix the issue. A quick hack is to have 
 </code></pre></li>
 </ul>
 <hr>
-<p>In my case, it was our rust web service which was getting stuck, failing all the subsequent requests. I created an health-check service which monitored and restarted the rust service whenever that happened. But I knew during this downtime period many of the requests would fail, we didn&rsquo;t want that. So I added three processes of this service on different ports and proxied them the way shown above.</p>
+<p>In my case, it was our rust web service which was getting stuck, failing all the subsequent requests. I created a health-check service which monitored and restarted the rust service whenever that happened. But I knew during this downtime period many of the requests would fail, we didn&rsquo;t want that. So I added three processes of this service on different ports and proxied them the way shown above.</p>
 <p><img src="/images/55hLpaQtG75YuLZs3bmO1kdg.png" alt="rust services"></p>
 
     </div>

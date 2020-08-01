@@ -13,6 +13,10 @@
   </url>
   
   <url>
+    <loc>https://wilspi.com/tags/arch-linux/</loc>
+  </url>
+  
+  <url>
     <loc>https://wilspi.com/categories/</loc>
   </url>
   
@@ -65,7 +69,15 @@
   </url>
   
   <url>
+    <loc>https://wilspi.com/tags/python/</loc>
+  </url>
+  
+  <url>
     <loc>https://wilspi.com/post/tech/save-production-via-nginx/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/setup-nix-arch-linux/</loc>
   </url>
   
   <url>

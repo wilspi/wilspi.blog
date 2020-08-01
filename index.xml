@@ -43,12 +43,12 @@ It’s a light, low-level “plugin” system for globally altering Django’s i
     </item>
     
     <item>
-      <title>Jinja templates Inheritance using Database</title>
+      <title>Jinja template Inheritance using Database</title>
       <link>https://wilspi.com/post/tech/jinja-inheritance-using-db/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wilspi.com/post/tech/jinja-inheritance-using-db/</guid>
-      <description>Jinja is a web template engine for the Python programming language. A Jinja template is simply a text file. Jinja can generate any text-based format (HTML, XML, CSV, LaTeX, etc.). A template contains variables and/or expressions, which get replaced with values when a template is rendered, thus serving dynamic content.
+      <description>Jinja is a web template engine for the Python programming language. A Jinja template is simply a text file and can generate any text-based format (HTML, XML, CSV, LaTeX, etc.). A template contains variables and/or expressions, which get replaced with values when the template is rendered, thus serving dynamic content.
 Commonly, templates are stored as files, either in git repo or s3 buckets. Depending on your use case, you can store the templates in database as well.</description>
     </item>
     
@@ -71,7 +71,18 @@ About Nix, its wiki says:
       
       <guid>https://wilspi.com/post/tech/save-production-via-nginx/</guid>
       <description>Quick nginx hack to save your production web server in case the web service starts crashing.
-If you have been working in production environment, you know at certain times your web service can crash due to some unknown reason. It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down.</description>
+If you have been working in production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down.</description>
+    </item>
+    
+    <item>
+      <title>Setup multi user nix for Arch Linux</title>
+      <link>https://wilspi.com/post/tech/setup-nix-arch-linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/setup-nix-arch-linux/</guid>
+      <description>Here we are setting up nix for Arch Linux.
+From nix&amp;rsquo;s page:
+ To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.</description>
     </item>
     
   </channel>

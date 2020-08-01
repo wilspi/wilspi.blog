@@ -11,6 +11,15 @@
     
     
     <item>
+      <title>arch-linux</title>
+      <link>https://wilspi.com/tags/arch-linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wilspi.com/tags/arch-linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>database</title>
       <link>https://wilspi.com/tags/database/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -79,6 +88,15 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wilspi.com/tags/production/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://wilspi.com/tags/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wilspi.com/tags/python/</guid>
       <description></description>
     </item>
     
