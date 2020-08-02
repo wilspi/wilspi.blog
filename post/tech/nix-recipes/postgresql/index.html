@@ -157,7 +157,7 @@ in
       alias pg=&quot;psql -p 5555 -U postgres&quot;
     '';
   }
-</code></pre><p>Points to note:</p>
+</code></pre><p>Note:</p>
 <ul>
 <li>Here, the nix packages are installed from <a href="https://github.com/NixOS/nixpkgs/releases/tag/20.03">20.03 release</a>.</li>
 <li>Postgres is installed with <a href="https://postgis.net/">PostGIS extension</a>.</li>
@@ -169,7 +169,7 @@ in
 </li>
 <li>
 <p>Run <code>nix-shell --pure shell.nix</code> to build and start <code>postgresql_12</code> in your virtual environment.</p>
-<p>Points to note:</p>
+<p>Note:</p>
 <ul>
 <li>Postgres is running here on port: <code>5555</code>, so it won&rsquo;t conflict with other Postgres server, if running.</li>
 <li>Running this command multiple times won&rsquo;t start multiple postgres server, since it is controlled by the lock file: <code>./.pg/postmaster.pid</code></li>
