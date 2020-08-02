@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sourabh Deokar</title>
+    <link>https://wilspi.com/post/tech/nix-recipes/</link>
+    <description>Recent content on Sourabh Deokar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://wilspi.com/post/tech/nix-recipes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nix Recipe: Setup Postgresql</title>
+      <link>https://wilspi.com/post/tech/nix-recipes/postgresql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/nix-recipes/postgresql/</guid>
+      <description>This is a nix recipe for building and running postgresql-12 in a virtual nix environment.
+  Create your project folder and save the following file as shell.nix
+let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &amp;quot;postgres-env&amp;quot;; buildInputs = []; nativeBuildInputs = [ zsh vim geos gdal nixpkgs-fmt # postgres-12 with postgis support (postgresql_12.withPackages (p: [ p.postgis ])) ]; postgresConf = writeText &amp;quot;postgresql.</description>
+    </item>
+    
+  </channel>
+</rss>
