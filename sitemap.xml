@@ -85,11 +85,23 @@
   </url>
   
   <url>
+    <loc>https://wilspi.com/tags/rust/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/slogging-multiple-drains/</loc>
+  </url>
+  
+  <url>
     <loc>https://wilspi.com/post/tech/save-production-via-nginx/</loc>
   </url>
   
   <url>
     <loc>https://wilspi.com/post/tech/setup-nix-arch-linux/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/slog/</loc>
   </url>
   
   <url>

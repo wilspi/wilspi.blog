@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rust on Sourabh Deokar</title>
+    <link>https://wilspi.com/tags/rust/</link>
+    <description>Recent content in rust on Sourabh Deokar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://wilspi.com/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rust: Slog and multiple drains</title>
+      <link>https://wilspi.com/post/tech/slogging-multiple-drains/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/slogging-multiple-drains/</guid>
+      <description>Slog is a structured logging library for Rustlang.
+Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:
+ processing log files for analytics searching and debugging  Logging Lets create a simple logger:
+#[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!()); info!(root_logger, &amp;quot;Application started&amp;quot;; &amp;quot;started_at&amp;quot; =&amp;gt; format!</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+    <title> wilspi | Rust: Slog and multiple drains </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="">
+    
+    <link rel="stylesheet" href="https://wilspi.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="https://wilspi.com/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://wilspi.com/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
+    <link rel="canonical" href="https://wilspi.com/post/tech/slogging-multiple-drains/">
+    
+    
+    <script type="text/javascript" src="https://wilspi.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
+
+<meta name="twitter:title" content="Rust: Slog and multiple drains"/>
+<meta name="twitter:description" content="Slog is a structured logging library for Rustlang.
+Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:
+ processing log files for analytics searching and debugging  Logging Lets create a simple logger:
+#[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!()); info!(root_logger, &quot;Application started&quot;; &quot;started_at&quot; =&gt; format!"/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://wilspi.com/images/dp.jpg" alt="profile picture">
+        <h3 title=""><a href="/">नमस्ते</a></h3>
+        <div class="description">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+        <li>
+        <a href="https://github.com/wilspi/" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.instagram.com/wilspi/" rel="me" aria-label="Instagram">
+          <i class="fa fa-2x fa-instagram" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.twitter.com/iamwilspi" rel="me" aria-label="Twitter">
+          <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; wilspi 2020 </div>
+      </div>
+    </div>
+</div><div class="main">
+            <div class="page-top animated fadeInDown">
+    <ul class="nav">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+    </ul>
+    <div class="themeswitcher">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Rust: Slog and multiple drains
+        </h3>
+        
+        <div class="info">
+          
+          <i class="fa fa-clock-o"></i><span class="reading-time">2-minute read</span>
+        </div>
+        
+        </div>
+
+    <p><a href="https://github.com/slog-rs/slog">Slog</a> is a structured logging library for <a href="https://www.rust-lang.org/">Rustlang</a>.<br>
+Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages.
+This helps in:</p>
+<ul>
+<li>processing log files for analytics</li>
+<li>searching and debugging</li>
+</ul>
+<h4 id="logging">Logging</h4>
+<p>Lets create a simple logger:</p>
+<pre><code>#[macro_use]
+extern crate slog;
+extern crate chrono;
+
+fn main() {
+    let drain = slog::Discard;
+
+    let root_logger = slog::Logger::root(drain, o!());
+
+    info!(root_logger, &quot;Application started&quot;;
+        &quot;started_at&quot; =&gt; format!(&quot;{}&quot;, chrono::Utc::now()));
+}
+</code></pre><p>Important terms:</p>
+<ul>
+<li>Drain is a <a href="https://doc.rust-lang.org/rust-by-example/trait.html">trait</a> which is responsible for deciding the output/destination of the logs. Any custom log handling logic should be implemented as a Drain.</li>
+<li><a href="https://docs.rs/slog/2.5.2/slog/struct.OwnedKV.html">Context</a> are key-value pairs which gets added into every log statement. Lets say if you want to add git commit version to each log statement you can add it here.</li>
+<li>Logger are objects used to execute logging statements.<br>
+For creating <a href="https://docs.rs/slog/2.5.2/slog/struct.Logger.html#method.root">root logger</a>, we need a drain and context. Read complete documentation <a href="https://docs.rs/slog/2.5.2/slog/struct.Logger.html">here</a>.</li>
+</ul>
+<p>Here, a <code>root_logger</code> object is created with drain <a href="https://docs.rs/slog/2.0.0-3.1/slog/struct.Discard.html">Discard</a> (which discards everything) and blank context (<code>o!()</code>).</p>
+<p>Lets look at another example:</p>
+<pre><code>#[macro_use]
+extern crate slog;
+extern crate slog_term;
+extern crate chrono;
+
+use slog::Drain;
+
+fn main() {
+    let decorator = slog_term::TermDecorator::new().build();
+    let drain = slog_term::FullFormat::new(decorator).build().fuse();
+
+    let root_logger = slog::Logger::root(drain, o!());
+
+    info!(root_logger, &quot;Application started&quot;;
+        &quot;started_at&quot; =&gt; format!(&quot;{}&quot;, chrono::Utc::now()));
+}
+</code></pre><p>Here, <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.FullFormat.html">slog_term::FullFormat</a> drain is used for terminal output with <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.TermDecorator.html">TermDecorator</a> (Decorator is an implementing strategy of output formating in terms of IO, colors, etc.)</p>
+<p>Since drain is a trait to customize logging to any output, this allows slog to become extensible, composible and flexible.
+There are many feature slog libraries based on this trait:</p>
+<ul>
+<li><a href="https://github.com/slog-rs/bunyan">slog-bunyan</a></li>
+<li><a href="https://github.com/slog-rs/term">slog-term</a></li>
+<li><a href="https://github.com/slog-rs/async">slog-async</a></li>
+<li><a href="https://github.com/slog-rs/journald">slog-journald</a>
+etc.</li>
+</ul>
+<h4 id="multiple-drains">Multiple Drains</h4>
+<p>Drains can also be interlinked and extended according to our needs.
+Following is an example where there are two outputs:</p>
+<ul>
+<li>to stdout, all log statements are send to this</li>
+<li>to stderr, log statements with log level greater than or equal to <code>slog::Level::Warning</code></li>
+</ul>
+<pre><code>#[macro_use]
+extern crate slog;
+extern crate slog_term;
+extern crate chrono;
+
+use slog::Drain;
+
+fn main() {
+    let drain = slog_async::Async::new(
+        slog::Duplicate::new(
+            slog::Filter::new(
+                slog_term::FullFormat::new(
+                    slog_term::PlainSyncDecorator::new(std::io::stderr(),)).build(),
+                |record: &amp;slog::Record| record.level().is_at_least(slog::Level::Warning),
+            ),
+            slog_term::FullFormat::new(slog_term::PlainSyncDecorator::new(std::io::stdout())).build(),
+        ).fuse()
+    ).build().fuse();
+
+    let root_logger = slog::Logger::root(drain, o!());
+
+    info!(root_logger, &quot;Application started&quot;;
+        &quot;started_at&quot; =&gt; format!(&quot;{}&quot;, chrono::Utc::now()));
+}
+</code></pre><p>Here, <a href="https://docs.rs/slog/2.5.2/slog/struct.Duplicate.html">Duplicate</a>, <a href="https://docs.rs/slog/2.5.2/slog/struct.Filter.html">Filter</a>, <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.FullFormat.html">FullFormat</a> drains are used.</p>
+<h4 id="log-macros-and-log-levels">Log Macros and Log Levels</h4>
+<p>To log a statement/record, we use <a href="https://docs.rs/slog/2.5.2/slog/macro.log.html">log macros</a>. In above examples, <code>info!</code> is used.</p>
+<p><a href="https://docs.rs/slog/2.0.0-3.1/slog/enum.Level.html">Log Levels</a> are log categories depending upon the urgency. For example, we have debug, info, error etc. for self explaining urgencies.
+We have different log macros for different log levels.</p>
+<h4 id="extra">Extra</h4>
+<p>You can find many more examples, <a href="https://github.com/slog-rs/misc/tree/master/examples">here</a>.</p>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+<span class="separator"><a class="category" href="/categories/tech/">tech</a></span>
+
+        
+    <span class="separator"><a class="tag" href="/tags/rust/">rust</a><a class="tag" href="/tags/slog/">slog</a></span>
+
+      </div>
+    </div>
+
+    
+    
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body>
+
+
+
+<script type="text/javascript" src="https://wilspi.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js" integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw=" crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript" src="https://wilspi.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js" integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://wilspi.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js" integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro=" crossorigin="anonymous"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-51915090-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</html></body>
+
+</html>
