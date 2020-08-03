@@ -88,7 +88,7 @@ Structured logging is a concept that puts events over messages, events are logge
         
         <div class="info">
           
-          <i class="fa fa-clock-o"></i><span class="reading-time">2-minute read</span>
+          <i class="fa fa-clock-o"></i><span class="reading-time">3-minute read</span>
         </div>
         
         </div>
@@ -119,7 +119,7 @@ fn main() {
 <li>Drain is a <a href="https://doc.rust-lang.org/rust-by-example/trait.html">trait</a> which is responsible for deciding the output/destination of the logs. Any custom log handling logic should be implemented as a Drain.</li>
 <li><a href="https://docs.rs/slog/2.5.2/slog/struct.OwnedKV.html">Context</a> are key-value pairs which gets added into every log statement. Lets say if you want to add git commit version to each log statement you can add it here.</li>
 <li>Logger are objects used to execute logging statements.<br>
-For creating <a href="https://docs.rs/slog/2.5.2/slog/struct.Logger.html#method.root">root logger</a>, we need a drain and context. Read complete documentation <a href="https://docs.rs/slog/2.5.2/slog/struct.Logger.html">here</a>.</li>
+For creating <a href="https://docs.rs/slog/2.5.2/slog/struct.Logger.html#method.root">root logger</a>, we need drain and context. Read complete documentation <a href="https://docs.rs/slog/2.5.2/slog/struct.Logger.html">here</a>.</li>
 </ul>
 <p>Here, a <code>root_logger</code> object is created with drain <a href="https://docs.rs/slog/2.0.0-3.1/slog/struct.Discard.html">Discard</a> (which discards everything) and blank context (<code>o!()</code>).</p>
 <p>Lets look at another example:</p>
@@ -140,7 +140,7 @@ fn main() {
         &quot;started_at&quot; =&gt; format!(&quot;{}&quot;, chrono::Utc::now()));
 }
 </code></pre><p>Here, <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.FullFormat.html">slog_term::FullFormat</a> drain is used for terminal output with <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.TermDecorator.html">TermDecorator</a> (Decorator is an implementing strategy of output formating in terms of IO, colors, etc.)</p>
-<p>Since drain is a trait to customize logging to any output, this allows slog to become extensible, composible and flexible.
+<p>Since drain is a trait to customize logging to any output, it allows slog to become extensible, composible and flexible.
 There are many feature slog libraries based on this trait:</p>
 <ul>
 <li><a href="https://github.com/slog-rs/bunyan">slog-bunyan</a></li>
@@ -149,12 +149,13 @@ There are many feature slog libraries based on this trait:</p>
 <li><a href="https://github.com/slog-rs/journald">slog-journald</a>
 etc.</li>
 </ul>
+<p>You can always write your own implementation using this trait.</p>
 <h4 id="multiple-drains">Multiple Drains</h4>
 <p>Drains can also be interlinked and extended according to our needs.
 Following is an example where there are two outputs:</p>
 <ul>
-<li>to stdout, all log statements are send to this</li>
-<li>to stderr, log statements with log level greater than or equal to <code>slog::Level::Warning</code></li>
+<li>to stdout, all log statements are sent</li>
+<li>to stderr, log statements with log level greater than or equal to <code>slog::Level::Warning</code> are sent</li>
 </ul>
 <pre><code>#[macro_use]
 extern crate slog;
