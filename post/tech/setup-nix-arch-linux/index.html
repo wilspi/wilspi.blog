@@ -103,8 +103,11 @@ Multi User Setup From nix&rsquo;s page:
 <ul>
 <li>
 <p>Install nix via <a href="https://aur.archlinux.org/packages/yay/">yay</a> (<a href="https://wiki.archlinux.org/index.php/AUR_helpers">AUR helper</a>)</p>
-<pre><code>yay -S archlinux-nix
-</code></pre></li>
+<pre><code>yay -S nix
+</code></pre><p>If encounter error:<br>
+<code>error while loading shared libraries: libboost_context.so.1.69.0: cannot open shared object file: No such file or directory</code><br>
+edit PKGBUILD for <code>nix</code> and in <code>depends</code> replace <code>boost</code> with <code>boost&lt;=1.69</code>. This happens because nix package has a hard dependency on boost1.69 version, more info <a href="https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=nix#n16">here</a>.</p>
+</li>
 <li>
 <p>Add nix builder groups</p>
 <pre><code>sudo groupadd -r nixbld
