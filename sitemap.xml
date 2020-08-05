@@ -68,6 +68,16 @@
   </url>
   
   <url>
+    <loc>https://wilspi.com/tags/arch-linux/</loc>
+    <lastmod>2020-08-01T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/setup-nix-arch-linux/</loc>
+    <lastmod>2020-08-01T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wilspi.com/tags/database/</loc>
     <lastmod>2020-07-31T22:00:00+05:30</lastmod>
   </url>
@@ -139,14 +149,6 @@
   <url>
     <loc>https://wilspi.com/readme/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/tags/arch-linux/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/post/tech/setup-nix-arch-linux/</loc>
   </url>
   
 </urlset>

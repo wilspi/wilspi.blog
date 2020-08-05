@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Rust: Variables in Memory - Notes</title>
+      <title>Rust: Variables in Memory</title>
       <link>https://wilspi.com/post/tech/rust-variables-in-memory/</link>
       <pubDate>Wed, 05 Aug 2020 23:00:00 +0530</pubDate>
       
@@ -59,6 +59,17 @@ let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/arc
     </item>
     
     <item>
+      <title>Setup multi user nix for Arch Linux</title>
+      <link>https://wilspi.com/post/tech/setup-nix-arch-linux/</link>
+      <pubDate>Sat, 01 Aug 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/setup-nix-arch-linux/</guid>
+      <description>Here we are setting up nix for Arch Linux.
+Multi User Setup From nix&amp;rsquo;s page:
+ To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.</description>
+    </item>
+    
+    <item>
       <title>Jinja template Inheritance using Database</title>
       <link>https://wilspi.com/post/tech/jinja-inheritance-using-db/</link>
       <pubDate>Fri, 31 Jul 2020 22:00:00 +0530</pubDate>
@@ -102,17 +113,6 @@ It’s a light, low-level “plugin” system for globally altering Django’s i
       <guid>https://wilspi.com/post/tech/save-production-via-nginx/</guid>
       <description>Quick nginx hack to save your production web server in case the web service starts crashing.
 If you have been working in production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down.</description>
-    </item>
-    
-    <item>
-      <title>Setup multi user nix for Arch Linux</title>
-      <link>https://wilspi.com/post/tech/setup-nix-arch-linux/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/setup-nix-arch-linux/</guid>
-      <description>Here we are setting up nix for Arch Linux.
-Multi User Setup From nix&amp;rsquo;s page:
- To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.</description>
     </item>
     
   </channel>

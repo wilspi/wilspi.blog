@@ -6,6 +6,7 @@
     <description>Recent content in arch-linux on Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 01 Aug 2020 22:00:00 +0530</lastBuildDate>
     
 	<atom:link href="https://wilspi.com/tags/arch-linux/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,7 +14,7 @@
     <item>
       <title>Setup multi user nix for Arch Linux</title>
       <link>https://wilspi.com/post/tech/setup-nix-arch-linux/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 01 Aug 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/post/tech/setup-nix-arch-linux/</guid>
       <description>Here we are setting up nix for Arch Linux.
