@@ -84,8 +84,8 @@ It’s a light, low-level “plugin” system for globally altering Django’s i
     <div class="post-content">
 
       <div class="post-title">
-        <h3>Django Middleware: log requests and responses
-        </h3>
+        <h1>Django Middleware: log requests and responses
+        </h1>
         
         <div class="info">
           
@@ -106,7 +106,6 @@ Why better?</p>
 <li>one time job, no need to configure for every request/view</li>
 </ul>
 <p>Here, we are using Django&rsquo;s <a href="https://docs.djangoproject.com/en/3.0/topics/http/middleware/#writing-your-own-middleware">middleware semantics</a> to construct a middleware which will log all requests and corresponding responses.</p>
-<hr>
 <ul>
 <li>
 <h4 id="create-a-middleware-file">Create a middleware file</h4>
@@ -177,7 +176,6 @@ Note: Do add <code>__init__.py</code> in <code>middleware</code> folder.</p>
     &quot;&lt;application&gt;.middleware.request_log.RequestLogMiddleware&quot;,
 ]
 </code></pre><p>Replace <code>&lt;application&gt;</code> with your application name.</p>
-<hr>
 </li>
 </ul>
 

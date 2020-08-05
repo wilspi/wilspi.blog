@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+    <title> wilspi | Rust: Variables in Memory - Notes </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="">
+    
+    <link rel="stylesheet" href="https://wilspi.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="https://wilspi.com/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://wilspi.com/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
+    <link rel="canonical" href="https://wilspi.com/post/tech/rust-variables-in-memory/">
+    
+    
+    <script type="text/javascript" src="https://wilspi.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
+
+<meta name="twitter:title" content="Rust: Variables in Memory - Notes"/>
+<meta name="twitter:description" content="In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Lets look at how Rust does it.
+Note: These are quick short notes, if you want to look in deep check out rustlang docs.
+Ownership In programming languages, either a garbage collector is used which will cleanup the memory used by the unused variables or the memory should be explicitly freed by programmer in the code."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://wilspi.com/images/dp.jpg" alt="profile picture">
+        <h3 title=""><a href="/">नमस्ते</a></h3>
+        <div class="description">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+        <li>
+        <a href="https://github.com/wilspi/" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.instagram.com/wilspi/" rel="me" aria-label="Instagram">
+          <i class="fa fa-2x fa-instagram" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.twitter.com/iamwilspi" rel="me" aria-label="Twitter">
+          <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; wilspi 2020 </div>
+      </div>
+    </div>
+</div><div class="main">
+            <div class="page-top animated fadeInDown">
+    <ul class="nav">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+    </ul>
+    <div class="themeswitcher">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h1>Rust: Variables in Memory - Notes
+        </h1>
+        
+        <div class="info">
+          
+          <i class="fa fa-clock-o"></i><span class="reading-time">6-minute read</span>
+        </div>
+        
+        </div>
+
+    <p>In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient.
+Lets look at how Rust does it.</p>
+<p>Note: These are quick short notes, if you want to look in deep check out <a href="https://doc.rust-lang.org/book/index.html">rustlang docs</a>.</p>
+<h3 id="ownership">Ownership</h3>
+<p>In programming languages, either a <a href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">garbage collector</a> is used which will cleanup the memory used by the unused variables or the memory should be explicitly freed by programmer in the code. In Rust, we have system of <strong>ownership</strong> which follows the rule:</p>
+<blockquote>
+<p>Resources (memory) can have only one owner at a time</p>
+</blockquote>
+<p>To handle this correctly, we must have exactly one <code>allocate</code> and exactly one <code>free</code>.
+Rust handles this by automatically returning the memory (free) when the variable goes out of scope by calling a special function called <a href="https://doc.rust-lang.org/std/ops/trait.Drop.html">drop</a>, see <a href="https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization">RAII</a>.</p>
+<h3 id="copy-and-clone">Copy and Clone</h3>
+<p>Variables which are stored in stack memory can easily be bit-wise copied to other variables, but variables which are stored in heap are not so easy to copy since the memory size is unknown and can also lead to memory safety bugs like <a href="https://heap-exploitation.dhavalkapil.com/attacks/double_free.html">Double Free Error</a> down the line.</p>
+<p>Lets look by examples:</p>
+<p>Example 1: Heap:</p>
+<pre><code>let x = String::from(&quot;wilspi&quot;);
+let y = x;
+println!(&quot;x: {}&quot;, x);
+</code></pre><p>This will throw error at compilation since owner is moved from <code>x</code> to <code>y</code> (Ownership rule).</p>
+<p>Example 2: Stack:</p>
+<pre><code>let a = 42;
+let b = a;
+println!(&quot;a: {}&quot;, a)
+</code></pre><p>This is valid and doesn&rsquo;t throw error.</p>
+<p>Rust implements this via <a href="https://doc.rust-lang.org/std/marker/trait.Copy.html">copy</a> trait.
+Here are some of the types that are <code>Copy</code>:</p>
+<ul>
+<li>All the integer types, such as <code>u32</code>.</li>
+<li>The Boolean type, <code>bool</code>, with values <code>true</code> and <code>false</code>.</li>
+<li>All the floating point types, such as <code>f64</code>.</li>
+<li>The character type, <code>char</code>.</li>
+<li>Tuples, if they only contain types that are also Copy. For example, <code>(i32, i32)</code> is Copy, but <code>(i32, String)</code> is not.</li>
+</ul>
+<p>Points to note:</p>
+<ul>
+<li>For types that don&rsquo;t implement Copy trait can copy the values explicitly using <code>.clone()</code> (types must implement <a href="https://doc.rust-lang.org/std/clone/trait.Clone.html">Copy</a> trait)</li>
+<li>Copies happen implicitly, for example as part of an assignment y = x. The behavior of Copy is always a simple bit-wise copy.</li>
+<li>Clone is a supertrait of Copy, so everything which is Copy must also implement Clone.</li>
+<li>A type can implement Copy if all of its components implement Copy.</li>
+<li>Any type implementing Drop can&rsquo;t be Copy.</li>
+</ul>
+<h3 id="borrowing">Borrowing</h3>
+<p>Most of the time, we&rsquo;d like to access data without taking ownership over it. To accomplish this, Rust uses a borrowing mechanism. Instead of passing objects by value (<code>T</code>), objects can be passed by reference (<code>&amp;T</code>).</p>
+<p>There can be many references (variables which can only read the value) to the resource but only one owner (variable that can write/modify the value).
+When all the variables pointing to the resource go out of scope, the value will be dropped and resource will be freed.</p>
+<p>TO BE CONTINUED &hellip;</p>
+<h3 id="extra">Extra</h3>
+<p>Read this beautiful <a href="https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#the-stack-and-the-heap">excerpt</a> to understand memory storage in <strong>Stack and Heap</strong>:</p>
+<blockquote>
+<p>Both the stack and the heap are parts of memory that are available to your code to use at runtime, but they are structured in different ways. The stack stores values in the order it gets them and removes the values in the opposite order. This is referred to as last in, first out. Think of a stack of plates: when you add more plates, you put them on top of the pile, and when you need a plate, you take one off the top. Adding or removing plates from the middle or bottom wouldn’t work as well! Adding data is called pushing onto the stack, and removing data is called popping off the stack.</p>
+<p>All data stored on the stack must have a known, fixed size. Data with an unknown size at compile time or a size that might change must be stored on the heap instead. The heap is less organized: when you put data on the heap, you request a certain amount of space. The memory allocator finds an empty spot in the heap that is big enough, marks it as being in use, and returns a pointer, which is the address of that location. This process is called allocating on the heap and is sometimes abbreviated as just allocating. Pushing values onto the stack is not considered allocating. Because the pointer is a known, fixed size, you can store the pointer on the stack, but when you want the actual data, you must follow the pointer.</p>
+<p>Think of being seated at a restaurant. When you enter, you state the number of people in your group, and the staff finds an empty table that fits everyone and leads you there. If someone in your group comes late, they can ask where you’ve been seated to find you.</p>
+<p>Pushing to the stack is faster than allocating on the heap because the allocator never has to search for a place to store new data; that location is always at the top of the stack. Comparatively, allocating space on the heap requires more work, because the allocator must first find a big enough space to hold the data and then perform bookkeeping to prepare for the next allocation.</p>
+<p>Accessing data in the heap is slower than accessing data on the stack because you have to follow a pointer to get there. Contemporary processors are faster if they jump around less in memory. Continuing the analogy, consider a server at a restaurant taking orders from many tables. It’s most efficient to get all the orders at one table before moving on to the next table. Taking an order from table A, then an order from table B, then one from A again, and then one from B again would be a much slower process. By the same token, a processor can do its job better if it works on data that’s close to other data (as it is on the stack) rather than farther away (as it can be on the heap). Allocating a large amount of space on the heap can also take time.</p>
+<p>When your code calls a function, the values passed into the function (including, potentially, pointers to data on the heap) and the function’s local variables get pushed onto the stack. When the function is over, those values get popped off the stack.</p>
+<p>Keeping track of what parts of code are using what data on the heap, minimizing the amount of duplicate data on the heap, and cleaning up unused data on the heap so you don’t run out of space are all problems that ownership addresses. Once you understand ownership, you won’t need to think about the stack and the heap very often, but knowing that managing heap data is why ownership exists can help explain why it works the way it does.</p>
+</blockquote>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+<span class="separator"><a class="category" href="/categories/tech/">tech</a></span>
+
+        
+    <span class="separator"><a class="tag" href="/tags/rust/">rust</a></span>
+
+      </div>
+    </div>
+
+    
+    
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body>
+
+
+
+<script type="text/javascript" src="https://wilspi.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js" integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw=" crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript" src="https://wilspi.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js" integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://wilspi.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js" integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro=" crossorigin="anonymous"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-51915090-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</html></body>
+
+</html>

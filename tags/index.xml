@@ -6,50 +6,96 @@
     <description>Recent content in Tags on Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Wed, 05 Aug 2020 23:00:00 +0530</lastBuildDate>
     
 	<atom:link href="https://wilspi.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>arch-linux</title>
-      <link>https://wilspi.com/tags/arch-linux/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>rust</title>
+      <link>https://wilspi.com/tags/rust/</link>
+      <pubDate>Wed, 05 Aug 2020 23:00:00 +0530</pubDate>
       
-      <guid>https://wilspi.com/tags/arch-linux/</guid>
+      <guid>https://wilspi.com/tags/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nix</title>
+      <link>https://wilspi.com/tags/nix/</link>
+      <pubDate>Tue, 04 Aug 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/nix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>slog</title>
+      <link>https://wilspi.com/tags/slog/</link>
+      <pubDate>Mon, 03 Aug 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/slog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>postgres</title>
+      <link>https://wilspi.com/tags/postgres/</link>
+      <pubDate>Sun, 02 Aug 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/postgres/</guid>
       <description></description>
     </item>
     
     <item>
       <title>database</title>
       <link>https://wilspi.com/tags/database/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 31 Jul 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/database/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>django</title>
-      <link>https://wilspi.com/tags/django/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wilspi.com/tags/django/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>jinja</title>
       <link>https://wilspi.com/tags/jinja/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 31 Jul 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/jinja/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>python</title>
+      <link>https://wilspi.com/tags/python/</link>
+      <pubDate>Fri, 31 Jul 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>package-manager</title>
+      <link>https://wilspi.com/tags/package-manager/</link>
+      <pubDate>Thu, 30 Jul 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/package-manager/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>django</title>
+      <link>https://wilspi.com/tags/django/</link>
+      <pubDate>Wed, 29 Jul 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/django/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>middleware</title>
       <link>https://wilspi.com/tags/middleware/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 29 Jul 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/middleware/</guid>
       <description></description>
@@ -58,72 +104,27 @@
     <item>
       <title>nginx</title>
       <link>https://wilspi.com/tags/nginx/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 29 Jul 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/nginx/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>nix</title>
-      <link>https://wilspi.com/tags/nix/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wilspi.com/tags/nix/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>package-manager</title>
-      <link>https://wilspi.com/tags/package-manager/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wilspi.com/tags/package-manager/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>postgres</title>
-      <link>https://wilspi.com/tags/postgres/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wilspi.com/tags/postgres/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>production</title>
       <link>https://wilspi.com/tags/production/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 29 Jul 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/production/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>python</title>
-      <link>https://wilspi.com/tags/python/</link>
+      <title>arch-linux</title>
+      <link>https://wilspi.com/tags/arch-linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wilspi.com/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>rust</title>
-      <link>https://wilspi.com/tags/rust/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wilspi.com/tags/rust/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>slog</title>
-      <link>https://wilspi.com/tags/slog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wilspi.com/tags/slog/</guid>
+      <guid>https://wilspi.com/tags/arch-linux/</guid>
       <description></description>
     </item>
     

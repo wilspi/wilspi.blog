@@ -6,14 +6,26 @@
     <description>Recent content in rust on Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Wed, 05 Aug 2020 23:00:00 +0530</lastBuildDate>
     
 	<atom:link href="https://wilspi.com/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Rust: Variables in Memory - Notes</title>
+      <link>https://wilspi.com/post/tech/rust-variables-in-memory/</link>
+      <pubDate>Wed, 05 Aug 2020 23:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/rust-variables-in-memory/</guid>
+      <description>In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Lets look at how Rust does it.
+Note: These are quick short notes, if you want to look in deep check out rustlang docs.
+Ownership In programming languages, either a garbage collector is used which will cleanup the memory used by the unused variables or the memory should be explicitly freed by programmer in the code.</description>
+    </item>
+    
+    <item>
       <title>Nix Recipe: Setup Rust</title>
       <link>https://wilspi.com/post/tech/nix-recipes/rust/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 04 Aug 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/post/tech/nix-recipes/rust/</guid>
       <description>This is a nix recipe for building and running rust in a virtual nix environment.
@@ -26,7 +38,7 @@ let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &amp;quot;htt
     <item>
       <title>Rust: Slog and multiple drains</title>
       <link>https://wilspi.com/post/tech/slogging-multiple-drains/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 03 Aug 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/post/tech/slogging-multiple-drains/</guid>
       <description>Slog is a structured logging library for Rustlang.

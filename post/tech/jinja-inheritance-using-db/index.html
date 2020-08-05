@@ -81,8 +81,8 @@ Commonly, templates are stored as files, either in git repo or s3 buckets. Depen
     <div class="post-content">
 
       <div class="post-title">
-        <h3>Jinja template Inheritance using Database
-        </h3>
+        <h1>Jinja template Inheritance using Database
+        </h1>
         
         <div class="info">
           
@@ -95,7 +95,7 @@ Commonly, templates are stored as files, either in git repo or s3 buckets. Depen
 A Jinja template is simply a text file and can generate any text-based format (HTML, XML, CSV, LaTeX, etc.).
 A template contains variables and/or expressions, which get replaced with values when the template is rendered, thus serving dynamic content.</p>
 <p>Commonly, templates are stored as files, either in git repo or s3 buckets. Depending on your use case, you can store the templates in database as well.</p>
-<h4 id="templates-in-database">Templates in Database</h4>
+<h3 id="templates-in-database">Templates in Database</h3>
 <ul>
 <li>
 <p>Template is a text file and hence can be simply saved in the <code>text</code> field of the database.</p>
@@ -110,7 +110,7 @@ print(Template(template).render({&quot;name&quot;: &quot;wilspi&quot;})
 </code></pre><p>This will give the rendered template output.</p>
 </li>
 </ul>
-<h4 id="template-inheritance-and-database">Template Inheritance and Database</h4>
+<h3 id="template-inheritance-and-database">Template Inheritance and Database</h3>
 <p><a href="https://jinja.palletsprojects.com/en/2.11.x/templates/?highlight=nesting#template-inheritance">Template inheritance</a> is where Jinja&rsquo;s power lies. It allows you to reuse templates and structure them in an efficient manner.</p>
 <p>Jinja allows template inheritance via many techniques, few of which are listed below:</p>
 <ul>
@@ -139,7 +139,7 @@ from jinja2 import Environment, DictLoader
 env = Environment(loader=DictLoader(template_map))
 
 print(env.get_template(&quot;base&quot;).render({&quot;name&quot;:&quot;wilspi&quot;})))
-</code></pre><h4 id="extra">Extra</h4>
+</code></pre><h3 id="extra">Extra</h3>
 <p>If you are looking for a kickass template storage and editor tool, check out <a href="https://github.com/wilspi/django-templatestore">django-templatestore</a>.</p>
 
     </div>

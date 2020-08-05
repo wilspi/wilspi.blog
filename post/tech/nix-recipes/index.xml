@@ -11,20 +11,9 @@
     
     
     <item>
-      <title>Nix Recipe: Setup Postgresql</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/postgresql/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/postgresql/</guid>
-      <description>This is a nix recipe for building and running postgresql-12 in a virtual nix environment.
-  Create your project folder and save the following file as shell.nix
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &amp;quot;postgres-env&amp;quot;; buildInputs = []; nativeBuildInputs = [ zsh vim geos gdal nixpkgs-fmt # postgres-12 with postgis support (postgresql_12.withPackages (p: [ p.postgis ])) ]; postgresConf = writeText &amp;quot;postgresql.</description>
-    </item>
-    
-    <item>
       <title>Nix Recipe: Setup Rust</title>
       <link>https://wilspi.com/post/tech/nix-recipes/rust/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 04 Aug 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/post/tech/nix-recipes/rust/</guid>
       <description>This is a nix recipe for building and running rust in a virtual nix environment.
@@ -32,6 +21,17 @@ let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/arc
 1.43.0 We are specifying rust version to install, here using 1.43.0. If using heroku, rust-toolchain file will determine which version will be used to build the application.
   Create shell.nix with following:
 let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &amp;quot;https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz&amp;quot; ); nixpkgs = import (builtins.</description>
+    </item>
+    
+    <item>
+      <title>Nix Recipe: Setup Postgresql</title>
+      <link>https://wilspi.com/post/tech/nix-recipes/postgresql/</link>
+      <pubDate>Sun, 02 Aug 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/nix-recipes/postgresql/</guid>
+      <description>This is a nix recipe for building and running postgresql-12 in a virtual nix environment.
+  Create your project folder and save the following file as shell.nix
+let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &amp;quot;postgres-env&amp;quot;; buildInputs = []; nativeBuildInputs = [ zsh vim geos gdal nixpkgs-fmt # postgres-12 with postgis support (postgresql_12.withPackages (p: [ p.postgis ])) ]; postgresConf = writeText &amp;quot;postgresql.</description>
     </item>
     
   </channel>

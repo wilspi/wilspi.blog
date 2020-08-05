@@ -83,8 +83,8 @@ Structured logging is a concept that puts events over messages, events are logge
     <div class="post-content">
 
       <div class="post-title">
-        <h3>Rust: Slog and multiple drains
-        </h3>
+        <h1>Rust: Slog and multiple drains
+        </h1>
         
         <div class="info">
           
@@ -100,7 +100,7 @@ This helps in:</p>
 <li>processing log files for analytics</li>
 <li>searching and debugging (example: search log statements for particular user or request)</li>
 </ul>
-<h4 id="logging">Logging</h4>
+<h3 id="logging">Logging</h3>
 <p>Lets create a simple logger:</p>
 <pre><code>#[macro_use]
 extern crate slog;
@@ -122,6 +122,7 @@ fn main() {
 For creating <a href="https://docs.rs/slog/2.5.2/slog/struct.Logger.html#method.root">root logger</a>, we need drain and context. Read complete documentation <a href="https://docs.rs/slog/2.5.2/slog/struct.Logger.html">here</a>.</li>
 </ul>
 <p>Here, a <code>root_logger</code> object is created with drain <a href="https://docs.rs/slog/2.0.0-3.1/slog/struct.Discard.html">Discard</a> (which discards everything) and blank context (<code>o!()</code>).</p>
+<hr>
 <p>Lets look at another example:</p>
 <pre><code>#[macro_use]
 extern crate slog;
@@ -140,6 +141,7 @@ fn main() {
         &quot;started_at&quot; =&gt; format!(&quot;{}&quot;, chrono::Utc::now()));
 }
 </code></pre><p>Here, <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.FullFormat.html">slog_term::FullFormat</a> drain is used for terminal output with <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.TermDecorator.html">TermDecorator</a> (Decorator is an implementing strategy of output formating in terms of IO, colors, etc.)</p>
+<hr>
 <p>Since drain is a trait to customize logging to any output, it allows slog to become extensible, composible and flexible.
 There are many feature slog libraries based on this trait:</p>
 <ul>
@@ -150,7 +152,7 @@ There are many feature slog libraries based on this trait:</p>
 etc.</li>
 </ul>
 <p>You can always write your own implementation using this trait.</p>
-<h4 id="multiple-drains">Multiple Drains</h4>
+<h3 id="multiple-drains">Multiple Drains</h3>
 <p>Drains can also be interlinked and extended according to our needs.
 Following is an example where there are two outputs:</p>
 <ul>
@@ -182,11 +184,11 @@ fn main() {
         &quot;started_at&quot; =&gt; format!(&quot;{}&quot;, chrono::Utc::now()));
 }
 </code></pre><p>Here, <a href="https://github.com/slog-rs/async">Async</a>, <a href="https://docs.rs/slog/2.5.2/slog/struct.Duplicate.html">Duplicate</a>, <a href="https://docs.rs/slog/2.5.2/slog/struct.Filter.html">Filter</a>, <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.FullFormat.html">FullFormat</a> drains are used.</p>
-<h4 id="log-macros-and-log-levels">Log Macros and Log Levels</h4>
+<h3 id="log-macros-and-log-levels">Log Macros and Log Levels</h3>
 <p>To log a statement/record, we use <a href="https://docs.rs/slog/2.5.2/slog/macro.log.html">log macros</a>. In above examples, <code>info!</code> is used.</p>
 <p><a href="https://docs.rs/slog/2.0.0-3.1/slog/enum.Level.html">Log Levels</a> are log categories based on urgency. For example, we have debug, info, error etc. for self explaining urgencies.
 We have different log macros for different log levels.</p>
-<h4 id="extra">Extra</h4>
+<h3 id="extra">Extra</h3>
 <p>You can find many more examples, <a href="https://github.com/slog-rs/misc/tree/master/examples">here</a>.</p>
 
     </div>

@@ -81,60 +81,19 @@
   
   <div class="post animated fadeInDown">
     <div class="post-title">
-      <h3><a href="/post/tech/django-middleware-to-log-requests/">Django Middleware: log requests and responses</a>
+      <h3><a href="/post/tech/rust-variables-in-memory/">Rust: Variables in Memory - Notes</a>
       </h3>
     </div>
-    <div class="post-content"><div class="p_part"><p>From Django&rsquo;s context:
- Middleware is a framework of hooks into Django’s request/response processing.
-It’s a light, low-level “plugin” system for globally altering Django’s input or output.
- Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware layer which will log every incoming request. Why better?
- it will log unhandled requests/views one time job, no need to configure for every request/view  Here, we are using Django&rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses.</p></div>
+    <div class="post-content"><div class="p_part"><p>In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Lets look at how Rust does it.
+Note: These are quick short notes, if you want to look in deep check out rustlang docs.
+Ownership In programming languages, either a garbage collector is used which will cleanup the memory used by the unused variables or the memory should be explicitly freed by programmer in the code.</p></div>
 
   <div class="p_part"><p></p></div></div>
     <div class="post-footer">
       <div class="meta">
         <div class="info">
           
-          <a class="tag" href="/tags/django/">django</a><a class="tag" href="/tags/middleware/">middleware</a><a class="tag" href="/tags/python/">python</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="post animated fadeInDown">
-    <div class="post-title">
-      <h3><a href="/post/tech/jinja-inheritance-using-db/">Jinja template Inheritance using Database</a>
-      </h3>
-    </div>
-    <div class="post-content"><div class="p_part"><p>Jinja is a web template engine for the Python programming language. A Jinja template is simply a text file and can generate any text-based format (HTML, XML, CSV, LaTeX, etc.). A template contains variables and/or expressions, which get replaced with values when the template is rendered, thus serving dynamic content.
-Commonly, templates are stored as files, either in git repo or s3 buckets. Depending on your use case, you can store the templates in database as well.</p></div>
-
-  <div class="p_part"><p></p></div></div>
-    <div class="post-footer">
-      <div class="meta">
-        <div class="info">
-          
-          <a class="tag" href="/tags/database/">database</a><a class="tag" href="/tags/jinja/">jinja</a><a class="tag" href="/tags/python/">python</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="post animated fadeInDown">
-    <div class="post-title">
-      <h3><a href="/post/tech/nix-recipes/postgresql/">Nix Recipe: Setup Postgresql</a>
-      </h3>
-    </div>
-    <div class="post-content"><div class="p_part"><p>This is a nix recipe for building and running postgresql-12 in a virtual nix environment.
-  Create your project folder and save the following file as shell.nix
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &quot;postgres-env&quot;; buildInputs = []; nativeBuildInputs = [ zsh vim geos gdal nixpkgs-fmt # postgres-12 with postgis support (postgresql_12.withPackages (p: [ p.postgis ])) ]; postgresConf = writeText &quot;postgresql.</p></div>
-
-  <div class="p_part"><p></p></div></div>
-    <div class="post-footer">
-      <div class="meta">
-        <div class="info">
-          
-          <a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/postgres/">postgres</a>
+          <a class="tag" href="/tags/rust/">rust</a>
         </div>
       </div>
     </div>
@@ -164,6 +123,66 @@ let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &quot;https:/
   
   <div class="post animated fadeInDown">
     <div class="post-title">
+      <h3><a href="/post/tech/slogging-multiple-drains/">Rust: Slog and multiple drains</a>
+      </h3>
+    </div>
+    <div class="post-content"><div class="p_part"><p>Slog is a structured logging library for Rustlang.
+Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:
+ processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Logging Lets create a simple logger:
+#[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!</p></div>
+
+  <div class="p_part"><p></p></div></div>
+    <div class="post-footer">
+      <div class="meta">
+        <div class="info">
+          
+          <a class="tag" href="/tags/rust/">rust</a><a class="tag" href="/tags/slog/">slog</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="post animated fadeInDown">
+    <div class="post-title">
+      <h3><a href="/post/tech/nix-recipes/postgresql/">Nix Recipe: Setup Postgresql</a>
+      </h3>
+    </div>
+    <div class="post-content"><div class="p_part"><p>This is a nix recipe for building and running postgresql-12 in a virtual nix environment.
+  Create your project folder and save the following file as shell.nix
+let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &quot;postgres-env&quot;; buildInputs = []; nativeBuildInputs = [ zsh vim geos gdal nixpkgs-fmt # postgres-12 with postgis support (postgresql_12.withPackages (p: [ p.postgis ])) ]; postgresConf = writeText &quot;postgresql.</p></div>
+
+  <div class="p_part"><p></p></div></div>
+    <div class="post-footer">
+      <div class="meta">
+        <div class="info">
+          
+          <a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/postgres/">postgres</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="post animated fadeInDown">
+    <div class="post-title">
+      <h3><a href="/post/tech/jinja-inheritance-using-db/">Jinja template Inheritance using Database</a>
+      </h3>
+    </div>
+    <div class="post-content"><div class="p_part"><p>Jinja is a web template engine for the Python programming language. A Jinja template is simply a text file and can generate any text-based format (HTML, XML, CSV, LaTeX, etc.). A template contains variables and/or expressions, which get replaced with values when the template is rendered, thus serving dynamic content.
+Commonly, templates are stored as files, either in git repo or s3 buckets. Depending on your use case, you can store the templates in database as well.</p></div>
+
+  <div class="p_part"><p></p></div></div>
+    <div class="post-footer">
+      <div class="meta">
+        <div class="info">
+          
+          <a class="tag" href="/tags/database/">database</a><a class="tag" href="/tags/jinja/">jinja</a><a class="tag" href="/tags/python/">python</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="post animated fadeInDown">
+    <div class="post-title">
       <h3><a href="/post/tech/nix-shell-and-awesomeness/">Nix shell and Awesomeness: An Intro</a>
       </h3>
     </div>
@@ -186,20 +205,21 @@ About Nix, its wiki says:
   
   <div class="post animated fadeInDown">
     <div class="post-title">
-      <h3><a href="/post/tech/slogging-multiple-drains/">Rust: Slog and multiple drains</a>
+      <h3><a href="/post/tech/django-middleware-to-log-requests/">Django Middleware: log requests and responses</a>
       </h3>
     </div>
-    <div class="post-content"><div class="p_part"><p>Slog is a structured logging library for Rustlang.
-Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:
- processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Logging Lets create a simple logger:
-#[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!</p></div>
+    <div class="post-content"><div class="p_part"><p>From Django&rsquo;s context:
+ Middleware is a framework of hooks into Django’s request/response processing.
+It’s a light, low-level “plugin” system for globally altering Django’s input or output.
+ Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware layer which will log every incoming request. Why better?
+ it will log unhandled requests/views one time job, no need to configure for every request/view  Here, we are using Django&rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses.</p></div>
 
   <div class="p_part"><p></p></div></div>
     <div class="post-footer">
       <div class="meta">
         <div class="info">
           
-          <a class="tag" href="/tags/rust/">rust</a><a class="tag" href="/tags/slog/">slog</a>
+          <a class="tag" href="/tags/django/">django</a><a class="tag" href="/tags/middleware/">middleware</a><a class="tag" href="/tags/python/">python</a>
         </div>
       </div>
     </div>

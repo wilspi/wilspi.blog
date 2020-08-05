@@ -84,8 +84,8 @@ About Nix, its wiki says:
     <div class="post-content">
 
       <div class="post-title">
-        <h3>Nix shell and Awesomeness: An Intro
-        </h3>
+        <h1>Nix shell and Awesomeness: An Intro
+        </h1>
         
         <div class="info">
           
@@ -103,7 +103,7 @@ About Nix, its wiki says:
 </blockquote>
 <p>Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through <code>nix-shell</code> command, we will see below).
 This way, Nix can be used to create a virtual environment.</p>
-<h4 id="lets-setup-an-environment-using-nix-shell">Lets setup an environment using <code>nix-shell</code></h4>
+<h3 id="lets-setup-an-environment-using-nix-shell">Lets setup an environment using <code>nix-shell</code></h3>
 <p>This is a recipe for creating environment with <code>python 3.7</code>.</p>
 <ul>
 <li>
@@ -141,7 +141,7 @@ stdenv.mkDerivation {
 </li>
 </ul>
 <p>This will download <code>Python 3.7</code> and all its dependencies, build it and start a nix virtual environment.</p>
-<h4 id="with-nix-life-is-awesome">With Nix, Life is Awesome</h4>
+<h3 id="with-nix-life-is-awesome">With Nix, Life is Awesome</h3>
 <ul>
 <li>Nix allows to have <strong>multiple versions or variants of a package</strong> installed at the same time, especially important when different applications have dependencies on different versions of the same package</li>
 <li>Nix <strong>never uses host dependencies</strong> (“global” locations like <code>/usr/bin</code>), it always builds with exactly precise dependencies every time, and will always refer to them from then on.</li>
@@ -149,13 +149,13 @@ stdenv.mkDerivation {
 <li><code>nix-shell</code> lets you make build environments that are totally <strong>reproducible across machines</strong>, and don’t interfere with each other.</li>
 </ul>
 <p>Read all features <a href="https://nixos.org/features.html">here</a>.</p>
-<h4 id="issues-i-faced">Issues I faced</h4>
+<h3 id="issues-i-faced">Issues I faced</h3>
 <ul>
 <li>Nix will store multiple versions of your builds, this will use lot of your disk space. You need to clean-up regularly using Nix <a href="https://nixos.org/nixos/nix-pills/garbage-collector.html">garbage-collector</a></li>
 <li>Configuration (toolchain etc) for CLion/PyCharm gets reset whenever I update the packages, or switch between projects with different versions.</li>
 </ul>
 <p>This is the price of having multiple generations, multiple profiles, multiple versions of software, the <strong>price of having many possibilities</strong>.</p>
-<h4 id="extra">Extra</h4>
+<h3 id="extra">Extra</h3>
 <ul>
 <li><a href="https://nixos.wiki/wiki/NixOS">NixOS</a> based on the Nix package manager and build system.</li>
 <li><a href="https://nixos.wiki/wiki/Nix_Expression_Language">Nix Expression Language</a> is a pure, lazy, functional language, to describe packages, compositions of packages, and the variability within packages.
