@@ -95,14 +95,14 @@ Ownership In programming languages, either a garbage collector is used which wil
     <p>In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient.
 Lets look at how Rust does it.</p>
 <p>Note: These are quick short notes, if you want to look in deep check out <a href="https://doc.rust-lang.org/book/index.html">rustlang docs</a>.</p>
-<h3 id="ownership">Ownership</h3>
+<h2 id="ownership">Ownership</h2>
 <p>In programming languages, either a <a href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">garbage collector</a> is used which will cleanup the memory used by the unused variables or the memory is explicitly freed by the programmer in the code. In Rust, we have system of <strong>ownership</strong> which follows the rule:</p>
 <blockquote>
 <p>Resources (memory) can have only one owner at a time</p>
 </blockquote>
 <p>To handle this correctly, we must have exactly one <code>allocate</code> and exactly one <code>free</code>.
 Rust handles this by automatically returning the memory (free) when the variable goes out of scope by calling a special function called <a href="https://doc.rust-lang.org/std/ops/trait.Drop.html">drop</a>, see <a href="https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization">RAII</a>.</p>
-<h3 id="copy-and-clone">Copy and Clone</h3>
+<h2 id="copy-and-clone">Copy and Clone</h2>
 <p>Variables which are stored in stack memory can easily be bit-wise copied to other variables, but variables which are stored in heap are not so easy to copy since the memory size is unknown and can also lead to memory safety bugs like <a href="https://heap-exploitation.dhavalkapil.com/attacks/double_free.html">Double Free Error</a> down the line.</p>
 <p>Lets look by examples:</p>
 <p>Example 1: Heap:</p>
@@ -132,12 +132,12 @@ Here are some of the types that are <code>Copy</code>:</p>
 <li>A type can implement Copy if all of its components implement Copy.</li>
 <li>Any type implementing Drop can&rsquo;t be Copy.</li>
 </ul>
-<h3 id="borrowing">Borrowing</h3>
+<h2 id="borrowing">Borrowing</h2>
 <p>Most of the time, we&rsquo;d like to access data without taking ownership over it. To accomplish this, Rust uses a borrowing mechanism. Instead of passing objects by value (<code>T</code>), objects can be passed by reference (<code>&amp;T</code>).</p>
 <p>There can be many references (variables which can only read the value) to the resource but only one owner (variable that can write/modify the value).
 When all the variables pointing to the resource go out of scope, the value will be dropped and resource will be freed.</p>
 <p>TO BE CONTINUED &hellip;</p>
-<h3 id="extra">Extra</h3>
+<h2 id="extra">Extra</h2>
 <p>Read this beautiful <a href="https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#the-stack-and-the-heap">excerpt</a> to understand memory storage in <strong>Stack and Heap</strong>:</p>
 <blockquote>
 <p>Both the stack and the heap are parts of memory that are available to your code to use at runtime, but they are structured in different ways. The stack stores values in the order it gets them and removes the values in the opposite order. This is referred to as last in, first out. Think of a stack of plates: when you add more plates, you put them on top of the pile, and when you need a plate, you take one off the top. Adding or removing plates from the middle or bottom wouldn’t work as well! Adding data is called pushing onto the stack, and removing data is called popping off the stack.</p>

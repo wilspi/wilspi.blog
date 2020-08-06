@@ -81,6 +81,26 @@
   
   <div class="post animated fadeInDown">
     <div class="post-title">
+      <h3><a href="/post/tech/nix-recipes/nodejs/">Nix Recipe: Setup Nodejs</a>
+      </h3>
+    </div>
+    <div class="post-content"><div class="p_part"><p>This is a nix recipe for building and running nodejs in a virtual nix environment.
+  In your project folder, create a new file nodejs.nix and add following:
+{ nixpkgs ? import &lt;nixpkgs&gt; {}, version, sha256 }: let inherit (nixpkgs) python37 utillinux stdenv autoPatchelfHook fetchurl binutils-unwrapped patchelf xcbuild; inherit (stdenv) mkDerivation; in mkDerivation { inherit version; name = &quot;nodejs-${version}&quot;; src = fetchurl { url = &quot;https://nodejs.org/dist/v${version}/node-v${version}${if stdenv.isDarwin then &quot;-darwin-x64&quot; else &quot;-linux-x64&quot;}.</p></div>
+
+  <div class="p_part"><p></p></div></div>
+    <div class="post-footer">
+      <div class="meta">
+        <div class="info">
+          
+          <a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/nodejs/">nodejs</a><a class="tag" href="/tags/npm/">npm</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="post animated fadeInDown">
+    <div class="post-title">
       <h3><a href="/post/tech/rust-variables-in-memory/">Rust: Variables in Memory</a>
       </h3>
     </div>

@@ -96,7 +96,7 @@ If you have been working in production environment, you know at certain times yo
 It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down. You should anyways have this as a backup tactic for your service failure.
 Devops generally use autoscaling at such times.</p>
 <p>Note: This won&rsquo;t work if there is data inconsistency, since all service will crash.</p>
-<h3 id="hack">Hack</h3>
+<h2 id="steps">Steps</h2>
 <p>Here goes the how-to steps:</p>
 <ul>
 <li>
@@ -133,7 +133,7 @@ Devops generally use autoscaling at such times.</p>
 <pre><code>sudo systemctl nginx reload
 </code></pre></li>
 </ul>
-<h3 id="extra">Extra</h3>
+<h2 id="extra">Extra</h2>
 <p>In my case, it was our rust web service which was getting stuck, failing all the subsequent requests. I created a health-check service which monitored and restarted the rust service whenever that happened. But I knew during this downtime period many of the requests would fail, we didn&rsquo;t want that. So I added three processes of this service on different ports and proxied them the way shown above.</p>
 <p><img src="/images/55hLpaQtG75YuLZs3bmO1kdg.png" alt="rust services"></p>
 

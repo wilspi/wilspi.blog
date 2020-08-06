@@ -100,7 +100,7 @@ This helps in:</p>
 <li>processing log files for analytics</li>
 <li>searching and debugging (example: search log statements for particular user or request)</li>
 </ul>
-<h3 id="logging">Logging</h3>
+<h2 id="logging">Logging</h2>
 <p>Lets create a simple logger:</p>
 <pre><code>#[macro_use]
 extern crate slog;
@@ -152,7 +152,7 @@ There are many feature slog libraries based on this trait:</p>
 etc.</li>
 </ul>
 <p>You can always write your own implementation using this trait.</p>
-<h3 id="multiple-drains">Multiple Drains</h3>
+<h2 id="multiple-drains">Multiple Drains</h2>
 <p>Drains can also be interlinked and extended according to our needs.
 Following is an example where there are two outputs:</p>
 <ul>
@@ -184,11 +184,11 @@ fn main() {
         &quot;started_at&quot; =&gt; format!(&quot;{}&quot;, chrono::Utc::now()));
 }
 </code></pre><p>Here, <a href="https://github.com/slog-rs/async">Async</a>, <a href="https://docs.rs/slog/2.5.2/slog/struct.Duplicate.html">Duplicate</a>, <a href="https://docs.rs/slog/2.5.2/slog/struct.Filter.html">Filter</a>, <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.FullFormat.html">FullFormat</a> drains are used.</p>
-<h3 id="log-macros-and-log-levels">Log Macros and Log Levels</h3>
+<h2 id="log-macros-and-log-levels">Log Macros and Log Levels</h2>
 <p>To log a statement/record, we use <a href="https://docs.rs/slog/2.5.2/slog/macro.log.html">log macros</a>. In above examples, <code>info!</code> is used.</p>
 <p><a href="https://docs.rs/slog/2.0.0-3.1/slog/enum.Level.html">Log Levels</a> are log categories based on urgency. For example, we have debug, info, error etc. for self explaining urgencies.
 We have different log macros for different log levels.</p>
-<h3 id="extra">Extra</h3>
+<h2 id="extra">Extra</h2>
 <p>You can find many more examples, <a href="https://github.com/slog-rs/misc/tree/master/examples">here</a>.</p>
 
     </div>

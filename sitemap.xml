@@ -4,7 +4,42 @@
   
   <url>
     <loc>https://wilspi.com/categories/</loc>
-    <lastmod>2020-08-05T23:00:00+05:30</lastmod>
+    <lastmod>2020-08-06T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/nix/</loc>
+    <lastmod>2020-08-06T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/nix-recipes/nodejs/</loc>
+    <lastmod>2020-08-06T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/nodejs/</loc>
+    <lastmod>2020-08-06T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/npm/</loc>
+    <lastmod>2020-08-06T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/</loc>
+    <lastmod>2020-08-06T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/</loc>
+    <lastmod>2020-08-06T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/categories/tech/</loc>
+    <lastmod>2020-08-06T22:00:00+05:30</lastmod>
   </url>
   
   <url>
@@ -20,26 +55,6 @@
   <url>
     <loc>https://wilspi.com/post/tech/rust-variables-in-memory/</loc>
     <lastmod>2020-08-05T23:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/</loc>
-    <lastmod>2020-08-05T23:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/tags/</loc>
-    <lastmod>2020-08-05T23:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/categories/tech/</loc>
-    <lastmod>2020-08-05T23:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/tags/nix/</loc>
-    <lastmod>2020-08-04T22:00:00+05:30</lastmod>
   </url>
   
   <url>
