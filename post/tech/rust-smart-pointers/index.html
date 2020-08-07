@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light"><head>
-    <title> wilspi | tech </title>
+    <title> wilspi | Rust: Smart Pointers </title>
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="">
     
@@ -10,16 +10,17 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://wilspi.com/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
-    <link rel="canonical" href="https://wilspi.com/categories/tech/">
-    <link rel="alternate" type="application/rss+xml" href="https://wilspi.com/categories/tech/index.xml" title="Sourabh Deokar" />
+    <link rel="canonical" href="https://wilspi.com/post/tech/rust-smart-pointers/">
     
     
     <script type="text/javascript" src="https://wilspi.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
-<meta name="twitter:title" content="tech"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Rust: Smart Pointers"/>
+<meta name="twitter:description" content="This is in DRAFT mode.
+Pointer is a general concept in Computer Programming for a variable that stores memory address. In Rust, generally we use references to access the value stored at a memory address. References are very simple pointers, that works with the limits of Rust&rsquo;s ownership and borrowing concept. Lets look at other types to expand these limits.
+Note: These are quick short notes, if you want to look in deep check out rustlang docs."/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -77,105 +78,77 @@
 
             <div class="autopagerize_page_element">
                 <div class="content">
-<div class="archive animated fadeInDown">
+<div class="post animated fadeInDown">
+    <div class="post-content">
 
-    <ul class="list-with-title">
-      
-      <div class="listing-title">Posts</div>
-      
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/nix-recipes/nodejs/" title="Nix Recipe: Setup Nodejs">Nix Recipe: Setup Nodejs</a>
-              
-            </div>
-          </div>
-    </ul>
-    
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/rust-variables-in-memory/" title="Rust: Variables in Memory">Rust: Variables in Memory</a>
-              
-            </div>
-          </div>
-    </ul>
-    
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/nix-recipes/rust/" title="Nix Recipe: Setup Rust">Nix Recipe: Setup Rust</a>
-              
-            </div>
-          </div>
-    </ul>
-    
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/slogging-multiple-drains/" title="Rust: Slog and multiple drains">Rust: Slog and multiple drains</a>
-              
-            </div>
-          </div>
-    </ul>
-    
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/nix-recipes/postgresql/" title="Nix Recipe: Setup Postgresql">Nix Recipe: Setup Postgresql</a>
-              
-            </div>
-          </div>
-    </ul>
-    
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/setup-nix-arch-linux/" title="Setup multi user nix for Arch Linux">Setup multi user nix for Arch Linux</a>
-              
-            </div>
-          </div>
-    </ul>
-    
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/jinja-inheritance-using-db/" title="Jinja template Inheritance using Database">Jinja template Inheritance using Database</a>
-              
-            </div>
-          </div>
-    </ul>
-    
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/nix-shell-and-awesomeness/" title="Nix shell and Awesomeness: An Intro">Nix shell and Awesomeness: An Intro</a>
-              
-            </div>
-          </div>
-    </ul>
-    
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/save-production-via-nginx/" title="Save the production with nginx">Save the production with nginx</a>
-              
-            </div>
-          </div>
-    </ul>
-    
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/django-middleware-to-log-requests/" title="Django Middleware: log requests and responses">Django Middleware: log requests and responses</a>
-              
-            </div>
-          </div>
-    </ul>
+      <div class="post-title">
+        <h1>Rust: Smart Pointers
+        </h1>
+        
+        <div class="info">
+          
+          <i class="fa fa-clock-o"></i><span class="reading-time">2-minute read</span>
+        </div>
+        
+        </div>
+
+    <p>This is in DRAFT mode.</p>
+<p><a href="https://en.wikipedia.org/wiki/Pointer_(computer_programming)">Pointer</a> is a general concept in Computer Programming for a variable that stores memory address.
+In Rust, generally we use <a href="/post/tech/rust-variables-in-memory#borrowing">references</a> to access the value stored at a memory address. References are very simple pointers, that works with the limits of Rust&rsquo;s <a href="/post/tech/rust-variables-in-memory#ownership">ownership and borrowing</a> concept. Lets look at other types to expand these limits.</p>
+<p>Note: These are quick short notes, if you want to look in deep check out <a href="https://doc.rust-lang.org/book/index.html">rustlang docs</a>.</p>
+<h3 id="smart-pointers">Smart Pointers</h3>
+<p>Smart Pointers are nothing but pointers with additional metadata and capabilities. Unlike references, smart pointers can also own the data they point to.
+Smart Pointers are usually structs that implement <a href="/tech/post/rust-smart-pointers#deref-and-drop">Deref and Drop traits</a>.</p>
+<p>Lets look at some types:</p>
+<ul>
+<li>
+<p>Box<!-- raw HTML omitted -->:
+<a href="https://doc.rust-lang.org/std/boxed/struct.Box.html">Box</a> allows to allocate values on heap.</p>
+</li>
+<li>
+<p>Rc:
+<a href="https://doc.rust-lang.org/std/rc/struct.Rc.html">Rc</a> is reference counting type that enables multiple ownership.</p>
+</li>
+<li>
+<p>Ref, RefMut:
+<a href="https://doc.rust-lang.org/std/cell/index.html">This type</a> enforces the borrowing rules at runtime instead of compile time.</p>
+</li>
+<li>
+<p>Arc:
+<a href="https://doc.rust-lang.org/beta/std/sync/struct.Arc.html">Atomically Reference Counted</a> is a thread safe Rc pointer.</p>
+</li>
+</ul>
+<p>TODO: Describe in detail</p>
+<p>Note:</p>
+<ul>
+<li><code>String</code> and <code>Vec</code>: Both these types count as smart pointers because they own some memory and allow you to manipulate it. They also have metadata (such as their capacity) and extra capabilities or guarantees (such as with String ensuring its data will always be valid UTF-8).</li>
+</ul>
+<h3 id="deref-and-drop">Deref and Drop</h3>
+<p>TODO</p>
+<h3 id="interior-mutability-pattern">Interior Mutability Pattern</h3>
+<p>TODO</p>
+<h3 id="defining-a-smart-pointer">Defining a smart pointer</h3>
+<p>TODO</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+<span class="separator"><a class="category" href="/categories/tech/">tech</a></span>
+
+        
+    <span class="separator"><a class="tag" href="/tags/rust/">rust</a><a class="tag" href="/tags/pointers/">pointers</a></span>
+
+      </div>
+    </div>
+
     
     
-      <div class="listing-title">Posts</div>
-      
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/rust-smart-pointers/" title="Rust: Smart Pointers">Rust: Smart Pointers</a>
-              
-            </div>
-          </div>
-    </ul>
     
-    
-  </div>
+</div>
+
 
                 </div>
             </div>

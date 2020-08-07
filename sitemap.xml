@@ -166,4 +166,12 @@
     <priority>0</priority>
   </url>
   
+  <url>
+    <loc>https://wilspi.com/tags/pointers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/rust-smart-pointers/</loc>
+  </url>
+  
 </urlset>
