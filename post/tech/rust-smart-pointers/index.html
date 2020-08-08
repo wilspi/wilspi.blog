@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light"><head>
-    <title> wilspi | Rust: Smart Pointers </title>
+    <title> Rust: Smart Pointers | wilspi </title>
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="">
     
@@ -19,7 +19,7 @@
 
 <meta name="twitter:title" content="Rust: Smart Pointers"/>
 <meta name="twitter:description" content="This is in DRAFT mode.
-Pointer is a general concept in Computer Programming for a variable that stores memory address. In Rust, generally we use references to access the value stored at a memory address. References are very simple pointers, that works with the limits of Rust&rsquo;s ownership and borrowing concept. Lets look at other types to expand these limits.
+Pointer is a general concept in Computer Programming for a variable that stores memory address. In Rust, generally we use references to access the value stored at a memory address. References are simple pointers, that work within the limits of Rust&rsquo;s ownership and borrowing concept. Lets look at other types which go beyond these limits.
 Note: These are quick short notes, if you want to look in deep check out rustlang docs."/>
 
 </head><body><div class="sidebar animated fadeInDown">
@@ -94,7 +94,7 @@ Note: These are quick short notes, if you want to look in deep check out rustlan
 
     <p>This is in DRAFT mode.</p>
 <p><a href="https://en.wikipedia.org/wiki/Pointer_(computer_programming)">Pointer</a> is a general concept in Computer Programming for a variable that stores memory address.
-In Rust, generally we use <a href="/post/tech/rust-variables-in-memory#borrowing">references</a> to access the value stored at a memory address. References are very simple pointers, that works with the limits of Rust&rsquo;s <a href="/post/tech/rust-variables-in-memory#ownership">ownership and borrowing</a> concept. Lets look at other types to expand these limits.</p>
+In Rust, generally we use <a href="/post/tech/rust-variables-in-memory#borrowing">references</a> to access the value stored at a memory address. References are simple pointers, that work within the limits of Rust&rsquo;s <a href="/post/tech/rust-variables-in-memory#ownership">ownership and borrowing</a> concept. Lets look at other types which go beyond these limits.</p>
 <p>Note: These are quick short notes, if you want to look in deep check out <a href="https://doc.rust-lang.org/book/index.html">rustlang docs</a>.</p>
 <h3 id="smart-pointers">Smart Pointers</h3>
 <p>Smart Pointers are nothing but pointers with additional metadata and capabilities. Unlike references, smart pointers can also own the data they point to.
@@ -119,16 +119,20 @@ Smart Pointers are usually structs that implement <a href="/tech/post/rust-smart
 </li>
 </ul>
 <p>TODO: Describe in detail</p>
-<p>Note:</p>
-<ul>
-<li><code>String</code> and <code>Vec</code>: Both these types count as smart pointers because they own some memory and allow you to manipulate it. They also have metadata (such as their capacity) and extra capabilities or guarantees (such as with String ensuring its data will always be valid UTF-8).</li>
-</ul>
 <h3 id="deref-and-drop">Deref and Drop</h3>
+<h4 id="deref-trait">Deref Trait</h4>
+<p>TODO</p>
+<h4 id="drop-trait">Drop Trait</h4>
 <p>TODO</p>
 <h3 id="interior-mutability-pattern">Interior Mutability Pattern</h3>
 <p>TODO</p>
 <h3 id="defining-a-smart-pointer">Defining a smart pointer</h3>
 <p>TODO</p>
+<h3 id="extra">Extra</h3>
+<ul>
+<li><code>String</code> and <code>Vec</code>: Both these types also count as smart pointers because they own some memory and allow you to manipulate it. They also have metadata (such as their capacity) and extra capabilities or guarantees (such as with String ensuring its data will always be valid UTF-8).</li>
+</ul>
+<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 

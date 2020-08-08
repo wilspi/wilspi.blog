@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light"><head>
-    <title> Nix Recipe: Setup Nodejs | wilspi </title>
+    <title> elm | wilspi </title>
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-    <meta name="description" content="Nix recipe to setup nodejs in a cross platform virtual nix environment">
+    <meta name="description" content="">
     
     <link rel="stylesheet" href="https://wilspi.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     
@@ -10,15 +10,16 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://wilspi.com/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
-    <link rel="canonical" href="https://wilspi.com/post/tech/nix-recipes/nodejs/">
+    <link rel="canonical" href="https://wilspi.com/tags/elm/">
+    <link rel="alternate" type="application/rss+xml" href="https://wilspi.com/tags/elm/index.xml" title="Sourabh Deokar" />
     
     
     <script type="text/javascript" src="https://wilspi.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
-<meta name="twitter:title" content="Nix Recipe: Setup Nodejs"/>
-<meta name="twitter:description" content="Nix recipe to setup nodejs in a cross platform virtual nix environment"/>
+<meta name="twitter:title" content="elm"/>
+<meta name="twitter:description" content=""/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -76,131 +77,22 @@
 
             <div class="autopagerize_page_element">
                 <div class="content">
-<div class="post animated fadeInDown">
-    <div class="post-content">
+<div class="archive animated fadeInDown">
 
-      <div class="post-title">
-        <h1>Nix Recipe: Setup Nodejs
-        </h1>
-        
-        <div class="info">
-          
-          <i class="fa fa-clock-o"></i><span class="reading-time">2-minute read</span>
-        </div>
-        
-        </div>
-
-    <p>This is a nix recipe for building and running <a href="https://nodejs.org/en/">nodejs</a> in a <a href="/post/tech/nix-shell-and-awesomeness/">virtual nix environment</a>.</p>
-<ul>
-<li>
-<p>In your project folder, create a new file <code>nodejs.nix</code> and add following:</p>
-<pre><code>{ nixpkgs ? import &lt;nixpkgs&gt; {}, version, sha256 }:
-
-let
-  inherit (nixpkgs) python37 utillinux stdenv autoPatchelfHook fetchurl binutils-unwrapped patchelf xcbuild;
-  inherit (stdenv) mkDerivation;
-
-in
-mkDerivation {
-  inherit version;
-
-  name = &quot;nodejs-${version}&quot;;
-  src = fetchurl {
-    url = &quot;https://nodejs.org/dist/v${version}/node-v${version}${if stdenv.isDarwin then &quot;-darwin-x64&quot; else &quot;-linux-x64&quot;}.tar.xz&quot;; # this darwin/linux check doesn't work since sha is different for packages
-    inherit sha256;
-  };
-
-  # Dependencies for building node.js (Python and utillinux on Linux, just Python on Mac)
-  buildInputs = with nixpkgs; [ xcbuild binutils-unwrapped patchelf glib python37 ] ++ stdenv.lib.optional stdenv.isLinux utillinux;
-  nativeBuildInputs = with nixpkgs; [ autoPatchelfHook ];
-
-  installPhase = ''
-    echo &quot;installing nodejs&quot;
-    mkdir -p $out
-    cp -r ./ $out/
-  '';
-
-  meta = with stdenv.lib; {
-    description = &quot;Event-driven I/O framework for the V8 JavaScript engine&quot;;
-    homepage = &quot;https://nodejs.org&quot;;
-    license = licenses.mit;
-  };
-
-  passthru.python = python37;
-}
-</code></pre><p>Note:</p>
-<ul>
-<li>This will download the nodejs package depending on darwin or linux and build it.</li>
-</ul>
-</li>
-<li>
-<p>Add <code>shell.nix</code> with the following content:</p>
-<pre><code>let
-  nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) {
-    overlays = [];
-    config = {};
-  };
-
-  installNodeJS = import (./nodejs.nix) {
-    inherit nixpkgs;
-    version = &quot;13.6.0&quot;;
-    sha256 = &quot;${if nixpkgs.stdenv.isDarwin then &quot;0z64v76w8x02yg2fz2xys580m9mlwklriz1s5b0rxn569j4kwiya&quot; else &quot;166pm67i7qys3x6x1dy5qr5393k0djb04ylgcg8idnk7m0ai7w00&quot;}&quot;;
-  };
-  frameworks = nixpkgs.darwin.apple_sdk.frameworks;
-
-
-in
-  with nixpkgs;
-
-  stdenv.mkDerivation {
-    name = &quot;nodejs-env&quot;;
-    buildInputs = [ installNodeJS ];
-
-    nativeBuildInputs = [
-      zsh
-      vim
-    ] ++ (
-      stdenv.lib.optionals stdenv.isDarwin [
-        frameworks.Security
-        frameworks.CoreServices
-        frameworks.CoreFoundation
-        frameworks.Foundation
-      ]
-    );
-
-    # Post Shell Hook
-    shellHook = ''
-    '';
-  }
-</code></pre><p>Note:</p>
-<ul>
-<li>Here, the nix packages are installed from <a href="https://github.com/NixOS/nixpkgs/releases/tag/20.03">20.03 release</a>.</li>
-<li>NodeJS 13.6.0 version is installed, this is passed as argument. Different version can also be installed provided corresponding SHA is added.</li>
-<li>All node packages can be installed via NPM in this environment.</li>
-</ul>
-</li>
-<li>
-<p>Run <code>nix-shell --pure shell.nix</code> to build.</p>
-</li>
-</ul>
-
-    </div>
-    <div class="post-footer">
-      <div class="info">
-        
-<span class="separator"><a class="category" href="/categories/tech/">tech</a></span>
-
-        
-    <span class="separator"><a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/nodejs/">nodejs</a><a class="tag" href="/tags/npm/">npm</a></span>
-
-      </div>
-    </div>
-
+    <ul class="list-with-title">
+      
+      <div class="listing-title">Posts</div>
+      
+      <ul class="listing">
+        <div class="listing-item">
+            <div class="listing-post"><a href="https://wilspi.com/post/tech/2048-game-in-elmlang/" title="Learning Elm: 2048 game in Elm">Learning Elm: 2048 game in Elm</a>
+              
+            </div>
+          </div>
+    </ul>
     
     
-    
-</div>
-
+  </div>
 
                 </div>
             </div>

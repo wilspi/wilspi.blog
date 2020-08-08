@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+    <title> Learning Elm: 2048 game in Elm | wilspi </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="">
+    
+    <link rel="stylesheet" href="https://wilspi.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="https://wilspi.com/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://wilspi.com/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
+    <link rel="canonical" href="https://wilspi.com/post/tech/2048-game-in-elmlang/">
+    
+    
+    <script type="text/javascript" src="https://wilspi.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
+
+<meta name="twitter:title" content="Learning Elm: 2048 game in Elm"/>
+<meta name="twitter:description" content="Elm is a frontend programming language optimised for developer&rsquo;s happiness. Elm basics are very straightforward, which is just the Elm Architecture.
+The Elm Architecture  Model — the state of your application View — a way to turn your state into HTML Update — a way to update your state based on messages  You can read more about Elm here.
+Here, we will construct the famous game: 2048 in Elm."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://wilspi.com/images/dp.jpg" alt="profile picture">
+        <h3 title=""><a href="/">नमस्ते</a></h3>
+        <div class="description">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+        <li>
+        <a href="https://github.com/wilspi/" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.instagram.com/wilspi/" rel="me" aria-label="Instagram">
+          <i class="fa fa-2x fa-instagram" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://www.twitter.com/iamwilspi" rel="me" aria-label="Twitter">
+          <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; wilspi 2020 </div>
+      </div>
+    </div>
+</div><div class="main">
+            <div class="page-top animated fadeInDown">
+    <ul class="nav">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+    </ul>
+    <div class="themeswitcher">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h1>Learning Elm: 2048 game in Elm
+        </h1>
+        
+        <div class="info">
+          
+          <i class="fa fa-clock-o"></i><span class="reading-time">4-minute read</span>
+        </div>
+        
+        </div>
+
+    <p><a href="https://elm-lang.org/">Elm</a> is a frontend programming language optimised for developer&rsquo;s happiness. Elm basics are very straightforward, which is just the Elm Architecture.</p>
+<h4 id="the-elm-architecture">The Elm Architecture</h4>
+<ul>
+<li><strong>Model</strong> — the state of your application</li>
+<li><strong>View</strong> — a way to turn your state into HTML</li>
+<li><strong>Update</strong> — a way to update your state based on messages</li>
+</ul>
+<p>You can read more about Elm <a href="/post/tech/2048-game-in-elmlang#extra">here</a>.</p>
+<p>Here, we will construct the famous game: 2048 in Elm.</p>
+<h2 id="2048-game">2048 Game</h2>
+<p>2048 is a famous game created by <a href="https://github.com/gabrielecirulli/2048">gabrielecirulli</a> which went viral in 2014.
+We are recreating 2048 because the functioning of the game is very simple which will help us understand the elm architecture very clearly. It is a replacement of <code>TODO</code> app for learning.</p>
+<p>You can play it <a href="/elm-2048">here</a>.</p>
+<h3 id="rules-of-the-game">Rules of the game</h3>
+<p>Looking at the <a href="/elm-2048">game</a>, we can deconstruct the rules of the game:</p>
+<ul>
+<li>2 similar tiles (same number) can be merged</li>
+<li>Merging happens in the direction of the key-press</li>
+<li>A new tile (number 2) is introduced in the game at a random empty space</li>
+<li>Game is over when no new tiles can be added</li>
+</ul>
+<h3 id="structuring-the-design">Structuring the design</h3>
+<p>Based on above rules, lets start defining architecture of our game from Elm&rsquo;s perspective:</p>
+<p><strong>Model</strong><br>
+Need to store every tile&rsquo;s data (number on the tiles and position of the tile).
+We can construct a matrix of <code>N</code>x<code>N</code> (<code>N</code> being number of rows/columns, here 4) and store tile&rsquo;s number in this.</p>
+<!-- raw HTML omitted -->
+<p><strong>View</strong><br>
+View is simple, we will loop over the matrix and render the values with CSS</p>
+<p><strong>Update</strong><br>
+Update function will regenerate the model (state) depending upon the message it receives. Lets look at different kind of messages we must have:</p>
+<ul>
+<li>LeftMove</li>
+<li>RightMove</li>
+<li>UpMove</li>
+<li>DownMove</li>
+<li>Reset</li>
+<li>AddTile</li>
+</ul>
+<p>First 4 messages are for arrow keys, Reset for resetting the grid to initial state, and AddTile to add a tile at a random available space.</p>
+<p>Our structure looks good, now we have to implement handling of these messages.</p>
+<h3 id="diving-deep-into-messages">Diving deep into messages</h3>
+<ul>
+<li><strong>LeftMove</strong><br>
+Since we have arranged our tiles in a matrix, this is fairly easy to do. We need to run a loop for all the rows and merge 2 tiles with the same number into one and double the number on this tile.
+Lets look at the code below, which merges tiles in a list and returns the list:
+<pre><code>mergeAndFillRow : List Cell -&gt; List Cell
+mergeAndFillRow list =
+    let
+        updatedRow =
+            mergeRow list
+    in
+    List.concat
+        (updatedRow
+            :: [ EmptyCell
+                    |&gt; List.repeat
+                        ((list |&gt; List.length) - (updatedRow |&gt; List.length))
+               ]
+        )
+
+
+mergeRow : List Cell -&gt; List Cell
+mergeRow list =
+    case list of
+        [] -&gt;
+            []
+
+        x1 :: xs -&gt;
+            if x1 == EmptyCell then
+                mergeRow xs
+
+            else
+                case xs of
+                    [] -&gt;
+                        [ x1 ]
+
+                    x2 :: xs2 -&gt;
+                        if x1 == x2 then
+                            mergeCell ( x1, x2 ) :: mergeRow xs2
+
+                        else
+                            x1 :: mergeRow (x2 :: xs2)
+
+
+
+</code></pre><p>In <code>mergeRow</code>, we use recursion to reduce the list, and then in <code>mergeAndFillRow</code> we fill the list with empty tiles.</p>
+</li>
+<li><strong>RightMove</strong><br>
+RightMove is same as LeftMove, just that we need to reverse the list before calling <code>mergeAndFillRow</code> and reverse it again.</li>
+<li><strong>UpMove</strong>
+For RightMove, and LeftMove, it was fairly easy since we had a list for row elements and hence we could use <code>List</code> methods to reduce (for looping) but here the case is not that simple.
+Using the same technique we did in RightMove, here we can <a href="https://en.wikipedia.org/wiki/Transpose">transpose</a> the matrix and then call <code>mergeAndFillRow</code>.<br>
+Transpose is little challenging when you don&rsquo;t have for and while loop and just use recursion, see code below:
+<pre><code>transposeMap : Grid -&gt; Grid -&gt; Grid
+transposeMap grid2 grid1 =
+    case Array.get 0 grid1 of
+        Just e -&gt;
+            transposeMap (grid2 |&gt; transposeForIdx 0 e) (grid1 |&gt; Array.slice 1 (grid1 |&gt; Array.length))
+
+        Nothing -&gt;
+            grid2
+
+
+transposeForIdx : Int -&gt; Array Cell -&gt; Grid -&gt; Grid
+transposeForIdx idx list grid2 =
+    case Array.get 0 list of
+        Just e -&gt;
+            transposeForIdx (idx + 1)
+                (list |&gt; Array.slice 1 (list |&gt; Array.length))
+                (case grid2 |&gt; Array.get idx of
+                    Just l -&gt;
+                        grid2 |&gt; Array.set idx (l |&gt; Array.push e)
+
+                    Nothing -&gt;
+                        grid2 |&gt; Array.push (Array.fromList [ e ])
+                )
+
+        Nothing -&gt;
+            grid2
+</code></pre></li>
+<li><strong>DownMove</strong><br>
+Using the same technique we did in RightMove, we can reverse the list, transpose, call <code>mergeAndFillRow</code>, transpose again and finally reverse.</li>
+<li><strong>AddTile</strong><br>
+For this will create a list of available positions and randomly select one of them.</li>
+<li><strong>Reset</strong><br>
+Reset is simple, just initialise the matrix and send <code>AddTile</code> message.</li>
+</ul>
+<p>Common methods:</p>
+<p><code>mergeCell</code> is a common method which merges 2 tiles (Cell) and returns one tile:</p>
+<pre><code>swap : ( Cell, Cell ) -&gt; ( Cell, Cell )
+swap ( cell1, cell2 ) =
+    ( cell2, cell1 )
+
+
+mergeCell : ( Cell, Cell ) -&gt; Cell
+mergeCell ( cell1, cell2 ) =
+    case ( cell1, cell2 ) of
+        ( Tile val1, Tile val2 ) -&gt;
+            Tile (val1 + val2)
+
+        ( Tile val1, EmptyCell ) -&gt;
+            Tile val1
+
+        _ -&gt;
+            mergeCell (swap ( cell1, cell2 ))
+</code></pre><p>For integrating key-press and touch coordinates, we will use <a href="https://elmprogramming.com/subscriptions.html#subscription">subscriptions</a>.
+You can look at the complete code <a href="https://github.com/wilspi/elm-2048">here</a>.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+<span class="separator"><a class="category" href="/categories/tech/">tech</a></span>
+
+        
+    <span class="separator"><a class="tag" href="/tags/elm/">elm</a><a class="tag" href="/tags/frontend/">frontend</a><a class="tag" href="/tags/game-dev/">game-dev</a></span>
+
+      </div>
+    </div>
+
+    
+    
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body>
+
+
+
+<script type="text/javascript" src="https://wilspi.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js" integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw=" crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript" src="https://wilspi.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js" integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://wilspi.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js" integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro=" crossorigin="anonymous"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-51915090-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</html></body>
+
+</html>

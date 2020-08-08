@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light"><head>
-    <title> wilspi | Sourabh Deokar </title>
+    <title> Sourabh Deokar | wilspi </title>
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="">
     
@@ -81,19 +81,40 @@
   
   <div class="post animated fadeInDown">
     <div class="post-title">
-      <h3><a href="/post/tech/rust-smart-pointers/">Rust: Smart Pointers</a>
+      <h3><a href="/post/tech/django-middleware-to-log-requests/">Django Middleware: log requests and responses</a>
       </h3>
     </div>
-    <div class="post-content"><div class="p_part"><p>This is in DRAFT mode.
-Pointer is a general concept in Computer Programming for a variable that stores memory address. In Rust, generally we use references to access the value stored at a memory address. References are very simple pointers, that works with the limits of Rust&rsquo;s ownership and borrowing concept. Lets look at other types to expand these limits.
-Note: These are quick short notes, if you want to look in deep check out rustlang docs.</p></div>
+    <div class="post-content"><div class="p_part"><p>From Django&rsquo;s context:
+ Middleware is a framework of hooks into Django’s request/response processing.
+It’s a light, low-level “plugin” system for globally altering Django’s input or output.
+ Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware layer which will log every incoming request. Why better?
+ it will log unhandled requests/views one time job, no need to configure for every request/view  Here, we are using Django&rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses.</p></div>
 
   <div class="p_part"><p></p></div></div>
     <div class="post-footer">
       <div class="meta">
         <div class="info">
           
-          <a class="tag" href="/tags/rust/">rust</a><a class="tag" href="/tags/pointers/">pointers</a>
+          <a class="tag" href="/tags/django/">django</a><a class="tag" href="/tags/middleware/">middleware</a><a class="tag" href="/tags/python/">python</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="post animated fadeInDown">
+    <div class="post-title">
+      <h3><a href="/post/tech/save-production-via-nginx/">Save the production with nginx</a>
+      </h3>
+    </div>
+    <div class="post-content"><div class="p_part"><p>Quick nginx hack to save your production web server in case the web service starts crashing.
+If you have been working in production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down.</p></div>
+
+  <div class="p_part"><p></p></div></div>
+    <div class="post-footer">
+      <div class="meta">
+        <div class="info">
+          
+          <a class="tag" href="/tags/nginx/">nginx</a><a class="tag" href="/tags/production/">production</a>
         </div>
       </div>
     </div>

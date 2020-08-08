@@ -6,10 +6,55 @@
     <description>Recent content in Tags on Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Aug 2020 22:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 08 Aug 2020 15:00:00 +0530</lastBuildDate>
     
 	<atom:link href="https://wilspi.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>elm</title>
+      <link>https://wilspi.com/tags/elm/</link>
+      <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/elm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>frontend</title>
+      <link>https://wilspi.com/tags/frontend/</link>
+      <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/frontend/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>game-dev</title>
+      <link>https://wilspi.com/tags/game-dev/</link>
+      <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/game-dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pointers</title>
+      <link>https://wilspi.com/tags/pointers/</link>
+      <pubDate>Fri, 07 Aug 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/pointers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rust</title>
+      <link>https://wilspi.com/tags/rust/</link>
+      <pubDate>Fri, 07 Aug 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/rust/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>nix</title>
@@ -35,15 +80,6 @@
       <pubDate>Thu, 06 Aug 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/npm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>rust</title>
-      <link>https://wilspi.com/tags/rust/</link>
-      <pubDate>Wed, 05 Aug 2020 23:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/rust/</guid>
       <description></description>
     </item>
     
@@ -143,15 +179,6 @@
       <pubDate>Wed, 29 Jul 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/production/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pointers</title>
-      <link>https://wilspi.com/tags/pointers/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wilspi.com/tags/pointers/</guid>
       <description></description>
     </item>
     

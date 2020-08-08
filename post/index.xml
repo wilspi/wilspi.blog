@@ -6,10 +6,32 @@
     <description>Recent content in Posts on Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 Aug 2020 23:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 08 Aug 2020 15:00:00 +0530</lastBuildDate>
     
 	<atom:link href="https://wilspi.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Learning Elm: 2048 game in Elm</title>
+      <link>https://wilspi.com/post/tech/2048-game-in-elmlang/</link>
+      <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/2048-game-in-elmlang/</guid>
+      <description>Elm is a frontend programming language optimised for developer&amp;rsquo;s happiness. Elm basics are very straightforward, which is just the Elm Architecture.
+The Elm Architecture  Model — the state of your application View — a way to turn your state into HTML Update — a way to update your state based on messages  You can read more about Elm here.
+Here, we will construct the famous game: 2048 in Elm.</description>
+    </item>
+    
+    <item>
+      <title>Rust: Smart Pointers</title>
+      <link>https://wilspi.com/post/tech/rust-smart-pointers/</link>
+      <pubDate>Fri, 07 Aug 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/rust-smart-pointers/</guid>
+      <description>This is in DRAFT mode.
+Pointer is a general concept in Computer Programming for a variable that stores memory address. In Rust, generally we use references to access the value stored at a memory address. References are simple pointers, that work within the limits of Rust&amp;rsquo;s ownership and borrowing concept. Lets look at other types which go beyond these limits.
+Note: These are quick short notes, if you want to look in deep check out rustlang docs.</description>
+    </item>
     
     <item>
       <title>Rust: Variables in Memory</title>
@@ -63,7 +85,7 @@ Commonly, templates are stored as files, either in git repo or s3 buckets. Depen
       <guid>https://wilspi.com/post/tech/nix-shell-and-awesomeness/</guid>
       <description>Last year while working with @amitu, I came across this wonderful tool called Nix.
 I have been using Nix for almost all my projects now. I have written nix recipes for:
-rust, python, nodejs, elm, postgres, react, react-native.
+rust, python, nodejs, elm, postgres, react, etc.
 About Nix, its wiki says:
  Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation</description>
     </item>
@@ -89,17 +111,6 @@ It’s a light, low-level “plugin” system for globally altering Django’s i
       <guid>https://wilspi.com/post/tech/save-production-via-nginx/</guid>
       <description>Quick nginx hack to save your production web server in case the web service starts crashing.
 If you have been working in production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down.</description>
-    </item>
-    
-    <item>
-      <title>Rust: Smart Pointers</title>
-      <link>https://wilspi.com/post/tech/rust-smart-pointers/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/rust-smart-pointers/</guid>
-      <description>This is in DRAFT mode.
-Pointer is a general concept in Computer Programming for a variable that stores memory address. In Rust, generally we use references to access the value stored at a memory address. References are very simple pointers, that works with the limits of Rust&amp;rsquo;s ownership and borrowing concept. Lets look at other types to expand these limits.
-Note: These are quick short notes, if you want to look in deep check out rustlang docs.</description>
     </item>
     
   </channel>
