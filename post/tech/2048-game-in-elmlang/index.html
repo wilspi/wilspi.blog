@@ -104,6 +104,7 @@ Here, we will construct the famous game: 2048 in Elm."/>
 <h2 id="2048-game">2048 Game</h2>
 <p>2048 is a famous game created by <a href="https://github.com/gabrielecirulli/2048">gabrielecirulli</a> which went viral in 2014.
 We are recreating 2048 because the functioning of the game is very simple which will help us understand the elm architecture very clearly. It is a replacement of <code>TODO</code> app for learning.</p>
+<p><img src="/images/2048.png" alt="2048"></p>
 <p>You can play it <a href="/elm-2048">here</a>.</p>
 <h3 id="rules-of-the-game">Rules of the game</h3>
 <p>Looking at the <a href="/elm-2048">game</a>, we can deconstruct the rules of the game:</p>
@@ -135,9 +136,10 @@ Update function will regenerate the model (state) depending upon the message it 
 <p>Our structure looks good, now we have to implement handling of these messages.</p>
 <h3 id="diving-deep-into-messages">Diving deep into messages</h3>
 <ul>
-<li><strong>LeftMove</strong><br>
-Since we have arranged our tiles in a matrix, this is fairly easy to do. We need to run a loop for all the rows and merge 2 tiles with the same number into one and double the number on this tile.
-Lets look at the code below, which merges tiles in a list and returns the list:
+<li>
+<p><strong>LeftMove</strong></p>
+<p>Since we have arranged our tiles in a matrix, this is fairly easy to do. We need to run a loop for all the rows and merge 2 tiles with the same number into one and double the number on this tile.
+Lets look at the code below, which merges tiles in a list and returns the list:</p>
 <pre><code>mergeAndFillRow : List Cell -&gt; List Cell
 mergeAndFillRow list =
     let
@@ -179,12 +181,15 @@ mergeRow list =
 
 </code></pre><p>In <code>mergeRow</code>, we use recursion to reduce the list, and then in <code>mergeAndFillRow</code> we fill the list with empty tiles.</p>
 </li>
-<li><strong>RightMove</strong><br>
-RightMove is same as LeftMove, just that we need to reverse the list before calling <code>mergeAndFillRow</code> and reverse it again.</li>
-<li><strong>UpMove</strong>
-For RightMove, and LeftMove, it was fairly easy since we had a list for row elements and hence we could use <code>List</code> methods to reduce (for looping) but here the case is not that simple.
-Using the same technique we did in RightMove, here we can <a href="https://en.wikipedia.org/wiki/Transpose">transpose</a> the matrix and then call <code>mergeAndFillRow</code>.<br>
-Transpose is little challenging when you don&rsquo;t have for and while loop and just use recursion, see code below:
+<li>
+<p><strong>RightMove</strong></p>
+<p>RightMove is same as LeftMove, just that we need to reverse the list before calling <code>mergeAndFillRow</code> and reverse it again.</p>
+</li>
+<li>
+<p><strong>UpMove</strong></p>
+<p>For RightMove, and LeftMove, the implementation was fairly easy since we had a list for row elements and therefore we could use <code>List</code> methods to reduce (for looping), but here the case is not that simple.
+Thinking on the same lines as doing reverse, here we can <a href="https://en.wikipedia.org/wiki/Transpose">transpose</a> the matrix and then call <code>mergeAndFillRow</code>.<br>
+Transpose is little challenging when you don&rsquo;t have for and while loop and just use recursion, see code below:</p>
 <pre><code>transposeMap : Grid -&gt; Grid -&gt; Grid
 transposeMap grid2 grid1 =
     case Array.get 0 grid1 of
@@ -212,12 +217,18 @@ transposeForIdx idx list grid2 =
         Nothing -&gt;
             grid2
 </code></pre></li>
-<li><strong>DownMove</strong><br>
-Using the same technique we did in RightMove, we can reverse the list, transpose, call <code>mergeAndFillRow</code>, transpose again and finally reverse.</li>
-<li><strong>AddTile</strong><br>
-For this will create a list of available positions and randomly select one of them.</li>
-<li><strong>Reset</strong><br>
-Reset is simple, just initialise the matrix and send <code>AddTile</code> message.</li>
+<li>
+<p><strong>DownMove</strong></p>
+<p>Using the same technique we did in RightMove, we can reverse the list, transpose, call <code>mergeAndFillRow</code>, transpose again and finally reverse.</p>
+</li>
+<li>
+<p><strong>AddTile</strong></p>
+<p>For this will create a list of available positions and randomly select one of them.</p>
+</li>
+<li>
+<p><strong>Reset</strong></p>
+<p>Reset is simple, just initialise the matrix and send <code>AddTile</code> message.</p>
+</li>
 </ul>
 <p>Common methods:</p>
 <p><code>mergeCell</code> is a common method which merges 2 tiles (Cell) and returns one tile:</p>
