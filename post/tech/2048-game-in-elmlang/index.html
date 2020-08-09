@@ -87,7 +87,7 @@ Here, we will construct the famous game: 2048 in Elm."/>
         
         <div class="info">
           
-          <i class="fa fa-clock-o"></i><span class="reading-time">4-minute read</span>
+          <i class="fa fa-clock-o"></i><span class="reading-time">5-minute read</span>
         </div>
         
         </div>
@@ -102,14 +102,14 @@ Here, we will construct the famous game: 2048 in Elm."/>
 <p>You can read more about Elm <a href="/post/tech/2048-game-in-elmlang#extra">here</a>.</p>
 <p>Here, we will construct the famous game: 2048 in Elm.</p>
 <h2 id="2048-game">2048 Game</h2>
-<p>2048 is a famous game created by <a href="https://github.com/gabrielecirulli/2048">gabrielecirulli</a> which went viral in 2014.
-We are recreating 2048 because the functioning of the game is very simple which will help us understand the elm architecture very clearly. It is a replacement of <code>TODO</code> app for learning.</p>
+<p>2048 is a game created by <a href="https://github.com/gabrielecirulli/2048">gabrielecirulli</a> which went viral in 2014.
+We are recreating 2048 because the functioning of the game is very simple which will help us understand the elm architecture very clearly. Lets call it a replacement of <code>TODO</code> app for learning.</p>
 <p><img src="/images/2048.png" alt="2048"></p>
 <p>You can play it <a href="/elm-2048">here</a>.</p>
 <h3 id="rules-of-the-game">Rules of the game</h3>
-<p>Looking at the <a href="/elm-2048">game</a>, we can deconstruct the rules of the game:</p>
+<p>The rules of the game are:</p>
 <ul>
-<li>2 similar tiles (same number) can be merged</li>
+<li>2 similar tiles (same number) can be merged into one, doubling the value on the tile</li>
 <li>Merging happens in the direction of the key-press</li>
 <li>A new tile (number 2) is introduced in the game at a random empty space</li>
 <li>Game is over when no new tiles can be added</li>
@@ -117,28 +117,32 @@ We are recreating 2048 because the functioning of the game is very simple which 
 <h3 id="structuring-the-design">Structuring the design</h3>
 <p>Based on above rules, lets start defining architecture of our game from Elm&rsquo;s perspective:</p>
 <p><strong>Model</strong><br>
-Need to store every tile&rsquo;s data (number on the tiles and position of the tile).
-We can construct a matrix of <code>N</code>x<code>N</code> (<code>N</code> being number of rows/columns, here 4) and store tile&rsquo;s number in this.</p>
+We have to store every tile&rsquo;s data (number on the tiles and position of the tile). To store these tiles, we can construct and use a matrix of <code>N</code>x<code>N</code> (<code>N</code> being number of rows/columns, here 4).</p>
 <!-- raw HTML omitted -->
 <p><strong>View</strong><br>
-View is simple, we will loop over the matrix and render the values with CSS</p>
+View is simple, we have to render this matrix, beautifully with CSS.</p>
 <p><strong>Update</strong><br>
 Update function will regenerate the model (state) depending upon the message it receives. Lets look at different kind of messages we must have:</p>
 <ul>
-<li>LeftMove</li>
-<li>RightMove</li>
-<li>UpMove</li>
-<li>DownMove</li>
-<li>Reset</li>
-<li>AddTile</li>
+<li>LeftMove<br>
+To enable merging towards left side</li>
+<li>RightMove<br>
+To enable merging towards right side</li>
+<li>UpMove<br>
+To enable merging upwards</li>
+<li>DownMove<br>
+To enable merging downwards side</li>
+<li>Reset<br>
+For resetting the grid to initial state</li>
+<li>AddTile<br>
+To add a tile at any random available space</li>
 </ul>
-<p>First 4 messages are for arrow keys, Reset for resetting the grid to initial state, and AddTile to add a tile at a random available space.</p>
-<p>Our structure looks good, now we have to implement handling of these messages.</p>
+<p>The structure of the game looks good, now we have to implement handling of these messages.</p>
 <h3 id="diving-deep-into-messages">Diving deep into messages</h3>
 <ul>
 <li>
 <p><strong>LeftMove</strong></p>
-<p>Since we have arranged our tiles in a matrix, this is fairly easy to do. We need to run a loop for all the rows and merge 2 tiles with the same number into one and double the number on this tile.
+<p>Since the tiles are in List of List fashion (tiles in row 1 are in same list), we can do map-reduce for rows and merge 2 tiles with the same number into one and double the number on the tile.
 Lets look at the code below, which merges tiles in a list and returns the list:</p>
 <pre><code>mergeAndFillRow : List Cell -&gt; List Cell
 mergeAndFillRow list =
@@ -183,13 +187,13 @@ mergeRow list =
 </li>
 <li>
 <p><strong>RightMove</strong></p>
-<p>RightMove is same as LeftMove, just that we need to reverse the list before calling <code>mergeAndFillRow</code> and reverse it again.</p>
+<p>RightMove is same as LeftMove, with opposite direction. So to reuse <code>mergeAndFillRow</code> we will do List reverse before and after calling this function.</p>
 </li>
 <li>
 <p><strong>UpMove</strong></p>
-<p>For RightMove, and LeftMove, the implementation was fairly easy since we had a list for row elements and therefore we could use <code>List</code> methods to reduce (for looping), but here the case is not that simple.
-Thinking on the same lines as doing reverse, here we can <a href="https://en.wikipedia.org/wiki/Transpose">transpose</a> the matrix and then call <code>mergeAndFillRow</code>.<br>
-Transpose is little challenging when you don&rsquo;t have for and while loop and just use recursion, see code below:</p>
+<p>For RightMove, and LeftMove, the merging operation was fairly easy since we had a list for row elements and therefore we could use <code>List</code> methods to reduce and merge tiles in the same list, but here the tiles are in column (column 1 tiles are in different lists).
+Thinking on the same lines as doing reverse, here we can <a href="https://en.wikipedia.org/wiki/Transpose">transpose</a> the matrix and then call the function <code>mergeAndFillRow</code>.<br>
+Transpose is little challenging when we can&rsquo;t use looping (for/while) constructs, you can refer to the code below (uses recursion):</p>
 <pre><code>transposeMap : Grid -&gt; Grid -&gt; Grid
 transposeMap grid2 grid1 =
     case Array.get 0 grid1 of
@@ -219,7 +223,7 @@ transposeForIdx idx list grid2 =
 </code></pre></li>
 <li>
 <p><strong>DownMove</strong></p>
-<p>Using the same technique we did in RightMove, we can reverse the list, transpose, call <code>mergeAndFillRow</code>, transpose again and finally reverse.</p>
+<p>Using the same technique as we did in RightMove, we can first reverse the list, then transpose, call <code>mergeAndFillRow</code>, transpose again and finally reverse.</p>
 </li>
 <li>
 <p><strong>AddTile</strong></p>
@@ -227,11 +231,11 @@ transposeForIdx idx list grid2 =
 </li>
 <li>
 <p><strong>Reset</strong></p>
-<p>Reset is simple, just initialise the matrix and send <code>AddTile</code> message.</p>
+<p>Reset is initialising the matrix and sending <code>AddTile</code> message.</p>
 </li>
 </ul>
-<p>Common methods:</p>
-<p><code>mergeCell</code> is a common method which merges 2 tiles (Cell) and returns one tile:</p>
+<p>Common functions:</p>
+<p><code>mergeCell</code> is a common function which merges 2 tiles (Cell) and returns one tile:</p>
 <pre><code>swap : ( Cell, Cell ) -&gt; ( Cell, Cell )
 swap ( cell1, cell2 ) =
     ( cell2, cell1 )
@@ -248,8 +252,8 @@ mergeCell ( cell1, cell2 ) =
 
         _ -&gt;
             mergeCell (swap ( cell1, cell2 ))
-</code></pre><p>For integrating key-press and touch coordinates, we will use <a href="https://elmprogramming.com/subscriptions.html#subscription">subscriptions</a>.
-You can look at the complete code <a href="https://github.com/wilspi/elm-2048">here</a>.</p>
+</code></pre><p>For integrating key-presses and touch coordinates, we will use <a href="https://elmprogramming.com/subscriptions.html#subscription">subscriptions</a>.</p>
+<p>You can look at the complete code <a href="https://github.com/wilspi/elm-2048">here</a>.</p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
