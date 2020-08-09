@@ -18,7 +18,7 @@
       <guid>https://wilspi.com/post/tech/nix-recipes/python/</guid>
       <description>This is a nix recipe for building and running python in a virtual nix environment.
   Create shell.nix with following:
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; frameworks = nixpkgs.darwin.apple_sdk.frameworks; in with nixpkgs; stdenv.mkDerivation { name = &amp;quot;python-env&amp;quot;; buildInputs = [ ]; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ] ++ ( stdenv.lib.optionals stdenv.isDarwin [ frameworks.Security frameworks.CoreServices frameworks.CoreFoundation frameworks.Foundation ] ); # ENV variables PROJDIR = &amp;quot;${toString .</description>
+let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &amp;quot;python-env&amp;quot;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &amp;quot;${toString ./.}&amp;quot;; # Post Shell Hook shellHook = &#39;&#39; echo &amp;quot;Using ${python37.name}&amp;quot; [ !</description>
     </item>
     
     <item>

@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="Nix Recipe: Setup Python"/>
 <meta name="twitter:description" content="This is a nix recipe for building and running python in a virtual nix environment.
   Create shell.nix with following:
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; frameworks = nixpkgs.darwin.apple_sdk.frameworks; in with nixpkgs; stdenv.mkDerivation { name = &quot;python-env&quot;; buildInputs = [ ]; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ] &#43;&#43; ( stdenv.lib.optionals stdenv.isDarwin [ frameworks.Security frameworks.CoreServices frameworks.CoreFoundation frameworks.Foundation ] ); # ENV variables PROJDIR = &quot;${toString ."/>
+let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &quot;python-env&quot;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &quot;${toString ./.}&quot;; # Post Shell Hook shellHook = &#39;&#39; echo &quot;Using ${python37.name}&quot; [ !"/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -102,14 +102,11 @@ let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/arc
     config = {};
   };
 
-  frameworks = nixpkgs.darwin.apple_sdk.frameworks;
-
 in
   with nixpkgs;
 
   stdenv.mkDerivation {
     name = &quot;python-env&quot;;
-    buildInputs = [ ];
 
     nativeBuildInputs = [
       zsh
@@ -117,14 +114,7 @@ in
       python37
       python37Packages.pip
       python37Packages.virtualenv
-    ] ++ (
-      stdenv.lib.optionals stdenv.isDarwin [
-        frameworks.Security
-        frameworks.CoreServices
-        frameworks.CoreFoundation
-        frameworks.Foundation
-      ]
-    );
+    ];
 
     # ENV variables
     PROJDIR = &quot;${toString ./.}&quot;;
@@ -132,16 +122,16 @@ in
     # Post Shell Hook
     shellHook = ''
       echo &quot;Using ${python37.name}&quot;
+
       [ ! -d '$PROJDIR/python-dev' ] &amp;&amp; virtualenv python-dev &amp;&amp; echo &quot;SETUP python-dev: DONE&quot;
       source python-dev/bin/activate
-      python -m pip install -r requirements.txt
+      # python -m pip install -r requirements.txt
     '';
   }
 </code></pre><p>Note:</p>
 <ul>
 <li>Here, the nix packages are installed from <a href="https://github.com/NixOS/nixpkgs/releases/tag/20.03">20.03 release</a>.</li>
 <li><a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a> is installed and activated, and python requirements are installed in this environment (via <code>requirements.txt</code> file).</li>
-<li>apple_sdk libraries are installed if the system is macos.</li>
 </ul>
 </li>
 <li>
