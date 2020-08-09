@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light"><head>
-    <title>  | wilspi </title>
+    <title> Nix Recipe: Setup Python | wilspi </title>
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="">
     
@@ -10,16 +10,17 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://wilspi.com/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
-    <link rel="canonical" href="https://wilspi.com/post/tech/nix-recipes/">
-    <link rel="alternate" type="application/rss+xml" href="https://wilspi.com/post/tech/nix-recipes/index.xml" title="Sourabh Deokar" />
+    <link rel="canonical" href="https://wilspi.com/post/tech/nix-recipes/python/">
     
     
     <script type="text/javascript" src="https://wilspi.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Nix Recipe: Setup Python"/>
+<meta name="twitter:description" content="This is a nix recipe for building and running python in a virtual nix environment.
+  Create shell.nix with following:
+let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; frameworks = nixpkgs.darwin.apple_sdk.frameworks; in with nixpkgs; stdenv.mkDerivation { name = &quot;python-env&quot;; buildInputs = [ ]; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ] &#43;&#43; ( stdenv.lib.optionals stdenv.isDarwin [ frameworks.Security frameworks.CoreServices frameworks.CoreFoundation frameworks.Foundation ] ); # ENV variables PROJDIR = &quot;${toString ."/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -77,46 +78,94 @@
 
             <div class="autopagerize_page_element">
                 <div class="content">
-<div class="archive animated fadeInDown">
+<div class="post animated fadeInDown">
+    <div class="post-content">
 
-    <ul class="list-with-title">
-      
-      <div class="listing-title">Posts</div>
-      
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/nix-recipes/python/" title="Nix Recipe: Setup Python">Nix Recipe: Setup Python</a>
-              
-            </div>
-          </div>
-    </ul>
+      <div class="post-title">
+        <h1>Nix Recipe: Setup Python
+        </h1>
+        
+        <div class="info">
+          
+          <i class="fa fa-clock-o"></i><span class="reading-time">1-minute read</span>
+        </div>
+        
+        </div>
+
+    <p>This is a nix recipe for building and running <a href="https://www.python.org/">python</a> in a <a href="/post/tech/nix-shell-and-awesomeness/">virtual nix environment</a>.</p>
+<ul>
+<li>
+<p>Create <code>shell.nix</code> with following:</p>
+<pre><code>let
+  nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) {
+    overlays = [];
+    config = {};
+  };
+
+  frameworks = nixpkgs.darwin.apple_sdk.frameworks;
+
+in
+  with nixpkgs;
+
+  stdenv.mkDerivation {
+    name = &quot;python-env&quot;;
+    buildInputs = [ ];
+
+    nativeBuildInputs = [
+      zsh
+      vim
+      python37
+      python37Packages.pip
+      python37Packages.virtualenv
+    ] ++ (
+      stdenv.lib.optionals stdenv.isDarwin [
+        frameworks.Security
+        frameworks.CoreServices
+        frameworks.CoreFoundation
+        frameworks.Foundation
+      ]
+    );
+
+    # ENV variables
+    PROJDIR = &quot;${toString ./.}&quot;;
+
+    # Post Shell Hook
+    shellHook = ''
+      echo &quot;Using ${python37.name}&quot;
+      [ ! -d '$PROJDIR/python-dev' ] &amp;&amp; virtualenv python-dev &amp;&amp; echo &quot;SETUP python-dev: DONE&quot;
+      source python-dev/bin/activate
+      python -m pip install -r requirements.txt
+    '';
+  }
+</code></pre><p>Note:</p>
+<ul>
+<li>Here, the nix packages are installed from <a href="https://github.com/NixOS/nixpkgs/releases/tag/20.03">20.03 release</a>.</li>
+<li><a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a> is installed and activated, and python requirements are installed in this environment (via <code>requirements.txt</code> file).</li>
+<li>apple_sdk libraries are installed if the system is macos.</li>
+</ul>
+</li>
+<li>
+<p>Run <code>nix-shell --pure shell.nix</code> to build and start using <code>python-3.7</code> in your virtual environment.</p>
+</li>
+</ul>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+<span class="separator"><a class="category" href="/categories/tech/">tech</a></span>
+
+        
+    <span class="separator"><a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/python/">python</a></span>
+
+      </div>
+    </div>
+
     
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/nix-recipes/nodejs/" title="Nix Recipe: Setup Nodejs">Nix Recipe: Setup Nodejs</a>
-              
-            </div>
-          </div>
-    </ul>
-    
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/nix-recipes/rust/" title="Nix Recipe: Setup Rust">Nix Recipe: Setup Rust</a>
-              
-            </div>
-          </div>
-    </ul>
-    
-      <ul class="listing">
-        <div class="listing-item">
-            <div class="listing-post"><a href="https://wilspi.com/post/tech/nix-recipes/postgresql/" title="Nix Recipe: Setup Postgresql">Nix Recipe: Setup Postgresql</a>
-              
-            </div>
-          </div>
-    </ul>
     
     
-  </div>
+</div>
+
 
                 </div>
             </div>

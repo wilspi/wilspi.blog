@@ -4,7 +4,37 @@
   
   <url>
     <loc>https://wilspi.com/categories/</loc>
-    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
+    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/nix/</loc>
+    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/nix-recipes/python/</loc>
+    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/python/</loc>
+    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/</loc>
+    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/</loc>
+    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/categories/tech/</loc>
+    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
   </url>
   
   <url>
@@ -33,21 +63,6 @@
   </url>
   
   <url>
-    <loc>https://wilspi.com/</loc>
-    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/tags/</loc>
-    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/categories/tech/</loc>
-    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wilspi.com/tags/pointers/</loc>
     <lastmod>2020-08-07T22:00:00+05:30</lastmod>
   </url>
@@ -60,11 +75,6 @@
   <url>
     <loc>https://wilspi.com/post/tech/rust-smart-pointers/</loc>
     <lastmod>2020-08-07T22:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/tags/nix/</loc>
-    <lastmod>2020-08-06T22:00:00+05:30</lastmod>
   </url>
   
   <url>
@@ -134,11 +144,6 @@
   
   <url>
     <loc>https://wilspi.com/post/tech/jinja-inheritance-using-db/</loc>
-    <lastmod>2020-07-31T22:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/tags/python/</loc>
     <lastmod>2020-07-31T22:00:00+05:30</lastmod>
   </url>
   

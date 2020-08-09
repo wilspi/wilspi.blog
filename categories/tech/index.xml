@@ -6,10 +6,21 @@
     <description>Recent content in tech on Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Aug 2020 15:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2020 21:00:00 +0530</lastBuildDate>
     
 	<atom:link href="https://wilspi.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Nix Recipe: Setup Python</title>
+      <link>https://wilspi.com/post/tech/nix-recipes/python/</link>
+      <pubDate>Sun, 09 Aug 2020 21:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/nix-recipes/python/</guid>
+      <description>This is a nix recipe for building and running python in a virtual nix environment.
+  Create shell.nix with following:
+let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; frameworks = nixpkgs.darwin.apple_sdk.frameworks; in with nixpkgs; stdenv.mkDerivation { name = &amp;quot;python-env&amp;quot;; buildInputs = [ ]; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ] ++ ( stdenv.lib.optionals stdenv.isDarwin [ frameworks.Security frameworks.CoreServices frameworks.CoreFoundation frameworks.Foundation ] ); # ENV variables PROJDIR = &amp;quot;${toString .</description>
+    </item>
     
     <item>
       <title>Learning Elm: 2048 game in Elm</title>

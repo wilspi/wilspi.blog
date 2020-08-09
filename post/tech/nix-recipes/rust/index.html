@@ -171,11 +171,11 @@ in
 <li><a href="https://github.com/mozilla/nixpkgs-mozilla/blob/master/README.rst#using-in-nix-expressions">moz_overlay</a> is configured which contains all the latest rust releases.</li>
 <li><code>LIBCLANG_PATH</code> is required, see <a href="https://discourse.nixos.org/t/how-to-correctly-populate-a-clang-and-llvm-development-environment-using-nix-shell/3864/2">this</a>.</li>
 <li><code>SOURCE_DATE_EPOCH</code> is required for clippy.</li>
-<li>apple_sdk libraries are installed only for macos.</li>
+<li>apple_sdk libraries are installed if the system is macos.</li>
 </ul>
 </li>
 <li>
-<p>Run <code>nix-shell --pure shell.nix</code> to build and start <code>rust-1.43.0</code> in your virtual environment.</p>
+<p>Run <code>nix-shell --pure shell.nix</code> to build and start using <code>rust-1.43.0</code> in your virtual environment.</p>
 </li>
 </ul>
 
