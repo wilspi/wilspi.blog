@@ -111,7 +111,7 @@ We are recreating 2048 because the functioning of the game is very simple which 
 <ul>
 <li>2 similar tiles (same number) can be merged into one, doubling the value on the tile</li>
 <li>Merging happens in the direction of the key-press</li>
-<li>A new tile (number 2) is introduced in the game at a random empty space</li>
+<li>A new tile (number 2) is introduced in the game at a random empty space with every key-press</li>
 <li>Game is over when no new tiles can be added</li>
 </ul>
 <h3 id="structuring-the-design">Structuring the design</h3>
@@ -124,18 +124,12 @@ View is simple, we have to render this matrix, beautifully with CSS.</p>
 <p><strong>Update</strong><br>
 Update function will regenerate the model (state) depending upon the message it receives. Lets look at different kind of messages we must have:</p>
 <ul>
-<li>LeftMove<br>
-To enable merging towards left side</li>
-<li>RightMove<br>
-To enable merging towards right side</li>
-<li>UpMove<br>
-To enable merging upwards</li>
-<li>DownMove<br>
-To enable merging downwards side</li>
-<li>Reset<br>
-For resetting the grid to initial state</li>
-<li>AddTile<br>
-To add a tile at any random available space</li>
+<li>LeftMove: To enable merging towards left side</li>
+<li>RightMove: To enable merging towards right side</li>
+<li>UpMove: To enable merging upwards</li>
+<li>DownMove: To enable merging downwards side</li>
+<li>Reset: For resetting the grid to initial state</li>
+<li>AddTile: To add a tile at any random available space</li>
 </ul>
 <p>The structure of the game looks good, now we have to implement handling of these messages.</p>
 <h3 id="diving-deep-into-messages">Diving deep into messages</h3>
@@ -191,7 +185,7 @@ mergeRow list =
 </li>
 <li>
 <p><strong>UpMove</strong></p>
-<p>For RightMove, and LeftMove, the merging operation was fairly easy since we had a list for row elements and therefore we could use <code>List</code> methods to reduce and merge tiles in the same list, but here the tiles are in column (column 1 tiles are in different lists).
+<p>For RightMove, and LeftMove, the merging operation was fairly easy since same row elements were in a single list and therefore we could use <code>List</code> methods to reduce and merge tiles, but here the tiles are in column (column 1 tiles are in different lists).
 Thinking on the same lines as doing reverse, here we can <a href="https://en.wikipedia.org/wiki/Transpose">transpose</a> the matrix and then call the function <code>mergeAndFillRow</code>.<br>
 Transpose is little challenging when we can&rsquo;t use looping (for/while) constructs, you can refer to the code below (uses recursion):</p>
 <pre><code>transposeMap : Grid -&gt; Grid -&gt; Grid
@@ -253,7 +247,7 @@ mergeCell ( cell1, cell2 ) =
         _ -&gt;
             mergeCell (swap ( cell1, cell2 ))
 </code></pre><p>For integrating key-presses and touch coordinates, we will use <a href="https://elmprogramming.com/subscriptions.html#subscription">subscriptions</a>.</p>
-<p>You can look at the complete code <a href="https://github.com/wilspi/elm-2048">here</a>.</p>
+<p>You can look at the complete code <a href="https://github.com/wilspi/elm-2048/blob/master/src/Main.elm">here</a>.</p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
