@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>thread on Sourabh Deokar</title>
+    <link>https://wilspi.com/tags/thread/</link>
+    <description>Recent content in thread on Sourabh Deokar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Aug 2020 22:00:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://wilspi.com/tags/thread/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rust: Closures and Threads</title>
+      <link>https://wilspi.com/post/tech/rust-threads-and-closures/</link>
+      <pubDate>Mon, 10 Aug 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/rust-threads-and-closures/</guid>
+      <description>Closures Closures is a function which has access to variables in the same scope in which it was defined. Annotating types in closure definition is not required, types can be inferred by the compiler.
+Closures in Threads When using closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Lets look at examples below.
+Here:</description>
+    </item>
+    
+  </channel>
+</rss>
