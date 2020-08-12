@@ -81,6 +81,25 @@
   
   <div class="post animated fadeInDown">
     <div class="post-title">
+      <h3><a href="/post/brainstorm/pick-a-book/">Pick-a-Book</a>
+      </h3>
+    </div>
+    <div class="post-content"><div class="p_part"><p>This is an idea for an utility application for avid book readers, favoring mobile platform.
+Often times in a library when we are searching for a book, we have to scan and go through each and every book&rsquo;s title or author. This exercise is tough and draining. The pain goes multi fold when you are looking for multiple books or authors. Now imagine you have an app which scans and reads every book names, while you hold the mobile camera and stroll in the library, and the app flickers the screen to alert you that it found one of the books you were looking for.</p></div>
+
+  <div class="p_part"><p></p></div></div>
+    <div class="post-footer">
+      <div class="meta">
+        <div class="info">
+          
+          <a class="tag" href="/tags/idea/">idea</a><a class="tag" href="/tags/mobile/">mobile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="post animated fadeInDown">
+    <div class="post-title">
       <h3><a href="/post/thoughtbox/">Thought Box</a>
       </h3>
     </div>
@@ -260,26 +279,6 @@ Structured logging is a concept that puts events over messages, events are logge
         <div class="info">
           
           <a class="tag" href="/tags/rust/">rust</a><a class="tag" href="/tags/slog/">slog</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="post animated fadeInDown">
-    <div class="post-title">
-      <h3><a href="/post/tech/nix-recipes/postgresql/">Nix Recipe: Setup Postgresql</a>
-      </h3>
-    </div>
-    <div class="post-content"><div class="p_part"><p>This is a nix recipe for building and running postgresql-12 in a virtual nix environment.
-  Create your project folder and save the following file as shell.nix
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &quot;postgres-env&quot;; buildInputs = []; nativeBuildInputs = [ zsh vim geos gdal nixpkgs-fmt # postgres-12 with postgis support (postgresql_12.withPackages (p: [ p.postgis ])) ]; postgresConf = writeText &quot;postgresql.</p></div>
-
-  <div class="p_part"><p></p></div></div>
-    <div class="post-footer">
-      <div class="meta">
-        <div class="info">
-          
-          <a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/postgres/">postgres</a>
         </div>
       </div>
     </div>
