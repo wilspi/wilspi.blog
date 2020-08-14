@@ -6,13 +6,24 @@
     <description>Recent content in Posts on Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Aug 2020 22:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2020 22:00:00 +0530</lastBuildDate>
     
 	<atom:link href="https://wilspi.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Pick-a-Book</title>
+      <title>Product Sketches</title>
+      <link>https://wilspi.com/post/brainstorm/sketches/</link>
+      <pubDate>Fri, 14 Aug 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/post/brainstorm/sketches/</guid>
+      <description>Cook me Feedback To have a better food experience with your cook, you have to constantly tell him about your likes and dislikes. Sometimes he/she might cook you a fantastic dinner (tried something new) and never know if you liked.
+Whatsapp is good for chatting but not remembering, also your food habits are not structured and easily accessible within whatsapp and other note taking platforms. Also, privacy.
+This app will give food recommendations and feedback to cook with regards to small repetitive things so that they know what works, and what doesn&amp;rsquo;t.</description>
+    </item>
+    
+    <item>
+      <title>Sketch: Pick-a-Book</title>
       <link>https://wilspi.com/post/brainstorm/pick-a-book/</link>
       <pubDate>Wed, 12 Aug 2020 22:00:00 +0530</pubDate>
       

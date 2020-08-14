@@ -81,6 +81,27 @@
   
   <div class="post animated fadeInDown">
     <div class="post-title">
+      <h3><a href="/post/tech/slogging-multiple-drains/">Rust: Slog and multiple drains</a>
+      </h3>
+    </div>
+    <div class="post-content"><div class="p_part"><p>Slog is a structured logging library for Rustlang.
+Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:
+ processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Logging Lets create a simple logger:
+#[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!</p></div>
+
+  <div class="p_part"><p></p></div></div>
+    <div class="post-footer">
+      <div class="meta">
+        <div class="info">
+          
+          <a class="tag" href="/tags/rust/">rust</a><a class="tag" href="/tags/slog/">slog</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="post animated fadeInDown">
+    <div class="post-title">
       <h3><a href="/post/tech/nix-recipes/postgresql/">Nix Recipe: Setup Postgresql</a>
       </h3>
     </div>
