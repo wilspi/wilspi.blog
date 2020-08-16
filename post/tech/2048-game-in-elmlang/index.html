@@ -246,7 +246,8 @@ mergeCell ( cell1, cell2 ) =
 
         _ -&gt;
             mergeCell (swap ( cell1, cell2 ))
-</code></pre><p>For integrating key-presses and touch coordinates, we will use <a href="https://elmprogramming.com/subscriptions.html#subscription">subscriptions</a>.</p>
+</code></pre><p>Note: The above <code>mergeCell</code> method fails when arguments are <code>EmptyCell</code> and <code>EmptyCell</code>, it gets stuck in infinite recursion. But since we never use that case, it never crashed.</p>
+<p>For integrating key-presses and touch coordinates, we will use <a href="https://elmprogramming.com/subscriptions.html#subscription">subscriptions</a>.</p>
 <p>You can look at the complete code <a href="https://github.com/wilspi/elm-2048/blob/master/src/Main.elm">here</a>.</p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
