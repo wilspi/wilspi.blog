@@ -18,8 +18,8 @@
       
       <guid>https://wilspi.com/post/tech/rust-threads-and-closures/</guid>
       <description>Closures Closures is a function which has access to variables in the same scope in which it was defined. Annotating types in closure definition is not required, types can be inferred by the compiler.
-Closures in Threads When using closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Lets look at examples below.
-Here:</description>
+https://github.com/Dhghomon/easy_rust/blob/master/README.md
+Closures in Threads When using closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Lets look at examples below.</description>
     </item>
     
     <item>
@@ -42,17 +42,6 @@ let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/arc
       <description>Elm is a frontend programming language optimised for developer&amp;rsquo;s happiness. Elm basics are very straightforward, which is just the Elm Architecture.
 The Elm Architecture  Model — the state of your application View — a way to turn your state into HTML Update — a way to update your state based on messages  You can read more about Elm here.
 Here, we will construct the famous game: 2048 in Elm.</description>
-    </item>
-    
-    <item>
-      <title>Rust: Smart Pointers</title>
-      <link>https://wilspi.com/post/tech/rust-smart-pointers/</link>
-      <pubDate>Fri, 07 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/rust-smart-pointers/</guid>
-      <description>This is in DRAFT mode.
-Pointer is a general concept in Computer Programming for a variable that stores memory address. In Rust, generally we use references to access the value stored at a memory address. References are simple pointers, that work within the limits of Rust&amp;rsquo;s ownership and borrowing concept. Lets look at other types which go beyond these limits.
-Note: These are quick short notes, if you want to look in deep check out rustlang docs.</description>
     </item>
     
     <item>

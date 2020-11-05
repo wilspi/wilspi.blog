@@ -17,19 +17,9 @@
       <pubDate>Fri, 14 Aug 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/post/brainstorm/product-sketches/</guid>
-      <description>Cook me Feedback To have a better food experience with your cook, you have to constantly tell him about your likes and dislikes. Sometimes he/she might cook you a fantastic dinner (something new) and never know if you liked.
-Whatsapp is good for chatting but not remembering, also your food habits are not structured and easily accessible within whatsapp and other note taking platforms. Also, privacy.
-This app will give food recommendations and feedback to cook considering small repetitive things so that they know what works, and what doesn&amp;rsquo;t.</description>
-    </item>
-    
-    <item>
-      <title>Sketch: Pick-a-Book</title>
-      <link>https://wilspi.com/post/brainstorm/pick-a-book/</link>
-      <pubDate>Wed, 12 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/brainstorm/pick-a-book/</guid>
-      <description>This is an idea for an utility application for avid book readers, favoring mobile platform.
-Often times in a library when we are searching for a book, we have to scan and go through each and every book&amp;rsquo;s title or author. This exercise is tough and draining. The pain goes multi fold when you are looking for multiple books or authors. Now imagine you have an app which scans and reads every book names, while you hold the mobile camera and stroll in the library, and the app flickers the screen to alert you that it found one of the books you were looking for.</description>
+      <description>Update: For more sketches and updates on this post, check my notes here
+Cook me Feedback To have a better food experience with your cook, you have to constantly tell him about your likes and dislikes. Sometimes he/she might cook you a fantastic dinner (something new) and never know if you liked.
+Whatsapp is good for chatting but not remembering, also your food habits are not structured and easily accessible within whatsapp and other note taking platforms.</description>
     </item>
     
     <item>
@@ -38,12 +28,7 @@ Often times in a library when we are searching for a book, we have to scan and g
       <pubDate>Tue, 11 Aug 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/post/thoughtbox/</guid>
-      <description>Quotes   &amp;ldquo;Somewhere in the process of maturing into adults, most humans misunderstood comfort for happiness.&amp;rdquo;
-   Alice came to a fork in the road. &amp;lsquo;Which road do I take?&amp;rsquo; she asked.
-&#39;Where do you want to go?&amp;rsquo; responded the Cheshire Cat.
-&#39;I don&amp;rsquo;t know,&amp;rsquo; Alice answered.
-&#39;Then,&amp;rsquo; said the Cat, &amp;lsquo;it doesn&amp;rsquo;t matter. &amp;ndash; Lewis Carroll, Alice in Wonderland.
-   Well, once there was only dark.</description>
+      <description>Quotes Since this a never ending list, I have moved this here</description>
     </item>
     
     <item>
@@ -53,8 +38,8 @@ Often times in a library when we are searching for a book, we have to scan and g
       
       <guid>https://wilspi.com/post/tech/rust-threads-and-closures/</guid>
       <description>Closures Closures is a function which has access to variables in the same scope in which it was defined. Annotating types in closure definition is not required, types can be inferred by the compiler.
-Closures in Threads When using closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Lets look at examples below.
-Here:</description>
+https://github.com/Dhghomon/easy_rust/blob/master/README.md
+Closures in Threads When using closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Lets look at examples below.</description>
     </item>
     
     <item>
@@ -66,17 +51,6 @@ Here:</description>
       <description>Elm is a frontend programming language optimised for developer&amp;rsquo;s happiness. Elm basics are very straightforward, which is just the Elm Architecture.
 The Elm Architecture  Model — the state of your application View — a way to turn your state into HTML Update — a way to update your state based on messages  You can read more about Elm here.
 Here, we will construct the famous game: 2048 in Elm.</description>
-    </item>
-    
-    <item>
-      <title>Rust: Smart Pointers</title>
-      <link>https://wilspi.com/post/tech/rust-smart-pointers/</link>
-      <pubDate>Fri, 07 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/rust-smart-pointers/</guid>
-      <description>This is in DRAFT mode.
-Pointer is a general concept in Computer Programming for a variable that stores memory address. In Rust, generally we use references to access the value stored at a memory address. References are simple pointers, that work within the limits of Rust&amp;rsquo;s ownership and borrowing concept. Lets look at other types which go beyond these limits.
-Note: These are quick short notes, if you want to look in deep check out rustlang docs.</description>
     </item>
     
     <item>
