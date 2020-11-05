@@ -18,9 +18,8 @@
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
 <meta name="twitter:title" content="Rust: Closures and Threads"/>
-<meta name="twitter:description" content="Closures Closures is a function which has access to variables in the same scope in which it was defined. Annotating types in closure definition is not required, types can be inferred by the compiler.
-https://github.com/Dhghomon/easy_rust/blob/master/README.md
-Closures in Threads When using closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Lets look at examples below."/>
+<meta name="twitter:description" content="Closures Closures are a function that has access to variables in the same scope in which it is defined. Annotating types in closure definition are not required, types can be inferred by the compiler.
+Closures in Threads When using a closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Let&rsquo;s look at the examples below."/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -103,11 +102,10 @@ Closures in Threads When using closure, variables defined in the same scope as t
         </div>
 
     <h2 id="closures">Closures</h2>
-<p>Closures is a function which has access to variables in the same scope in which it was defined. Annotating types in closure definition is not required, types can be inferred by the compiler.</p>
-<p><a href="https://github.com/Dhghomon/easy_rust/blob/master/README.md">https://github.com/Dhghomon/easy_rust/blob/master/README.md</a></p>
+<p>Closures are a function that has access to variables in the same scope in which it is defined. Annotating types in closure definition are not required, types can be inferred by the compiler.</p>
 <h2 id="closures-in-threads">Closures in Threads</h2>
-<p>When using closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads.
-Lets look at examples below.</p>
+<p>When using a closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads.
+Let&rsquo;s look at the examples below.</p>
 <p>Here:</p>
 <pre><code>let mut str = &quot;Hello&quot;.to_string();
 let t = thread::spawn(|| {
@@ -116,7 +114,7 @@ let t = thread::spawn(|| {
     println!(&quot;str: {:?}&quot;, str);
 });
 t.join().unwrap();
-</code></pre><p>We get the error : <code>closure may outlive the current function</code> because the main thread might drop <code>str</code> and the closure will not be able to access that variable.</p>
+</code></pre><p>We get the error: <code>closure may outlive the current function</code> because the main thread might drop <code>str</code> and the closure will not be able to access that variable.</p>
 <p>To solve this we can use <a href="https://doc.rust-lang.org/std/keyword.move.html"><code>move</code></a> which will move the ownership, see below:</p>
 <pre><code>let mut str = &quot;Hello&quot;.to_string();
 let t = thread::spawn(move || {
@@ -135,7 +133,7 @@ let t = thread::spawn(move || {
 });
 t.join().unwrap();
 println!(&quot;str: {:?}&quot;, str);
-</code></pre><p>Here, the main thread is trying to access the variable which was moved to the thread, so the compiler gives error here: <code>does not implement the 'Copy' trait</code>.</p>
+</code></pre><p>Here, the main thread is trying to access the variable which was moved to the thread, so the compiler gives an error here: <code>does not implement the 'Copy' trait</code>.</p>
 <hr>
 <p>Lets look at another example:</p>
 <pre><code>let mut num = 20;
@@ -146,15 +144,15 @@ let t = thread::spawn(move || {
 });
 t.join().unwrap();
 println!(&quot;num: {:?}&quot;, num);
-</code></pre><p>Here, we get output as:</p>
+</code></pre><p>Here, we get the output as:</p>
 <pre><code>num: 21
 num: 20
-</code></pre><p>This works because <code>i32</code> implements copy trait and hence variable in thread gets copied.</p>
+</code></pre><p>This works because <code>i32</code> implements copy trait and hence variable in the thread gets copied.</p>
 <hr>
-<p>So while using closure in threads, we need to take care that:</p>
+<p>So while using a closure in threads, we need to take care that:</p>
 <ul>
 <li><code>move</code> will move the ownership of the variable to the thread.</li>
-<li>variables that need to be accessed inside closure and in main thread, must implement <code>Copy</code> trait so that <code>move</code> will copy the variables.</li>
+<li>variables that need to be accessed inside closure and in the main thread, must implement <code>Copy</code> trait so that <code>move</code> will copy the variables.</li>
 </ul>
 
     </div>

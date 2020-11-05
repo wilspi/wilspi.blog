@@ -111,30 +111,11 @@ Whatsapp is good for chatting but not remembering, also your food habits are not
   
   <div class="post animated fadeInDown">
     <div class="post-title">
-      <h3><a href="/post/thoughtbox/">Thought Box</a>
-      </h3>
-    </div>
-    <div class="post-content"><div class="p_part"><p>Quotes Since this a never ending list, I have moved this here</p></div>
-
-  <div class="p_part"><p></p></div></div>
-    <div class="post-footer">
-      <div class="meta">
-        <div class="info">
-          
-          <a class="tag" href="/tags/quotes/">quotes</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="post animated fadeInDown">
-    <div class="post-title">
       <h3><a href="/post/tech/rust-threads-and-closures/">Rust: Closures and Threads</a>
       </h3>
     </div>
-    <div class="post-content"><div class="p_part"><p>Closures Closures is a function which has access to variables in the same scope in which it was defined. Annotating types in closure definition is not required, types can be inferred by the compiler.
-https://github.com/Dhghomon/easy_rust/blob/master/README.md
-Closures in Threads When using closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Lets look at examples below.</p></div>
+    <div class="post-content"><div class="p_part"><p>Closures Closures are a function that has access to variables in the same scope in which it is defined. Annotating types in closure definition are not required, types can be inferred by the compiler.
+Closures in Threads When using a closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Let&rsquo;s look at the examples below.</p></div>
 
   <div class="p_part"><p></p></div></div>
     <div class="post-footer">
@@ -172,7 +153,7 @@ let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/arc
       <h3><a href="/post/tech/2048-game-in-elmlang/">Learning Elm: 2048 game in Elm</a>
       </h3>
     </div>
-    <div class="post-content"><div class="p_part"><p>Elm is a frontend programming language optimised for developer&rsquo;s happiness. Elm basics are very straightforward, which is just the Elm Architecture.
+    <div class="post-content"><div class="p_part"><p>Elm is a front-end programming language optimized for developer&rsquo;s happiness. Elm basics are very straightforward, which is just the Elm Architecture.
 The Elm Architecture  Model — the state of your application View — a way to turn your state into HTML Update — a way to update your state based on messages  You can read more about Elm here.
 Here, we will construct the famous game: 2048 in Elm.</p></div>
 
@@ -212,9 +193,9 @@ Here, we will construct the famous game: 2048 in Elm.</p></div>
       <h3><a href="/post/tech/rust-variables-in-memory/">Rust: Variables in Memory</a>
       </h3>
     </div>
-    <div class="post-content"><div class="p_part"><p>In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Lets look at how Rust does it.
+    <div class="post-content"><div class="p_part"><p>In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Let&rsquo;s look at how Rust does it.
 Note: These are quick short notes, if you want to look in deep check out rustlang docs.
-Ownership In programming languages, either a garbage collector is used which will cleanup the memory used by the unused variables or the memory is explicitly freed by the programmer in the code.</p></div>
+Ownership In programming languages, either a garbage collector is used which will clean up the memory used by the unused variables or the memory is explicitly freed by the programmer in the code.</p></div>
 
   <div class="p_part"><p></p></div></div>
     <div class="post-footer">
@@ -285,6 +266,26 @@ let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/arc
         <div class="info">
           
           <a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/postgres/">postgres</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="post animated fadeInDown">
+    <div class="post-title">
+      <h3><a href="/post/tech/setup-nix-arch-linux/">Setup multi user nix for Arch Linux</a>
+      </h3>
+    </div>
+    <div class="post-content"><div class="p_part"><p>Here we are setting up nix for Arch Linux.
+Multi User Setup From nix&rsquo;s page:
+ To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.</p></div>
+
+  <div class="p_part"><p></p></div></div>
+    <div class="post-footer">
+      <div class="meta">
+        <div class="info">
+          
+          <a class="tag" href="/tags/arch-linux/">arch-linux</a><a class="tag" href="/tags/nix/">nix</a>
         </div>
       </div>
     </div>

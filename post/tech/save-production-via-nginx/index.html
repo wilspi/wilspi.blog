@@ -19,7 +19,7 @@
 
 <meta name="twitter:title" content="Save the production with nginx"/>
 <meta name="twitter:description" content="Quick nginx hack to save your production web server in case the web service starts crashing.
-If you have been working in production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down."/>
+If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down."/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -102,12 +102,12 @@ If you have been working in production environment, you know at certain times yo
         </div>
 
     <p>Quick nginx hack to save your production web server in case the web service starts crashing.</p>
-<p>If you have been working in production environment, you know at certain times your web service can crash due to some unknown reason (code failure).
-It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down. You should anyways have this as a backup tactic for your service failure.
-Devops generally use autoscaling at such times.</p>
+<p>If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure).
+It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down. You should anyways have this as a backup tactic for your service failure.
+DevOps generally use autoscaling at such times.</p>
 <p>Note: This won&rsquo;t work if there is data inconsistency, since all service will crash.</p>
 <h2 id="steps">Steps</h2>
-<p>Here goes the how-to steps:</p>
+<p>Here go the how-to steps:</p>
 <ul>
 <li>
 <h4 id="start-the-services">Start the services</h4>
@@ -121,8 +121,8 @@ Devops generally use autoscaling at such times.</p>
   server 127.0.0.1:3002 fail_timeout=0;
   server 127.0.0.1:3004 backup;
 }
-</code></pre><p>Here nginx and web services are running on the same box. If you are running your services on a different machine, you can replace <code>127.0.0.1</code> with the machine&rsquo;s ip.</p>
-<p>Two services (ones running on ports <code>3000</code> and <code>3002</code>) to distribute the load and one (on <code>3004</code>) as backup if either crashes.</p>
+</code></pre><p>Here nginx and web services are running on the same box. If you are running your services on a different machine, you can replace <code>127.0.0.1</code> with the machine&rsquo;s IP.</p>
+<p>Two services (ones running on ports <code>3000</code> and <code>3002</code>) to distribute the load and one (on <code>3004</code>) as a backup if either crash.</p>
 </li>
 <li>
 <h4 id="update-path">Update path</h4>
@@ -144,7 +144,7 @@ Devops generally use autoscaling at such times.</p>
 </code></pre></li>
 </ul>
 <h2 id="extra">Extra</h2>
-<p>In my case, it was our rust web service which was getting stuck, failing all the subsequent requests. I created a health-check service which monitored and restarted the rust service whenever that happened. But I knew during this downtime period many of the requests would fail, we didn&rsquo;t want that. So I added three processes of this service on different ports and proxied them the way shown above.</p>
+<p>In my case, it was our rust web service which was getting stuck, failing all the subsequent requests. I created a health-check service that monitored and restarted the rust service whenever that happened. But I knew during this downtime period many of the requests would fail, we didn&rsquo;t want that. So I added three processes of this service on different ports and proxied them the way shown above.</p>
 <p><img src="/images/55hLpaQtG75YuLZs3bmO1kdg.png" alt="rust services"></p>
 
     </div>

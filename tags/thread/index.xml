@@ -17,9 +17,8 @@
       <pubDate>Mon, 10 Aug 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/post/tech/rust-threads-and-closures/</guid>
-      <description>Closures Closures is a function which has access to variables in the same scope in which it was defined. Annotating types in closure definition is not required, types can be inferred by the compiler.
-https://github.com/Dhghomon/easy_rust/blob/master/README.md
-Closures in Threads When using closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Lets look at examples below.</description>
+      <description>Closures Closures are a function that has access to variables in the same scope in which it is defined. Annotating types in closure definition are not required, types can be inferred by the compiler.
+Closures in Threads When using a closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Let&amp;rsquo;s look at the examples below.</description>
     </item>
     
   </channel>

@@ -127,7 +127,7 @@ fn main() {
 </code></pre><p>Important terms:</p>
 <ul>
 <li>Drain is a <a href="https://doc.rust-lang.org/rust-by-example/trait.html">trait</a> which is responsible for deciding the output/destination of the logs. Any custom log handling logic should be implemented as a Drain.</li>
-<li><a href="https://docs.rs/slog/2.5.2/slog/struct.OwnedKV.html">Context</a> are key-value pairs which gets added into every log statement. Lets say if you want to add git commit version to each log statement you can add it here.</li>
+<li><a href="https://docs.rs/slog/2.5.2/slog/struct.OwnedKV.html">Context</a> are key-value pairs that gets added into every log statement. Let&rsquo;s say if you want to add the git commit version to each log statement you can add it here.</li>
 <li>Logger are objects used to execute logging statements.<br>
 For creating <a href="https://docs.rs/slog/2.5.2/slog/struct.Logger.html#method.root">root logger</a>, we need drain and context. Read complete documentation <a href="https://docs.rs/slog/2.5.2/slog/struct.Logger.html">here</a>.</li>
 </ul>
@@ -152,7 +152,7 @@ fn main() {
 }
 </code></pre><p>Here, <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.FullFormat.html">slog_term::FullFormat</a> drain is used for terminal output with <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.TermDecorator.html">TermDecorator</a> (Decorator is an implementing strategy of output formating in terms of IO, colors, etc.)</p>
 <hr>
-<p>Since drain is a trait to customize logging to any output, it allows slog to become extensible, composible and flexible.
+<p>Since drain is a trait to customize logging to any output, it allows slog to become extensible, composable, and flexible.
 There are many feature slog libraries based on this trait:</p>
 <ul>
 <li><a href="https://github.com/slog-rs/bunyan">slog-bunyan</a></li>
@@ -195,8 +195,8 @@ fn main() {
 }
 </code></pre><p>Here, <a href="https://github.com/slog-rs/async">Async</a>, <a href="https://docs.rs/slog/2.5.2/slog/struct.Duplicate.html">Duplicate</a>, <a href="https://docs.rs/slog/2.5.2/slog/struct.Filter.html">Filter</a>, <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.FullFormat.html">FullFormat</a> drains are used.</p>
 <h2 id="log-macros-and-log-levels">Log Macros and Log Levels</h2>
-<p>To log a statement/record, we use <a href="https://docs.rs/slog/2.5.2/slog/macro.log.html">log macros</a>. In above examples, <code>info!</code> is used.</p>
-<p><a href="https://docs.rs/slog/2.0.0-3.1/slog/enum.Level.html">Log Levels</a> are log categories based on urgency. For example, we have debug, info, error etc. for self explaining urgencies.
+<p>To log a statement/record, we use <a href="https://docs.rs/slog/2.5.2/slog/macro.log.html">log macros</a>. In the above examples, <code>info!</code> is used.</p>
+<p><a href="https://docs.rs/slog/2.0.0-3.1/slog/enum.Level.html">Log Levels</a> are log categories based on urgency. For example, we have debug, info, error, etc. for self-explaining urgencies.
 We have different log macros for different log levels.</p>
 <h2 id="extra">Extra</h2>
 <p>You can find many more examples, <a href="https://github.com/slog-rs/misc/tree/master/examples">here</a>.</p>

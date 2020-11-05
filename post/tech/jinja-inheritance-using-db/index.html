@@ -19,7 +19,7 @@
 
 <meta name="twitter:title" content="Jinja template Inheritance using Database"/>
 <meta name="twitter:description" content="Jinja is a web template engine for the Python programming language. A Jinja template is simply a text file and can generate any text-based format (HTML, XML, CSV, LaTeX, etc.). A template contains variables and/or expressions, which get replaced with values when the template is rendered, thus serving dynamic content.
-Commonly, templates are stored as files, either in git repo or s3 buckets. Depending on your use case, you can store the templates in database as well."/>
+Commonly, templates are stored as files, either in git-repo or s3 buckets. Depending on your use case, you can store the templates in the database as well."/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -104,7 +104,7 @@ Commonly, templates are stored as files, either in git repo or s3 buckets. Depen
     <p>Jinja is a web template engine for the Python programming language.
 A Jinja template is simply a text file and can generate any text-based format (HTML, XML, CSV, LaTeX, etc.).
 A template contains variables and/or expressions, which get replaced with values when the template is rendered, thus serving dynamic content.</p>
-<p>Commonly, templates are stored as files, either in git repo or s3 buckets. Depending on your use case, you can store the templates in database as well.</p>
+<p>Commonly, templates are stored as files, either in git-repo or s3 buckets. Depending on your use case, you can store the templates in the database as well.</p>
 <h2 id="templates-in-database">Templates in Database</h2>
 <ul>
 <li>
@@ -129,11 +129,11 @@ print(Template(template).render({&quot;name&quot;: &quot;wilspi&quot;})
 <li><a href="https://jinja.palletsprojects.com/en/2.11.x/templates/#include">include</a></li>
 </ul>
 <p>But all these ways require templates to be present in the same <a href="https://jinja.palletsprojects.com/en/2.11.x/api/?highlight=loader#jinja2.Environment">Jinja environment</a>
-Thats how Jinja picks up the other templates while using all these inheritance techniques.</p>
-<p>The most common way to use inheritance is to use <a href="https://jinja.palletsprojects.com/en/2.11.x/api/?highlight=loader#jinja2.FileSystemLoader">file system loader</a> which puts base directory path in the environment and then jinja can pick/load any of these files to render, since all of them are in its environment.</p>
-<p>With templates being in database, we need a way to load templates into Jinja environment, since Jinja doesn&rsquo;t support any environment using database.</p>
-<p><a href="https://jinja.palletsprojects.com/en/2.11.x/api/?highlight=loader#jinja2.DictLoader">DictLoader</a> is another loader which loads key value pairs in Jinja environment.
-A dictionary of templates can be created by loading templates from database, and then we can use DictLoader to load these templates into Jinja environemnt, and Voila!, Jinja&rsquo;s inheritance system works like a charm.</p>
+That&rsquo;s how Jinja picks up the other templates while using all these inheritance techniques.</p>
+<p>The most common way to use inheritance is to use <a href="https://jinja.palletsprojects.com/en/2.11.x/api/?highlight=loader#jinja2.FileSystemLoader">file system loader</a> which puts the base directory path in the environment and then jinja can pick/load any of these files to render since all of them are in its environment.</p>
+<p>With templates being in the database, we need a way to load templates into Jinja environment, since Jinja doesn&rsquo;t support any environment using the database.</p>
+<p><a href="https://jinja.palletsprojects.com/en/2.11.x/api/?highlight=loader#jinja2.DictLoader">DictLoader</a> is another loader which loads key-value pairs in the Jinja environment.
+A dictionary of templates can be created by loading templates from the database, and then we can use DictLoader to load these templates into Jinja environment, and Voila!, Jinja&rsquo;s inheritance system works like a charm.</p>
 <p>Example:</p>
 <pre><code>template_map = {
   &quot;header&quot;: &quot;header template&quot;,

@@ -17,7 +17,7 @@
       <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/post/tech/2048-game-in-elmlang/</guid>
-      <description>Elm is a frontend programming language optimised for developer&amp;rsquo;s happiness. Elm basics are very straightforward, which is just the Elm Architecture.
+      <description>Elm is a front-end programming language optimized for developer&amp;rsquo;s happiness. Elm basics are very straightforward, which is just the Elm Architecture.
 The Elm Architecture  Model — the state of your application View — a way to turn your state into HTML Update — a way to update your state based on messages  You can read more about Elm here.
 Here, we will construct the famous game: 2048 in Elm.</description>
     </item>

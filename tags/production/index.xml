@@ -18,7 +18,7 @@
       
       <guid>https://wilspi.com/post/tech/save-production-via-nginx/</guid>
       <description>Quick nginx hack to save your production web server in case the web service starts crashing.
-If you have been working in production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off, if any of them goes down.</description>
+If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down.</description>
     </item>
     
   </channel>
