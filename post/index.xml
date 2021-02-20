@@ -6,11 +6,7 @@
     <description>Recent content in Posts on Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Aug 2020 22:00:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://wilspi.com/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 14 Aug 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Product Sketches</title>
       <link>https://wilspi.com/post/brainstorm/product-sketches/</link>
@@ -20,16 +16,6 @@
       <description>Update: For more sketches and updates on this post, check my notes here
 Cook me Feedback To have a better food experience with your cook, you have to constantly tell him about your likes and dislikes. Sometimes he/she might cook you a fantastic dinner (something new) and never know if you liked.
 Whatsapp is good for chatting but not remembering, also your food habits are not structured and easily accessible within whatsapp and other note taking platforms.</description>
-    </item>
-    
-    <item>
-      <title>Rust: Closures and Threads</title>
-      <link>https://wilspi.com/post/tech/rust-threads-and-closures/</link>
-      <pubDate>Mon, 10 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/rust-threads-and-closures/</guid>
-      <description>Closures Closures are a function that has access to variables in the same scope in which it is defined. Annotating types in closure definition are not required, types can be inferred by the compiler.
-Closures in Threads When using a closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Let&amp;rsquo;s look at the examples below.</description>
     </item>
     
     <item>

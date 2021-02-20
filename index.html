@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light"><head>
     <title> Sourabh Deokar | wilspi </title>
-    <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.79.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="">
     
     <link rel="stylesheet" href="https://wilspi.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -63,7 +63,7 @@
         
     </ul>
     <div class="footer">
-        <div class="by_farbox">&copy; wilspi 2020 </div>
+        <div class="by_farbox">&copy; wilspi 2021 </div>
       </div>
     </div>
 </div><div class="main">
@@ -111,45 +111,6 @@ Whatsapp is good for chatting but not remembering, also your food habits are not
   
   <div class="post animated fadeInDown">
     <div class="post-title">
-      <h3><a href="/post/tech/rust-threads-and-closures/">Rust: Closures and Threads</a>
-      </h3>
-    </div>
-    <div class="post-content"><div class="p_part"><p>Closures Closures are a function that has access to variables in the same scope in which it is defined. Annotating types in closure definition are not required, types can be inferred by the compiler.
-Closures in Threads When using a closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Let&rsquo;s look at the examples below.</p></div>
-
-  <div class="p_part"><p></p></div></div>
-    <div class="post-footer">
-      <div class="meta">
-        <div class="info">
-          
-          <a class="tag" href="/tags/rust/">rust</a><a class="tag" href="/tags/closures/">closures</a><a class="tag" href="/tags/thread/">thread</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="post animated fadeInDown">
-    <div class="post-title">
-      <h3><a href="/post/tech/nix-recipes/python/">Nix Recipe: Setup Python</a>
-      </h3>
-    </div>
-    <div class="post-content"><div class="p_part"><p>This is a nix recipe for building and running python in a virtual nix environment.
-  Create shell.nix with following:
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &quot;python-env&quot;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &quot;${toString ./.}&quot;; # Post Shell Hook shellHook = '' echo &quot;Using ${python37.name}&quot; [ !</p></div>
-
-  <div class="p_part"><p></p></div></div>
-    <div class="post-footer">
-      <div class="meta">
-        <div class="info">
-          
-          <a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/python/">python</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="post animated fadeInDown">
-    <div class="post-title">
       <h3><a href="/post/tech/2048-game-in-elmlang/">Learning Elm: 2048 game in Elm</a>
       </h3>
     </div>
@@ -170,26 +131,6 @@ Here, we will construct the famous game: 2048 in Elm.</p></div>
   
   <div class="post animated fadeInDown">
     <div class="post-title">
-      <h3><a href="/post/tech/nix-recipes/nodejs/">Nix Recipe: Setup Nodejs</a>
-      </h3>
-    </div>
-    <div class="post-content"><div class="p_part"><p>This is a nix recipe for building and running nodejs in a virtual nix environment.
-  In your project folder, create a new file nodejs.nix and add following:
-{ nixpkgs ? import &lt;nixpkgs&gt; {}, version, sha256 }: let inherit (nixpkgs) python37 utillinux stdenv autoPatchelfHook fetchurl binutils-unwrapped patchelf xcbuild; inherit (stdenv) mkDerivation; in mkDerivation { inherit version; name = &quot;nodejs-${version}&quot;; src = fetchurl { url = &quot;https://nodejs.org/dist/v${version}/node-v${version}${if stdenv.isDarwin then &quot;-darwin-x64&quot; else &quot;-linux-x64&quot;}.</p></div>
-
-  <div class="p_part"><p></p></div></div>
-    <div class="post-footer">
-      <div class="meta">
-        <div class="info">
-          
-          <a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/nodejs/">nodejs</a><a class="tag" href="/tags/npm/">npm</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="post animated fadeInDown">
-    <div class="post-title">
       <h3><a href="/post/tech/rust-variables-in-memory/">Rust: Variables in Memory</a>
       </h3>
     </div>
@@ -203,28 +144,6 @@ Ownership In programming languages, either a garbage collector is used which wil
         <div class="info">
           
           <a class="tag" href="/tags/rust/">rust</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="post animated fadeInDown">
-    <div class="post-title">
-      <h3><a href="/post/tech/nix-recipes/rust/">Nix Recipe: Setup Rust</a>
-      </h3>
-    </div>
-    <div class="post-content"><div class="p_part"><p>This is a nix recipe for building and running rust in a virtual nix environment.
-  Create a file rust-toolchain with following:
-1.43.0 We are specifying rust version to install, here using 1.43.0. If using heroku, rust-toolchain file will determine which version will be used to build the application.
-  Create shell.nix with following:
-let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &quot;https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz&quot; ); nixpkgs = import (builtins.</p></div>
-
-  <div class="p_part"><p></p></div></div>
-    <div class="post-footer">
-      <div class="meta">
-        <div class="info">
-          
-          <a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/rust/">rust</a>
         </div>
       </div>
     </div>
@@ -253,26 +172,6 @@ Structured logging is a concept that puts events over messages, events are logge
   
   <div class="post animated fadeInDown">
     <div class="post-title">
-      <h3><a href="/post/tech/nix-recipes/postgresql/">Nix Recipe: Setup Postgresql</a>
-      </h3>
-    </div>
-    <div class="post-content"><div class="p_part"><p>This is a nix recipe for building and running postgresql-12 in a virtual nix environment.
-  Create your project folder and save the following file as shell.nix
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &quot;postgres-env&quot;; buildInputs = []; nativeBuildInputs = [ zsh vim geos gdal nixpkgs-fmt # postgres-12 with postgis support (postgresql_12.withPackages (p: [ p.postgis ])) ]; postgresConf = writeText &quot;postgresql.</p></div>
-
-  <div class="p_part"><p></p></div></div>
-    <div class="post-footer">
-      <div class="meta">
-        <div class="info">
-          
-          <a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/postgres/">postgres</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="post animated fadeInDown">
-    <div class="post-title">
       <h3><a href="/post/tech/setup-nix-arch-linux/">Setup multi user nix for Arch Linux</a>
       </h3>
     </div>
@@ -291,28 +190,90 @@ Multi User Setup From nix&rsquo;s page:
     </div>
   </div>
   
+  <div class="post animated fadeInDown">
+    <div class="post-title">
+      <h3><a href="/post/tech/jinja-inheritance-using-db/">Jinja template Inheritance using Database</a>
+      </h3>
+    </div>
+    <div class="post-content"><div class="p_part"><p>Jinja is a web template engine for the Python programming language. A Jinja template is simply a text file and can generate any text-based format (HTML, XML, CSV, LaTeX, etc.). A template contains variables and/or expressions, which get replaced with values when the template is rendered, thus serving dynamic content.
+Commonly, templates are stored as files, either in git-repo or s3 buckets. Depending on your use case, you can store the templates in the database as well.</p></div>
+
+  <div class="p_part"><p></p></div></div>
+    <div class="post-footer">
+      <div class="meta">
+        <div class="info">
+          
+          <a class="tag" href="/tags/database/">database</a><a class="tag" href="/tags/jinja/">jinja</a><a class="tag" href="/tags/python/">python</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="post animated fadeInDown">
+    <div class="post-title">
+      <h3><a href="/post/tech/nix-shell-and-awesomeness/">Nix shell and Awesomeness: An Intro</a>
+      </h3>
+    </div>
+    <div class="post-content"><div class="p_part"><p>Last year while working with @amitu, I came across this wonderful tool called Nix.
+I have been using Nix for almost all my projects now. I have written nix recipes for:
+rust, python, nodejs, elm, postgres, react, etc.
+About Nix, its wiki says:
+ Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation</p></div>
+
+  <div class="p_part"><p></p></div></div>
+    <div class="post-footer">
+      <div class="meta">
+        <div class="info">
+          
+          <a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/package-manager/">package-manager</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="post animated fadeInDown">
+    <div class="post-title">
+      <h3><a href="/post/tech/django-middleware-to-log-requests/">Django Middleware: log requests and responses</a>
+      </h3>
+    </div>
+    <div class="post-content"><div class="p_part"><p>From Django&rsquo;s context:
+ Middleware is a framework of hooks into Django’s request/response processing.
+It’s a light, low-level “plugin” system for globally altering Django’s input or output.
+ Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware layer which will log every incoming request. Why better?
+ it will log unhandled requests/views one time job, no need to configure for every request/view  Here, we are using Django&rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses.</p></div>
+
+  <div class="p_part"><p></p></div></div>
+    <div class="post-footer">
+      <div class="meta">
+        <div class="info">
+          
+          <a class="tag" href="/tags/django/">django</a><a class="tag" href="/tags/middleware/">middleware</a><a class="tag" href="/tags/python/">python</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="post animated fadeInDown">
+    <div class="post-title">
+      <h3><a href="/post/tech/save-production-via-nginx/">Save the production with nginx</a>
+      </h3>
+    </div>
+    <div class="post-content"><div class="p_part"><p>Quick nginx hack to save your production web server in case the web service starts crashing.
+If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down.</p></div>
+
+  <div class="p_part"><p></p></div></div>
+    <div class="post-footer">
+      <div class="meta">
+        <div class="info">
+          
+          <a class="tag" href="/tags/nginx/">nginx</a><a class="tag" href="/tags/production/">production</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 <div class="pagination">
   
-<ul class="pagination">
-  <li class="page-item">
-    <a href="/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-  </li>
-  <li class="page-item disabled">
-    <a  class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-  </li>
-  <li class="page-item active">
-    <a class="page-link" href="/">1</a>
-  </li>
-  <li class="page-item">
-    <a class="page-link" href="/page/2/">2</a>
-  </li>
-  <li class="page-item">
-    <a href="/page/2/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-  </li>
-  <li class="page-item">
-    <a href="/page/2/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-  </li>
-</ul>
 
 
 </div>

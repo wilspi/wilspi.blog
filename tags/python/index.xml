@@ -6,22 +6,7 @@
     <description>Recent content in python on Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Aug 2020 21:00:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://wilspi.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Nix Recipe: Setup Python</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/python/</link>
-      <pubDate>Sun, 09 Aug 2020 21:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/python/</guid>
-      <description>This is a nix recipe for building and running python in a virtual nix environment.
-  Create shell.nix with following:
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &amp;quot;python-env&amp;quot;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &amp;quot;${toString ./.}&amp;quot;; # Post Shell Hook shellHook = &#39;&#39; echo &amp;quot;Using ${python37.name}&amp;quot; [ !</description>
-    </item>
-    
+    <lastBuildDate>Fri, 31 Jul 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Jinja template Inheritance using Database</title>
       <link>https://wilspi.com/post/tech/jinja-inheritance-using-db/</link>

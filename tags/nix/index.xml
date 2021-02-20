@@ -6,57 +6,7 @@
     <description>Recent content in nix on Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Aug 2020 21:00:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://wilspi.com/tags/nix/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Nix Recipe: Setup Python</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/python/</link>
-      <pubDate>Sun, 09 Aug 2020 21:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/python/</guid>
-      <description>This is a nix recipe for building and running python in a virtual nix environment.
-  Create shell.nix with following:
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &amp;quot;python-env&amp;quot;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &amp;quot;${toString ./.}&amp;quot;; # Post Shell Hook shellHook = &#39;&#39; echo &amp;quot;Using ${python37.name}&amp;quot; [ !</description>
-    </item>
-    
-    <item>
-      <title>Nix Recipe: Setup Nodejs</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/nodejs/</link>
-      <pubDate>Thu, 06 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/nodejs/</guid>
-      <description>This is a nix recipe for building and running nodejs in a virtual nix environment.
-  In your project folder, create a new file nodejs.nix and add following:
-{ nixpkgs ? import &amp;lt;nixpkgs&amp;gt; {}, version, sha256 }: let inherit (nixpkgs) python37 utillinux stdenv autoPatchelfHook fetchurl binutils-unwrapped patchelf xcbuild; inherit (stdenv) mkDerivation; in mkDerivation { inherit version; name = &amp;quot;nodejs-${version}&amp;quot;; src = fetchurl { url = &amp;quot;https://nodejs.org/dist/v${version}/node-v${version}${if stdenv.isDarwin then &amp;quot;-darwin-x64&amp;quot; else &amp;quot;-linux-x64&amp;quot;}.</description>
-    </item>
-    
-    <item>
-      <title>Nix Recipe: Setup Rust</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/rust/</link>
-      <pubDate>Tue, 04 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/rust/</guid>
-      <description>This is a nix recipe for building and running rust in a virtual nix environment.
-  Create a file rust-toolchain with following:
-1.43.0 We are specifying rust version to install, here using 1.43.0. If using heroku, rust-toolchain file will determine which version will be used to build the application.
-  Create shell.nix with following:
-let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &amp;quot;https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz&amp;quot; ); nixpkgs = import (builtins.</description>
-    </item>
-    
-    <item>
-      <title>Nix Recipe: Setup Postgresql</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/postgresql/</link>
-      <pubDate>Sun, 02 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/postgresql/</guid>
-      <description>This is a nix recipe for building and running postgresql-12 in a virtual nix environment.
-  Create your project folder and save the following file as shell.nix
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &amp;quot;postgres-env&amp;quot;; buildInputs = []; nativeBuildInputs = [ zsh vim geos gdal nixpkgs-fmt # postgres-12 with postgis support (postgresql_12.withPackages (p: [ p.postgis ])) ]; postgresConf = writeText &amp;quot;postgresql.</description>
-    </item>
-    
+    <lastBuildDate>Sat, 01 Aug 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/nix/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setup multi user nix for Arch Linux</title>
       <link>https://wilspi.com/post/tech/setup-nix-arch-linux/</link>

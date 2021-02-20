@@ -6,11 +6,7 @@
     <description>Recent content in Tags on Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Aug 2020 22:00:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://wilspi.com/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 14 Aug 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>idea</title>
       <link>https://wilspi.com/tags/idea/</link>
@@ -35,51 +31,6 @@
       <pubDate>Fri, 14 Aug 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/sketch/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>closures</title>
-      <link>https://wilspi.com/tags/closures/</link>
-      <pubDate>Mon, 10 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/closures/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>rust</title>
-      <link>https://wilspi.com/tags/rust/</link>
-      <pubDate>Mon, 10 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/rust/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>thread</title>
-      <link>https://wilspi.com/tags/thread/</link>
-      <pubDate>Mon, 10 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/thread/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>nix</title>
-      <link>https://wilspi.com/tags/nix/</link>
-      <pubDate>Sun, 09 Aug 2020 21:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/nix/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://wilspi.com/tags/python/</link>
-      <pubDate>Sun, 09 Aug 2020 21:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/python/</guid>
       <description></description>
     </item>
     
@@ -111,20 +62,11 @@
     </item>
     
     <item>
-      <title>nodejs</title>
-      <link>https://wilspi.com/tags/nodejs/</link>
-      <pubDate>Thu, 06 Aug 2020 22:00:00 +0530</pubDate>
+      <title>rust</title>
+      <link>https://wilspi.com/tags/rust/</link>
+      <pubDate>Wed, 05 Aug 2020 23:00:00 +0530</pubDate>
       
-      <guid>https://wilspi.com/tags/nodejs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>npm</title>
-      <link>https://wilspi.com/tags/npm/</link>
-      <pubDate>Thu, 06 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/npm/</guid>
+      <guid>https://wilspi.com/tags/rust/</guid>
       <description></description>
     </item>
     
@@ -138,20 +80,20 @@
     </item>
     
     <item>
-      <title>postgres</title>
-      <link>https://wilspi.com/tags/postgres/</link>
-      <pubDate>Sun, 02 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/postgres/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>arch-linux</title>
       <link>https://wilspi.com/tags/arch-linux/</link>
       <pubDate>Sat, 01 Aug 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/arch-linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nix</title>
+      <link>https://wilspi.com/tags/nix/</link>
+      <pubDate>Sat, 01 Aug 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/nix/</guid>
       <description></description>
     </item>
     
@@ -170,6 +112,15 @@
       <pubDate>Fri, 31 Jul 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/jinja/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://wilspi.com/tags/python/</link>
+      <pubDate>Fri, 31 Jul 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/python/</guid>
       <description></description>
     </item>
     

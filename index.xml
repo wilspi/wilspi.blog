@@ -6,11 +6,7 @@
     <description>Recent content on Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Aug 2020 22:00:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://wilspi.com/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 14 Aug 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Product Sketches</title>
       <link>https://wilspi.com/post/brainstorm/product-sketches/</link>
@@ -20,27 +16,6 @@
       <description>Update: For more sketches and updates on this post, check my notes here
 Cook me Feedback To have a better food experience with your cook, you have to constantly tell him about your likes and dislikes. Sometimes he/she might cook you a fantastic dinner (something new) and never know if you liked.
 Whatsapp is good for chatting but not remembering, also your food habits are not structured and easily accessible within whatsapp and other note taking platforms.</description>
-    </item>
-    
-    <item>
-      <title>Rust: Closures and Threads</title>
-      <link>https://wilspi.com/post/tech/rust-threads-and-closures/</link>
-      <pubDate>Mon, 10 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/rust-threads-and-closures/</guid>
-      <description>Closures Closures are a function that has access to variables in the same scope in which it is defined. Annotating types in closure definition are not required, types can be inferred by the compiler.
-Closures in Threads When using a closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Let&amp;rsquo;s look at the examples below.</description>
-    </item>
-    
-    <item>
-      <title>Nix Recipe: Setup Python</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/python/</link>
-      <pubDate>Sun, 09 Aug 2020 21:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/python/</guid>
-      <description>This is a nix recipe for building and running python in a virtual nix environment.
-  Create shell.nix with following:
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &amp;quot;python-env&amp;quot;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &amp;quot;${toString ./.}&amp;quot;; # Post Shell Hook shellHook = &#39;&#39; echo &amp;quot;Using ${python37.name}&amp;quot; [ !</description>
     </item>
     
     <item>
@@ -55,17 +30,6 @@ Here, we will construct the famous game: 2048 in Elm.</description>
     </item>
     
     <item>
-      <title>Nix Recipe: Setup Nodejs</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/nodejs/</link>
-      <pubDate>Thu, 06 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/nodejs/</guid>
-      <description>This is a nix recipe for building and running nodejs in a virtual nix environment.
-  In your project folder, create a new file nodejs.nix and add following:
-{ nixpkgs ? import &amp;lt;nixpkgs&amp;gt; {}, version, sha256 }: let inherit (nixpkgs) python37 utillinux stdenv autoPatchelfHook fetchurl binutils-unwrapped patchelf xcbuild; inherit (stdenv) mkDerivation; in mkDerivation { inherit version; name = &amp;quot;nodejs-${version}&amp;quot;; src = fetchurl { url = &amp;quot;https://nodejs.org/dist/v${version}/node-v${version}${if stdenv.isDarwin then &amp;quot;-darwin-x64&amp;quot; else &amp;quot;-linux-x64&amp;quot;}.</description>
-    </item>
-    
-    <item>
       <title>Rust: Variables in Memory</title>
       <link>https://wilspi.com/post/tech/rust-variables-in-memory/</link>
       <pubDate>Wed, 05 Aug 2020 23:00:00 +0530</pubDate>
@@ -74,19 +38,6 @@ Here, we will construct the famous game: 2048 in Elm.</description>
       <description>In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Let&amp;rsquo;s look at how Rust does it.
 Note: These are quick short notes, if you want to look in deep check out rustlang docs.
 Ownership In programming languages, either a garbage collector is used which will clean up the memory used by the unused variables or the memory is explicitly freed by the programmer in the code.</description>
-    </item>
-    
-    <item>
-      <title>Nix Recipe: Setup Rust</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/rust/</link>
-      <pubDate>Tue, 04 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/rust/</guid>
-      <description>This is a nix recipe for building and running rust in a virtual nix environment.
-  Create a file rust-toolchain with following:
-1.43.0 We are specifying rust version to install, here using 1.43.0. If using heroku, rust-toolchain file will determine which version will be used to build the application.
-  Create shell.nix with following:
-let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &amp;quot;https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz&amp;quot; ); nixpkgs = import (builtins.</description>
     </item>
     
     <item>
@@ -99,17 +50,6 @@ let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &amp;quot;htt
 Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:
  processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Logging Lets create a simple logger:
 #[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!</description>
-    </item>
-    
-    <item>
-      <title>Nix Recipe: Setup Postgresql</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/postgresql/</link>
-      <pubDate>Sun, 02 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/postgresql/</guid>
-      <description>This is a nix recipe for building and running postgresql-12 in a virtual nix environment.
-  Create your project folder and save the following file as shell.nix
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &amp;quot;postgres-env&amp;quot;; buildInputs = []; nativeBuildInputs = [ zsh vim geos gdal nixpkgs-fmt # postgres-12 with postgis support (postgresql_12.withPackages (p: [ p.postgis ])) ]; postgresConf = writeText &amp;quot;postgresql.</description>
     </item>
     
     <item>

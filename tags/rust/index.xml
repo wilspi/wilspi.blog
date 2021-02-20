@@ -6,21 +6,7 @@
     <description>Recent content in rust on Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Aug 2020 22:00:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://wilspi.com/tags/rust/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Rust: Closures and Threads</title>
-      <link>https://wilspi.com/post/tech/rust-threads-and-closures/</link>
-      <pubDate>Mon, 10 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/rust-threads-and-closures/</guid>
-      <description>Closures Closures are a function that has access to variables in the same scope in which it is defined. Annotating types in closure definition are not required, types can be inferred by the compiler.
-Closures in Threads When using a closure, variables defined in the same scope as the closure, are accessible inside the closure. But the same accessibility changes when closure runs in threads. Let&amp;rsquo;s look at the examples below.</description>
-    </item>
-    
+    <lastBuildDate>Wed, 05 Aug 2020 23:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rust: Variables in Memory</title>
       <link>https://wilspi.com/post/tech/rust-variables-in-memory/</link>
@@ -30,19 +16,6 @@ Closures in Threads When using a closure, variables defined in the same scope as
       <description>In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Let&amp;rsquo;s look at how Rust does it.
 Note: These are quick short notes, if you want to look in deep check out rustlang docs.
 Ownership In programming languages, either a garbage collector is used which will clean up the memory used by the unused variables or the memory is explicitly freed by the programmer in the code.</description>
-    </item>
-    
-    <item>
-      <title>Nix Recipe: Setup Rust</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/rust/</link>
-      <pubDate>Tue, 04 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/rust/</guid>
-      <description>This is a nix recipe for building and running rust in a virtual nix environment.
-  Create a file rust-toolchain with following:
-1.43.0 We are specifying rust version to install, here using 1.43.0. If using heroku, rust-toolchain file will determine which version will be used to build the application.
-  Create shell.nix with following:
-let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &amp;quot;https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz&amp;quot; ); nixpkgs = import (builtins.</description>
     </item>
     
     <item>
