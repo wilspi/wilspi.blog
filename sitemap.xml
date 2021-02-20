@@ -28,17 +28,17 @@
   </url>
   
   <url>
-    <loc>https://wilspi.com/</loc>
-    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wilspi.com/tags/</loc>
     <lastmod>2020-08-08T15:00:00+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://wilspi.com/categories/tech/</loc>
+    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/</loc>
     <lastmod>2020-08-08T15:00:00+05:30</lastmod>
   </url>
   
