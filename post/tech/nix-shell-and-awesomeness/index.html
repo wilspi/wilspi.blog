@@ -19,10 +19,9 @@
 
 <meta name="twitter:title" content="Nix shell and Awesomeness: An Intro"/>
 <meta name="twitter:description" content="Last year while working with @amitu, I came across this wonderful tool called Nix.
-I have been using Nix for almost all my projects now. I have written nix recipes for:
-rust, python, nodejs, elm, postgres, react, etc.
 About Nix, its wiki says:
- Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation"/>
+ Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation
+ Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through nix-shell command, we will see below)."/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -98,8 +97,6 @@ About Nix, its wiki says:
         </div>
 
     <p>Last year while working with <a href="https://github.com/amitu/">@amitu</a>, I came across this wonderful tool called <a href="https://nixos.wiki/wiki/Nix">Nix</a>.</p>
-<p>I have been using Nix for almost all my projects now. I have written <a href="/post/tech/nix-recipes">nix recipes</a> for:<br>
-<a href="/post/tech/nix-recipes/rust">rust</a>, <a href="/post/tech/nix-recipes/python">python</a>, <a href="/post/tech/nix-recipes/nodejs">nodejs</a>, elm, <a href="/post/tech/nix-recipes/postgresql">postgres</a>, react, etc.</p>
 <p>About Nix, its wiki says:</p>
 <blockquote>
 <p>Nix is a package manager and build system that parses reproducible build instructions specified in the <a href="https://nixos.wiki/wiki/Nix_Expression_Language">Nix Expression Language</a>, a pure functional language with lazy evaluation</p>
@@ -142,6 +139,14 @@ stdenv.mkDerivation {
 </li>
 </ul>
 <p>This will download <code>Python 3.7</code> and all its dependencies, build it and start a nix virtual environment.</p>
+<h2 id="nix-recipes">Nix Recipes</h2>
+<p>I have been using Nix for almost all my projects now. I have written <a href="/post/tech/nix-recipes">nix recipes</a> for creating virtual envs for:</p>
+<ul>
+<li><a href="https://notes.wilspi.com/wiki/dev/technologies/nix/rust">rust</a></li>
+<li><a href="https://notes.wilspi.com/wiki/dev/technologies/nix/python">python</a></li>
+<li><a href="https://notes.wilspi.com/wiki/dev/technologies/nix/nodejs">nodejs</a></li>
+<li><a href="https://notes.wilspi.com/wiki/dev/technologies/nix/postgresql">postgres</a>, etc.</li>
+</ul>
 <h2 id="with-nix-life-is-awesome">With Nix, Life is Awesome</h2>
 <ul>
 <li>Nix allows to have <strong>multiple versions or variants of a package</strong> installed at the same time, especially important when different applications have dependencies on different versions of the same package</li>
@@ -152,10 +157,9 @@ stdenv.mkDerivation {
 <p>Read all features <a href="https://nixos.org/features.html">here</a>.</p>
 <h2 id="issues-i-faced">Issues I faced</h2>
 <ul>
-<li>Nix will store multiple versions of your builds, this will use lot of your disk space. You need to clean-up regularly using Nix <a href="https://nixos.org/nixos/nix-pills/garbage-collector.html">garbage-collector</a></li>
+<li>Nix will store multiple versions of your builds, this will use lot of your disk space. You will need to clean-up regularly using Nix <a href="https://nixos.org/nixos/nix-pills/garbage-collector.html">garbage-collector</a>. This is the price of having multiple generations, multiple profiles, multiple versions of software, the <strong>price of having many possibilities</strong>.</li>
 <li>Configuration (toolchain etc) for CLion/PyCharm gets reset whenever I update the packages, or switch between projects with different versions.</li>
 </ul>
-<p>This is the price of having multiple generations, multiple profiles, multiple versions of software, the <strong>price of having many possibilities</strong>.</p>
 <h2 id="extra">Extra</h2>
 <ul>
 <li><a href="https://nixos.wiki/wiki/NixOS">NixOS</a> based on the Nix package manager and build system.</li>

@@ -25,10 +25,9 @@ Multi User Setup From nix&amp;rsquo;s page:
       
       <guid>https://wilspi.com/post/tech/nix-shell-and-awesomeness/</guid>
       <description>Last year while working with @amitu, I came across this wonderful tool called Nix.
-I have been using Nix for almost all my projects now. I have written nix recipes for:
-rust, python, nodejs, elm, postgres, react, etc.
 About Nix, its wiki says:
- Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation</description>
+ Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation
+ Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through nix-shell command, we will see below).</description>
     </item>
     
   </channel>
