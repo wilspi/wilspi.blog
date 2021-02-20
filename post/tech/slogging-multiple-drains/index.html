@@ -1,20 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light"><head>
-    <title> Rust: Slog and multiple drains | wilspi </title>
-    <meta charset="utf-8"><meta name="generator" content="Hugo 0.79.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-    <meta name="description" content="">
-    
-    <link rel="stylesheet" href="https://wilspi.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    
-    <link rel="shortcut icon" href="https://wilspi.com/favicons/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://wilspi.com/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
-    <link rel="canonical" href="https://wilspi.com/post/tech/slogging-multiple-drains/">
-    
-    
-    <script type="text/javascript" src="https://wilspi.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
-    <meta name="twitter:card" content="summary_large_image"/>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Rust: Slog and multiple drains | Sourabh Deokar</title>
+
+<meta name="keywords" content="rust, slog" />
+<meta name="description" content="Slog is a structured logging library for Rustlang.
+Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:
+ processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Logging Lets create a simple logger:
+#[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!">
+<meta name="author" content="wilspi">
+<link rel="canonical" href="https://wilspi.com/post/tech/slogging-multiple-drains/" />
+<link href="/assets/css/stylesheet.min.f580a29692e0c7eb72865ec0bd4ee916bef2dc7e85f4fbfdf6a609b3a0f4f6a1.css" integrity="sha256-9YCilpLgx&#43;tyhl7AvU7pFr7y3H6F9Pv99qYJs6D09qE=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://wilspi.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://wilspi.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://wilspi.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.79.0" />
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-51915090-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<meta property="og:title" content="Rust: Slog and multiple drains" />
+<meta property="og:description" content="Slog is a structured logging library for Rustlang.
+Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:
+ processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Logging Lets create a simple logger:
+#[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wilspi.com/post/tech/slogging-multiple-drains/" />
+<meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
+<meta property="article:published_time" content="2020-08-03T22:00:00+05:30" />
+<meta property="article:modified_time" content="2020-08-03T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
 <meta name="twitter:title" content="Rust: Slog and multiple drains"/>
@@ -23,87 +57,154 @@ Structured logging is a concept that puts events over messages, events are logge
  processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Logging Lets create a simple logger:
 #[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!"/>
 
-</head><body><div class="sidebar animated fadeInDown">
-    <div class="logo-title">
-      <div class="title">
-        <img src="https://wilspi.com/images/dp.jpg" alt="profile picture">
-        <h3 title=""><a href="/">नमस्ते</a></h3>
-        <div class="description">
-          <p></p>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://wilspi.com/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Rust: Slog and multiple drains",
+      "item": "https://wilspi.com/post/tech/slogging-multiple-drains/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Rust: Slog and multiple drains",
+  "name": "Rust: Slog and multiple drains",
+  "description": "Slog is a structured logging library for Rustlang.\nStructured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain …",
+  "keywords": [
+    "rust", "slog"
+  ],
+  "articleBody": "Slog is a structured logging library for Rustlang.\nStructured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:\n processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Logging Lets create a simple logger:\n#[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!()); info!(root_logger, \"Application started\"; \"started_at\" = format!(\"{}\", chrono::Utc::now())); } Important terms:\n Drain is a trait which is responsible for deciding the output/destination of the logs. Any custom log handling logic should be implemented as a Drain. Context are key-value pairs that gets added into every log statement. Let’s say if you want to add the git commit version to each log statement you can add it here. Logger are objects used to execute logging statements.\nFor creating root logger, we need drain and context. Read complete documentation here.  Here, a root_logger object is created with drain Discard (which discards everything) and blank context (o!()).\n Lets look at another example:\n#[macro_use] extern crate slog; extern crate slog_term; extern crate chrono; use slog::Drain; fn main() { let decorator = slog_term::TermDecorator::new().build(); let drain = slog_term::FullFormat::new(decorator).build().fuse(); let root_logger = slog::Logger::root(drain, o!()); info!(root_logger, \"Application started\"; \"started_at\" = format!(\"{}\", chrono::Utc::now())); } Here, slog_term::FullFormat drain is used for terminal output with TermDecorator (Decorator is an implementing strategy of output formating in terms of IO, colors, etc.)\n Since drain is a trait to customize logging to any output, it allows slog to become extensible, composable, and flexible. There are many feature slog libraries based on this trait:\n slog-bunyan slog-term slog-async slog-journald etc.  You can always write your own implementation using this trait.\nMultiple Drains Drains can also be interlinked and extended according to our needs. Following is an example where there are two outputs:\n to stdout, all log statements are sent to stderr, log statements with log level greater than or equal to slog::Level::Warning are sent  #[macro_use] extern crate slog; extern crate slog_term; extern crate chrono; use slog::Drain; fn main() { let drain = slog_async::Async::new( slog::Duplicate::new( slog::Filter::new( slog_term::FullFormat::new( slog_term::PlainSyncDecorator::new(std::io::stderr(),)).build(), |record: \u0026slog::Record| record.level().is_at_least(slog::Level::Warning), ), slog_term::FullFormat::new(slog_term::PlainSyncDecorator::new(std::io::stdout())).build(), ).fuse() ).build().fuse(); let root_logger = slog::Logger::root(drain, o!()); info!(root_logger, \"Application started\"; \"started_at\" = format!(\"{}\", chrono::Utc::now())); } Here, Async, Duplicate, Filter, FullFormat drains are used.\nLog Macros and Log Levels To log a statement/record, we use log macros. In the above examples, info! is used.\nLog Levels are log categories based on urgency. For example, we have debug, info, error, etc. for self-explaining urgencies. We have different log macros for different log levels.\nExtra You can find many more examples, here.\n",
+  "wordCount" : "438",
+  "inLanguage": "en",
+  "datePublished": "2020-08-03T22:00:00+05:30",
+  "dateModified": "2020-08-03T22:00:00+05:30",
+  "author":{
+    "@type": "Person",
+    "name": "wilspi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wilspi.com/post/tech/slogging-multiple-drains/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sourabh Deokar",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wilspi.com/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://wilspi.com" accesskey="h" title="Sourabh Deokar (Alt + H)">Sourabh Deokar</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                
+            </span>
         </div>
-      </div>
-    </div>
-    <ul class="social-links">
-        
-        <li>
-        <a href="https://github.com/wilspi/" rel="me" aria-label="GitHub">
-          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
-        </a>          
-        </li>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://wilspi.com/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://notes.wilspi.com" title="Notes">
+                    <span>Notes</span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
 
-        
-        <li>
-        <a href="https://www.youtube.com/channel/UCMg3idz-2FlreEeHY_0i13w" rel="me" aria-label="Youtube">
-          <i class="fa fa-2x fa-youtube" aria-hidden="true"></i>
-        </a>          
-        </li>
+    <main class="main">
 
-        
-        <li>
-        <a href="https://www.twitter.com/iamwilspi" rel="me" aria-label="Twitter">
-          <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
-        </a>          
-        </li>
+<article class="post-single">
+  <header class="post-header">
 
-        
-    </ul>
-    <div class="footer">
-        <div class="by_farbox">&copy; wilspi 2021 </div>
-      </div>
-    </div>
-</div><div class="main">
-            <div class="page-top animated fadeInDown">
-    <ul class="nav">
-        
-        
-        
-        <li><a  href="/" title="">Home</a></li>
-        
-        
-        <li><a  href="https://notes.wilspi.com" title="">Notes</a></li>
-        
-    </ul>
-    <div class="themeswitcher">
-        <a class="theme-switch" title="Switch Theme">
-            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
-        </a>
-    </div>
+    <h1 class="post-title">
+      Rust: Slog and multiple drains
+    </h1>
+    <div class="post-meta">
+
+August 3, 2020&nbsp;·&nbsp;3 min&nbsp;·&nbsp;wilspi
+
 </div>
+  </header> 
 
-            <div class="autopagerize_page_element">
-                <div class="content">
-<div class="post animated fadeInDown">
-    <div class="post-content">
-
-      <div class="post-title">
-        <h1>Rust: Slog and multiple drains
-        </h1>
-        
-        <div class="info">
-          
-          <i class="fa fa-clock-o"></i><span class="reading-time">3-minute read</span>
-        </div>
-        
-        </div>
-
-    <p><a href="https://github.com/slog-rs/slog">Slog</a> is a structured logging library for <a href="https://www.rust-lang.org/">Rustlang</a>.<br>
+  <div class="post-content">
+<p><a href="https://github.com/slog-rs/slog">Slog</a> is a structured logging library for <a href="https://www.rust-lang.org/">Rustlang</a>.<br>
 Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages.
 This helps in:</p>
 <ul>
 <li>processing log files for analytics</li>
 <li>searching and debugging (example: search log statements for particular user or request)</li>
 </ul>
-<h2 id="logging">Logging</h2>
+<h2 id="logging">Logging<a hidden class="anchor" aria-hidden="true" href="#logging">#</a></h2>
 <p>Lets create a simple logger:</p>
 <pre><code>#[macro_use]
 extern crate slog;
@@ -155,7 +256,7 @@ There are many feature slog libraries based on this trait:</p>
 etc.</li>
 </ul>
 <p>You can always write your own implementation using this trait.</p>
-<h2 id="multiple-drains">Multiple Drains</h2>
+<h2 id="multiple-drains">Multiple Drains<a hidden class="anchor" aria-hidden="true" href="#multiple-drains">#</a></h2>
 <p>Drains can also be interlinked and extended according to our needs.
 Following is an example where there are two outputs:</p>
 <ul>
@@ -187,56 +288,93 @@ fn main() {
         &quot;started_at&quot; =&gt; format!(&quot;{}&quot;, chrono::Utc::now()));
 }
 </code></pre><p>Here, <a href="https://github.com/slog-rs/async">Async</a>, <a href="https://docs.rs/slog/2.5.2/slog/struct.Duplicate.html">Duplicate</a>, <a href="https://docs.rs/slog/2.5.2/slog/struct.Filter.html">Filter</a>, <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.FullFormat.html">FullFormat</a> drains are used.</p>
-<h2 id="log-macros-and-log-levels">Log Macros and Log Levels</h2>
+<h2 id="log-macros-and-log-levels">Log Macros and Log Levels<a hidden class="anchor" aria-hidden="true" href="#log-macros-and-log-levels">#</a></h2>
 <p>To log a statement/record, we use <a href="https://docs.rs/slog/2.5.2/slog/macro.log.html">log macros</a>. In the above examples, <code>info!</code> is used.</p>
 <p><a href="https://docs.rs/slog/2.0.0-3.1/slog/enum.Level.html">Log Levels</a> are log categories based on urgency. For example, we have debug, info, error, etc. for self-explaining urgencies.
 We have different log macros for different log levels.</p>
-<h2 id="extra">Extra</h2>
+<h2 id="extra">Extra<a hidden class="anchor" aria-hidden="true" href="#extra">#</a></h2>
 <p>You can find many more examples, <a href="https://github.com/slog-rs/misc/tree/master/examples">here</a>.</p>
 
-    </div>
-    <div class="post-footer">
-      <div class="info">
-        
-<span class="separator"><a class="category" href="/categories/tech/">tech</a></span>
-
-        
-    <span class="separator"><a class="tag" href="/tags/rust/">rust</a><a class="tag" href="/tags/slog/">slog</a></span>
-
-      </div>
-    </div>
-
-    
-    
-    
 </div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://wilspi.com/tags/rust/">rust</a></li>
+      <li><a href="https://wilspi.com/tags/slog/">slog</a></li>
+    </ul>
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2021 <a href="https://wilspi.com">Sourabh Deokar</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
 
 
-                </div>
-            </div>
-        </div>
-</body>
 
+<script defer src="/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
 
-<script type="text/javascript" src="https://wilspi.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js" integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw=" crossorigin="anonymous"></script>
-
-
-
-
-<script type="text/javascript" src="https://wilspi.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js" integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4=" crossorigin="anonymous"></script>
-
-<script type="text/javascript" src="https://wilspi.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js" integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro=" crossorigin="anonymous"></script>
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-51915090-3', 'auto');
-	
-	ga('send', 'pageview');
-}
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-</html></body>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
 
 </html>

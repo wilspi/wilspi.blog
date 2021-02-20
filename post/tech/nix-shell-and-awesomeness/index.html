@@ -1,20 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light"><head>
-    <title> Nix shell and Awesomeness: An Intro | wilspi </title>
-    <meta charset="utf-8"><meta name="generator" content="Hugo 0.79.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-    <meta name="description" content="">
-    
-    <link rel="stylesheet" href="https://wilspi.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    
-    <link rel="shortcut icon" href="https://wilspi.com/favicons/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://wilspi.com/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
-    <link rel="canonical" href="https://wilspi.com/post/tech/nix-shell-and-awesomeness/">
-    
-    
-    <script type="text/javascript" src="https://wilspi.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
-    <meta name="twitter:card" content="summary_large_image"/>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Nix shell and Awesomeness: An Intro | Sourabh Deokar</title>
+
+<meta name="keywords" content="nix, package-manager" />
+<meta name="description" content="Last year while working with @amitu, I came across this wonderful tool called Nix.
+About Nix, its wiki says:
+ Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation
+ Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through nix-shell command, we will see below).">
+<meta name="author" content="wilspi">
+<link rel="canonical" href="https://wilspi.com/post/tech/nix-shell-and-awesomeness/" />
+<link href="/assets/css/stylesheet.min.f580a29692e0c7eb72865ec0bd4ee916bef2dc7e85f4fbfdf6a609b3a0f4f6a1.css" integrity="sha256-9YCilpLgx&#43;tyhl7AvU7pFr7y3H6F9Pv99qYJs6D09qE=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://wilspi.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://wilspi.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://wilspi.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.79.0" />
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-51915090-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<meta property="og:title" content="Nix shell and Awesomeness: An Intro" />
+<meta property="og:description" content="Last year while working with @amitu, I came across this wonderful tool called Nix.
+About Nix, its wiki says:
+ Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation
+ Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through nix-shell command, we will see below)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wilspi.com/post/tech/nix-shell-and-awesomeness/" />
+<meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
+<meta property="article:published_time" content="2020-07-30T22:00:00+05:30" />
+<meta property="article:modified_time" content="2020-07-30T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
 <meta name="twitter:title" content="Nix shell and Awesomeness: An Intro"/>
@@ -23,87 +57,154 @@ About Nix, its wiki says:
  Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation
  Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through nix-shell command, we will see below)."/>
 
-</head><body><div class="sidebar animated fadeInDown">
-    <div class="logo-title">
-      <div class="title">
-        <img src="https://wilspi.com/images/dp.jpg" alt="profile picture">
-        <h3 title=""><a href="/">नमस्ते</a></h3>
-        <div class="description">
-          <p></p>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://wilspi.com/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Nix shell and Awesomeness: An Intro",
+      "item": "https://wilspi.com/post/tech/nix-shell-and-awesomeness/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Nix shell and Awesomeness: An Intro",
+  "name": "Nix shell and Awesomeness: An Intro",
+  "description": "Last year while working with @amitu, I came across this wonderful tool called Nix.\nAbout Nix, its wiki says:\n Nix is a package manager and build system that parses reproducible …",
+  "keywords": [
+    "nix", "package-manager"
+  ],
+  "articleBody": "Last year while working with @amitu, I came across this wonderful tool called Nix.\nAbout Nix, its wiki says:\n Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation\n Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through nix-shell command, we will see below). This way, Nix can be used to create a virtual environment.\nLets setup an environment using nix-shell This is a recipe for creating environment with python 3.7.\n  Lets create shell.nix file with:\nwith import  {}; with pkgs.python27Packages; stdenv.mkDerivation { name = \"python-env\"; buildInputs = [ python37 python37Packages.pip python37Packages.virtualenv ]; SOURCE_DATE_EPOCH = 315532800; PROJDIR = \"${toString ./.}\"; shellHook = '' echo \"Using ${python37.name}\" [ ! -d '$PROJDIR/python-dev' ] \u0026\u0026 virtualenv python-dev \u0026\u0026 echo \"SETUP python-dev: DONE\" source python-dev/bin/activate # python -m pip install -r requirements.txt ''; }   Run:\nnix-shell --pure shell.nix\n--pure flag will create an environment that more closely corresponds to the “real” Nix build\n  This will download Python 3.7 and all its dependencies, build it and start a nix virtual environment.\nNix Recipes I have been using Nix for almost all my projects now. I have written nix recipes for creating virtual envs for:\n rust python nodejs postgres, etc.  With Nix, Life is Awesome  Nix allows to have multiple versions or variants of a package installed at the same time, especially important when different applications have dependencies on different versions of the same package Nix never uses host dependencies (“global” locations like /usr/bin), it always builds with exactly precise dependencies every time, and will always refer to them from then on. Nix lets you roll back changes atomically, even upgrades are atomic. nix-shell lets you make build environments that are totally reproducible across machines, and don’t interfere with each other.  Read all features here.\nIssues I faced  Nix will store multiple versions of your builds, this will use lot of your disk space. You will need to clean-up regularly using Nix garbage-collector. This is the price of having multiple generations, multiple profiles, multiple versions of software, the price of having many possibilities. Configuration (toolchain etc) for CLion/PyCharm gets reset whenever I update the packages, or switch between projects with different versions.  Extra  NixOS based on the Nix package manager and build system. Nix Expression Language is a pure, lazy, functional language, to describe packages, compositions of packages, and the variability within packages. We do use this for writing our nix recipes, but it is simple to understand unless you are doing very complicated stuff. Nix can also be used as your home manager but I am yet to try it.   ",
+  "wordCount" : "467",
+  "inLanguage": "en",
+  "datePublished": "2020-07-30T22:00:00+05:30",
+  "dateModified": "2020-07-30T22:00:00+05:30",
+  "author":{
+    "@type": "Person",
+    "name": "wilspi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wilspi.com/post/tech/nix-shell-and-awesomeness/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sourabh Deokar",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wilspi.com/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://wilspi.com" accesskey="h" title="Sourabh Deokar (Alt + H)">Sourabh Deokar</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                
+            </span>
         </div>
-      </div>
-    </div>
-    <ul class="social-links">
-        
-        <li>
-        <a href="https://github.com/wilspi/" rel="me" aria-label="GitHub">
-          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
-        </a>          
-        </li>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://wilspi.com/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://notes.wilspi.com" title="Notes">
+                    <span>Notes</span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
 
-        
-        <li>
-        <a href="https://www.youtube.com/channel/UCMg3idz-2FlreEeHY_0i13w" rel="me" aria-label="Youtube">
-          <i class="fa fa-2x fa-youtube" aria-hidden="true"></i>
-        </a>          
-        </li>
+    <main class="main">
 
-        
-        <li>
-        <a href="https://www.twitter.com/iamwilspi" rel="me" aria-label="Twitter">
-          <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
-        </a>          
-        </li>
+<article class="post-single">
+  <header class="post-header">
 
-        
-    </ul>
-    <div class="footer">
-        <div class="by_farbox">&copy; wilspi 2021 </div>
-      </div>
-    </div>
-</div><div class="main">
-            <div class="page-top animated fadeInDown">
-    <ul class="nav">
-        
-        
-        
-        <li><a  href="/" title="">Home</a></li>
-        
-        
-        <li><a  href="https://notes.wilspi.com" title="">Notes</a></li>
-        
-    </ul>
-    <div class="themeswitcher">
-        <a class="theme-switch" title="Switch Theme">
-            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
-        </a>
-    </div>
+    <h1 class="post-title">
+      Nix shell and Awesomeness: An Intro
+    </h1>
+    <div class="post-meta">
+
+July 30, 2020&nbsp;·&nbsp;3 min&nbsp;·&nbsp;wilspi
+
 </div>
+  </header> 
 
-            <div class="autopagerize_page_element">
-                <div class="content">
-<div class="post animated fadeInDown">
-    <div class="post-content">
-
-      <div class="post-title">
-        <h1>Nix shell and Awesomeness: An Intro
-        </h1>
-        
-        <div class="info">
-          
-          <i class="fa fa-clock-o"></i><span class="reading-time">3-minute read</span>
-        </div>
-        
-        </div>
-
-    <p>Last year while working with <a href="https://github.com/amitu/">@amitu</a>, I came across this wonderful tool called <a href="https://nixos.wiki/wiki/Nix">Nix</a>.</p>
+  <div class="post-content">
+<p>Last year while working with <a href="https://github.com/amitu/">@amitu</a>, I came across this wonderful tool called <a href="https://nixos.wiki/wiki/Nix">Nix</a>.</p>
 <p>About Nix, its wiki says:</p>
 <blockquote>
 <p>Nix is a package manager and build system that parses reproducible build instructions specified in the <a href="https://nixos.wiki/wiki/Nix_Expression_Language">Nix Expression Language</a>, a pure functional language with lazy evaluation</p>
 </blockquote>
 <p>Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through <code>nix-shell</code> command, we will see below).
 This way, Nix can be used to create a virtual environment.</p>
-<h2 id="lets-setup-an-environment-using-nix-shell">Lets setup an environment using <code>nix-shell</code></h2>
+<h2 id="lets-setup-an-environment-using-nix-shell">Lets setup an environment using <code>nix-shell</code><a hidden class="anchor" aria-hidden="true" href="#lets-setup-an-environment-using-nix-shell">#</a></h2>
 <p>This is a recipe for creating environment with <code>python 3.7</code>.</p>
 <ul>
 <li>
@@ -139,7 +240,7 @@ stdenv.mkDerivation {
 </li>
 </ul>
 <p>This will download <code>Python 3.7</code> and all its dependencies, build it and start a nix virtual environment.</p>
-<h2 id="nix-recipes">Nix Recipes</h2>
+<h2 id="nix-recipes">Nix Recipes<a hidden class="anchor" aria-hidden="true" href="#nix-recipes">#</a></h2>
 <p>I have been using Nix for almost all my projects now. I have written <a href="/post/tech/nix-recipes">nix recipes</a> for creating virtual envs for:</p>
 <ul>
 <li><a href="https://notes.wilspi.com/wiki/dev/technologies/nix/rust">rust</a></li>
@@ -147,7 +248,7 @@ stdenv.mkDerivation {
 <li><a href="https://notes.wilspi.com/wiki/dev/technologies/nix/nodejs">nodejs</a></li>
 <li><a href="https://notes.wilspi.com/wiki/dev/technologies/nix/postgresql">postgres</a>, etc.</li>
 </ul>
-<h2 id="with-nix-life-is-awesome">With Nix, Life is Awesome</h2>
+<h2 id="with-nix-life-is-awesome">With Nix, Life is Awesome<a hidden class="anchor" aria-hidden="true" href="#with-nix-life-is-awesome">#</a></h2>
 <ul>
 <li>Nix allows to have <strong>multiple versions or variants of a package</strong> installed at the same time, especially important when different applications have dependencies on different versions of the same package</li>
 <li>Nix <strong>never uses host dependencies</strong> (“global” locations like <code>/usr/bin</code>), it always builds with exactly precise dependencies every time, and will always refer to them from then on.</li>
@@ -155,12 +256,12 @@ stdenv.mkDerivation {
 <li><code>nix-shell</code> lets you make build environments that are totally <strong>reproducible across machines</strong>, and don’t interfere with each other.</li>
 </ul>
 <p>Read all features <a href="https://nixos.org/features.html">here</a>.</p>
-<h2 id="issues-i-faced">Issues I faced</h2>
+<h2 id="issues-i-faced">Issues I faced<a hidden class="anchor" aria-hidden="true" href="#issues-i-faced">#</a></h2>
 <ul>
 <li>Nix will store multiple versions of your builds, this will use lot of your disk space. You will need to clean-up regularly using Nix <a href="https://nixos.org/nixos/nix-pills/garbage-collector.html">garbage-collector</a>. This is the price of having multiple generations, multiple profiles, multiple versions of software, the <strong>price of having many possibilities</strong>.</li>
 <li>Configuration (toolchain etc) for CLion/PyCharm gets reset whenever I update the packages, or switch between projects with different versions.</li>
 </ul>
-<h2 id="extra">Extra</h2>
+<h2 id="extra">Extra<a hidden class="anchor" aria-hidden="true" href="#extra">#</a></h2>
 <ul>
 <li><a href="https://nixos.wiki/wiki/NixOS">NixOS</a> based on the Nix package manager and build system.</li>
 <li><a href="https://nixos.wiki/wiki/Nix_Expression_Language">Nix Expression Language</a> is a pure, lazy, functional language, to describe packages, compositions of packages, and the variability within packages.
@@ -172,49 +273,86 @@ We do use this for writing our nix recipes, but it is simple to understand unles
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 
-    </div>
-    <div class="post-footer">
-      <div class="info">
-        
-<span class="separator"><a class="category" href="/categories/tech/">tech</a></span>
-
-        
-    <span class="separator"><a class="tag" href="/tags/nix/">nix</a><a class="tag" href="/tags/package-manager/">package-manager</a></span>
-
-      </div>
-    </div>
-
-    
-    
-    
 </div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://wilspi.com/tags/nix/">nix</a></li>
+      <li><a href="https://wilspi.com/tags/package-manager/">package-manager</a></li>
+    </ul>
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2021 <a href="https://wilspi.com">Sourabh Deokar</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
 
 
-                </div>
-            </div>
-        </div>
-</body>
 
+<script defer src="/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
 
-<script type="text/javascript" src="https://wilspi.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js" integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw=" crossorigin="anonymous"></script>
-
-
-
-
-<script type="text/javascript" src="https://wilspi.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js" integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4=" crossorigin="anonymous"></script>
-
-<script type="text/javascript" src="https://wilspi.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js" integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro=" crossorigin="anonymous"></script>
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-51915090-3', 'auto');
-	
-	ga('send', 'pageview');
-}
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-</html></body>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
 
 </html>

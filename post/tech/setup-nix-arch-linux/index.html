@@ -1,20 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light"><head>
-    <title> Setup multi user nix for Arch Linux | wilspi </title>
-    <meta charset="utf-8"><meta name="generator" content="Hugo 0.79.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-    <meta name="description" content="">
-    
-    <link rel="stylesheet" href="https://wilspi.com/css/style.min.67cd718c0a3c8009c771494d381fb7128246a454bd0518fed97cb65d257db948.css" integrity="sha256-Z81xjAo8gAnHcUlNOB&#43;3EoJGpFS9BRj&#43;2Xy2XSV9uUg=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    
-    <link rel="shortcut icon" href="https://wilspi.com/favicons/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://wilspi.com/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
-    <link rel="canonical" href="https://wilspi.com/post/tech/setup-nix-arch-linux/">
-    
-    
-    <script type="text/javascript" src="https://wilspi.com/js/anatole-header.min.c275265a259296f3dd50e8236a77fcbcadb1dbb9597d3045c675dcc2c7c58a93.js" integrity="sha256-wnUmWiWSlvPdUOgjanf8vK2x27lZfTBFxnXcwsfFipM=" crossorigin="anonymous"></script>
-    <meta name="twitter:card" content="summary_large_image"/>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Setup multi user nix for Arch Linux | Sourabh Deokar</title>
+
+<meta name="keywords" content="arch-linux, nix" />
+<meta name="description" content="Here we are setting up nix for Arch Linux.
+Multi User Setup From nix&rsquo;s page:
+ To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.">
+<meta name="author" content="wilspi">
+<link rel="canonical" href="https://wilspi.com/post/tech/setup-nix-arch-linux/" />
+<link href="/assets/css/stylesheet.min.f580a29692e0c7eb72865ec0bd4ee916bef2dc7e85f4fbfdf6a609b3a0f4f6a1.css" integrity="sha256-9YCilpLgx&#43;tyhl7AvU7pFr7y3H6F9Pv99qYJs6D09qE=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://wilspi.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://wilspi.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://wilspi.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.79.0" />
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-51915090-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<meta property="og:title" content="Setup multi user nix for Arch Linux" />
+<meta property="og:description" content="Here we are setting up nix for Arch Linux.
+Multi User Setup From nix&rsquo;s page:
+ To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wilspi.com/post/tech/setup-nix-arch-linux/" />
+<meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
+<meta property="article:published_time" content="2020-08-01T22:00:00+05:30" />
+<meta property="article:modified_time" content="2020-08-01T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
 <meta name="twitter:title" content="Setup multi user nix for Arch Linux"/>
@@ -22,81 +54,148 @@
 Multi User Setup From nix&rsquo;s page:
  To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users."/>
 
-</head><body><div class="sidebar animated fadeInDown">
-    <div class="logo-title">
-      <div class="title">
-        <img src="https://wilspi.com/images/dp.jpg" alt="profile picture">
-        <h3 title=""><a href="/">नमस्ते</a></h3>
-        <div class="description">
-          <p></p>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://wilspi.com/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Setup multi user nix for Arch Linux",
+      "item": "https://wilspi.com/post/tech/setup-nix-arch-linux/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Setup multi user nix for Arch Linux",
+  "name": "Setup multi user nix for Arch Linux",
+  "description": "Here we are setting up nix for Arch Linux.\nMulti User Setup From nix\u0026amp;rsquo;s page:\n To allow a Nix store to be shared safely among multiple users, it is important that users are …",
+  "keywords": [
+    "arch-linux", "nix"
+  ],
+  "articleBody": "Here we are setting up nix for Arch Linux.\nMulti User Setup From nix’s page:\n To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.\nTo prevent this, the Nix store and database are owned by some privileged user (usually root) and builders are executed under special user accounts (usually named nixbld1, nixbld2, etc.). When a unprivileged user runs a Nix command, actions that operate on the Nix store (such as builds) are forwarded to a Nix daemon running under the owner of the Nix store/database that performs the operation\n Steps:\n  Install nix via yay (AUR helper)\nyay -S nix If encounter error:\nerror while loading shared libraries: libboost_context.so.1.69.0: cannot open shared object file: No such file or directory\nedit PKGBUILD for nix and in depends replace boost with boost. This happens because nix package has a hard dependency on boost1.69 version, more info here.\n  Add nix builder groups\nsudo groupadd -r nixbld for n in $(seq 1 10); do sudo useradd -c \"Nix build user $n\" \\ -d /var/empty -g nixbld -G nixbld -M -N -r -s \"$(which nologin)\" \\ nixbld$n; done   Source env variables\n. /etc/profile.d/nix.sh   Running the daemon\nsudo nix-daemon \u0026 disown export NIX_REMOTE=daemon   Add and update channel\nnix-channel --add https://nixos.org/channels/nixpkgs-unstable sudo nix-channel --update nix-env -u   We are all done, run following to check if nix-deamon is running:\nnix-shell -p hello --run hello ",
+  "wordCount" : "279",
+  "inLanguage": "en",
+  "datePublished": "2020-08-01T22:00:00+05:30",
+  "dateModified": "2020-08-01T22:00:00+05:30",
+  "author":{
+    "@type": "Person",
+    "name": "wilspi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wilspi.com/post/tech/setup-nix-arch-linux/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sourabh Deokar",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wilspi.com/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://wilspi.com" accesskey="h" title="Sourabh Deokar (Alt + H)">Sourabh Deokar</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                
+            </span>
         </div>
-      </div>
-    </div>
-    <ul class="social-links">
-        
-        <li>
-        <a href="https://github.com/wilspi/" rel="me" aria-label="GitHub">
-          <i class="fa fa-2x fa-github" aria-hidden="true"></i>
-        </a>          
-        </li>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://wilspi.com/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://notes.wilspi.com" title="Notes">
+                    <span>Notes</span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
 
-        
-        <li>
-        <a href="https://www.youtube.com/channel/UCMg3idz-2FlreEeHY_0i13w" rel="me" aria-label="Youtube">
-          <i class="fa fa-2x fa-youtube" aria-hidden="true"></i>
-        </a>          
-        </li>
+    <main class="main">
 
-        
-        <li>
-        <a href="https://www.twitter.com/iamwilspi" rel="me" aria-label="Twitter">
-          <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
-        </a>          
-        </li>
+<article class="post-single">
+  <header class="post-header">
 
-        
-    </ul>
-    <div class="footer">
-        <div class="by_farbox">&copy; wilspi 2021 </div>
-      </div>
-    </div>
-</div><div class="main">
-            <div class="page-top animated fadeInDown">
-    <ul class="nav">
-        
-        
-        
-        <li><a  href="/" title="">Home</a></li>
-        
-        
-        <li><a  href="https://notes.wilspi.com" title="">Notes</a></li>
-        
-    </ul>
-    <div class="themeswitcher">
-        <a class="theme-switch" title="Switch Theme">
-            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
-        </a>
-    </div>
+    <h1 class="post-title">
+      Setup multi user nix for Arch Linux
+    </h1>
+    <div class="post-meta">
+
+August 1, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+
 </div>
+  </header> 
 
-            <div class="autopagerize_page_element">
-                <div class="content">
-<div class="post animated fadeInDown">
-    <div class="post-content">
-
-      <div class="post-title">
-        <h1>Setup multi user nix for Arch Linux
-        </h1>
-        
-        <div class="info">
-          
-          <i class="fa fa-clock-o"></i><span class="reading-time">2-minute read</span>
-        </div>
-        
-        </div>
-
-    <p>Here we are setting up <a href="/post/tech/nix-shell-and-awesomeness">nix</a> for <a href="https://www.archlinux.org/">Arch Linux</a>.</p>
-<h2 id="multi-user-setup">Multi User Setup</h2>
+  <div class="post-content">
+<p>Here we are setting up <a href="/post/tech/nix-shell-and-awesomeness">nix</a> for <a href="https://www.archlinux.org/">Arch Linux</a>.</p>
+<h2 id="multi-user-setup">Multi User Setup<a hidden class="anchor" aria-hidden="true" href="#multi-user-setup">#</a></h2>
 <p>From <a href="https://nixos.org/nix/manual/#ssec-multi-user">nix</a>&rsquo;s page:</p>
 <blockquote>
 <p>To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.</p>
@@ -137,49 +236,86 @@ nix-env -u
 <p>We are all done, run following to check if nix-deamon is running:</p>
 <pre><code>nix-shell -p hello --run hello
 </code></pre>
-    </div>
-    <div class="post-footer">
-      <div class="info">
-        
-<span class="separator"><a class="category" href="/categories/tech/">tech</a></span>
-
-        
-    <span class="separator"><a class="tag" href="/tags/arch-linux/">arch-linux</a><a class="tag" href="/tags/nix/">nix</a></span>
-
-      </div>
-    </div>
-
-    
-    
-    
 </div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://wilspi.com/tags/arch-linux/">arch-linux</a></li>
+      <li><a href="https://wilspi.com/tags/nix/">nix</a></li>
+    </ul>
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2021 <a href="https://wilspi.com">Sourabh Deokar</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
 
 
-                </div>
-            </div>
-        </div>
-</body>
 
+<script defer src="/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
 
-<script type="text/javascript" src="https://wilspi.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js" integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw=" crossorigin="anonymous"></script>
-
-
-
-
-<script type="text/javascript" src="https://wilspi.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js" integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4=" crossorigin="anonymous"></script>
-
-<script type="text/javascript" src="https://wilspi.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js" integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro=" crossorigin="anonymous"></script>
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-51915090-3', 'auto');
-	
-	ga('send', 'pageview');
-}
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-</html></body>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
 
 </html>
