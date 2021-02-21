@@ -8,14 +8,14 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 08 Aug 2020 15:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/elm/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Learning Elm: 2048 game in Elm</title>
+      <title>Learning Elm with 2048 game</title>
       <link>https://wilspi.com/post/tech/2048-game-in-elmlang/</link>
       <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/post/tech/2048-game-in-elmlang/</guid>
-      <description>Elm is a front-end programming language optimized for developer&amp;rsquo;s happiness. Elm basics are very straightforward, which is just the Elm Architecture.
-The Elm Architecture  Model — the state of your application View — a way to turn your state into HTML Update — a way to update your state based on messages  You can read more about Elm here.
-Here, we will construct the famous game: 2048 in Elm.</description>
+      <description>During my stint at Acko, we were using Elm in parts of our codebase but I never got the chance to extensively work on any Elm project. I was intrigued with the language (optimized for developer&amp;rsquo;s happiness, they say), and so I decided to try it out. To validate my learning, I decided to build a simple app, but not another TODO app.
+Here comes: 2048
+2048 Game 2048 is a game created by gabrielecirulli which went viral in 2014.</description>
     </item>
     
   </channel>

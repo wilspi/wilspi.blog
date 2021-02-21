@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 29 Jul 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/django/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Django Middleware: log requests and responses</title>
+      <title>Log requests and responses with Django Middleware</title>
       <link>https://wilspi.com/post/tech/django-middleware-to-log-requests/</link>
       <pubDate>Wed, 29 Jul 2020 22:00:00 +0530</pubDate>
       

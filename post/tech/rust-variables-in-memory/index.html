@@ -5,9 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Rust: Variables in Memory | wilspi</title>
+<title>Variables and Memory management in Rust | wilspi</title>
 
-<meta name="keywords" content="rust" />
+<meta name="keywords" content="rust, tech" />
 <meta name="description" content="In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Let&rsquo;s look at how Rust does it.
 Note: These are quick short notes, if you want to look in deep check out rustlang docs.
 Ownership In programming languages, either a garbage collector is used which will clean up the memory used by the unused variables or the memory is explicitly freed by the programmer in the code.">
@@ -37,7 +37,7 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
-<meta property="og:title" content="Rust: Variables in Memory" />
+<meta property="og:title" content="Variables and Memory management in Rust" />
 <meta property="og:description" content="In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Let&rsquo;s look at how Rust does it.
 Note: These are quick short notes, if you want to look in deep check out rustlang docs.
 Ownership In programming languages, either a garbage collector is used which will clean up the memory used by the unused variables or the memory is explicitly freed by the programmer in the code." />
@@ -49,7 +49,7 @@ Ownership In programming languages, either a garbage collector is used which wil
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
-<meta name="twitter:title" content="Rust: Variables in Memory"/>
+<meta name="twitter:title" content="Variables and Memory management in Rust"/>
 <meta name="twitter:description" content="In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Let&rsquo;s look at how Rust does it.
 Note: These are quick short notes, if you want to look in deep check out rustlang docs.
 Ownership In programming languages, either a garbage collector is used which will clean up the memory used by the unused variables or the memory is explicitly freed by the programmer in the code."/>
@@ -69,7 +69,7 @@ Ownership In programming languages, either a garbage collector is used which wil
     {
       "@type": "ListItem",
       "position":  3 ,
-      "name": "Rust: Variables in Memory",
+      "name": "Variables and Memory management in Rust",
       "item": "https://wilspi.com/post/tech/rust-variables-in-memory/"
     }
   ]
@@ -79,11 +79,11 @@ Ownership In programming languages, either a garbage collector is used which wil
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Rust: Variables in Memory",
-  "name": "Rust: Variables in Memory",
+  "headline": "Variables and Memory management in Rust",
+  "name": "Variables and Memory management in Rust",
   "description": "In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Let\u0026amp;rsquo;s look at how Rust does it. …",
   "keywords": [
-    "rust"
+    "rust", "tech"
   ],
   "articleBody": "In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Let’s look at how Rust does it.\nNote: These are quick short notes, if you want to look in deep check out rustlang docs.\nOwnership In programming languages, either a garbage collector is used which will clean up the memory used by the unused variables or the memory is explicitly freed by the programmer in the code. In Rust, we have a system of ownership which follows the rule:\n Resources (memory) can have only one owner at a time\n To handle this correctly, we must have exactly one allocate and exactly one free. Rust handles this by automatically returning the memory (free) when the variable goes out of scope by calling a special function called drop, see RAII.\nCopy and Clone Variables which are stored in stack memory can easily be bit-wise copied to other variables, but variables which are stored in heap are not so easy to copy since the memory size is unknown and can also lead to memory safety bugs like Double Free Error down the line.\nLet’s look at examples:\nExample 1: Heap:\nlet x = String::from(\"wilspi\"); let y = x; println!(\"x: {}\", x); This will throw an error at compilation since the owner is moved from x to y (Ownership rule).\nExample 2: Stack:\nlet a = 42; let b = a; println!(\"a: {}\", a) This is valid and doesn’t throw an error.\nRust implements this via copy trait. Here are some of the types that are Copy:\n All the integer types, such as u32. The Boolean type, bool, with values true and false. All the floating-point types, such as f64. The character type, char. Tuples, if they only contain types that are also Copy. For example, (i32, i32) is Copy, but (i32, String) is not.  Points to note:\n For types that don’t implement Copy trait can copy the values explicitly using .clone() (types must implement Copy trait) Copies happen implicitly, for example as part of an assignment y = x. The behavior of Copy is always a simple bit-wise copy. Clone is a super-trait of Copy, so everything which is Copy must also implement Clone. A type can implement Copy if all of its components implement Copy. Any type implementing Drop can’t be Copy.  Borrowing Most of the time, we’d like to access data without taking ownership over it. To accomplish this, Rust uses a borrowing mechanism. Instead of passing objects by value (T), objects can be passed by reference (\u0026T).\nThere can be many references (variables that can only read the value) to the resource but only one owner (the variable that can write/modify the value). When all the variables pointing to the resource go out of scope, the value will be dropped and the resource will be freed.\nTO BE CONTINUED …\nExtra Read this beautiful excerpt to understand memory storage in Stack and Heap:\n Both the stack and the heap are parts of memory that are available to your code to use at runtime, but they are structured in different ways. The stack stores values in the order it gets them and removes the values in the opposite order. This is referred to as last in, first out. Think of a stack of plates: when you add more plates, you put them on top of the pile, and when you need a plate, you take one off the top. Adding or removing plates from the middle or bottom wouldn’t work as well! Adding data is called pushing onto the stack, and removing data is called popping off the stack.\nAll data stored on the stack must have a known, fixed size. Data with an unknown size at compile time or a size that might change must be stored on the heap instead. The heap is less organized: when you put data on the heap, you request a certain amount of space. The memory allocator finds an empty spot in the heap that is big enough, marks it as being in use, and returns a pointer, which is the address of that location. This process is called allocating on the heap and is sometimes abbreviated as just allocating. Pushing values onto the stack is not considered allocating. Because the pointer is a known, fixed size, you can store the pointer on the stack, but when you want the actual data, you must follow the pointer.\nThink of being seated at a restaurant. When you enter, you state the number of people in your group, and the staff finds an empty table that fits everyone and leads you there. If someone in your group comes late, they can ask where you’ve been seated to find you.\nPushing to the stack is faster than allocating on the heap because the allocator never has to search for a place to store new data; that location is always at the top of the stack. Comparatively, allocating space on the heap requires more work, because the allocator must first find a big enough space to hold the data and then perform bookkeeping to prepare for the next allocation.\nAccessing data in the heap is slower than accessing data on the stack because you have to follow a pointer to get there. Contemporary processors are faster if they jump around less in memory. Continuing the analogy, consider a server at a restaurant taking orders from many tables. It’s most efficient to get all the orders at one table before moving on to the next table. Taking an order from table A, then an order from table B, then one from A again, and then one from B again would be a much slower process. By the same token, a processor can do its job better if it works on data that’s close to other data (as it is on the stack) rather than farther away (as it can be on the heap). Allocating a large amount of space on the heap can also take time.\nWhen your code calls a function, the values passed into the function (including, potentially, pointers to data on the heap) and the function’s local variables get pushed onto the stack. When the function is over, those values get popped off the stack.\nKeeping track of what parts of code are using what data on the heap, minimizing the amount of duplicate data on the heap, and cleaning up unused data on the heap so you don’t run out of space are all problems that ownership addresses. Once you understand ownership, you won’t need to think about the stack and the heap very often, but knowing that managing heap data is why ownership exists can help explain why it works the way it does.\n ",
   "wordCount" : "1132",
@@ -184,7 +184,7 @@ Ownership In programming languages, either a garbage collector is used which wil
   <header class="post-header">
 
     <h1 class="post-title">
-      Rust: Variables in Memory
+      Variables and Memory management in Rust
     </h1>
     <div class="post-meta">
 
@@ -197,14 +197,14 @@ August 5, 2020&nbsp;·&nbsp;6 min&nbsp;·&nbsp;wilspi
 <p>In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient.
 Let&rsquo;s look at how Rust does it.</p>
 <p>Note: These are quick short notes, if you want to look in deep check out <a href="https://doc.rust-lang.org/book/index.html">rustlang docs</a>.</p>
-<h2 id="ownership">Ownership<a hidden class="anchor" aria-hidden="true" href="#ownership">#</a></h2>
+<h3 id="ownership">Ownership<a hidden class="anchor" aria-hidden="true" href="#ownership">#</a></h3>
 <p>In programming languages, either a <a href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">garbage collector</a> is used which will clean up the memory used by the unused variables or the memory is explicitly freed by the programmer in the code. In Rust, we have a system of <strong>ownership</strong> which follows the rule:</p>
 <blockquote>
 <p>Resources (memory) can have only one owner at a time</p>
 </blockquote>
 <p>To handle this correctly, we must have exactly one <code>allocate</code> and exactly one <code>free</code>.
 Rust handles this by automatically returning the memory (free) when the variable goes out of scope by calling a special function called <a href="https://doc.rust-lang.org/std/ops/trait.Drop.html">drop</a>, see <a href="https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization">RAII</a>.</p>
-<h2 id="copy-and-clone">Copy and Clone<a hidden class="anchor" aria-hidden="true" href="#copy-and-clone">#</a></h2>
+<h3 id="copy-and-clone">Copy and Clone<a hidden class="anchor" aria-hidden="true" href="#copy-and-clone">#</a></h3>
 <p>Variables which are stored in stack memory can easily be bit-wise copied to other variables, but variables which are stored in heap are not so easy to copy since the memory size is unknown and can also lead to memory safety bugs like <a href="https://heap-exploitation.dhavalkapil.com/attacks/double_free.html">Double Free Error</a> down the line.</p>
 <p>Let&rsquo;s look at examples:</p>
 <p>Example 1: Heap:</p>
@@ -234,7 +234,7 @@ Here are some of the types that are <code>Copy</code>:</p>
 <li>A type can implement Copy if all of its components implement Copy.</li>
 <li>Any type implementing Drop can&rsquo;t be Copy.</li>
 </ul>
-<h2 id="borrowing">Borrowing<a hidden class="anchor" aria-hidden="true" href="#borrowing">#</a></h2>
+<h3 id="borrowing">Borrowing<a hidden class="anchor" aria-hidden="true" href="#borrowing">#</a></h3>
 <p>Most of the time, we&rsquo;d like to access data without taking ownership over it. To accomplish this, Rust uses a borrowing mechanism. Instead of passing objects by value (<code>T</code>), objects can be passed by reference (<code>&amp;T</code>).</p>
 <p>There can be many references (variables that can only read the value) to the resource but only one owner (the variable that can write/modify the value).
 When all the variables pointing to the resource go out of scope, the value will be dropped and the resource will be freed.</p>
@@ -242,7 +242,7 @@ When all the variables pointing to the resource go out of scope, the value will 
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
-<h2 id="extra">Extra<a hidden class="anchor" aria-hidden="true" href="#extra">#</a></h2>
+<h3 id="extra">Extra<a hidden class="anchor" aria-hidden="true" href="#extra">#</a></h3>
 <p>Read this beautiful <a href="https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#the-stack-and-the-heap">excerpt</a> to understand memory storage in <strong>Stack and Heap</strong>:</p>
 <blockquote>
 <p>Both the stack and the heap are parts of memory that are available to your code to use at runtime, but they are structured in different ways. The stack stores values in the order it gets them and removes the values in the opposite order. This is referred to as last in, first out. Think of a stack of plates: when you add more plates, you put them on top of the pile, and when you need a plate, you take one off the top. Adding or removing plates from the middle or bottom wouldn’t work as well! Adding data is called pushing onto the stack, and removing data is called popping off the stack.</p>
@@ -258,6 +258,7 @@ When all the variables pointing to the resource go out of scope, the value will 
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://wilspi.com/tags/rust/">rust</a></li>
+      <li><a href="https://wilspi.com/tags/tech/">tech</a></li>
     </ul>
   </footer>
 </article>

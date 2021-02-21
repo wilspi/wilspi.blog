@@ -5,9 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Save the production with nginx | wilspi</title>
+<title>Save the production with Nginx hack | wilspi</title>
 
-<meta name="keywords" content="nginx, production" />
+<meta name="keywords" content="nginx, production, tech" />
 <meta name="description" content="Quick nginx hack to save your production web server in case the web service starts crashing.
 If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down.">
 <meta name="author" content="wilspi">
@@ -36,18 +36,18 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
-<meta property="og:title" content="Save the production with nginx" />
+<meta property="og:title" content="Save the production with Nginx hack" />
 <meta property="og:description" content="Quick nginx hack to save your production web server in case the web service starts crashing.
 If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://wilspi.com/post/tech/save-production-via-nginx/" />
 <meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
-<meta property="article:published_time" content="2020-07-29T22:00:00+05:30" />
-<meta property="article:modified_time" content="2020-07-29T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta property="article:published_time" content="2020-03-12T22:00:00+05:30" />
+<meta property="article:modified_time" content="2020-03-12T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
-<meta name="twitter:title" content="Save the production with nginx"/>
+<meta name="twitter:title" content="Save the production with Nginx hack"/>
 <meta name="twitter:description" content="Quick nginx hack to save your production web server in case the web service starts crashing.
 If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down."/>
 
@@ -66,7 +66,7 @@ If you have been working in a production environment, you know at certain times 
     {
       "@type": "ListItem",
       "position":  3 ,
-      "name": "Save the production with nginx",
+      "name": "Save the production with Nginx hack",
       "item": "https://wilspi.com/post/tech/save-production-via-nginx/"
     }
   ]
@@ -76,17 +76,17 @@ If you have been working in a production environment, you know at certain times 
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Save the production with nginx",
-  "name": "Save the production with nginx",
+  "headline": "Save the production with Nginx hack",
+  "name": "Save the production with Nginx hack",
   "description": "Quick nginx hack to save your production web server in case the web service starts crashing.\nIf you have been working in a production environment, you know at certain times your …",
   "keywords": [
-    "nginx", "production"
+    "nginx", "production", "tech"
   ],
   "articleBody": "Quick nginx hack to save your production web server in case the web service starts crashing.\nIf you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down. You should anyways have this as a backup tactic for your service failure. DevOps generally use autoscaling at such times.\nNote: This won’t work if there is data inconsistency, since all service will crash.\nSteps Here go the how-to steps:\n  Start the services Start 3 processes of the web service on multiple ports (in below gist: 3000, 3002, 3004 )\n  Upstream conf Add your upstream in nginx conf file (here myserver):\nupstream myserver { server 127.0.0.1:3000 fail_timeout=0; server 127.0.0.1:3002 fail_timeout=0; server 127.0.0.1:3004 backup; } Here nginx and web services are running on the same box. If you are running your services on a different machine, you can replace 127.0.0.1 with the machine’s IP.\nTwo services (ones running on ports 3000 and 3002) to distribute the load and one (on 3004) as a backup if either crash.\n  Update path In your location block, add the following code block in your nginx conf replacing\n myroute with your route myserver with your upstream name  location ~ ^/myroute/(.*) { proxy_next_upstream error timeout invalid_header http_502 http_503 http_504; proxy_pass ; } Read about proxy_next_upstream here.\n  Reload nginx Run to reload the configuration:\nsudo systemctl nginx reload   Extra In my case, it was our rust web service which was getting stuck, failing all the subsequent requests. I created a health-check service that monitored and restarted the rust service whenever that happened. But I knew during this downtime period many of the requests would fail, we didn’t want that. So I added three processes of this service on different ports and proxied them the way shown above.\n",
   "wordCount" : "340",
   "inLanguage": "en",
-  "datePublished": "2020-07-29T22:00:00+05:30",
-  "dateModified": "2020-07-29T22:00:00+05:30",
+  "datePublished": "2020-03-12T22:00:00+05:30",
+  "dateModified": "2020-03-12T22:00:00+05:30",
   "author":{
     "@type": "Person",
     "name": "wilspi"
@@ -181,11 +181,11 @@ If you have been working in a production environment, you know at certain times 
   <header class="post-header">
 
     <h1 class="post-title">
-      Save the production with nginx
+      Save the production with Nginx hack
     </h1>
     <div class="post-meta">
 
-July 29, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+March 12, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
 
 </div>
   </header> 
@@ -196,7 +196,7 @@ July 29, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
 It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down. You should anyways have this as a backup tactic for your service failure.
 DevOps generally use autoscaling at such times.</p>
 <p>Note: This won&rsquo;t work if there is data inconsistency, since all service will crash.</p>
-<h2 id="steps">Steps<a hidden class="anchor" aria-hidden="true" href="#steps">#</a></h2>
+<h3 id="steps">Steps<a hidden class="anchor" aria-hidden="true" href="#steps">#</a></h3>
 <p>Here go the how-to steps:</p>
 <ul>
 <li>
@@ -206,12 +206,12 @@ DevOps generally use autoscaling at such times.</p>
 <li>
 <h4 id="upstream-conf">Upstream conf<a hidden class="anchor" aria-hidden="true" href="#upstream-conf">#</a></h4>
 <p>Add your upstream in nginx conf file (here <code>myserver</code>):</p>
-<pre><code>upstream myserver {
-  server 127.0.0.1:3000 fail_timeout=0;
-  server 127.0.0.1:3002 fail_timeout=0;
-  server 127.0.0.1:3004 backup;
-}
-</code></pre><p>Here nginx and web services are running on the same box. If you are running your services on a different machine, you can replace <code>127.0.0.1</code> with the machine&rsquo;s IP.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-apacheconf" data-lang="apacheconf">upstream myserver {
+    server <span style="color:#ae81ff">127.0.0.1</span>:3000 fail_timeout=0;
+    server <span style="color:#ae81ff">127.0.0.1</span>:3002 fail_timeout=0;
+    server <span style="color:#ae81ff">127.0.0.1</span>:3004 backup;
+<span style="color:#960050;background-color:#1e0010">}</span>
+</code></pre></div><p>Here nginx and web services are running on the same box. If you are running your services on a different machine, you can replace <code>127.0.0.1</code> with the machine&rsquo;s IP.</p>
 <p>Two services (ones running on ports <code>3000</code> and <code>3002</code>) to distribute the load and one (on <code>3004</code>) as a backup if either crash.</p>
 </li>
 <li>
@@ -221,19 +221,19 @@ DevOps generally use autoscaling at such times.</p>
 <li><code>myroute</code> with your route</li>
 <li><code>myserver</code> with your upstream name</li>
 </ul>
-<pre><code>location ~ ^/myroute/(.*) {
-  proxy_next_upstream error timeout invalid_header http_502 http_503 http_504;
-  proxy_pass &lt;http://myserver&gt;;
-}
-</code></pre><p>Read about <code>proxy_next_upstream</code> <a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_next_upstream">here</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-apacheconf" data-lang="apacheconf">location ~ ^/myroute/(.*) {
+    proxy_next_upstream <span style="color:#66d9ef">error</span> timeout invalid_header http_502 http_503 http_504;
+    proxy_pass &lt;http://myserver&gt;;
+<span style="color:#960050;background-color:#1e0010">}</span>
+</code></pre></div><p>Read about <code>proxy_next_upstream</code> <a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_next_upstream">here</a>.</p>
 </li>
 <li>
 <h4 id="reload-nginx">Reload nginx<a hidden class="anchor" aria-hidden="true" href="#reload-nginx">#</a></h4>
 <p>Run to reload the configuration:</p>
-<pre><code>sudo systemctl nginx reload
-</code></pre></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo systemctl nginx reload
+</code></pre></div></li>
 </ul>
-<h2 id="extra">Extra<a hidden class="anchor" aria-hidden="true" href="#extra">#</a></h2>
+<h3 id="extra">Extra<a hidden class="anchor" aria-hidden="true" href="#extra">#</a></h3>
 <p>In my case, it was our rust web service which was getting stuck, failing all the subsequent requests. I created a health-check service that monitored and restarted the rust service whenever that happened. But I knew during this downtime period many of the requests would fail, we didn&rsquo;t want that. So I added three processes of this service on different ports and proxied them the way shown above.</p>
 <p><img src="/images/55hLpaQtG75YuLZs3bmO1kdg.png" alt="rust services"></p>
 
@@ -242,6 +242,7 @@ DevOps generally use autoscaling at such times.</p>
     <ul class="post-tags">
       <li><a href="https://wilspi.com/tags/nginx/">nginx</a></li>
       <li><a href="https://wilspi.com/tags/production/">production</a></li>
+      <li><a href="https://wilspi.com/tags/tech/">tech</a></li>
     </ul>
   </footer>
 </article>
