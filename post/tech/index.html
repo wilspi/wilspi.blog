@@ -5,12 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>python | wilspi | Sourabh Deokar</title>
+<title>tech | wilspi | Sourabh Deokar</title>
 
 <meta name="keywords" content="" />
 <meta name="description" content="">
 <meta name="author" content="wilspi">
-<link rel="canonical" href="https://wilspi.com/tags/python/" />
+<link rel="canonical" href="https://wilspi.com/post/tech/" />
 <link href="/assets/css/stylesheet.min.f580a29692e0c7eb72865ec0bd4ee916bef2dc7e85f4fbfdf6a609b3a0f4f6a1.css" integrity="sha256-9YCilpLgx&#43;tyhl7AvU7pFr7y3H6F9Pv99qYJs6D09qE=" rel="preload stylesheet"
     as="style">
 
@@ -22,7 +22,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.79.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://wilspi.com/tags/python/index.xml">
+<link rel="alternate" type="application/rss&#43;xml" href="https://wilspi.com/post/tech/index.xml">
 
 
 
@@ -36,17 +36,40 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
-<meta property="og:title" content="python" />
+<meta property="og:title" content="tech" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://wilspi.com/tags/python/" />
+<meta property="og:url" content="https://wilspi.com/post/tech/" />
 <meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
-<meta property="og:updated_time" content="2020-07-31T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta property="og:updated_time" content="2020-08-08T15:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
-<meta name="twitter:title" content="python"/>
+<meta name="twitter:title" content="tech"/>
 <meta name="twitter:description" content=""/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://wilspi.com/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "tech",
+      "item": "https://wilspi.com/post/tech/"
+    }
+  ]
+}
+</script>
+
 
 
 
@@ -113,13 +136,86 @@ if (!doNotTrack) {
     <main class="main"> 
 <header class="page-header">
 
-  <h1>python</h1>
+  <h1>tech</h1>
 </header>
 
 
 
 
-<article class="post-entry tag-entry"> 
+<article class="post-entry"> 
+
+  <header class="entry-header">
+    <h2>
+      Learning Elm with 2048 game
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Last summer, I was curious to try out Elm for its marketed term: “optimized for developer happiness”, so I thought of building 2048 game with it.
+2048 Game 2048 is a game created by gabrielecirulli which went viral in 2014. I chose 2048 because the functioning of the game is simple which will help me/us understand Elm clearly.
+You can play here.
+Whats the game? The functioning of the game is:...</p>
+  </section>
+  <footer class="entry-footer">
+
+August 8, 2020&nbsp;·&nbsp;5 min&nbsp;·&nbsp;wilspi
+</footer>
+  <a class="entry-link" aria-label="post link to Learning Elm with 2048 game" href="https://wilspi.com/post/tech/2048-game-in-elmlang/"></a>
+</article>
+<article class="post-entry"> 
+
+  <header class="entry-header">
+    <h2>
+      Variables and Memory management in Rust
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Let’s look at how Rust does it.
+Note: These are quick short notes, if you want to look in deep check out rustlang docs.
+Ownership In programming languages, either a garbage collector is used which will clean up the memory used by the unused variables or the memory is explicitly freed by the programmer in the code....</p>
+  </section>
+  <footer class="entry-footer">
+
+August 5, 2020&nbsp;·&nbsp;6 min&nbsp;·&nbsp;wilspi
+</footer>
+  <a class="entry-link" aria-label="post link to Variables and Memory management in Rust" href="https://wilspi.com/post/tech/rust-variables-in-memory/"></a>
+</article>
+<article class="post-entry"> 
+
+  <header class="entry-header">
+    <h2>
+      Slogging with multiple drains in Rust
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Slog is a structured logging library for rust-lang.
+Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:
+ processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Basic Logging with Slog Lets create a simple logger:
+#[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!...</p>
+  </section>
+  <footer class="entry-footer">
+
+August 3, 2020&nbsp;·&nbsp;3 min&nbsp;·&nbsp;wilspi
+</footer>
+  <a class="entry-link" aria-label="post link to Slogging with multiple drains in Rust" href="https://wilspi.com/post/tech/slogging-multiple-drains/"></a>
+</article>
+<article class="post-entry"> 
+
+  <header class="entry-header">
+    <h2>
+      Setup multi user nix for Arch Linux
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>On multi-user setup, from nix’s page:
+ To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users....</p>
+  </section>
+  <footer class="entry-footer">
+
+August 1, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+</footer>
+  <a class="entry-link" aria-label="post link to Setup multi user nix for Arch Linux" href="https://wilspi.com/post/tech/setup-nix-arch-linux/"></a>
+</article>
+<article class="post-entry"> 
 
   <header class="entry-header">
     <h2>
@@ -136,7 +232,26 @@ July 31, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
 </footer>
   <a class="entry-link" aria-label="post link to Jinja template Inheritance using Database" href="https://wilspi.com/post/tech/jinja-inheritance-using-db/"></a>
 </article>
-<article class="post-entry tag-entry"> 
+<article class="post-entry"> 
+
+  <header class="entry-header">
+    <h2>
+      Nix shell and Awesomeness
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Last year while working with @amitu, I came across this wonderful tool called Nix.
+About Nix, its wiki says:
+ Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation
+ Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through nix-shell command, we will see below)....</p>
+  </section>
+  <footer class="entry-footer">
+
+July 30, 2020&nbsp;·&nbsp;3 min&nbsp;·&nbsp;wilspi
+</footer>
+  <a class="entry-link" aria-label="post link to Nix shell and Awesomeness" href="https://wilspi.com/post/tech/nix-shell-and-awesomeness/"></a>
+</article>
+<article class="post-entry"> 
 
   <header class="entry-header">
     <h2>
@@ -156,23 +271,38 @@ July 29, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
 </footer>
   <a class="entry-link" aria-label="post link to Log requests and responses with Django Middleware" href="https://wilspi.com/post/tech/django-middleware-to-log-requests/"></a>
 </article>
-<article class="post-entry tag-entry"> 
+<article class="post-entry"> 
 
   <header class="entry-header">
     <h2>
-      Nix Recipe: Setup Python
+      Save the production with Nginx hack
     </h2>
   </header>
   <section class="entry-content">
-    <p>This is a nix recipe for building and running python in a virtual nix environment.
-  Create shell.nix with following:
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &#34;python-env&#34;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &#34;${toString ./.}&#34;; # Post Shell Hook shellHook = &#39;&#39; echo &#34;Using ${python37.name}&#34; [ !...</p>
+    <p>Quick nginx hack to save your production web server in case the web service starts crashing.
+If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down....</p>
   </section>
   <footer class="entry-footer">
 
-March 9, 2020&nbsp;·&nbsp;1 min&nbsp;·&nbsp;wilspi
+March 12, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
 </footer>
-  <a class="entry-link" aria-label="post link to Nix Recipe: Setup Python" href="https://wilspi.com/post/tech/nix-recipes/python/"></a>
+  <a class="entry-link" aria-label="post link to Save the production with Nginx hack" href="https://wilspi.com/post/tech/save-production-via-nginx/"></a>
+</article>
+<article class="post-entry"> 
+
+  <header class="entry-header">
+    <h2>
+      nix recipes
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>...</p>
+  </section>
+  <footer class="entry-footer">
+
+March 9, 2020&nbsp;·&nbsp;0 min&nbsp;·&nbsp;wilspi
+</footer>
+  <a class="entry-link" aria-label="post link to nix recipes" href="https://wilspi.com/post/tech/nix-recipes/"></a>
 </article>
 
     </main><footer class="footer">

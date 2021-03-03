@@ -6,11 +6,11 @@
     <description>Recent content in postgres on wilspi | Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Aug 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Mar 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nix Recipe: Setup Postgresql</title>
       <link>https://wilspi.com/post/tech/nix-recipes/postgresql/</link>
-      <pubDate>Sun, 02 Aug 2020 22:00:00 +0530</pubDate>
+      <pubDate>Mon, 02 Mar 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/post/tech/nix-recipes/postgresql/</guid>
       <description>This is a nix recipe for building and running postgresql-12 in a virtual nix environment.

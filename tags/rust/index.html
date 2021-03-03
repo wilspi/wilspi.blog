@@ -141,26 +141,6 @@ August 5, 2020&nbsp;·&nbsp;6 min&nbsp;·&nbsp;wilspi
 
   <header class="entry-header">
     <h2>
-      Nix Recipe: Setup Rust
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>This is a nix recipe for building and running rust in a virtual nix environment.
-  Create a file rust-toolchain with following:
-1.43.0 We are specifying rust version to install, here using 1.43.0. If using heroku, rust-toolchain file will determine which version will be used to build the application.
-  Create shell.nix with following:
-let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &#34;https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz&#34; ); nixpkgs = import (builtins....</p>
-  </section>
-  <footer class="entry-footer">
-
-August 4, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
-</footer>
-  <a class="entry-link" aria-label="post link to Nix Recipe: Setup Rust" href="https://wilspi.com/post/tech/nix-recipes/rust/"></a>
-</article>
-<article class="post-entry tag-entry"> 
-
-  <header class="entry-header">
-    <h2>
       Slogging with multiple drains in Rust
     </h2>
   </header>
@@ -175,6 +155,26 @@ Structured logging is a concept that puts events over messages, events are logge
 August 3, 2020&nbsp;·&nbsp;3 min&nbsp;·&nbsp;wilspi
 </footer>
   <a class="entry-link" aria-label="post link to Slogging with multiple drains in Rust" href="https://wilspi.com/post/tech/slogging-multiple-drains/"></a>
+</article>
+<article class="post-entry tag-entry"> 
+
+  <header class="entry-header">
+    <h2>
+      Nix Recipe: Setup Rust
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>This is a nix recipe for building and running rust in a virtual nix environment.
+  Create a file rust-toolchain with following:
+1.43.0 We are specifying rust version to install, here using 1.43.0. If using heroku, rust-toolchain file will determine which version will be used to build the application.
+  Create shell.nix with following:
+let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &#34;https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz&#34; ); nixpkgs = import (builtins....</p>
+  </section>
+  <footer class="entry-footer">
+
+March 4, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+</footer>
+  <a class="entry-link" aria-label="post link to Nix Recipe: Setup Rust" href="https://wilspi.com/post/tech/nix-recipes/rust/"></a>
 </article>
 
     </main><footer class="footer">

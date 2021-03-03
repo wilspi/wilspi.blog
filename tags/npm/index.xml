@@ -6,11 +6,11 @@
     <description>Recent content in npm on wilspi | Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Aug 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/npm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Mar 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/npm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nix Recipe: Setup Nodejs</title>
       <link>https://wilspi.com/post/tech/nix-recipes/nodejs/</link>
-      <pubDate>Thu, 06 Aug 2020 22:00:00 +0530</pubDate>
+      <pubDate>Fri, 06 Mar 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/post/tech/nix-recipes/nodejs/</guid>
       <description>This is a nix recipe for building and running nodejs in a virtual nix environment.

@@ -4,42 +4,7 @@
   
   <url>
     <loc>https://wilspi.com/categories/</loc>
-    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/tags/nix/</loc>
-    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/post/tech/nix-recipes/python/</loc>
-    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/post/</loc>
-    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/tags/python/</loc>
-    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/tags/</loc>
-    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/categories/tech/</loc>
-    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/</loc>
-    <lastmod>2020-08-09T21:00:00+05:30</lastmod>
+    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
   </url>
   
   <url>
@@ -58,23 +23,33 @@
   </url>
   
   <url>
+    <loc>https://wilspi.com/post/</loc>
+    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/</loc>
+    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wilspi.com/tags/tech/</loc>
     <lastmod>2020-08-08T15:00:00+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://wilspi.com/post/tech/nix-recipes/nodejs/</loc>
-    <lastmod>2020-08-06T22:00:00+05:30</lastmod>
+    <loc>https://wilspi.com/categories/tech/</loc>
+    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://wilspi.com/tags/nodejs/</loc>
-    <lastmod>2020-08-06T22:00:00+05:30</lastmod>
+    <loc>https://wilspi.com/post/tech/</loc>
+    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://wilspi.com/tags/npm/</loc>
-    <lastmod>2020-08-06T22:00:00+05:30</lastmod>
+    <loc>https://wilspi.com/</loc>
+    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
   </url>
   
   <url>
@@ -88,11 +63,6 @@
   </url>
   
   <url>
-    <loc>https://wilspi.com/post/tech/nix-recipes/rust/</loc>
-    <lastmod>2020-08-04T22:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wilspi.com/tags/slog/</loc>
     <lastmod>2020-08-03T22:00:00+05:30</lastmod>
   </url>
@@ -103,17 +73,12 @@
   </url>
   
   <url>
-    <loc>https://wilspi.com/post/tech/nix-recipes/postgresql/</loc>
-    <lastmod>2020-08-02T22:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wilspi.com/tags/postgres/</loc>
-    <lastmod>2020-08-02T22:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wilspi.com/tags/arch-linux/</loc>
+    <lastmod>2020-08-01T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/nix/</loc>
     <lastmod>2020-08-01T22:00:00+05:30</lastmod>
   </url>
   
@@ -129,6 +94,11 @@
   
   <url>
     <loc>https://wilspi.com/tags/jinja/</loc>
+    <lastmod>2020-07-31T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/python/</loc>
     <lastmod>2020-07-31T22:00:00+05:30</lastmod>
   </url>
   
@@ -173,13 +143,52 @@
   </url>
   
   <url>
+    <loc>https://wilspi.com/post/tech/nix-recipes/python/</loc>
+    <lastmod>2020-03-09T21:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/nix-recipes/</loc>
+    <lastmod>2020-03-09T21:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/nix-recipes/nodejs/</loc>
+    <lastmod>2020-03-06T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/nodejs/</loc>
+    <lastmod>2020-03-06T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/npm/</loc>
+    <lastmod>2020-03-06T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/nix-recipes/rust/</loc>
+    <lastmod>2020-03-04T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/post/tech/nix-recipes/postgresql/</loc>
+    <lastmod>2020-03-02T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wilspi.com/tags/postgres/</loc>
+    <lastmod>2020-03-02T22:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wilspi.com/_about/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wilspi.com/readme/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>

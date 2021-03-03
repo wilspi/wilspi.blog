@@ -44,8 +44,8 @@ if (!doNotTrack) {
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://wilspi.com/post/tech/nix-recipes/nodejs/" />
 <meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
-<meta property="article:published_time" content="2020-08-06T22:00:00+05:30" />
-<meta property="article:modified_time" content="2020-08-06T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta property="article:published_time" content="2020-03-06T22:00:00+05:30" />
+<meta property="article:modified_time" content="2020-03-06T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
@@ -69,6 +69,18 @@ if (!doNotTrack) {
     {
       "@type": "ListItem",
       "position":  3 ,
+      "name": "tech",
+      "item": "https://wilspi.com/post/tech/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "nix recipes",
+      "item": "https://wilspi.com/post/tech/nix-recipes/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  5 ,
       "name": "Nix Recipe: Setup Nodejs",
       "item": "https://wilspi.com/post/tech/nix-recipes/nodejs/"
     }
@@ -88,8 +100,8 @@ if (!doNotTrack) {
   "articleBody": "This is a nix recipe for building and running nodejs in a virtual nix environment.\n  In your project folder, create a new file nodejs.nix and add following:\n{ nixpkgs ? import  {}, version, sha256 }: let inherit (nixpkgs) python37 utillinux stdenv autoPatchelfHook fetchurl binutils-unwrapped patchelf xcbuild; inherit (stdenv) mkDerivation; in mkDerivation { inherit version; name = \"nodejs-${version}\"; src = fetchurl { url = \"https://nodejs.org/dist/v${version}/node-v${version}${if stdenv.isDarwin then \"-darwin-x64\" else \"-linux-x64\"}.tar.xz\"; # this darwin/linux check doesn't work since sha is different for packages inherit sha256; }; # Dependencies for building node.js (Python and utillinux on Linux, just Python on Mac) buildInputs = with nixpkgs; [ xcbuild binutils-unwrapped patchelf glib python37 ] ++ stdenv.lib.optional stdenv.isLinux utillinux; nativeBuildInputs = with nixpkgs; [ autoPatchelfHook ]; installPhase = '' echo \"installing nodejs\" mkdir -p $out cp -r ./ $out/ ''; meta = with stdenv.lib; { description = \"Event-driven I/O framework for the V8 JavaScript engine\"; homepage = \"https://nodejs.org\"; license = licenses.mit; }; passthru.python = python37; } Note:\n This will download the nodejs package depending on darwin or linux and build it.    Add shell.nix with the following content:\nlet nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; installNodeJS = import (./nodejs.nix) { inherit nixpkgs; version = \"13.6.0\"; sha256 = \"${if nixpkgs.stdenv.isDarwin then \"0z64v76w8x02yg2fz2xys580m9mlwklriz1s5b0rxn569j4kwiya\" else \"166pm67i7qys3x6x1dy5qr5393k0djb04ylgcg8idnk7m0ai7w00\"}\"; }; frameworks = nixpkgs.darwin.apple_sdk.frameworks; in with nixpkgs; stdenv.mkDerivation { name = \"nodejs-env\"; buildInputs = [ installNodeJS ]; nativeBuildInputs = [ zsh vim ] ++ ( stdenv.lib.optionals stdenv.isDarwin [ frameworks.Security frameworks.CoreServices frameworks.CoreFoundation frameworks.Foundation ] ); # Post Shell Hook shellHook = '' ''; } Note:\n Here, the nix packages are installed from 20.03 release. NodeJS 13.6.0 version is installed, this is passed as argument. Different version can also be installed provided corresponding SHA is added. All node packages can be installed via NPM in this environment.    Run nix-shell --pure shell.nix to build and setup nodejs in a virtual environment.\n  ",
   "wordCount" : "312",
   "inLanguage": "en",
-  "datePublished": "2020-08-06T22:00:00+05:30",
-  "dateModified": "2020-08-06T22:00:00+05:30",
+  "datePublished": "2020-03-06T22:00:00+05:30",
+  "dateModified": "2020-03-06T22:00:00+05:30",
   "author":{
     "@type": "Person",
     "name": "wilspi"
@@ -183,7 +195,7 @@ if (!doNotTrack) {
     </h1>
     <div class="post-meta">
 
-August 6, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+March 6, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
 
 </div>
   </header> 

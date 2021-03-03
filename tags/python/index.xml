@@ -6,18 +6,7 @@
     <description>Recent content in python on wilspi | Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Aug 2020 21:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Nix Recipe: Setup Python</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/python/</link>
-      <pubDate>Sun, 09 Aug 2020 21:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/python/</guid>
-      <description>This is a nix recipe for building and running python in a virtual nix environment.
-  Create shell.nix with following:
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &amp;#34;python-env&amp;#34;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &amp;#34;${toString ./.}&amp;#34;; # Post Shell Hook shellHook = &amp;#39;&amp;#39; echo &amp;#34;Using ${python37.name}&amp;#34; [ !</description>
-    </item>
-    
+    <lastBuildDate>Fri, 31 Jul 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Jinja template Inheritance using Database</title>
       <link>https://wilspi.com/post/tech/jinja-inheritance-using-db/</link>
@@ -39,6 +28,17 @@ Commonly, templates are stored as files, either in git-repo or s3 buckets. Depen
 It’s a light, low-level “plugin” system for globally altering Django’s input or output.
  Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware layer which will log every incoming request. Why better?
  it will log unhandled requests/views one time job, no need to configure for every request/view  Here, we are using Django&amp;rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses.</description>
+    </item>
+    
+    <item>
+      <title>Nix Recipe: Setup Python</title>
+      <link>https://wilspi.com/post/tech/nix-recipes/python/</link>
+      <pubDate>Mon, 09 Mar 2020 21:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/nix-recipes/python/</guid>
+      <description>This is a nix recipe for building and running python in a virtual nix environment.
+  Create shell.nix with following:
+let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &amp;#34;python-env&amp;#34;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &amp;#34;${toString ./.}&amp;#34;; # Post Shell Hook shellHook = &amp;#39;&amp;#39; echo &amp;#34;Using ${python37.name}&amp;#34; [ !</description>
     </item>
     
   </channel>

@@ -44,8 +44,8 @@ let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/arc
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://wilspi.com/post/tech/nix-recipes/postgresql/" />
 <meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
-<meta property="article:published_time" content="2020-08-02T22:00:00+05:30" />
-<meta property="article:modified_time" content="2020-08-02T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta property="article:published_time" content="2020-03-02T22:00:00+05:30" />
+<meta property="article:modified_time" content="2020-03-02T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
@@ -69,6 +69,18 @@ let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/arc
     {
       "@type": "ListItem",
       "position":  3 ,
+      "name": "tech",
+      "item": "https://wilspi.com/post/tech/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "nix recipes",
+      "item": "https://wilspi.com/post/tech/nix-recipes/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  5 ,
       "name": "Nix Recipe: Setup Postgresql",
       "item": "https://wilspi.com/post/tech/nix-recipes/postgresql/"
     }
@@ -88,8 +100,8 @@ let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/arc
   "articleBody": "This is a nix recipe for building and running postgresql-12 in a virtual nix environment.\n  Create your project folder and save the following file as shell.nix\nlet nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = \"postgres-env\"; buildInputs = []; nativeBuildInputs = [ zsh vim geos gdal nixpkgs-fmt # postgres-12 with postgis support (postgresql_12.withPackages (p: [ p.postgis ])) ]; postgresConf = writeText \"postgresql.conf\" '' # Add Custom Settings log_min_messages = warning log_min_error_statement = error log_min_duration_statement = 100 # ms log_connections = on log_disconnections = on log_duration = on #log_line_prefix = '[] ' log_timezone = 'UTC' log_statement = 'all' log_directory = 'pg_log' log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log' logging_collector = on log_min_error_statement = error ''; # ENV Variables LD_LIBRARY_PATH = \"${geos}/lib:${gdal}/lib\"; PGDATA = \"${toString ./.}/.pg\"; # Post Shell Hook shellHook = '' echo \"Using ${postgresql_12.name}.\" # Setup: other env variables export PGHOST=\"$PGDATA\" # Setup: DB [ ! -d $PGDATA ] \u0026\u0026 pg_ctl initdb -o \"-U postgres\" \u0026\u0026 cat \"$postgresConf\"  $PGDATA/postgresql.conf pg_ctl -o \"-p 5555 -k $PGDATA\" start alias fin=\"pg_ctl stop \u0026\u0026 exit\" alias pg=\"psql -p 5555 -U postgres\" ''; } Note:\n Here, the nix packages are installed from 20.03 release. Postgres is installed with PostGIS extension. Above postgres server runs with local configuration specified in postgresConf variable, use this to modify/add config for postgres. All data is stored in project folder’s .pg directory, configured by $PGDATA variable. $PGHOST is configured to be same as $PGDATA. geos and gdal libraries are also installed.    Run nix-shell --pure shell.nix to build and start postgresql_12 in your virtual environment.\nNote:\n Postgres is running here on port: 5555, so it won’t conflict with other Postgres server, if running. Running this command multiple times won’t start multiple postgres server, since it is controlled by the lock file: ./.pg/postmaster.pid To exit the nix shell, run fin, this will stop the postgres server.    ",
   "wordCount" : "313",
   "inLanguage": "en",
-  "datePublished": "2020-08-02T22:00:00+05:30",
-  "dateModified": "2020-08-02T22:00:00+05:30",
+  "datePublished": "2020-03-02T22:00:00+05:30",
+  "dateModified": "2020-03-02T22:00:00+05:30",
   "author":{
     "@type": "Person",
     "name": "wilspi"
@@ -183,7 +195,7 @@ let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/arc
     </h1>
     <div class="post-meta">
 
-August 2, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+March 2, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
 
 </div>
   </header> 

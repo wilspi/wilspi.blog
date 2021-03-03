@@ -48,8 +48,8 @@ let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &#34;https://
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://wilspi.com/post/tech/nix-recipes/rust/" />
 <meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
-<meta property="article:published_time" content="2020-08-04T22:00:00+05:30" />
-<meta property="article:modified_time" content="2020-08-04T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta property="article:published_time" content="2020-03-04T22:00:00+05:30" />
+<meta property="article:modified_time" content="2020-03-04T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
@@ -75,6 +75,18 @@ let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &#34;https://
     {
       "@type": "ListItem",
       "position":  3 ,
+      "name": "tech",
+      "item": "https://wilspi.com/post/tech/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "nix recipes",
+      "item": "https://wilspi.com/post/tech/nix-recipes/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  5 ,
       "name": "Nix Recipe: Setup Rust",
       "item": "https://wilspi.com/post/tech/nix-recipes/rust/"
     }
@@ -94,8 +106,8 @@ let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &#34;https://
   "articleBody": "This is a nix recipe for building and running rust in a virtual nix environment.\n  Create a file rust-toolchain with following:\n1.43.0 We are specifying rust version to install, here using 1.43.0. If using heroku, rust-toolchain file will determine which version will be used to build the application.\n  Create shell.nix with following:\nlet # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball \"https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz\" ); nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = [ moz_overlay ]; config = {}; }; frameworks = nixpkgs.darwin.apple_sdk.frameworks; rust = (nixpkgs.rustChannelOf { rustToolchain = ./rust-toolchain; }).rust.override { extensions = [ \"clippy-preview\" \"rust-src\" ]; }; in with nixpkgs; stdenv.mkDerivation { name = \"wilspi-rust-env\"; buildInputs = [ rust ]; nativeBuildInputs = [ clang llvm zsh vim ] ++ ( stdenv.lib.optionals stdenv.isDarwin [ frameworks.Security frameworks.CoreServices frameworks.CoreFoundation frameworks.Foundation ] ); # ENV Variables RUST_BACKTRACE = 1; SOURCE_DATE_EPOCH = 315532800; LIBCLANG_PATH = \"${llvmPackages.libclang}/lib\"; # Post Shell Hook shellHook = '' echo \"Using ${rust.name}\" '' + ( if !pkgs.stdenv.isDarwin then \"\" else '' # Cargo wasn't able to find CF during a `cargo test` run on Darwin. export NIX_LDFLAGS=\"-F${frameworks.CoreFoundation}/Library/Frameworks -framework CoreFoundation $NIX_LDFLAGS\"; '' ); } Note:\n Here, the nix packages are installed from 20.03 release. moz_overlay is configured which contains all the latest rust releases. LIBCLANG_PATH is required, see this. SOURCE_DATE_EPOCH is required for clippy. apple_sdk libraries are installed if the system is macos.    Run nix-shell --pure shell.nix to build and start using rust-1.43.0 in your virtual environment.\n  ",
   "wordCount" : "235",
   "inLanguage": "en",
-  "datePublished": "2020-08-04T22:00:00+05:30",
-  "dateModified": "2020-08-04T22:00:00+05:30",
+  "datePublished": "2020-03-04T22:00:00+05:30",
+  "dateModified": "2020-03-04T22:00:00+05:30",
   "author":{
     "@type": "Person",
     "name": "wilspi"
@@ -189,7 +201,7 @@ let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &#34;https://
     </h1>
     <div class="post-meta">
 
-August 4, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+March 4, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
 
 </div>
   </header> 
