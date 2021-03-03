@@ -62,7 +62,13 @@ Structured logging is a concept that puts events over messages, events are logge
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [, 
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1 ,
+      "name": "Home",
+      "item": "https://wilspi.com/"
+    }, 
     {
       "@type": "ListItem",
       "position":  2 ,

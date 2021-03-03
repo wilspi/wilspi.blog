@@ -65,7 +65,13 @@ let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &#34;https://
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [, 
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1 ,
+      "name": "Home",
+      "item": "https://wilspi.com/"
+    }, 
     {
       "@type": "ListItem",
       "position":  2 ,
