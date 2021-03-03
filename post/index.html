@@ -41,7 +41,7 @@ if (!doNotTrack) {
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://wilspi.com/post/" />
 <meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
-<meta property="og:updated_time" content="2020-08-08T15:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta property="og:updated_time" content="2020-08-09T21:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
@@ -136,7 +136,24 @@ if (!doNotTrack) {
 
 
 
+<article class="post-entry"> 
 
+  <header class="entry-header">
+    <h2>
+      Nix Recipe: Setup Python
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>This is a nix recipe for building and running python in a virtual nix environment.
+  Create shell.nix with following:
+let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &#34;python-env&#34;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &#34;${toString ./.}&#34;; # Post Shell Hook shellHook = &#39;&#39; echo &#34;Using ${python37.name}&#34; [ !...</p>
+  </section>
+  <footer class="entry-footer">
+
+August 9, 2020&nbsp;·&nbsp;1 min&nbsp;·&nbsp;wilspi
+</footer>
+  <a class="entry-link" aria-label="post link to Nix Recipe: Setup Python" href="https://wilspi.com/post/tech/nix-recipes/python/"></a>
+</article>
 <article class="post-entry"> 
 
   <header class="entry-header">
@@ -156,7 +173,24 @@ August 8, 2020&nbsp;·&nbsp;5 min&nbsp;·&nbsp;wilspi
 </footer>
   <a class="entry-link" aria-label="post link to Learning Elm with 2048 game" href="https://wilspi.com/post/tech/2048-game-in-elmlang/"></a>
 </article>
+<article class="post-entry"> 
 
+  <header class="entry-header">
+    <h2>
+      Nix Recipe: Setup Nodejs
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>This is a nix recipe for building and running nodejs in a virtual nix environment.
+  In your project folder, create a new file nodejs.nix and add following:
+{ nixpkgs ? import &lt;nixpkgs&gt; {}, version, sha256 }: let inherit (nixpkgs) python37 utillinux stdenv autoPatchelfHook fetchurl binutils-unwrapped patchelf xcbuild; inherit (stdenv) mkDerivation; in mkDerivation { inherit version; name = &#34;nodejs-${version}&#34;; src = fetchurl { url = &#34;https://nodejs.org/dist/v${version}/node-v${version}${if stdenv.isDarwin then &#34;-darwin-x64&#34; else &#34;-linux-x64&#34;}....</p>
+  </section>
+  <footer class="entry-footer">
+
+August 6, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+</footer>
+  <a class="entry-link" aria-label="post link to Nix Recipe: Setup Nodejs" href="https://wilspi.com/post/tech/nix-recipes/nodejs/"></a>
+</article>
 <article class="post-entry"> 
 
   <header class="entry-header">
@@ -175,7 +209,26 @@ August 5, 2020&nbsp;·&nbsp;6 min&nbsp;·&nbsp;wilspi
 </footer>
   <a class="entry-link" aria-label="post link to Variables and Memory management in Rust" href="https://wilspi.com/post/tech/rust-variables-in-memory/"></a>
 </article>
+<article class="post-entry"> 
 
+  <header class="entry-header">
+    <h2>
+      Nix Recipe: Setup Rust
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>This is a nix recipe for building and running rust in a virtual nix environment.
+  Create a file rust-toolchain with following:
+1.43.0 We are specifying rust version to install, here using 1.43.0. If using heroku, rust-toolchain file will determine which version will be used to build the application.
+  Create shell.nix with following:
+let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &#34;https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz&#34; ); nixpkgs = import (builtins....</p>
+  </section>
+  <footer class="entry-footer">
+
+August 4, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+</footer>
+  <a class="entry-link" aria-label="post link to Nix Recipe: Setup Rust" href="https://wilspi.com/post/tech/nix-recipes/rust/"></a>
+</article>
 <article class="post-entry"> 
 
   <header class="entry-header">
@@ -195,7 +248,24 @@ August 3, 2020&nbsp;·&nbsp;3 min&nbsp;·&nbsp;wilspi
 </footer>
   <a class="entry-link" aria-label="post link to Slogging with multiple drains in Rust" href="https://wilspi.com/post/tech/slogging-multiple-drains/"></a>
 </article>
+<article class="post-entry"> 
 
+  <header class="entry-header">
+    <h2>
+      Nix Recipe: Setup Postgresql
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>This is a nix recipe for building and running postgresql-12 in a virtual nix environment.
+  Create your project folder and save the following file as shell.nix
+let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &#34;postgres-env&#34;; buildInputs = []; nativeBuildInputs = [ zsh vim geos gdal nixpkgs-fmt # postgres-12 with postgis support (postgresql_12.withPackages (p: [ p.postgis ])) ]; postgresConf = writeText &#34;postgresql....</p>
+  </section>
+  <footer class="entry-footer">
+
+August 2, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+</footer>
+  <a class="entry-link" aria-label="post link to Nix Recipe: Setup Postgresql" href="https://wilspi.com/post/tech/nix-recipes/postgresql/"></a>
+</article>
 <article class="post-entry"> 
 
   <header class="entry-header">
@@ -213,7 +283,6 @@ August 1, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
 </footer>
   <a class="entry-link" aria-label="post link to Setup multi user nix for Arch Linux" href="https://wilspi.com/post/tech/setup-nix-arch-linux/"></a>
 </article>
-
 <article class="post-entry"> 
 
   <header class="entry-header">
@@ -231,7 +300,6 @@ July 31, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
 </footer>
   <a class="entry-link" aria-label="post link to Jinja template Inheritance using Database" href="https://wilspi.com/post/tech/jinja-inheritance-using-db/"></a>
 </article>
-
 <article class="post-entry"> 
 
   <header class="entry-header">
@@ -251,50 +319,14 @@ July 30, 2020&nbsp;·&nbsp;3 min&nbsp;·&nbsp;wilspi
 </footer>
   <a class="entry-link" aria-label="post link to Nix shell and Awesomeness" href="https://wilspi.com/post/tech/nix-shell-and-awesomeness/"></a>
 </article>
-
-<article class="post-entry"> 
-
-  <header class="entry-header">
-    <h2>
-      Log requests and responses with Django Middleware
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>From Django’s context:
- Middleware is a framework of hooks into Django’s request/response processing.
-It’s a light, low-level “plugin” system for globally altering Django’s input or output.
- Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware layer which will log every incoming request. Why better?
- it will log unhandled requests/views one time job, no need to configure for every request/view  Here, we are using Django’s middleware semantics to construct a middleware which will log all requests and corresponding responses....</p>
-  </section>
-  <footer class="entry-footer">
-
-July 29, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://wilspi.com/post/page/2/">Next Page »</a>
+  </nav>
 </footer>
-  <a class="entry-link" aria-label="post link to Log requests and responses with Django Middleware" href="https://wilspi.com/post/tech/django-middleware-to-log-requests/"></a>
-</article>
-
-<article class="post-entry"> 
-
-  <header class="entry-header">
-    <h2>
-      Save the production with Nginx hack
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>Quick nginx hack to save your production web server in case the web service starts crashing.
-If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down....</p>
-  </section>
-  <footer class="entry-footer">
-
-March 12, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
-</footer>
-  <a class="entry-link" aria-label="post link to Save the production with Nginx hack" href="https://wilspi.com/post/tech/save-production-via-nginx/"></a>
-</article>
 
     </main><footer class="footer">
-    <span>&middot;</span>
-    <span>&copy; 2021 <a href="https://wilspi.com">wilspi | Sourabh Deokar</a></span>
-    <span>&middot;</span>
+    <span>&copy; 2021 <a href="https://wilspi.com">wilspi</a></span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
     <button class="top-link" id="top-link" type="button" accesskey="g">

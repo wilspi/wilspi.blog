@@ -19,6 +19,19 @@ Ownership In programming languages, either a garbage collector is used which wil
     </item>
     
     <item>
+      <title>Nix Recipe: Setup Rust</title>
+      <link>https://wilspi.com/post/tech/nix-recipes/rust/</link>
+      <pubDate>Tue, 04 Aug 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/nix-recipes/rust/</guid>
+      <description>This is a nix recipe for building and running rust in a virtual nix environment.
+  Create a file rust-toolchain with following:
+1.43.0 We are specifying rust version to install, here using 1.43.0. If using heroku, rust-toolchain file will determine which version will be used to build the application.
+  Create shell.nix with following:
+let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &amp;#34;https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz&amp;#34; ); nixpkgs = import (builtins.</description>
+    </item>
+    
+    <item>
       <title>Slogging with multiple drains in Rust</title>
       <link>https://wilspi.com/post/tech/slogging-multiple-drains/</link>
       <pubDate>Mon, 03 Aug 2020 22:00:00 +0530</pubDate>

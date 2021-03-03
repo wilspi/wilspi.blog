@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Nix Recipe: Setup Python | wilspi | Sourabh Deokar</title>
+
+<meta name="keywords" content="nix, python" />
+<meta name="description" content="This is a nix recipe for building and running python in a virtual nix environment.
+  Create shell.nix with following:
+let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &#34;python-env&#34;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &#34;${toString ./.}&#34;; # Post Shell Hook shellHook = &#39;&#39; echo &#34;Using ${python37.name}&#34; [ !">
+<meta name="author" content="wilspi">
+<link rel="canonical" href="https://wilspi.com/post/tech/nix-recipes/python/" />
+<link href="/assets/css/stylesheet.min.f580a29692e0c7eb72865ec0bd4ee916bef2dc7e85f4fbfdf6a609b3a0f4f6a1.css" integrity="sha256-9YCilpLgx&#43;tyhl7AvU7pFr7y3H6F9Pv99qYJs6D09qE=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://wilspi.com/favicons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://wilspi.com/favicons/apple-touch-icon.png">
+<link rel="mask-icon" href="https://wilspi.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.79.0" />
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-51915090-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<meta property="og:title" content="Nix Recipe: Setup Python" />
+<meta property="og:description" content="This is a nix recipe for building and running python in a virtual nix environment.
+  Create shell.nix with following:
+let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &#34;python-env&#34;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &#34;${toString ./.}&#34;; # Post Shell Hook shellHook = &#39;&#39; echo &#34;Using ${python37.name}&#34; [ !" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wilspi.com/post/tech/nix-recipes/python/" />
+<meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
+<meta property="article:published_time" content="2020-08-09T21:00:00+05:30" />
+<meta property="article:modified_time" content="2020-08-09T21:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
+
+<meta name="twitter:title" content="Nix Recipe: Setup Python"/>
+<meta name="twitter:description" content="This is a nix recipe for building and running python in a virtual nix environment.
+  Create shell.nix with following:
+let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &#34;python-env&#34;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &#34;${toString ./.}&#34;; # Post Shell Hook shellHook = &#39;&#39; echo &#34;Using ${python37.name}&#34; [ !"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://wilspi.com/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Nix Recipe: Setup Python",
+      "item": "https://wilspi.com/post/tech/nix-recipes/python/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Nix Recipe: Setup Python",
+  "name": "Nix Recipe: Setup Python",
+  "description": "This is a nix recipe for building and running python in a virtual nix environment.\n  Create shell.nix with following:\nlet nixpkgs = import (builtins.fetchTarball …",
+  "keywords": [
+    "nix", "python"
+  ],
+  "articleBody": "This is a nix recipe for building and running python in a virtual nix environment.\n  Create shell.nix with following:\nlet nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = \"python-env\"; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = \"${toString ./.}\"; # Post Shell Hook shellHook = '' echo \"Using ${python37.name}\" [ ! -d '$PROJDIR/python-dev' ] \u0026\u0026 virtualenv python-dev \u0026\u0026 echo \"SETUP python-dev: DONE\" source python-dev/bin/activate # python -m pip install -r requirements.txt ''; } Note:\n Here, the nix packages are installed from 20.03 release. virtualenv is installed and activated, and python requirements are installed in this environment (via requirements.txt file).    Run nix-shell --pure shell.nix to build and start using python-3.7 in your virtual environment.\n  ",
+  "wordCount" : "131",
+  "inLanguage": "en",
+  "datePublished": "2020-08-09T21:00:00+05:30",
+  "dateModified": "2020-08-09T21:00:00+05:30",
+  "author":{
+    "@type": "Person",
+    "name": "wilspi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wilspi.com/post/tech/nix-recipes/python/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "wilspi | Sourabh Deokar",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wilspi.com/favicons/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://wilspi.com" accesskey="h" title="wilspi | Sourabh Deokar (Alt + H)">wilspi</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                
+            </span>
+        </div>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://wilspi.com/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+
+    <h1 class="post-title">
+      Nix Recipe: Setup Python
+    </h1>
+    <div class="post-meta">
+
+August 9, 2020&nbsp;·&nbsp;1 min&nbsp;·&nbsp;wilspi
+
+</div>
+  </header> 
+
+  <div class="post-content">
+<p>This is a nix recipe for building and running <a href="https://www.python.org/">python</a> in a <a href="/post/tech/nix-shell-and-awesomeness/">virtual nix environment</a>.</p>
+<ul>
+<li>
+<p>Create <code>shell.nix</code> with following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Nix" data-lang="Nix"><span style="color:#66d9ef">let</span>
+  nixpkgs <span style="color:#f92672">=</span> <span style="color:#f92672">import</span> (builtins<span style="color:#f92672">.</span>fetchTarball <span style="color:#e6db74">https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz</span>) {
+    overlays <span style="color:#f92672">=</span> [];
+    config <span style="color:#f92672">=</span> {};
+  };
+
+<span style="color:#66d9ef">in</span>
+  <span style="color:#66d9ef">with</span> nixpkgs;
+
+  stdenv<span style="color:#f92672">.</span>mkDerivation {
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;python-env&#34;</span>;
+
+    nativeBuildInputs <span style="color:#f92672">=</span> [
+      zsh
+      vim
+      python37
+      python37Packages<span style="color:#f92672">.</span>pip
+      python37Packages<span style="color:#f92672">.</span>virtualenv
+    ];
+
+    <span style="color:#75715e"># ENV variables</span>
+    PROJDIR <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>toString <span style="color:#e6db74">./.</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>;
+
+    <span style="color:#75715e"># Post Shell Hook</span>
+    shellHook <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;
+</span><span style="color:#e6db74">      echo &#34;Using </span><span style="color:#e6db74">${</span>python37<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">      [ ! -d &#39;$PROJDIR/python-dev&#39; ] &amp;&amp; virtualenv python-dev &amp;&amp; echo &#34;SETUP python-dev: DONE&#34;
+</span><span style="color:#e6db74">      source python-dev/bin/activate
+</span><span style="color:#e6db74">      # python -m pip install -r requirements.txt
+</span><span style="color:#e6db74">    &#39;&#39;</span>;
+  }
+</code></pre></div><p>Note:</p>
+<ul>
+<li>Here, the nix packages are installed from <a href="https://github.com/NixOS/nixpkgs/releases/tag/20.03">20.03 release</a>.</li>
+<li><a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a> is installed and activated, and python requirements are installed in this environment (via <code>requirements.txt</code> file).</li>
+</ul>
+</li>
+<li>
+<p>Run <code>nix-shell --pure shell.nix</code> to build and start using <code>python-3.7</code> in your virtual environment.</p>
+</li>
+</ul>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://wilspi.com/tags/nix/">nix</a></li>
+      <li><a href="https://wilspi.com/tags/python/">python</a></li>
+    </ul>
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2021 <a href="https://wilspi.com">wilspi</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+
+
+<script defer src="/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
+
+</html>

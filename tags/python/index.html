@@ -41,7 +41,7 @@ if (!doNotTrack) {
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://wilspi.com/tags/python/" />
 <meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
-<meta property="og:updated_time" content="2020-07-31T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta property="og:updated_time" content="2020-08-09T21:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
@@ -119,7 +119,24 @@ if (!doNotTrack) {
 
 
 
+<article class="post-entry tag-entry"> 
 
+  <header class="entry-header">
+    <h2>
+      Nix Recipe: Setup Python
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>This is a nix recipe for building and running python in a virtual nix environment.
+  Create shell.nix with following:
+let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &#34;python-env&#34;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &#34;${toString ./.}&#34;; # Post Shell Hook shellHook = &#39;&#39; echo &#34;Using ${python37.name}&#34; [ !...</p>
+  </section>
+  <footer class="entry-footer">
+
+August 9, 2020&nbsp;·&nbsp;1 min&nbsp;·&nbsp;wilspi
+</footer>
+  <a class="entry-link" aria-label="post link to Nix Recipe: Setup Python" href="https://wilspi.com/post/tech/nix-recipes/python/"></a>
+</article>
 <article class="post-entry tag-entry"> 
 
   <header class="entry-header">
@@ -137,7 +154,6 @@ July 31, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
 </footer>
   <a class="entry-link" aria-label="post link to Jinja template Inheritance using Database" href="https://wilspi.com/post/tech/jinja-inheritance-using-db/"></a>
 </article>
-
 <article class="post-entry tag-entry"> 
 
   <header class="entry-header">
@@ -160,9 +176,7 @@ July 29, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
 </article>
 
     </main><footer class="footer">
-    <span>&middot;</span>
-    <span>&copy; 2021 <a href="https://wilspi.com">wilspi | Sourabh Deokar</a></span>
-    <span>&middot;</span>
+    <span>&copy; 2021 <a href="https://wilspi.com">wilspi</a></span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
     <button class="top-link" id="top-link" type="button" accesskey="g">
