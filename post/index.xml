@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on wilspi</title>
+    <title>Posts on wilspi | Sourabh Deokar</title>
     <link>https://wilspi.com/post/</link>
-    <description>Recent content in Posts on wilspi</description>
+    <description>Recent content in Posts on wilspi | Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 08 Aug 2020 15:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/post/index.xml" rel="self" type="application/rss+xml" />
@@ -13,11 +13,10 @@
       <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/post/tech/2048-game-in-elmlang/</guid>
-      <description>Last summer, I was curious to try out Elm for its marketed term: &amp;ldquo;developer happiness&amp;rdquo;, so I thought of building 2048 game with it.
+      <description>Last summer, I was curious to try out Elm for its marketed term: &amp;ldquo;optimized for developer happiness&amp;rdquo;, so I thought of building 2048 game with it.
 2048 Game 2048 is a game created by gabrielecirulli which went viral in 2014. I chose 2048 because the functioning of the game is simple which will help me/us understand Elm clearly.
 You can play here.
-Whats the game? The functioning of the game is:
-  There are some number tiles on the board (4x4)   You can press up, left, down, right.</description>
+Whats the game? The functioning of the game is:</description>
     </item>
     
     <item>
