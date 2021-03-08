@@ -7,14 +7,14 @@
 <meta name="robots" content="index, follow">
 <title>Slogging with multiple drains in Rust | wilspi | Sourabh Deokar</title>
 
-<meta name="keywords" content="rust, slog, tech" />
+<meta name="keywords" content="rust, slog, dev" />
 <meta name="description" content="Slog is a structured logging library for rust-lang.
 Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:
  processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Basic Logging with Slog Lets create a simple logger:
 #[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!">
 <meta name="author" content="wilspi">
 <link rel="canonical" href="https://wilspi.com/post/tech/slogging-multiple-drains/" />
-<link href="/assets/css/stylesheet.min.f580a29692e0c7eb72865ec0bd4ee916bef2dc7e85f4fbfdf6a609b3a0f4f6a1.css" integrity="sha256-9YCilpLgx&#43;tyhl7AvU7pFr7y3H6F9Pv99qYJs6D09qE=" rel="preload stylesheet"
+<link href="/assets/css/stylesheet.min.701f7dec17ec9de41acd4ff9020a1d74f8f146f8a7c09b52f049772245f8b044.css" integrity="sha256-cB997BfsneQazU/5AgoddPjxRvinwJtS8El3IkX4sEQ=" rel="preload stylesheet"
     as="style">
 
 <link rel="icon" href="https://wilspi.com/favicons/favicon.ico">
@@ -24,7 +24,7 @@ Structured logging is a concept that puts events over messages, events are logge
 <link rel="mask-icon" href="https://wilspi.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.79.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 
@@ -98,7 +98,7 @@ Structured logging is a concept that puts events over messages, events are logge
   "name": "Slogging with multiple drains in Rust",
   "description": "Slog is a structured logging library for rust-lang.\nStructured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain …",
   "keywords": [
-    "rust", "slog", "tech"
+    "rust", "slog", "dev"
   ],
   "articleBody": "Slog is a structured logging library for rust-lang.\nStructured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:\n processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Basic Logging with Slog Lets create a simple logger:\n#[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!()); info!(root_logger, \"Application started\"; \"started_at\" = format!(\"{}\", chrono::Utc::now())); } Important terms:\n Drain is a trait which is responsible for deciding the output/destination of the logs. Any custom log handling logic should be implemented as a Drain. Context are key-value pairs that gets added into every log statement. Let’s say if you want to add the git commit version to each log statement you can add it here. Logger are objects used to execute logging statements.\nFor creating root logger, we need drain and context. Read complete documentation here.  In above example, a root_logger object is created with drain Discard (which discards everything) and blank context (o!()).\n Lets look at another example:\n#[macro_use] extern crate slog; extern crate slog_term; extern crate chrono; use slog::Drain; fn main() { let decorator = slog_term::TermDecorator::new().build(); let drain = slog_term::FullFormat::new(decorator).build().fuse(); let root_logger = slog::Logger::root(drain, o!()); info!(root_logger, \"Application started\"; \"started_at\" = format!(\"{}\", chrono::Utc::now())); } Here, slog_term::FullFormat drain is used for terminal output with TermDecorator (Decorator is an implementing strategy of output formating in terms of IO, colors, etc.)\n Since drain is a trait to customize logging to any output, it allows slog to become extensible, composable, and flexible. There are many feature libraries based on this trait:\n slog-bunyan slog-term slog-async slog-journald etc.  You can always write your own implementation using this trait.\nMultiple Drains Drains can also be interlinked and extended according to our needs. Following is an example where there are two outputs:\n to stdout, where all log statements are sent to stderr, where log statements with log level greater than or equal to slog::Level::Warning are sent  #[macro_use] extern crate slog; extern crate slog_term; extern crate chrono; use slog::Drain; fn main() { let drain = slog_async::Async::new( slog::Duplicate::new( slog::Filter::new( slog_term::FullFormat::new( slog_term::PlainSyncDecorator::new(std::io::stderr(),)).build(), |record: \u0026slog::Record| record.level().is_at_least(slog::Level::Warning), ), slog_term::FullFormat::new(slog_term::PlainSyncDecorator::new(std::io::stdout())).build(), ).fuse() ).build().fuse(); let root_logger = slog::Logger::root(drain, o!()); info!(root_logger, \"Application started\"; \"started_at\" = format!(\"{}\", chrono::Utc::now())); } Here, Async, Duplicate, Filter, FullFormat drains are used.\nLog Macros and Log Levels To log a statement/record, we use log macros. In the above examples, info! is used.\nLog Levels are log categories based on urgency. For example, we have debug!, info!, error!, etc. for self-explaining urgencies. We have different log macros for different log levels.\nExtra You can find many more examples here.\n",
   "wordCount" : "444",
@@ -320,7 +320,7 @@ We have different log macros for different log levels.</p>
     <ul class="post-tags">
       <li><a href="https://wilspi.com/tags/rust/">rust</a></li>
       <li><a href="https://wilspi.com/tags/slog/">slog</a></li>
-      <li><a href="https://wilspi.com/tags/tech/">tech</a></li>
+      <li><a href="https://wilspi.com/tags/dev/">dev</a></li>
     </ul>
   </footer>
 </article>
@@ -337,7 +337,7 @@ We have different log macros for different log levels.</p>
 
 
 
-<script defer src="/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+<script defer src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <script>
     window.onload = function () {

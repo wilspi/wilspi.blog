@@ -5,12 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>python | wilspi | Sourabh Deokar</title>
+<title>devops | wilspi | Sourabh Deokar</title>
 
 <meta name="keywords" content="" />
 <meta name="description" content="">
 <meta name="author" content="wilspi">
-<link rel="canonical" href="https://wilspi.com/tags/python/" />
+<link rel="canonical" href="https://wilspi.com/tags/devops/" />
 <link href="/assets/css/stylesheet.min.701f7dec17ec9de41acd4ff9020a1d74f8f146f8a7c09b52f049772245f8b044.css" integrity="sha256-cB997BfsneQazU/5AgoddPjxRvinwJtS8El3IkX4sEQ=" rel="preload stylesheet"
     as="style">
 
@@ -22,7 +22,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.81.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://wilspi.com/tags/python/index.xml">
+<link rel="alternate" type="application/rss&#43;xml" href="https://wilspi.com/tags/devops/index.xml">
 
 
 
@@ -36,16 +36,16 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
-<meta property="og:title" content="python" />
+<meta property="og:title" content="devops" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://wilspi.com/tags/python/" />
+<meta property="og:url" content="https://wilspi.com/tags/devops/" />
 <meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
-<meta property="og:updated_time" content="2020-07-31T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta property="og:updated_time" content="2020-03-12T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
-<meta name="twitter:title" content="python"/>
+<meta name="twitter:title" content="devops"/>
 <meta name="twitter:description" content=""/>
 
 
@@ -113,7 +113,7 @@ if (!doNotTrack) {
     <main class="main"> 
 <header class="page-header">
 
-  <h1>python</h1>
+  <h1>devops</h1>
 </header>
 
 
@@ -123,56 +123,18 @@ if (!doNotTrack) {
 
   <header class="entry-header">
     <h2>
-      Jinja template Inheritance using Database
+      Save the production with Nginx hack
     </h2>
   </header>
   <section class="entry-content">
-    <p>Jinja is a web template engine for the Python programming language. A Jinja template is simply a text file and can generate any text-based format (HTML, XML, CSV, LaTeX, etc.). A template contains variables and/or expressions, which get replaced with values when the template is rendered, thus serving dynamic content.
-Commonly, templates are stored as files, either in git-repo or s3 buckets. Depending on your use case, you can store the templates in the database as well....</p>
+    <p>Quick nginx hack to save your production web server in case the web service starts crashing.
+If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down....</p>
   </section>
   <footer class="entry-footer">
 
-July 31, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+March 12, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
 </footer>
-  <a class="entry-link" aria-label="post link to Jinja template Inheritance using Database" href="https://wilspi.com/post/tech/jinja-inheritance-using-db/"></a>
-</article>
-<article class="post-entry tag-entry"> 
-
-  <header class="entry-header">
-    <h2>
-      Log requests and responses with Django Middleware
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>From Django’s context:
- Middleware is a framework of hooks into Django’s request/response processing.
-It’s a light, low-level “plugin” system for globally altering Django’s input or output.
- Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware layer which will log every incoming request. Why better?
- it will log unhandled requests/views one time job, no need to configure for every request/view  Here, we are using Django’s middleware semantics to construct a middleware which will log all requests and corresponding responses....</p>
-  </section>
-  <footer class="entry-footer">
-
-July 29, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
-</footer>
-  <a class="entry-link" aria-label="post link to Log requests and responses with Django Middleware" href="https://wilspi.com/post/tech/django-middleware-to-log-requests/"></a>
-</article>
-<article class="post-entry tag-entry"> 
-
-  <header class="entry-header">
-    <h2>
-      Nix Recipe: Setup Python
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>This is a nix recipe for building and running python in a virtual nix environment.
-  Create shell.nix with following:
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &#34;python-env&#34;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &#34;${toString ./.}&#34;; # Post Shell Hook shellHook = &#39;&#39; echo &#34;Using ${python37.name}&#34; [ !...</p>
-  </section>
-  <footer class="entry-footer">
-
-March 9, 2020&nbsp;·&nbsp;1 min&nbsp;·&nbsp;wilspi
-</footer>
-  <a class="entry-link" aria-label="post link to Nix Recipe: Setup Python" href="https://wilspi.com/post/tech/nix-recipes/python/"></a>
+  <a class="entry-link" aria-label="post link to Save the production with Nginx hack" href="https://wilspi.com/post/tech/save-production-via-nginx/"></a>
 </article>
 
     </main><footer class="footer">

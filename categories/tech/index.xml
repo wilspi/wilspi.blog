@@ -62,7 +62,7 @@ Commonly, templates are stored as files, either in git-repo or s3 buckets. Depen
     </item>
     
     <item>
-      <title>Nix shell and Awesomeness</title>
+      <title>Virtual Environment with Nix shell</title>
       <link>https://wilspi.com/post/tech/nix-shell-and-awesomeness/</link>
       <pubDate>Thu, 30 Jul 2020 22:00:00 +0530</pubDate>
       

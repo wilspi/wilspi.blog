@@ -7,12 +7,12 @@
 <meta name="robots" content="index, follow">
 <title>Setup multi user nix for Arch Linux | wilspi | Sourabh Deokar</title>
 
-<meta name="keywords" content="arch-linux, nix, tech" />
+<meta name="keywords" content="arch-linux, nix, dev" />
 <meta name="description" content="On multi-user setup, from nix&rsquo;s page:
  To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.">
 <meta name="author" content="wilspi">
 <link rel="canonical" href="https://wilspi.com/post/tech/setup-nix-arch-linux/" />
-<link href="/assets/css/stylesheet.min.f580a29692e0c7eb72865ec0bd4ee916bef2dc7e85f4fbfdf6a609b3a0f4f6a1.css" integrity="sha256-9YCilpLgx&#43;tyhl7AvU7pFr7y3H6F9Pv99qYJs6D09qE=" rel="preload stylesheet"
+<link href="/assets/css/stylesheet.min.701f7dec17ec9de41acd4ff9020a1d74f8f146f8a7c09b52f049772245f8b044.css" integrity="sha256-cB997BfsneQazU/5AgoddPjxRvinwJtS8El3IkX4sEQ=" rel="preload stylesheet"
     as="style">
 
 <link rel="icon" href="https://wilspi.com/favicons/favicon.ico">
@@ -22,7 +22,7 @@
 <link rel="mask-icon" href="https://wilspi.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.79.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 
@@ -92,7 +92,7 @@ if (!doNotTrack) {
   "name": "Setup multi user nix for Arch Linux",
   "description": "On multi-user setup, from nix\u0026amp;rsquo;s page:\n To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the …",
   "keywords": [
-    "arch-linux", "nix", "tech"
+    "arch-linux", "nix", "dev"
   ],
   "articleBody": "On multi-user setup, from nix’s page:\n To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.\nTo prevent this, the Nix store and database are owned by some privileged user (usually root) and builders are executed under special user accounts (usually named nixbld1, nixbld2, etc.). When a unprivileged user runs a Nix command, actions that operate on the Nix store (such as builds) are forwarded to a Nix daemon running under the owner of the Nix store/database that performs the operation\n Here we are setting up nix for Arch Linux.\nmulti-user setup: Steps:\n  Install nix via yay (AUR helper)\nyay -S nix If encounter error:\nerror while loading shared libraries: libboost_context.so.1.69.0: cannot open shared object file: No such file or directory\nedit PKGBUILD for nix and in depends replace boost with boost. This happens because nix package has a hard dependency on boost1.69 version, more info here.\n  Add nix builder groups\nsudo groupadd -r nixbld for n in $(seq 1 10); do sudo useradd -c \"Nix build user $n\" \\  -d /var/empty -g nixbld -G nixbld -M -N -r -s \"$(which nologin)\" \\  nixbld$n; done   Source env variables\n. /etc/profile.d/nix.sh   Running the daemon\nsudo nix-daemon \u0026 disown export NIX_REMOTE=daemon   Add and update channel\nnix-channel --add https://nixos.org/channels/nixpkgs-unstable sudo nix-channel --update nix-env -u   We are all done, run following to check if nix-deamon is running:\nnix-shell -p hello --run hello ",
   "wordCount" : "281",
@@ -245,7 +245,7 @@ nix-env -u
     <ul class="post-tags">
       <li><a href="https://wilspi.com/tags/arch-linux/">arch-linux</a></li>
       <li><a href="https://wilspi.com/tags/nix/">nix</a></li>
-      <li><a href="https://wilspi.com/tags/tech/">tech</a></li>
+      <li><a href="https://wilspi.com/tags/dev/">dev</a></li>
     </ul>
   </footer>
 </article>
@@ -262,7 +262,7 @@ nix-env -u
 
 
 
-<script defer src="/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+<script defer src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <script>
     window.onload = function () {

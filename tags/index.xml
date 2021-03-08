@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 08 Aug 2020 15:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>dev</title>
+      <link>https://wilspi.com/tags/dev/</link>
+      <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>elm</title>
       <link>https://wilspi.com/tags/elm/</link>
       <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
@@ -22,15 +31,6 @@
       <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/frontend/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tech</title>
-      <link>https://wilspi.com/tags/tech/</link>
-      <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/tech/</guid>
       <description></description>
     </item>
     
@@ -98,6 +98,15 @@
     </item>
     
     <item>
+      <title>tech</title>
+      <link>https://wilspi.com/tags/tech/</link>
+      <pubDate>Thu, 30 Jul 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/tech/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>django</title>
       <link>https://wilspi.com/tags/django/</link>
       <pubDate>Wed, 29 Jul 2020 22:00:00 +0530</pubDate>
@@ -112,6 +121,15 @@
       <pubDate>Wed, 29 Jul 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/middleware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>devops</title>
+      <link>https://wilspi.com/tags/devops/</link>
+      <pubDate>Thu, 12 Mar 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/devops/</guid>
       <description></description>
     </item>
     

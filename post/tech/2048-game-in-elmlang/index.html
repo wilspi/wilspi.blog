@@ -7,13 +7,13 @@
 <meta name="robots" content="index, follow">
 <title>Introduction to Elm with 2048 game | wilspi | Sourabh Deokar</title>
 
-<meta name="keywords" content="elm, frontend, tech" />
+<meta name="keywords" content="elm, frontend, dev" />
 <meta name="description" content="In this post we will be creating a small game, 2048 in Elm. 2048 is a game created by gabrielecirulli which went viral in 2014. I chose 2048 because the game is simple which will help me/us understand Elm clearly. Also I didn&rsquo;t want to make another todo app.
 You can play here.
 Whats the game?  There are some number tiles on the board (4x4). The number on the tile will be a power of 2 with minimum being 2.">
 <meta name="author" content="wilspi">
 <link rel="canonical" href="https://wilspi.com/post/tech/2048-game-in-elmlang/" />
-<link href="/assets/css/stylesheet.min.f580a29692e0c7eb72865ec0bd4ee916bef2dc7e85f4fbfdf6a609b3a0f4f6a1.css" integrity="sha256-9YCilpLgx&#43;tyhl7AvU7pFr7y3H6F9Pv99qYJs6D09qE=" rel="preload stylesheet"
+<link href="/assets/css/stylesheet.min.701f7dec17ec9de41acd4ff9020a1d74f8f146f8a7c09b52f049772245f8b044.css" integrity="sha256-cB997BfsneQazU/5AgoddPjxRvinwJtS8El3IkX4sEQ=" rel="preload stylesheet"
     as="style">
 
 <link rel="icon" href="https://wilspi.com/favicons/favicon.ico">
@@ -23,7 +23,7 @@ Whats the game?  There are some number tiles on the board (4x4). The number on t
 <link rel="mask-icon" href="https://wilspi.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.79.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 
@@ -95,7 +95,7 @@ Whats the game?  There are some number tiles on the board (4x4). The number on t
   "name": "Introduction to Elm with 2048 game",
   "description": "In this post we will be creating a small game, 2048 in Elm. 2048 is a game created by gabrielecirulli which went viral in 2014. I chose 2048 because the game is simple which will …",
   "keywords": [
-    "elm", "frontend", "tech"
+    "elm", "frontend", "dev"
   ],
   "articleBody": "In this post we will be creating a small game, 2048 in Elm. 2048 is a game created by gabrielecirulli which went viral in 2014. I chose 2048 because the game is simple which will help me/us understand Elm clearly. Also I didn’t want to make another todo app.\nYou can play here.\nWhats the game?  There are some number tiles on the board (4x4). The number on the tile will be a power of 2 with minimum being 2. See below image:  You can press arrow keys: up, left, down, and right. This will trigger “merge” in the direction of the key-press. “merge” is the process of merging same number tiles into one and doubling its value. See below gif.  The score is calculated by sum of number on tiles on the board, so you play to maximise your score by merging as many tiles as possible. A new tile (number 2) is introduced in the game at any random empty space with every key-press Game is over when no new tiles can be added, thats your final score (highest).  Simple eh!\nThe Elm Architecture Every Elm application follows the Elm Architecture, which is pretty straightforward.\n Model — the state of your application View — a way to turn your state into HTML Update — a way to update your state based on messages  We won’t deep dive into each of them, you can read more about Elm here.\nLets dive into building the game.\nBuilding the game in Elm Shaping Elm Architecture Based on the game’s functioning, let’s start defining the architecture of our game from Elm’s perspective:\nModel\nWe have to store every tile’s data (number on the tiles and position of the tile). To store these tiles, we can introduce a matrix of NxN (N being the number of rows/columns, here 4). We can also store tiles as a list but matrix will be easy to render and visualize.\nView\nSince we kept our Model close to our View, in View we have to render this matrix into a matrix, with CSS.\nUpdate\nIn Update function we will regenerate the Model (state) depending upon the message it receives. Let’s look at different kind of messages we must have:\n LeftMove: To enable merging leftwards RightMove: To enable merging rightwards UpMove: To enable merging upwards DownMove: To enable merging downwards Reset: For resetting the grid to the initial state AddTile: To add a tile at any random available space  The structure of the game looks good, now we have to implement the handling of these messages.\nDiving into our messages   LeftMove\nLeftMove will merge same number tiles on a row in left direction. Since the tiles to be merged are in same list, we can do map-reduce for rows and merge 2 tiles with the same number into one and double the number on the tile. Lets look at the code below which merges tiles in a list and returns the list:\nmergeAndFillRow : List Cell - List Cell mergeAndFillRow list = let updatedRow = mergeRow list in List.concat (updatedRow :: [ EmptyCell | List.repeat ((list | List.length) - (updatedRow | List.length)) ] ) mergeRow : List Cell - List Cell mergeRow list = case list of [] - [] x1 :: xs - if x1 == EmptyCell then mergeRow xs else case xs of [] - [ x1 ] x2 :: xs2 - if x1 == x2 then mergeCell ( x1, x2 ) :: mergeRow xs2 else x1 :: mergeRow (x2 :: xs2) In mergeRow, we use recursion to reduce the list, and then in mergeAndFillRow we fill the list with empty tiles. Functional programming is fun!\n  RightMove\nRightMove is LeftMove in the opposite direction. So we will reuse mergeAndFillRow. How? By reversing the List before and after calling this function.\n  UpMove\nFor RightMove, and LeftMove, the merging operation is fairly easy since row elements are in a single list and therefore we can use List methods to reduce and merge tiles, but in UpMove case, the tiles are in multi columns, which means different lists. Elementary Mathematics comes to our rescue. We can transpose the matrix and then call the function mergeAndFillRow to implement UpMove.\nSince Elm is a functional programming language there are no looping (for/while) constructs, and this makes transpose little challenging.\nYou can refer to the code below, uses recursion:\ntransposeMap : Grid - Grid - Grid transposeMap grid2 grid1 = case Array.get 0 grid1 of Just e - transposeMap (grid2 | transposeForIdx 0 e) (grid1 | Array.slice 1 (grid1 | Array.length)) Nothing - grid2 transposeForIdx : Int - Array Cell - Grid - Grid transposeForIdx idx list grid2 = case Array.get 0 list of Just e - transposeForIdx (idx + 1) (list | Array.slice 1 (list | Array.length)) (case grid2 | Array.get idx of Just l - grid2 | Array.set idx (l | Array.push e) Nothing - grid2 | Array.push (Array.fromList [ e ]) ) Nothing - grid2   DownMove\nUsing the same technique as we did with RightMove, we can first reverse the list, then transpose, call mergeAndFillRow, transpose again, and finally reverse.\n  AddTile\nFor this will create a list of available positions of tiles by traversing the matrix, and then randomly adding number tile 2 on any one of available positions.\n  Reset\nReset is initializing the matrix and sending AddTile message.\n  Merging cells: mergeCell is a common function which merges 2 tiles (Cell) and returns one tile:\nswap : ( Cell, Cell ) - ( Cell, Cell ) swap ( cell1, cell2 ) = ( cell2, cell1 ) mergeCell : ( Cell, Cell ) - Cell mergeCell ( cell1, cell2 ) = case ( cell1, cell2 ) of ( Tile val1, Tile val2 ) - Tile (val1 + val2) ( Tile val1, EmptyCell ) - Tile val1 _ - mergeCell (swap ( cell1, cell2 )) Note: The above mergeCell method fails when arguments are EmptyCell and EmptyCell, it gets stuck in infinite recursion. But since we never have that case, it never crashes.\nSubscriptions For integrating key-presses and touch coordinates, we will use subscriptions.\n You can look at the complete code here.\n",
   "wordCount" : "1021",
@@ -392,7 +392,7 @@ mergeCell ( cell<span style="color:#ae81ff">1</span>, cell<span style="color:#ae
     <ul class="post-tags">
       <li><a href="https://wilspi.com/tags/elm/">elm</a></li>
       <li><a href="https://wilspi.com/tags/frontend/">frontend</a></li>
-      <li><a href="https://wilspi.com/tags/tech/">tech</a></li>
+      <li><a href="https://wilspi.com/tags/dev/">dev</a></li>
     </ul>
   </footer>
 </article>
@@ -409,7 +409,7 @@ mergeCell ( cell<span style="color:#ae81ff">1</span>, cell<span style="color:#ae
 
 
 
-<script defer src="/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+<script defer src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <script>
     window.onload = function () {

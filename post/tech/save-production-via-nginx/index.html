@@ -7,12 +7,12 @@
 <meta name="robots" content="index, follow">
 <title>Save the production with Nginx hack | wilspi | Sourabh Deokar</title>
 
-<meta name="keywords" content="nginx, production, tech" />
+<meta name="keywords" content="nginx, production, devops, dev" />
 <meta name="description" content="Quick nginx hack to save your production web server in case the web service starts crashing.
 If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down.">
 <meta name="author" content="wilspi">
 <link rel="canonical" href="https://wilspi.com/post/tech/save-production-via-nginx/" />
-<link href="/assets/css/stylesheet.min.f580a29692e0c7eb72865ec0bd4ee916bef2dc7e85f4fbfdf6a609b3a0f4f6a1.css" integrity="sha256-9YCilpLgx&#43;tyhl7AvU7pFr7y3H6F9Pv99qYJs6D09qE=" rel="preload stylesheet"
+<link href="/assets/css/stylesheet.min.701f7dec17ec9de41acd4ff9020a1d74f8f146f8a7c09b52f049772245f8b044.css" integrity="sha256-cB997BfsneQazU/5AgoddPjxRvinwJtS8El3IkX4sEQ=" rel="preload stylesheet"
     as="style">
 
 <link rel="icon" href="https://wilspi.com/favicons/favicon.ico">
@@ -22,7 +22,7 @@ If you have been working in a production environment, you know at certain times 
 <link rel="mask-icon" href="https://wilspi.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.79.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 
@@ -92,7 +92,7 @@ If you have been working in a production environment, you know at certain times 
   "name": "Save the production with Nginx hack",
   "description": "Quick nginx hack to save your production web server in case the web service starts crashing.\nIf you have been working in a production environment, you know at certain times your …",
   "keywords": [
-    "nginx", "production", "tech"
+    "nginx", "production", "devops", "dev"
   ],
   "articleBody": "Quick nginx hack to save your production web server in case the web service starts crashing.\nIf you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down. You should anyways have this as a backup tactic for your service failure. DevOps generally use autoscaling at such times.\nNote: This won’t work if there is data inconsistency, since all service will crash.\nSteps Here go the how-to steps:\n  Start the services Start 3 processes of the web service on multiple ports (in below gist: 3000, 3002, 3004 )\n  Upstream conf Add your upstream in nginx conf file (here myserver):\nupstream myserver { server 127.0.0.1:3000 fail_timeout=0; server 127.0.0.1:3002 fail_timeout=0; server 127.0.0.1:3004 backup; } Here nginx and web services are running on the same box. If you are running your services on a different machine, you can replace 127.0.0.1 with the machine’s IP.\nTwo services (ones running on ports 3000 and 3002) to distribute the load and one (on 3004) as a backup if either crash.\n  Update path In your location block, add the following code block in your nginx conf replacing\n myroute with your route myserver with your upstream name  location ~ ^/myroute/(.*) { proxy_next_upstream error timeout invalid_header http_502 http_503 http_504; proxy_pass ; } Read about proxy_next_upstream here.\n  Reload nginx Run to reload the configuration:\nsudo systemctl nginx reload   Extra In my case, it was our rust web service which was getting stuck, failing all the subsequent requests. I created a health-check service that monitored and restarted the rust service whenever that happened. But I knew during this downtime period many of the requests would fail, we didn’t want that. So I added three processes of this service on different ports and proxied them the way shown above.\n",
   "wordCount" : "340",
@@ -249,7 +249,8 @@ DevOps generally use autoscaling at such times.</p>
     <ul class="post-tags">
       <li><a href="https://wilspi.com/tags/nginx/">nginx</a></li>
       <li><a href="https://wilspi.com/tags/production/">production</a></li>
-      <li><a href="https://wilspi.com/tags/tech/">tech</a></li>
+      <li><a href="https://wilspi.com/tags/devops/">devops</a></li>
+      <li><a href="https://wilspi.com/tags/dev/">dev</a></li>
     </ul>
   </footer>
 </article>
@@ -266,7 +267,7 @@ DevOps generally use autoscaling at such times.</p>
 
 
 
-<script defer src="/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+<script defer src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <script>
     window.onload = function () {

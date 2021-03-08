@@ -7,12 +7,12 @@
 <meta name="robots" content="index, follow">
 <title>Jinja template Inheritance using Database | wilspi | Sourabh Deokar</title>
 
-<meta name="keywords" content="jinja&#34;, python, tech" />
+<meta name="keywords" content="jinja&#34;, python, dev" />
 <meta name="description" content="Jinja is a web template engine for the Python programming language. A Jinja template is simply a text file and can generate any text-based format (HTML, XML, CSV, LaTeX, etc.). A template contains variables and/or expressions, which get replaced with values when the template is rendered, thus serving dynamic content.
 Commonly, templates are stored as files, either in git-repo or s3 buckets. Depending on your use case, you can store the templates in the database as well.">
 <meta name="author" content="wilspi">
 <link rel="canonical" href="https://wilspi.com/post/tech/jinja-inheritance-using-db/" />
-<link href="/assets/css/stylesheet.min.f580a29692e0c7eb72865ec0bd4ee916bef2dc7e85f4fbfdf6a609b3a0f4f6a1.css" integrity="sha256-9YCilpLgx&#43;tyhl7AvU7pFr7y3H6F9Pv99qYJs6D09qE=" rel="preload stylesheet"
+<link href="/assets/css/stylesheet.min.701f7dec17ec9de41acd4ff9020a1d74f8f146f8a7c09b52f049772245f8b044.css" integrity="sha256-cB997BfsneQazU/5AgoddPjxRvinwJtS8El3IkX4sEQ=" rel="preload stylesheet"
     as="style">
 
 <link rel="icon" href="https://wilspi.com/favicons/favicon.ico">
@@ -22,7 +22,7 @@ Commonly, templates are stored as files, either in git-repo or s3 buckets. Depen
 <link rel="mask-icon" href="https://wilspi.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.79.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 
@@ -92,7 +92,7 @@ Commonly, templates are stored as files, either in git-repo or s3 buckets. Depen
   "name": "Jinja template Inheritance using Database",
   "description": "Jinja is a web template engine for the Python programming language. A Jinja template is simply a text file and can generate any text-based format (HTML, XML, CSV, LaTeX, etc.). A …",
   "keywords": [
-    "jinja\"", "python", "tech"
+    "jinja\"", "python", "dev"
   ],
   "articleBody": "Jinja is a web template engine for the Python programming language. A Jinja template is simply a text file and can generate any text-based format (HTML, XML, CSV, LaTeX, etc.). A template contains variables and/or expressions, which get replaced with values when the template is rendered, thus serving dynamic content.\nCommonly, templates are stored as files, either in git-repo or s3 buckets. Depending on your use case, you can store the templates in the database as well.\nTemplates in Database   Template is a text file and hence can be simply saved in the text field of the database.\n  Now Jinja can be used to render the template, like this\n# example of template template = \"template with name: {{name}}\" from jinja2 import Template print(Template(template).render({\"name\": \"wilspi\"}) This will give the rendered template output.\n  Template Inheritance and Database Template inheritance is where Jinja’s power lies. It allows you to reuse templates and structure them in an efficient manner.\nJinja allows template inheritance via many techniques, few of which are listed below:\n blocks extends include  But all these ways require templates to be present in the same Jinja environment That’s how Jinja picks up the other templates while using all these inheritance techniques.\nThe most common way to use inheritance is to use file system loader which puts the base directory path in the environment and then jinja can pick/load any of these files to render since all of them are in its environment.\nWith templates being in the database, we need a way to load templates into Jinja environment, since Jinja doesn’t support any environment using the database.\nDictLoader is another loader which loads key-value pairs in the Jinja environment. A dictionary of templates can be created by loading templates from the database, and then we can use DictLoader to load these templates into Jinja environment, and Voila!, Jinja’s inheritance system works like a charm.\nExample:\ntemplate_map = { \"header\": \"header template\", \"base\": \"\"\" {% include \"header\" %} base template with {{name}} {% include \"footer\" %} \"\"\", \"footer\": \"footer template\", } from jinja2 import Environment, DictLoader env = Environment(loader=DictLoader(template_map)) print(env.get_template(\"base\").render({\"name\":\"wilspi\"}))) Extra I came across this while working on a django based template storage and editor library, check out django-templatestore.\n",
   "wordCount" : "367",
@@ -254,7 +254,7 @@ env <span style="color:#f92672">=</span> Environment(loader<span style="color:#f
     <ul class="post-tags">
       <li><a href="https://wilspi.com/tags/jinja/">jinja&#34;</a></li>
       <li><a href="https://wilspi.com/tags/python/">python</a></li>
-      <li><a href="https://wilspi.com/tags/tech/">tech</a></li>
+      <li><a href="https://wilspi.com/tags/dev/">dev</a></li>
     </ul>
   </footer>
 </article>
@@ -271,7 +271,7 @@ env <span style="color:#f92672">=</span> Environment(loader<span style="color:#f
 
 
 
-<script defer src="/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+<script defer src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <script>
     window.onload = function () {
