@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 03 Aug 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/slog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Slogging with multiple drains in Rust</title>
+      <title>Structured Logging using Slog in Rust</title>
       <link>https://wilspi.com/post/tech/slogging-multiple-drains/</link>
       <pubDate>Mon, 03 Aug 2020 22:00:00 +0530</pubDate>
       

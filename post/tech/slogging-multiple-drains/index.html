@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Slogging with multiple drains in Rust | wilspi | Sourabh Deokar</title>
+<title>Structured Logging using Slog in Rust | wilspi | Sourabh Deokar</title>
 
 <meta name="keywords" content="rust, slog, dev" />
 <meta name="description" content="Slog is a structured logging library for rust-lang.
@@ -38,7 +38,7 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
-<meta property="og:title" content="Slogging with multiple drains in Rust" />
+<meta property="og:title" content="Structured Logging using Slog in Rust" />
 <meta property="og:description" content="Slog is a structured logging library for rust-lang.
 Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:
  processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Basic Logging with Slog Lets create a simple logger:
@@ -51,7 +51,7 @@ Structured logging is a concept that puts events over messages, events are logge
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
-<meta name="twitter:title" content="Slogging with multiple drains in Rust"/>
+<meta name="twitter:title" content="Structured Logging using Slog in Rust"/>
 <meta name="twitter:description" content="Slog is a structured logging library for rust-lang.
 Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:
  processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Basic Logging with Slog Lets create a simple logger:
@@ -84,7 +84,7 @@ Structured logging is a concept that puts events over messages, events are logge
     {
       "@type": "ListItem",
       "position":  4 ,
-      "name": "Slogging with multiple drains in Rust",
+      "name": "Structured Logging using Slog in Rust",
       "item": "https://wilspi.com/post/tech/slogging-multiple-drains/"
     }
   ]
@@ -94,14 +94,14 @@ Structured logging is a concept that puts events over messages, events are logge
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Slogging with multiple drains in Rust",
-  "name": "Slogging with multiple drains in Rust",
+  "headline": "Structured Logging using Slog in Rust",
+  "name": "Structured Logging using Slog in Rust",
   "description": "Slog is a structured logging library for rust-lang.\nStructured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain …",
   "keywords": [
     "rust", "slog", "dev"
   ],
-  "articleBody": "Slog is a structured logging library for rust-lang.\nStructured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:\n processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Basic Logging with Slog Lets create a simple logger:\n#[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!()); info!(root_logger, \"Application started\"; \"started_at\" = format!(\"{}\", chrono::Utc::now())); } Important terms:\n Drain is a trait which is responsible for deciding the output/destination of the logs. Any custom log handling logic should be implemented as a Drain. Context are key-value pairs that gets added into every log statement. Let’s say if you want to add the git commit version to each log statement you can add it here. Logger are objects used to execute logging statements.\nFor creating root logger, we need drain and context. Read complete documentation here.  In above example, a root_logger object is created with drain Discard (which discards everything) and blank context (o!()).\n Lets look at another example:\n#[macro_use] extern crate slog; extern crate slog_term; extern crate chrono; use slog::Drain; fn main() { let decorator = slog_term::TermDecorator::new().build(); let drain = slog_term::FullFormat::new(decorator).build().fuse(); let root_logger = slog::Logger::root(drain, o!()); info!(root_logger, \"Application started\"; \"started_at\" = format!(\"{}\", chrono::Utc::now())); } Here, slog_term::FullFormat drain is used for terminal output with TermDecorator (Decorator is an implementing strategy of output formating in terms of IO, colors, etc.)\n Since drain is a trait to customize logging to any output, it allows slog to become extensible, composable, and flexible. There are many feature libraries based on this trait:\n slog-bunyan slog-term slog-async slog-journald etc.  You can always write your own implementation using this trait.\nMultiple Drains Drains can also be interlinked and extended according to our needs. Following is an example where there are two outputs:\n to stdout, where all log statements are sent to stderr, where log statements with log level greater than or equal to slog::Level::Warning are sent  #[macro_use] extern crate slog; extern crate slog_term; extern crate chrono; use slog::Drain; fn main() { let drain = slog_async::Async::new( slog::Duplicate::new( slog::Filter::new( slog_term::FullFormat::new( slog_term::PlainSyncDecorator::new(std::io::stderr(),)).build(), |record: \u0026slog::Record| record.level().is_at_least(slog::Level::Warning), ), slog_term::FullFormat::new(slog_term::PlainSyncDecorator::new(std::io::stdout())).build(), ).fuse() ).build().fuse(); let root_logger = slog::Logger::root(drain, o!()); info!(root_logger, \"Application started\"; \"started_at\" = format!(\"{}\", chrono::Utc::now())); } Here, Async, Duplicate, Filter, FullFormat drains are used.\nLog Macros and Log Levels To log a statement/record, we use log macros. In the above examples, info! is used.\nLog Levels are log categories based on urgency. For example, we have debug!, info!, error!, etc. for self-explaining urgencies. We have different log macros for different log levels.\nExtra You can find many more examples here.\n",
-  "wordCount" : "444",
+  "articleBody": "Slog is a structured logging library for rust-lang.\nStructured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:\n processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Basic Logging with Slog Lets create a simple logger:\n#[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!()); info!(root_logger, \"Application started\"; \"started_at\" = format!(\"{}\", chrono::Utc::now())); } Important terms:\n Drain is a trait which is responsible for deciding the output/destination of the logs. Any custom log handling logic should be implemented as a Drain. Context are key-value pairs that gets added into every log statement. Let’s say if you want to add the git commit version to each log statement you can add it here. Logger are objects used to execute logging statements.\nFor creating root logger, we need drain and context. Read complete documentation here.  In above example, a root_logger object is created with drain Discard (which discards everything) and blank context (o!()).\n Lets look at another example:\n#[macro_use] extern crate slog; extern crate slog_term; extern crate chrono; use slog::Drain; fn main() { let decorator = slog_term::TermDecorator::new().build(); let drain = slog_term::FullFormat::new(decorator).build().fuse(); let root_logger = slog::Logger::root(drain, o!()); info!(root_logger, \"Application started\"; \"started_at\" = format!(\"{}\", chrono::Utc::now())); } Here, slog_term::FullFormat drain is used for terminal output with TermDecorator (Decorator is an implementing strategy of output formating in terms of IO, colors, etc.)\nCustomizable Drains Since drain is a trait to customize logging to any output, it allows slog to become extensible, composable, and flexible. There are many feature libraries based on this trait:\n slog-bunyan slog-term slog-async slog-journald etc.  You can always write your own implementation using this trait.\nMultiple Drains Drains can also be interlinked and extended according to our needs. Following is an example where there are two outputs:\n to stdout, where all log statements are sent to stderr, where log statements with log level greater than or equal to slog::Level::Warning are sent  #[macro_use] extern crate slog; extern crate slog_term; extern crate chrono; use slog::Drain; fn main() { let drain = slog_async::Async::new( slog::Duplicate::new( slog::Filter::new( slog_term::FullFormat::new( slog_term::PlainSyncDecorator::new(std::io::stderr(),)).build(), |record: \u0026slog::Record| record.level().is_at_least(slog::Level::Warning), ), slog_term::FullFormat::new(slog_term::PlainSyncDecorator::new(std::io::stdout())).build(), ).fuse() ).build().fuse(); let root_logger = slog::Logger::root(drain, o!()); info!(root_logger, \"Application started\"; \"started_at\" = format!(\"{}\", chrono::Utc::now())); } Here, Async, Duplicate, Filter, FullFormat drains are used.\nLog Macros and Log Levels To log a statement/record, we use log macros. In the above examples, info! is used.\nLog Levels are log categories based on urgency. For example, we have debug!, info!, error!, etc. for self-explaining urgencies. We have different log macros for different log levels.\nExtra You can find many more examples here.\n",
+  "wordCount" : "446",
   "inLanguage": "en",
   "datePublished": "2020-08-03T22:00:00+05:30",
   "dateModified": "2020-08-03T22:00:00+05:30",
@@ -194,7 +194,7 @@ Structured logging is a concept that puts events over messages, events are logge
   <header class="post-header">
 
     <h1 class="post-title">
-      Slogging with multiple drains in Rust
+      Structured Logging using Slog in Rust
     </h1>
     <div class="post-meta">
 
@@ -210,7 +210,10 @@ August 3, 2020&nbsp;·&nbsp;3 min&nbsp;·&nbsp;wilspi
       </summary>
       <div class="inner"><ul><li>
         <a href="#basic-logging-with-slog" aria-label="Basic Logging with Slog">Basic Logging with <code>Slog</code></a></li><li>
-        <a href="#multiple-drains" aria-label="Multiple Drains">Multiple Drains</a></li><li>
+        <a href="#customizable-drains" aria-label="Customizable Drains">Customizable Drains</a><ul>
+            <li>
+        <a href="#multiple-drains" aria-label="Multiple Drains">Multiple Drains</a></li></ul>
+    </li><li>
         <a href="#log-macros-and-log-levels" aria-label="Log Macros and Log Levels">Log Macros and Log Levels</a></li><li>
         <a href="#extra" aria-label="Extra">Extra</a></li></ul>
       </div>
@@ -265,7 +268,7 @@ fn main() {
         &quot;started_at&quot; =&gt; format!(&quot;{}&quot;, chrono::Utc::now()));
 }
 </code></pre><p>Here, <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.FullFormat.html">slog_term::FullFormat</a> drain is used for terminal output with <a href="https://docs.rs/slog-term/2.0.2/slog_term/struct.TermDecorator.html">TermDecorator</a> (Decorator is an implementing strategy of output formating in terms of IO, colors, etc.)</p>
-<hr>
+<h3 id="customizable-drains">Customizable Drains<a hidden class="anchor" aria-hidden="true" href="#customizable-drains">#</a></h3>
 <p>Since drain is a trait to customize logging to any output, it allows slog to become extensible, composable, and flexible.
 There are many feature libraries based on this trait:</p>
 <ul>
@@ -276,7 +279,7 @@ There are many feature libraries based on this trait:</p>
 etc.</li>
 </ul>
 <p>You can always write your own implementation using this trait.</p>
-<h3 id="multiple-drains">Multiple Drains<a hidden class="anchor" aria-hidden="true" href="#multiple-drains">#</a></h3>
+<h4 id="multiple-drains">Multiple Drains<a hidden class="anchor" aria-hidden="true" href="#multiple-drains">#</a></h4>
 <p>Drains can also be interlinked and extended according to our needs.
 Following is an example where there are two outputs:</p>
 <ul>
