@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Setting up Arch Linux from scratch in 2021 | wilspi | Sourabh Deokar</title>
+
+<meta name="keywords" content="arch-linux, devops, dev" />
+<meta name="description" content="Few days back my long running system broke due to some inconsistent package and I was forced to reinstall Arch. There are many tutorials and how-to pages to do so, but I found none to be exhaustive or seemless, so I decided to write my own.
+Here are the steps to install Arch Linux from scratch
+  Make a bootable drive
+Download Arch Linux from here
+If using Windows, download Rufus and create a bootable drive.">
+<meta name="author" content="wilspi">
+<link rel="canonical" href="https://wilspi.com/post/tech/setup-arch-linux/" />
+<link href="/assets/css/stylesheet.min.701f7dec17ec9de41acd4ff9020a1d74f8f146f8a7c09b52f049772245f8b044.css" integrity="sha256-cB997BfsneQazU/5AgoddPjxRvinwJtS8El3IkX4sEQ=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://wilspi.com/favicons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://wilspi.com/favicons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://wilspi.com/favicons/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://wilspi.com/favicons/apple-touch-icon.png">
+<link rel="mask-icon" href="https://wilspi.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-51915090-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<meta property="og:title" content="Setting up Arch Linux from scratch in 2021" />
+<meta property="og:description" content="Few days back my long running system broke due to some inconsistent package and I was forced to reinstall Arch. There are many tutorials and how-to pages to do so, but I found none to be exhaustive or seemless, so I decided to write my own.
+Here are the steps to install Arch Linux from scratch
+  Make a bootable drive
+Download Arch Linux from here
+If using Windows, download Rufus and create a bootable drive." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wilspi.com/post/tech/setup-arch-linux/" />
+<meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
+<meta property="article:published_time" content="2021-03-14T22:00:00+05:30" />
+<meta property="article:modified_time" content="2021-03-14T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
+
+<meta name="twitter:title" content="Setting up Arch Linux from scratch in 2021"/>
+<meta name="twitter:description" content="Few days back my long running system broke due to some inconsistent package and I was forced to reinstall Arch. There are many tutorials and how-to pages to do so, but I found none to be exhaustive or seemless, so I decided to write my own.
+Here are the steps to install Arch Linux from scratch
+  Make a bootable drive
+Download Arch Linux from here
+If using Windows, download Rufus and create a bootable drive."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1 ,
+      "name": "Home",
+      "item": "https://wilspi.com/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://wilspi.com/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "tech",
+      "item": "https://wilspi.com/post/tech/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Setting up Arch Linux from scratch in 2021",
+      "item": "https://wilspi.com/post/tech/setup-arch-linux/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Setting up Arch Linux from scratch in 2021",
+  "name": "Setting up Arch Linux from scratch in 2021",
+  "description": "Few days back my long running system broke due to some inconsistent package and I was forced to reinstall Arch. There are many tutorials and how-to pages to do so, but I found none …",
+  "keywords": [
+    "arch-linux", "devops", "dev"
+  ],
+  "articleBody": "Few days back my long running system broke due to some inconsistent package and I was forced to reinstall Arch. There are many tutorials and how-to pages to do so, but I found none to be exhaustive or seemless, so I decided to write my own.\nHere are the steps to install Arch Linux from scratch\n  Make a bootable drive\nDownload Arch Linux from here\nIf using Windows, download Rufus and create a bootable drive. If you are on Linux, you can use the dd command to create a live USB.\n  Verify boot mode\nls /sys/firmware/efi/efivars If the command shows the directory without error, then the system is booted in UEFI mode.\nIf the directory does not exist, the system may be booted in BIOS (or CSM) mode.\n  Connect to Internet\n  Check network interfaces\nip link   For wifi:\nConnect Internet\niwctl --passphrase  station  connect  Replace , ,  appropriately.\n is wifi interface, use ip link to check yours.\n  Check if Internet is working\nping google.com       Setup datetime\nSystem clock, read more here\n  timedatectl set-ntp true   timedatectl set-timezone Asia/Kolkata   timedatectl status   We will sync with hardware clock later.\n  Partition devices\nNote: If you have dual boot, make sure you have already alloted blank space for linux partition. Else please do this in the current os (Windows for me).\n  Check partition volumes\nlsblk   Minimum we need the following partitions:\n One partition for the root directory /. For booting in UEFI mode: an EFI system partition.  You can have separate partition for SWAP, and even your home directory, skipping this here.\n  Use fdisk to partition your drives.\nBe careful with the tool, it may delete your existing data and drives.\nIn my case, the drive was /dev/sdb:\nCreate a new partition using the tool (delete existing partition if required, be careful before you same, you might lose your data on the drive).\n  Format the partition\nmkfs.ext4 /dev/sdb5 Use the partition which you created with fdisk, for me it is /dev/sdb5\n  Format partition for UEFI filesystem (boot menu) If reinstalling or replacing old linux distro, this would have been already there, so you can skip this. Replace with the partition you created, for me it is /dev/sdb1\nmkfs.fat -F32 /dev/sdb1   Extra:\nIf using SWAP, format SWAP partition also, replace swap_partition\nmkswap /dev/swap_partition     ​\n  Mount the file system\nmount /dev/sdb5 /mnt Here, I mounted /dev/sdb5 which was my partition.\n  Installation\n  Essential packages\npacstrap /mnt base base-devel linux linux-firmware vim vi     Configurations\n  Fstab: Defines how disk partitions, various other block devices, or remote filesystems should be mounted into the filesystem\ngenfstab -U /mnt  /mnt/etc/fstab   Change root directory for the process (bootdrive)\narch-chroot /mnt   Timezone\n  Local time configuration, see this\n  ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime ```\n  Sync with hardware clock\nhwclock --systohc --utc     Localization\n  Edit /etc/locale.gen and uncomment en_US.UTF-8 UTF-8\n  locale-gen   echo \"LANG=en_US.UTF-8\"  /etc/locale.conf     Network Configuring hostname and hosts file\n  echo \"wilstation\"  /etc/hostname   echo \"127.0.0.1\tlocalhost ::1\tlocalhost 127.0.1.1\twilstation.localdomain\twilstation\"  /etc/hosts     Users\n  Create user and setup password, creating wilspi here\nuseradd -m -g users -G wheel -s /bin/bash wilspi passwd wilspi   Sudoers\n  pacman -S sudo   echo \"root ALL=(ALL) ALL %wheel ALL=(ALL) ALL\"  /etc/sudoers   chown -c root:root /etc/sudoers chmod -c 0440 /etc/sudoers       Boot Configuration\n  pacman -S grub efibootmgr   mkdir /boot/efi   Note: Here, /dev/sdb1 (my UEFI partition) is mounted to /boot/efi\nmount /dev/sdb1 /boot/efi   grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi   grub-mkconfig -o /boot/grub/grub.cfg   mkinitcpio -P     Root Password\n  passwd       Desktop Environment (GNOME)\nSetting up GNOME as my desktop environment, you can use any other from here\n  pacman -S xorg gnome   systemctl enable gdm.service     ​\n  Pre final steps\nWe are almost done, setting up drivers and enabling services.\n  Graphics driver\npacman -S nvidia nvidia  pkg works for my graphics driver, check here for your driver.\n  Enable NetworkManager\nsystemctl enable NetworkManager.service You can use other managers as well.\n    Final steps before rebooting\n  Unmount uefi partition\numount /boot/efi   Exit chroot\nexit   Unmount system partition\numount /mnt   Reboot\nreboot now       ",
+  "wordCount" : "653",
+  "inLanguage": "en",
+  "datePublished": "2021-03-14T22:00:00+05:30",
+  "dateModified": "2021-03-14T22:00:00+05:30",
+  "author":{
+    "@type": "Person",
+    "name": "wilspi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wilspi.com/post/tech/setup-arch-linux/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "wilspi | Sourabh Deokar",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wilspi.com/favicons/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://wilspi.com" accesskey="h" title="wilspi | Sourabh Deokar (Alt + H)">wilspi</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                
+            </span>
+        </div>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://wilspi.com/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+
+    <h1 class="post-title">
+      Setting up Arch Linux from scratch in 2021
+    </h1>
+    <div class="post-meta">
+
+March 14, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;wilspi
+
+</div>
+  </header> 
+
+  <div class="post-content">
+<p>Few days back my long running system broke due to some inconsistent package and I was forced to reinstall Arch. There are many tutorials and how-to pages to do so, but I found none to be exhaustive or seemless, so I decided to write my own.</p>
+<p>Here are the steps to install Arch Linux  from scratch</p>
+<ul>
+<li>
+<p>Make a bootable drive</p>
+<p>Download Arch Linux from <a href="https://archlinux.org/download/">here</a></p>
+<p>If using Windows, download <a href="https://rufus.ie/">Rufus</a> and create a bootable drive. If you are on Linux, you can use the <a href="https://linuxhandbook.com/dd-command/">dd command</a> to create a live USB.</p>
+</li>
+<li>
+<p>Verify boot mode</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ls /sys/firmware/efi/efivars
+</code></pre></div><p>If the command shows the directory without error, then the system is  booted in UEFI mode.</p>
+<p>If the directory does not exist, the system may be  booted in <a href="https://en.wikipedia.org/wiki/BIOS">BIOS</a> (or <a href="https://en.wikipedia.org/wiki/Compatibility_Support_Module">CSM</a>) mode.</p>
+</li>
+<li>
+<p>Connect to Internet</p>
+<ul>
+<li>
+<p>Check network interfaces</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ip link
+</code></pre></div></li>
+<li>
+<p>For wifi:</p>
+<p>Connect Internet</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">iwctl --passphrase &lt;passphrase&gt; station &lt;wlan0&gt; connect &lt;wifi_ssid&gt;
+</code></pre></div><p>Replace <code>&lt;passphrase&gt;</code>, <code>&lt;wlan0&gt;</code>, <code>&lt;wifi_ssid&gt;</code> appropriately.</p>
+<p><code>&lt;wlan0&gt;</code> is wifi interface, use <code>ip link</code> to check yours.</p>
+<ul>
+<li>
+<p>Check if Internet is working</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ping google.com
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Setup datetime</p>
+<p>System clock, read more <a href="https://wiki.archlinux.org/index.php/System_time#System_clock">here</a></p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  timedatectl set-ntp true
+</code></pre></div></li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  timedatectl set-timezone Asia/Kolkata
+</code></pre></div></li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  timedatectl status
+</code></pre></div></li>
+</ul>
+<p>We will sync with hardware clock later.</p>
+</li>
+<li>
+<p>Partition devices</p>
+<p>Note: If you have dual boot, make sure you have already alloted blank space for linux partition. Else please do this in the current os (Windows for me).</p>
+<ul>
+<li>
+<p>Check partition volumes</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lsblk
+</code></pre></div><p><img src="/images/lsblk2.png" alt="partition volumes"></p>
+</li>
+<li>
+<p>Minimum we need the following <a href="https://wiki.archlinux.org/index.php/Partition">partitions</a>:</p>
+<ul>
+<li>One partition for the <a href="https://en.wikipedia.org/wiki/Root_directory">root directory</a> <code>/</code>.</li>
+<li>For booting in <a href="https://wiki.archlinux.org/index.php/UEFI">UEFI</a> mode: an <a href="https://wiki.archlinux.org/index.php/EFI_system_partition">EFI system partition</a>.</li>
+</ul>
+<p>You can have separate partition for <a href="https://wiki.archlinux.org/index.php/Swap">SWAP</a>, and even your home directory, skipping this here.</p>
+</li>
+<li>
+<p>Use <code>fdisk</code> to partition your drives.</p>
+<p>Be careful with the tool, it may delete your existing data and drives.</p>
+<p>In my case, the drive was <code>/dev/sdb</code>:</p>
+<p><img src="/images/fdisk.png" alt="partition volumes"></p>
+<p>Create a new partition using the tool (delete existing partition if required, be careful before you same, you might lose your data on the drive).</p>
+</li>
+<li>
+<p>Format the partition</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkfs.ext4 /dev/sdb5
+</code></pre></div><p>Use the partition which you created with fdisk, for me it is <code>/dev/sdb5</code></p>
+</li>
+<li>
+<p>Format partition for UEFI filesystem (boot menu)
+If reinstalling or replacing old linux distro, this would have been already there, so you can skip this. Replace with the partition you created, for me it is <code>/dev/sdb1</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkfs.fat -F32 /dev/sdb1
+</code></pre></div></li>
+<li>
+<p>Extra:</p>
+<p>If using SWAP, format SWAP partition also, replace <code>swap_partition</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkswap /dev/swap_partition
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p>​</p>
+<ul>
+<li>
+<p>Mount the file system</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mount /dev/sdb5 /mnt
+</code></pre></div><p>Here, I mounted <code>/dev/sdb5</code> which was my partition.</p>
+</li>
+<li>
+<p>Installation</p>
+<ul>
+<li>
+<p>Essential packages</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacstrap /mnt base base-devel linux linux-firmware vim vi
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Configurations</p>
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Fstab">Fstab</a>:  Defines how disk partitions, various other block devices, or remote filesystems should be mounted into the filesystem</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre></div></li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Chroot">Change root directory</a> for the process (bootdrive)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">arch-chroot /mnt
+</code></pre></div></li>
+<li>
+<p>Timezone</p>
+<ul>
+<li>
+<p>Local time configuration, see <a href="https://www.freedesktop.org/software/systemd/man/localtime.html">this</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"></code></pre></div></li>
+</ul>
+<p>ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+```</p>
+<ul>
+<li>
+<p>Sync with hardware clock</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hwclock --systohc --utc
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Localization</p>
+<ul>
+<li>
+<p>Edit <code>/etc/locale.gen</code> and uncomment <code>en_US.UTF-8 UTF-8</code></p>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  locale-gen
+</code></pre></div></li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  echo <span style="color:#e6db74">&#34;LANG=en_US.UTF-8&#34;</span> &gt; /etc/locale.conf
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Network
+Configuring <code>hostname</code> and <code>hosts</code> file</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  echo <span style="color:#e6db74">&#34;wilstation&#34;</span> &gt; /etc/hostname
+</code></pre></div></li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  echo <span style="color:#e6db74">&#34;127.0.0.1	localhost
+</span><span style="color:#e6db74">  ::1		localhost
+</span><span style="color:#e6db74">  127.0.1.1	wilstation.localdomain	wilstation&#34;</span> &gt; /etc/hosts
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Users</p>
+<ul>
+<li>
+<p>Create user and setup password, creating <code>wilspi</code> here</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">useradd -m -g users -G wheel -s /bin/bash wilspi
+passwd wilspi
+</code></pre></div></li>
+<li>
+<p><a href="https://help.ubuntu.com/community/Sudoers">Sudoers</a></p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  pacman -S sudo
+</code></pre></div></li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  echo <span style="color:#e6db74">&#34;root ALL=(ALL) ALL
+</span><span style="color:#e6db74">  %wheel ALL=(ALL) ALL&#34;</span> &gt; /etc/sudoers
+</code></pre></div></li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  chown -c root:root /etc/sudoers
+  chmod -c <span style="color:#ae81ff">0440</span> /etc/sudoers
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Boot Configuration</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  pacman -S grub efibootmgr
+</code></pre></div></li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  mkdir /boot/efi
+</code></pre></div></li>
+<li>
+<p>Note: Here, <code>/dev/sdb1</code> (my UEFI partition) is mounted to <code>/boot/efi</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  mount /dev/sdb1 /boot/efi
+</code></pre></div></li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  grub-install --target<span style="color:#f92672">=</span>x86_64-efi --bootloader-id<span style="color:#f92672">=</span>GRUB --efi-directory<span style="color:#f92672">=</span>/boot/efi
+</code></pre></div></li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre></div></li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  mkinitcpio -P 
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Root Password</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  passwd
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Desktop Environment (GNOME)</p>
+<p>Setting up GNOME as my desktop environment, you can use any other from <a href="https://wiki.archlinux.org/index.php/desktop_environment#List_of_desktop_environments">here</a></p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -S xorg gnome
+</code></pre></div></li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl enable gdm.service
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p>​</p>
+<ul>
+<li>
+<p>Pre final steps</p>
+<p>We are almost done, setting up drivers and enabling services.</p>
+<ul>
+<li>
+<p>Graphics driver</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -S nvidia
+</code></pre></div><p><code>nvidia </code> pkg works for my graphics driver, check <a href="https://wiki.archlinux.org/index.php/NVIDIA">here</a> for your driver.</p>
+</li>
+<li>
+<p>Enable <code>NetworkManager</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl enable NetworkManager.service
+</code></pre></div><p>You can use <a href="https://wiki.archlinux.org/index.php/Network_configuration#Network_managers">other managers</a> as well.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Final steps before rebooting</p>
+<ul>
+<li>
+<p>Unmount uefi partition</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">umount /boot/efi
+</code></pre></div></li>
+<li>
+<p>Exit <code>chroot</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">exit
+</code></pre></div></li>
+<li>
+<p>Unmount system partition</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">umount /mnt
+</code></pre></div></li>
+<li>
+<p>Reboot</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">reboot now
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<blockquote>
+</blockquote>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://wilspi.com/tags/arch-linux/">arch-linux</a></li>
+      <li><a href="https://wilspi.com/tags/devops/">devops</a></li>
+      <li><a href="https://wilspi.com/tags/dev/">dev</a></li>
+    </ul>
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2021 <a href="https://wilspi.com">wilspi</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+
+
+<script defer src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
+
+</html>

@@ -41,7 +41,7 @@ if (!doNotTrack) {
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://wilspi.com/" />
 <meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
-<meta property="og:updated_time" content="2020-08-08T15:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta property="og:updated_time" content="2021-03-14T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
@@ -158,6 +158,26 @@ if (!doNotTrack) {
 
 
 
+<article class="post-entry"> 
+
+  <header class="entry-header">
+    <h2>
+      Setting up Arch Linux from scratch in 2021
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Few days back my long running system broke due to some inconsistent package and I was forced to reinstall Arch. There are many tutorials and how-to pages to do so, but I found none to be exhaustive or seemless, so I decided to write my own.
+Here are the steps to install Arch Linux from scratch
+  Make a bootable drive
+Download Arch Linux from here
+If using Windows, download Rufus and create a bootable drive....</p>
+  </section>
+  <footer class="entry-footer">
+
+March 14, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;wilspi
+</footer>
+  <a class="entry-link" aria-label="post link to Setting up Arch Linux from scratch in 2021" href="https://wilspi.com/post/tech/setup-arch-linux/"></a>
+</article>
 <article class="post-entry"> 
 
   <header class="entry-header">
@@ -321,24 +341,6 @@ let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/arc
 March 9, 2020&nbsp;·&nbsp;1 min&nbsp;·&nbsp;wilspi
 </footer>
   <a class="entry-link" aria-label="post link to Nix Recipe: Setup Python" href="https://wilspi.com/post/tech/nix-recipes/python/"></a>
-</article>
-<article class="post-entry"> 
-
-  <header class="entry-header">
-    <h2>
-      Nix Recipe: Setup Nodejs
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>This is a nix recipe for building and running nodejs in a virtual nix environment.
-  In your project folder, create a new file nodejs.nix and add following:
-{ nixpkgs ? import &lt;nixpkgs&gt; {}, version, sha256 }: let inherit (nixpkgs) python37 utillinux stdenv autoPatchelfHook fetchurl binutils-unwrapped patchelf xcbuild; inherit (stdenv) mkDerivation; in mkDerivation { inherit version; name = &#34;nodejs-${version}&#34;; src = fetchurl { url = &#34;https://nodejs.org/dist/v${version}/node-v${version}${if stdenv.isDarwin then &#34;-darwin-x64&#34; else &#34;-linux-x64&#34;}....</p>
-  </section>
-  <footer class="entry-footer">
-
-March 6, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
-</footer>
-  <a class="entry-link" aria-label="post link to Nix Recipe: Setup Nodejs" href="https://wilspi.com/post/tech/nix-recipes/nodejs/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

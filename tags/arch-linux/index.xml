@@ -6,7 +6,20 @@
     <description>Recent content in arch-linux on wilspi | Sourabh Deokar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Aug 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/arch-linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Mar 2021 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/arch-linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting up Arch Linux from scratch in 2021</title>
+      <link>https://wilspi.com/post/tech/setup-arch-linux/</link>
+      <pubDate>Sun, 14 Mar 2021 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/post/tech/setup-arch-linux/</guid>
+      <description>Few days back my long running system broke due to some inconsistent package and I was forced to reinstall Arch. There are many tutorials and how-to pages to do so, but I found none to be exhaustive or seemless, so I decided to write my own.
+Here are the steps to install Arch Linux from scratch
+  Make a bootable drive
+Download Arch Linux from here
+If using Windows, download Rufus and create a bootable drive.</description>
+    </item>
+    
     <item>
       <title>Setup multi user nix for Arch Linux</title>
       <link>https://wilspi.com/post/tech/setup-nix-arch-linux/</link>

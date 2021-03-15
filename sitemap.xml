@@ -2,11 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://wilspi.com/tags/arch-linux/</loc>
+    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
+  </url><url>
     <loc>https://wilspi.com/categories/</loc>
-    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
+    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/tags/dev/</loc>
-    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
+    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/tags/devops/</loc>
+    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/</loc>
+    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/tech/setup-arch-linux/</loc>
+    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/tags/</loc>
+    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/categories/tech/</loc>
+    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/tech/</loc>
+    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/</loc>
+    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/tags/elm/</loc>
     <lastmod>2020-08-08T15:00:00+05:30</lastmod>
@@ -15,21 +39,6 @@
     <lastmod>2020-08-08T15:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/post/tech/2048-game-in-elmlang/</loc>
-    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/</loc>
-    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/tags/</loc>
-    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/categories/tech/</loc>
-    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/</loc>
-    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/</loc>
     <lastmod>2020-08-08T15:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/tags/rust/</loc>
@@ -43,9 +52,6 @@
   </url><url>
     <loc>https://wilspi.com/post/tech/slogging-multiple-drains/</loc>
     <lastmod>2020-08-03T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/tags/arch-linux/</loc>
-    <lastmod>2020-08-01T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/tags/nix/</loc>
     <lastmod>2020-08-01T22:00:00+05:30</lastmod>
@@ -79,9 +85,6 @@
   </url><url>
     <loc>https://wilspi.com/tags/middleware/</loc>
     <lastmod>2020-07-29T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/tags/devops/</loc>
-    <lastmod>2020-03-12T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/tags/nginx/</loc>
     <lastmod>2020-03-12T22:00:00+05:30</lastmod>

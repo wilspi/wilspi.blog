@@ -41,7 +41,7 @@ if (!doNotTrack) {
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://wilspi.com/categories/tech/" />
 <meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
-<meta property="og:updated_time" content="2020-08-08T15:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta property="og:updated_time" content="2021-03-14T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
@@ -119,6 +119,24 @@ if (!doNotTrack) {
 
 
 
+<article class="post-entry tag-entry"> 
+
+  <header class="entry-header">
+    <h2>
+      Nix Recipe: Setup Nodejs
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>This is a nix recipe for building and running nodejs in a virtual nix environment.
+  In your project folder, create a new file nodejs.nix and add following:
+{ nixpkgs ? import &lt;nixpkgs&gt; {}, version, sha256 }: let inherit (nixpkgs) python37 utillinux stdenv autoPatchelfHook fetchurl binutils-unwrapped patchelf xcbuild; inherit (stdenv) mkDerivation; in mkDerivation { inherit version; name = &#34;nodejs-${version}&#34;; src = fetchurl { url = &#34;https://nodejs.org/dist/v${version}/node-v${version}${if stdenv.isDarwin then &#34;-darwin-x64&#34; else &#34;-linux-x64&#34;}....</p>
+  </section>
+  <footer class="entry-footer">
+
+March 6, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+</footer>
+  <a class="entry-link" aria-label="post link to Nix Recipe: Setup Nodejs" href="https://wilspi.com/post/tech/nix-recipes/nodejs/"></a>
+</article>
 <article class="post-entry tag-entry"> 
 
   <header class="entry-header">
