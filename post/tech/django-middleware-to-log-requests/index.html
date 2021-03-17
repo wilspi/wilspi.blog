@@ -103,8 +103,8 @@ It’s a light, low-level “plugin” system for globally altering Django’s i
   "keywords": [
     "django", "middleware", "python", "dev"
   ],
-  "articleBody": "From Django’s context:\n Middleware is a framework of hooks into Django’s request/response processing.\nIt’s a light, low-level “plugin” system for globally altering Django’s input or output.\n Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware layer which will log every incoming request. Why better?\n it will log unhandled requests/views one time job, no need to configure for every request/view  Here, we are using Django’s middleware semantics to construct a middleware which will log all requests and corresponding responses.\n  Create a middleware file We will create a RequestLogMiddleware class in /middleware/request_log.py in your  folder, like:\n\"\"\" Middleware to log `*/api/*` requests and responses. \"\"\" import socket import time import json import logging request_logger = logging.getLogger(__name__) class RequestLogMiddleware: \"\"\"Request Logging Middleware.\"\"\" def __init__(self, get_response): self.get_response = get_response def __call__(self, request): start_time = time.time() log_data = { \"remote_address\": request.META[\"REMOTE_ADDR\"], \"server_hostname\": socket.gethostname(), \"request_method\": request.method, \"request_path\": request.get_full_path(), } # Only logging \"*/api/*\" patterns if \"/api/\" in str(request.get_full_path()): req_body = json.loads(request.body.decode(\"utf-8\")) if request.body else {} log_data[\"request_body\"] = req_body response = self.get_response(request) if response and response[\"content-type\"] == \"application/json\": response_body = json.loads(response.content.decode(\"utf-8\")) log_data[\"response_body\"] = response_body log_data[\"run_time\"] = time.time() - start_time request_logger.info(msg=log_data) return response # Log unhandled exceptions as well def process_exception(self, request, exception): try: raise exception except Exception as e: request_logger.exception(\"Unhandled Exception: \" + str(e)) return exception Here we are logging only requests with /api/ in its path. All the processing is done in __call__ method.\nNote: Do add __init__.py in middleware folder.\n  Activate the middleware Activate the middleware by adding its path in MIDDLEWARE list in your Django’s application settings.py (here: last value in list is added):\nMIDDLEWARE = [ ... \"django.contrib.messages.middleware.MessageMiddleware\", # Request Logger \".middleware.request_log.RequestLogMiddleware\", ] Replace  with your application name.\n  ",
-  "wordCount" : "294",
+  "articleBody": "From Django’s context:\n Middleware is a framework of hooks into Django’s request/response processing.\nIt’s a light, low-level “plugin” system for globally altering Django’s input or output.\n Middleware is like a layer which processes every request and response. Instead of logging requests and responses in resp. views, its better to do at middleware layer which will log every incoming request. Why better?\n it will log unhandled requests/views one time job, no need to configure for every request/view  Here, we are using Django’s middleware semantics to construct a middleware which will log all requests and corresponding responses.\nCreate a middleware file   Create a middleware folder in your project directory.\nmkdir middleware touch middleware/__init__.py   Create a RequestLogMiddleware class in /middleware/request_log.py, see below:\n\"\"\" Middleware to log `*/api/*` requests and responses. \"\"\" import socket import time import json import logging request_logger = logging.getLogger(__name__) class RequestLogMiddleware: \"\"\"Request Logging Middleware.\"\"\" def __init__(self, get_response): self.get_response = get_response def __call__(self, request): start_time = time.time() log_data = { \"remote_address\": request.META[\"REMOTE_ADDR\"], \"server_hostname\": socket.gethostname(), \"request_method\": request.method, \"request_path\": request.get_full_path(), } # Only logging \"*/api/*\" patterns if \"/api/\" in str(request.get_full_path()): req_body = json.loads(request.body.decode(\"utf-8\")) if request.body else {} log_data[\"request_body\"] = req_body # request passes on to controller response = self.get_response(request) # add runtime to our log_data if response and response[\"content-type\"] == \"application/json\": response_body = json.loads(response.content.decode(\"utf-8\")) log_data[\"response_body\"] = response_body log_data[\"run_time\"] = time.time() - start_time request_logger.info(msg=log_data) return response # Log unhandled exceptions as well def process_exception(self, request, exception): try: raise exception except Exception as e: request_logger.exception(\"Unhandled Exception: \" + str(e)) return exception Django allows us to write pre and post api-processing logic via __call__ method. Here we are logging only requests with /api/ in its path.\n  Activate the middleware Activate the middleware by adding its path in MIDDLEWARE list in your Django’s application settings.py (below: last value is added to the middleware list):\nMIDDLEWARE = [ ... \"django.contrib.messages.middleware.MessageMiddleware\", # Request Logger \".middleware.request_log.RequestLogMiddleware\", ] Replace  with your application name.\n",
+  "wordCount" : "313",
   "inLanguage": "en",
   "datePublished": "2020-07-29T22:00:00+05:30",
   "dateModified": "2020-07-29T22:00:00+05:30",
@@ -219,10 +219,15 @@ Why better?</p>
 <li>one time job, no need to configure for every request/view</li>
 </ul>
 <p>Here, we are using Django&rsquo;s <a href="https://docs.djangoproject.com/en/3.0/topics/http/middleware/#writing-your-own-middleware">middleware semantics</a> to construct a middleware which will log all requests and corresponding responses.</p>
+<h4 id="create-a-middleware-file">Create a middleware file<a hidden class="anchor" aria-hidden="true" href="#create-a-middleware-file">#</a></h4>
 <ul>
 <li>
-<h4 id="create-a-middleware-file">Create a middleware file<a hidden class="anchor" aria-hidden="true" href="#create-a-middleware-file">#</a></h4>
-<p>We will create a <code>RequestLogMiddleware</code> class in <code>/middleware/request_log.py</code> in your <code>&lt;application&gt;</code> folder, like:</p>
+<p>Create a <code>middleware</code> folder in your project directory.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir middleware
+touch middleware/__init__.py
+</code></pre></div></li>
+<li>
+<p>Create a <code>RequestLogMiddleware</code> class in <code>/middleware/request_log.py</code>, see below:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">Middleware to log `*/api/*` requests and responses.
@@ -254,8 +259,10 @@ request_logger <span style="color:#f92672">=</span> logging<span style="color:#f
             req_body <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(request<span style="color:#f92672">.</span>body<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)) <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>body <span style="color:#66d9ef">else</span> {}
             log_data[<span style="color:#e6db74">&#34;request_body&#34;</span>] <span style="color:#f92672">=</span> req_body
 
+        <span style="color:#75715e"># request passes on to controller</span>
         response <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>get_response(request)
 
+        <span style="color:#75715e"># add runtime to our log_data</span>
         <span style="color:#66d9ef">if</span> response <span style="color:#f92672">and</span> response[<span style="color:#e6db74">&#34;content-type&#34;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;application/json&#34;</span>:
             response_body <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(response<span style="color:#f92672">.</span>content<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>))
             log_data[<span style="color:#e6db74">&#34;response_body&#34;</span>] <span style="color:#f92672">=</span> response_body
@@ -272,13 +279,11 @@ request_logger <span style="color:#f92672">=</span> logging<span style="color:#f
         <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
             request_logger<span style="color:#f92672">.</span>exception(<span style="color:#e6db74">&#34;Unhandled Exception: &#34;</span> <span style="color:#f92672">+</span> str(e))
         <span style="color:#66d9ef">return</span> exception
-</code></pre></div><p>Here we are logging only requests with <code>/api/</code> in its path.
-All the processing is done in <code>__call__</code> method.<br>
-Note: Do add <code>__init__.py</code> in <code>middleware</code> folder.</p>
+</code></pre></div><p>Django allows us to write pre and post api-processing logic via <code>__call__</code> method. Here we are logging only requests with <code>/api/</code> in its path.</p>
 </li>
-<li>
+</ul>
 <h4 id="activate-the-middleware">Activate the middleware<a hidden class="anchor" aria-hidden="true" href="#activate-the-middleware">#</a></h4>
-<p><a href="https://docs.djangoproject.com/en/3.0/topics/http/middleware/#activating-middleware">Activate the middleware</a> by adding its path in <code>MIDDLEWARE</code> list in your Django&rsquo;s application <code>settings.py</code> (here: last value in list is added):</p>
+<p><a href="https://docs.djangoproject.com/en/3.0/topics/http/middleware/#activating-middleware">Activate the middleware</a> by adding its path in <code>MIDDLEWARE</code> list in your Django&rsquo;s application <code>settings.py</code> (below: last value is added to the middleware list):</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">MIDDLEWARE <span style="color:#f92672">=</span> [
     <span style="color:#f92672">...</span>
     <span style="color:#e6db74">&#34;django.contrib.messages.middleware.MessageMiddleware&#34;</span>,
@@ -286,8 +291,6 @@ Note: Do add <code>__init__.py</code> in <code>middleware</code> folder.</p>
     <span style="color:#e6db74">&#34;&lt;application&gt;.middleware.request_log.RequestLogMiddleware&#34;</span>,
 ]
 </code></pre></div><p>Replace <code>&lt;application&gt;</code> with your application name.</p>
-</li>
-</ul>
 
 </div>
   <footer class="post-footer">
