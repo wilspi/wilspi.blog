@@ -2,10 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://wilspi.com/tags/arch-linux/</loc>
-    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
-  </url><url>
     <loc>https://wilspi.com/categories/</loc>
+    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/categories/essays/</loc>
+    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/essay/intention-vs-action/</loc>
+    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/tags/philosophy/</loc>
+    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/</loc>
+    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/tags/</loc>
+    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/</loc>
+    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/tags/arch-linux/</loc>
     <lastmod>2021-03-14T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/tags/dev/</loc>
@@ -14,22 +32,13 @@
     <loc>https://wilspi.com/tags/devops/</loc>
     <lastmod>2021-03-14T22:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://wilspi.com/post/</loc>
-    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
-  </url><url>
     <loc>https://wilspi.com/post/tech/setup-arch-linux/</loc>
-    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/tags/</loc>
     <lastmod>2021-03-14T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/categories/tech/</loc>
     <lastmod>2021-03-14T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/post/tech/</loc>
-    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/</loc>
     <lastmod>2021-03-14T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/tags/elm/</loc>
