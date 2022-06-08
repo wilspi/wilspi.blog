@@ -8,10 +8,10 @@
 <title>wilspi | Sourabh</title>
 
 <meta name="keywords" content="" />
-<meta name="description" content="My name is Sourabh, and I share my learnings, musings and experiences here.">
+<meta name="description" content="My name is Sourabh, and I write about my learnings, musings and experiences here.  ">
 <meta name="author" content="wilspi">
 <link rel="canonical" href="https://wilspi.com/" />
-<link href="/assets/css/stylesheet.min.701f7dec17ec9de41acd4ff9020a1d74f8f146f8a7c09b52f049772245f8b044.css" integrity="sha256-cB997BfsneQazU/5AgoddPjxRvinwJtS8El3IkX4sEQ=" rel="preload stylesheet"
+<link href="/assets/css/stylesheet.min.4e3f3bd39b9e1bc065a161912904f0769e2c23c00af2880544e1b49111cf2866.css" integrity="sha256-Tj8705ueG8BloWGRKQTwdp4sI8AK8ogFROG0kRHPKGY=" rel="preload stylesheet"
     as="style">
 
 <link rel="icon" href="https://wilspi.com/favicons/favicon.ico">
@@ -21,7 +21,7 @@
 <link rel="mask-icon" href="https://wilspi.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.83.1" />
+<meta name="generator" content="Hugo 0.91.2" />
 <link rel="alternate" type="application/rss&#43;xml" href="https://wilspi.com/index.xml">
 
 
@@ -37,16 +37,16 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <meta property="og:title" content="wilspi | Sourabh" />
-<meta property="og:description" content="My name is Sourabh, and I share my learnings, musings and experiences here." />
+<meta property="og:description" content="My name is Sourabh, and I write about my learnings, musings and experiences here.  " />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://wilspi.com/" />
 <meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
-<meta property="og:updated_time" content="2021-05-02T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
+<meta property="og:updated_time" content="2021-09-19T22:00:00+05:30" /><meta property="og:site_name" content="नमस्ते" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
 <meta name="twitter:title" content="wilspi | Sourabh"/>
-<meta name="twitter:description" content="My name is Sourabh, and I share my learnings, musings and experiences here."/>
+<meta name="twitter:description" content="My name is Sourabh, and I write about my learnings, musings and experiences here.  "/>
 
 <script type="application/ld+json">
 {
@@ -54,7 +54,7 @@ if (!doNotTrack) {
   "@type": "Organization",
   "name": "wilspi | Sourabh",
   "url": "https://wilspi.com",
-  "description": "My name is Sourabh, and I share my learnings, musings and experiences here.",
+  "description": "My name is Sourabh, and I write about my learnings, musings and experiences here.  ",
   "thumbnailUrl": "https://wilspi.com/favicons/favicon.ico",
   "sameAs": [
       "https://github.com/wilspi/", "https://www.youtube.com/channel/UCeOPNskzsoFb6b8oUn0oEMA", "https://www.twitter.com/iamwilspi"
@@ -128,6 +128,21 @@ if (!doNotTrack) {
 
   <header class="entry-header">
     <h2>
+      Save the production with Nginx hack
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Quick nginx hack to save your production web server in case the web service starts crashing.
+If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down....</p>
+  </section>
+  <footer class="entry-footer">March 12, 2020&nbsp;·&nbsp;2 min
+</footer>
+  <a class="entry-link" aria-label="post link to Save the production with Nginx hack" href="https://wilspi.com/post/tech/save-production-via-nginx/"></a>
+</article>
+<article class="post-entry"> 
+
+  <header class="entry-header">
+    <h2>
       Nix Recipe: Setup Python
     </h2>
   </header>
@@ -136,9 +151,7 @@ if (!doNotTrack) {
   Create shell.nix with following:
 let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &#34;python-env&#34;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &#34;${toString ./.}&#34;; # Post Shell Hook shellHook = &#39;&#39; echo &#34;Using ${python37.name}&#34; [ !...</p>
   </section>
-  <footer class="entry-footer">
-
-March 9, 2020&nbsp;·&nbsp;1 min&nbsp;·&nbsp;wilspi
+  <footer class="entry-footer">March 9, 2020&nbsp;·&nbsp;1 min
 </footer>
   <a class="entry-link" aria-label="post link to Nix Recipe: Setup Python" href="https://wilspi.com/post/tech/nix-recipes/python/"></a>
 </article>
@@ -154,9 +167,7 @@ March 9, 2020&nbsp;·&nbsp;1 min&nbsp;·&nbsp;wilspi
   In your project folder, create a new file nodejs.nix and add following:
 { nixpkgs ? import &lt;nixpkgs&gt; {}, version, sha256 }: let inherit (nixpkgs) python37 utillinux stdenv autoPatchelfHook fetchurl binutils-unwrapped patchelf xcbuild; inherit (stdenv) mkDerivation; in mkDerivation { inherit version; name = &#34;nodejs-${version}&#34;; src = fetchurl { url = &#34;https://nodejs.org/dist/v${version}/node-v${version}${if stdenv.isDarwin then &#34;-darwin-x64&#34; else &#34;-linux-x64&#34;}....</p>
   </section>
-  <footer class="entry-footer">
-
-March 6, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+  <footer class="entry-footer">March 6, 2020&nbsp;·&nbsp;2 min
 </footer>
   <a class="entry-link" aria-label="post link to Nix Recipe: Setup Nodejs" href="https://wilspi.com/post/tech/nix-recipes/nodejs/"></a>
 </article>
@@ -174,9 +185,7 @@ March 6, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
   Create shell.nix with following:
 let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &#34;https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz&#34; ); nixpkgs = import (builtins....</p>
   </section>
-  <footer class="entry-footer">
-
-March 4, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+  <footer class="entry-footer">March 4, 2020&nbsp;·&nbsp;2 min
 </footer>
   <a class="entry-link" aria-label="post link to Nix Recipe: Setup Rust" href="https://wilspi.com/post/tech/nix-recipes/rust/"></a>
 </article>
@@ -192,9 +201,7 @@ March 4, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
   Create your project folder and save the following file as shell.nix
 let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &#34;postgres-env&#34;; buildInputs = []; nativeBuildInputs = [ zsh vim geos gdal nixpkgs-fmt # postgres-12 with postgis support (postgresql_12.withPackages (p: [ p.postgis ])) ]; postgresConf = writeText &#34;postgresql....</p>
   </section>
-  <footer class="entry-footer">
-
-March 2, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+  <footer class="entry-footer">March 2, 2020&nbsp;·&nbsp;2 min
 </footer>
   <a class="entry-link" aria-label="post link to Nix Recipe: Setup Postgresql" href="https://wilspi.com/post/tech/nix-recipes/postgresql/"></a>
 </article>
@@ -205,7 +212,7 @@ March 2, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
 </footer>
 
     </main><footer class="footer">
-    <span>&copy; 2021 <a href="https://wilspi.com">wilspi</a></span>
+    <span>&copy; 2022 <a href="https://wilspi.com">wilspi</a></span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
     <button class="top-link" id="top-link" type="button" accesskey="g">

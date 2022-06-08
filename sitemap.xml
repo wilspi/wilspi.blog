@@ -3,27 +3,48 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://wilspi.com/categories/</loc>
-    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://wilspi.com/categories/essays/</loc>
-    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+    <loc>https://wilspi.com/tags/humility/</loc>
+    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://wilspi.com/post/essay/</loc>
-    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+    <loc>https://wilspi.com/tags/morals/</loc>
+    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://wilspi.com/post/essay/intention-vs-action/</loc>
-    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+    <loc>https://wilspi.com/post/musing/</loc>
+    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/tags/philosophy/</loc>
-    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/categories/philosophy/</loc>
+    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/post/</loc>
-    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/tags/pride/</loc>
+    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/musing/7-deadly-sins/</loc>
+    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/tags/seven-deadly-sins/</loc>
+    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/tags/</loc>
-    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/tags/virtues/</loc>
+    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/</loc>
+    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/musing/intention-vs-action/</loc>
+    <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/categories/musings/</loc>
     <lastmod>2021-05-02T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/tags/arch-linux/</loc>
@@ -130,10 +151,5 @@
   </url><url>
     <loc>https://wilspi.com/tags/postgres/</loc>
     <lastmod>2020-03-02T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/_about/</loc>
-    <priority>0</priority>
-  </url><url>
-    <loc>https://wilspi.com/readme/</loc>
   </url>
 </urlset>

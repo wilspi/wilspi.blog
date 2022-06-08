@@ -8,10 +8,10 @@
 <title>nix | wilspi | Sourabh</title>
 
 <meta name="keywords" content="" />
-<meta name="description" content="My name is Sourabh, and I share my learnings, musings and experiences here.">
+<meta name="description" content="My name is Sourabh, and I write about my learnings, musings and experiences here.  ">
 <meta name="author" content="wilspi">
 <link rel="canonical" href="https://wilspi.com/tags/nix/" />
-<link href="/assets/css/stylesheet.min.701f7dec17ec9de41acd4ff9020a1d74f8f146f8a7c09b52f049772245f8b044.css" integrity="sha256-cB997BfsneQazU/5AgoddPjxRvinwJtS8El3IkX4sEQ=" rel="preload stylesheet"
+<link href="/assets/css/stylesheet.min.4e3f3bd39b9e1bc065a161912904f0769e2c23c00af2880544e1b49111cf2866.css" integrity="sha256-Tj8705ueG8BloWGRKQTwdp4sI8AK8ogFROG0kRHPKGY=" rel="preload stylesheet"
     as="style">
 
 <link rel="icon" href="https://wilspi.com/favicons/favicon.ico">
@@ -21,7 +21,7 @@
 <link rel="mask-icon" href="https://wilspi.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.83.1" />
+<meta name="generator" content="Hugo 0.91.2" />
 <link rel="alternate" type="application/rss&#43;xml" href="https://wilspi.com/tags/nix/index.xml">
 
 
@@ -37,7 +37,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <meta property="og:title" content="nix" />
-<meta property="og:description" content="My name is Sourabh, and I share my learnings, musings and experiences here." />
+<meta property="og:description" content="My name is Sourabh, and I write about my learnings, musings and experiences here.  " />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://wilspi.com/tags/nix/" />
 <meta property="og:image" content="https://wilspi.com/images/cover.jpg"/>
@@ -46,7 +46,7 @@ if (!doNotTrack) {
 <meta name="twitter:image" content="https://wilspi.com/images/cover.jpg"/>
 
 <meta name="twitter:title" content="nix"/>
-<meta name="twitter:description" content="My name is Sourabh, and I share my learnings, musings and experiences here."/>
+<meta name="twitter:description" content="My name is Sourabh, and I write about my learnings, musings and experiences here.  "/>
 
 
 
@@ -126,9 +126,7 @@ if (!doNotTrack) {
     <p>On multi-user setup, from nix’s page:
  To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users....</p>
   </section>
-  <footer class="entry-footer">
-
-August 1, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+  <footer class="entry-footer">August 1, 2020&nbsp;·&nbsp;2 min
 </footer>
   <a class="entry-link" aria-label="post link to Setup multi user nix for Arch Linux" href="https://wilspi.com/post/tech/setup-nix-arch-linux/"></a>
 </article>
@@ -145,9 +143,7 @@ About Nix, its wiki says:
  Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation
  Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through nix-shell command, we will see below)....</p>
   </section>
-  <footer class="entry-footer">
-
-July 30, 2020&nbsp;·&nbsp;3 min&nbsp;·&nbsp;wilspi
+  <footer class="entry-footer">July 30, 2020&nbsp;·&nbsp;3 min
 </footer>
   <a class="entry-link" aria-label="post link to Virtual Environment with Nix shell" href="https://wilspi.com/post/tech/nix-shell-and-awesomeness/"></a>
 </article>
@@ -163,9 +159,7 @@ July 30, 2020&nbsp;·&nbsp;3 min&nbsp;·&nbsp;wilspi
   Create shell.nix with following:
 let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &#34;python-env&#34;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &#34;${toString ./.}&#34;; # Post Shell Hook shellHook = &#39;&#39; echo &#34;Using ${python37.name}&#34; [ !...</p>
   </section>
-  <footer class="entry-footer">
-
-March 9, 2020&nbsp;·&nbsp;1 min&nbsp;·&nbsp;wilspi
+  <footer class="entry-footer">March 9, 2020&nbsp;·&nbsp;1 min
 </footer>
   <a class="entry-link" aria-label="post link to Nix Recipe: Setup Python" href="https://wilspi.com/post/tech/nix-recipes/python/"></a>
 </article>
@@ -181,9 +175,7 @@ March 9, 2020&nbsp;·&nbsp;1 min&nbsp;·&nbsp;wilspi
   In your project folder, create a new file nodejs.nix and add following:
 { nixpkgs ? import &lt;nixpkgs&gt; {}, version, sha256 }: let inherit (nixpkgs) python37 utillinux stdenv autoPatchelfHook fetchurl binutils-unwrapped patchelf xcbuild; inherit (stdenv) mkDerivation; in mkDerivation { inherit version; name = &#34;nodejs-${version}&#34;; src = fetchurl { url = &#34;https://nodejs.org/dist/v${version}/node-v${version}${if stdenv.isDarwin then &#34;-darwin-x64&#34; else &#34;-linux-x64&#34;}....</p>
   </section>
-  <footer class="entry-footer">
-
-March 6, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+  <footer class="entry-footer">March 6, 2020&nbsp;·&nbsp;2 min
 </footer>
   <a class="entry-link" aria-label="post link to Nix Recipe: Setup Nodejs" href="https://wilspi.com/post/tech/nix-recipes/nodejs/"></a>
 </article>
@@ -201,9 +193,7 @@ March 6, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
   Create shell.nix with following:
 let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &#34;https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz&#34; ); nixpkgs = import (builtins....</p>
   </section>
-  <footer class="entry-footer">
-
-March 4, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+  <footer class="entry-footer">March 4, 2020&nbsp;·&nbsp;2 min
 </footer>
   <a class="entry-link" aria-label="post link to Nix Recipe: Setup Rust" href="https://wilspi.com/post/tech/nix-recipes/rust/"></a>
 </article>
@@ -219,15 +209,13 @@ March 4, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
   Create your project folder and save the following file as shell.nix
 let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &#34;postgres-env&#34;; buildInputs = []; nativeBuildInputs = [ zsh vim geos gdal nixpkgs-fmt # postgres-12 with postgis support (postgresql_12.withPackages (p: [ p.postgis ])) ]; postgresConf = writeText &#34;postgresql....</p>
   </section>
-  <footer class="entry-footer">
-
-March 2, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;wilspi
+  <footer class="entry-footer">March 2, 2020&nbsp;·&nbsp;2 min
 </footer>
   <a class="entry-link" aria-label="post link to Nix Recipe: Setup Postgresql" href="https://wilspi.com/post/tech/nix-recipes/postgresql/"></a>
 </article>
 
     </main><footer class="footer">
-    <span>&copy; 2021 <a href="https://wilspi.com">wilspi</a></span>
+    <span>&copy; 2022 <a href="https://wilspi.com">wilspi</a></span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
     <button class="top-link" id="top-link" type="button" accesskey="g">
