@@ -30,16 +30,5 @@ It’s a light, low-level “plugin” system for globally altering Django’s i
  it will log unhandled requests/views one time job, no need to configure for every request/view  Here, we are using Django&amp;rsquo;s middleware semantics to construct a middleware which will log all requests and corresponding responses.</description>
     </item>
     
-    <item>
-      <title>Nix Recipe: Setup Python</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/python/</link>
-      <pubDate>Mon, 09 Mar 2020 21:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/python/</guid>
-      <description>This is a nix recipe for building and running python in a virtual nix environment.
-  Create shell.nix with following:
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &amp;#34;python-env&amp;#34;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &amp;#34;${toString ./.}&amp;#34;; # Post Shell Hook shellHook = &amp;#39;&amp;#39; echo &amp;#34;Using ${python37.name}&amp;#34; [ !</description>
-    </item>
-    
   </channel>
 </rss>

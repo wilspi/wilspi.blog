@@ -62,29 +62,11 @@
     </item>
     
     <item>
-      <title>arch-linux</title>
-      <link>https://wilspi.com/tags/arch-linux/</link>
-      <pubDate>Sun, 14 Mar 2021 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/arch-linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>dev</title>
       <link>https://wilspi.com/tags/dev/</link>
-      <pubDate>Sun, 14 Mar 2021 22:00:00 +0530</pubDate>
+      <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/dev/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>devops</title>
-      <link>https://wilspi.com/tags/devops/</link>
-      <pubDate>Sun, 14 Mar 2021 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/devops/</guid>
       <description></description>
     </item>
     
@@ -109,7 +91,7 @@
     <item>
       <title>rust</title>
       <link>https://wilspi.com/tags/rust/</link>
-      <pubDate>Wed, 05 Aug 2020 23:00:00 +0530</pubDate>
+      <pubDate>Mon, 03 Aug 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/rust/</guid>
       <description></description>
@@ -121,15 +103,6 @@
       <pubDate>Mon, 03 Aug 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/slog/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>nix</title>
-      <link>https://wilspi.com/tags/nix/</link>
-      <pubDate>Sat, 01 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/nix/</guid>
       <description></description>
     </item>
     
@@ -152,24 +125,6 @@
     </item>
     
     <item>
-      <title>package-manager</title>
-      <link>https://wilspi.com/tags/package-manager/</link>
-      <pubDate>Thu, 30 Jul 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/package-manager/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tech</title>
-      <link>https://wilspi.com/tags/tech/</link>
-      <pubDate>Thu, 30 Jul 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/tech/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>django</title>
       <link>https://wilspi.com/tags/django/</link>
       <pubDate>Wed, 29 Jul 2020 22:00:00 +0530</pubDate>
@@ -188,6 +143,15 @@
     </item>
     
     <item>
+      <title>devops</title>
+      <link>https://wilspi.com/tags/devops/</link>
+      <pubDate>Thu, 12 Mar 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>nginx</title>
       <link>https://wilspi.com/tags/nginx/</link>
       <pubDate>Thu, 12 Mar 2020 22:00:00 +0530</pubDate>
@@ -202,33 +166,6 @@
       <pubDate>Thu, 12 Mar 2020 22:00:00 +0530</pubDate>
       
       <guid>https://wilspi.com/tags/production/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>nodejs</title>
-      <link>https://wilspi.com/tags/nodejs/</link>
-      <pubDate>Fri, 06 Mar 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/nodejs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>npm</title>
-      <link>https://wilspi.com/tags/npm/</link>
-      <pubDate>Fri, 06 Mar 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/npm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>postgres</title>
-      <link>https://wilspi.com/tags/postgres/</link>
-      <pubDate>Mon, 02 Mar 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/tags/postgres/</guid>
       <description></description>
     </item>
     

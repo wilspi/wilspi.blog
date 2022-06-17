@@ -6,18 +6,7 @@
     <description>Recent content in rust on wilspi | Sourabh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 Aug 2020 23:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/rust/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Variables and Memory management in Rust</title>
-      <link>https://wilspi.com/post/tech/rust-variables-in-memory/</link>
-      <pubDate>Wed, 05 Aug 2020 23:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/rust-variables-in-memory/</guid>
-      <description>In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Let&amp;rsquo;s look at how Rust does it.
-Note: These are quick short notes, if you want to look in deep check out rustlang docs.
-Ownership In programming languages, either a garbage collector is used which will clean up the memory used by the unused variables or the memory is explicitly freed by the programmer in the code.</description>
-    </item>
-    
+    <lastBuildDate>Mon, 03 Aug 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Structured Logging using Slog in Rust</title>
       <link>https://wilspi.com/post/tech/slogging-multiple-drains/</link>
@@ -28,19 +17,6 @@ Ownership In programming languages, either a garbage collector is used which wil
 Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:
  processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Basic Logging with Slog Lets create a simple logger:
 #[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!</description>
-    </item>
-    
-    <item>
-      <title>Nix Recipe: Setup Rust</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/rust/</link>
-      <pubDate>Wed, 04 Mar 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/rust/</guid>
-      <description>This is a nix recipe for building and running rust in a virtual nix environment.
-  Create a file rust-toolchain with following:
-1.43.0 We are specifying rust version to install, here using 1.43.0. If using heroku, rust-toolchain file will determine which version will be used to build the application.
-  Create shell.nix with following:
-let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &amp;#34;https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz&amp;#34; ); nixpkgs = import (builtins.</description>
     </item>
     
   </channel>

@@ -6,19 +6,7 @@
     <description>Recent content in tech on wilspi | Sourabh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Mar 2021 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Setting up Arch Linux from scratch in 2021</title>
-      <link>https://wilspi.com/post/tech/setup-arch-linux/</link>
-      <pubDate>Sun, 14 Mar 2021 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/setup-arch-linux/</guid>
-      <description>Few days back my long time running system broke due to some inconsistent package and I was forced to reinstall Arch. There are many tutorials and how-to pages to do so, but I found none to be exhaustive or seemless, so I decided to write my own.
-Here are the steps to install Arch Linux from scratch
-Make a bootable drive Download Arch Linux from here
-If using Windows, download Rufus and create a bootable drive.</description>
-    </item>
-    
+    <lastBuildDate>Sat, 08 Aug 2020 15:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Introduction to Elm with 2048 game</title>
       <link>https://wilspi.com/post/tech/2048-game-in-elmlang/</link>
@@ -29,17 +17,6 @@ If using Windows, download Rufus and create a bootable drive.</description>
 I chose 2048 because the game is simple which will help me/us understand Elm clearly. Also, I didn&amp;rsquo;t want to make another todo app.
 You can play here.
 Whats the game?  There are some number tiles on the board (4x4). The number on the tile will be a power of 2 with minimum being 2.</description>
-    </item>
-    
-    <item>
-      <title>Variables and Memory management in Rust</title>
-      <link>https://wilspi.com/post/tech/rust-variables-in-memory/</link>
-      <pubDate>Wed, 05 Aug 2020 23:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/rust-variables-in-memory/</guid>
-      <description>In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Let&amp;rsquo;s look at how Rust does it.
-Note: These are quick short notes, if you want to look in deep check out rustlang docs.
-Ownership In programming languages, either a garbage collector is used which will clean up the memory used by the unused variables or the memory is explicitly freed by the programmer in the code.</description>
     </item>
     
     <item>
@@ -55,16 +32,6 @@ Structured logging is a concept that puts events over messages, events are logge
     </item>
     
     <item>
-      <title>Setup multi user nix for Arch Linux</title>
-      <link>https://wilspi.com/post/tech/setup-nix-arch-linux/</link>
-      <pubDate>Sat, 01 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/setup-nix-arch-linux/</guid>
-      <description>On multi-user setup, from nix&amp;rsquo;s page:
- To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.</description>
-    </item>
-    
-    <item>
       <title>Jinja template Inheritance using Database</title>
       <link>https://wilspi.com/post/tech/jinja-inheritance-using-db/</link>
       <pubDate>Fri, 31 Jul 2020 22:00:00 +0530</pubDate>
@@ -72,18 +39,6 @@ Structured logging is a concept that puts events over messages, events are logge
       <guid>https://wilspi.com/post/tech/jinja-inheritance-using-db/</guid>
       <description>Jinja is a web template engine for the Python programming language. A Jinja template is simply a text file and can generate any text-based format (HTML, XML, CSV, LaTeX, etc.). A template contains variables and/or expressions, which get replaced with values when the template is rendered, thus serving dynamic content.
 Commonly, templates are stored as files, either in git-repo or s3 buckets. Depending on your use case, you can store the templates in the database as well.</description>
-    </item>
-    
-    <item>
-      <title>Virtual Environment with Nix shell</title>
-      <link>https://wilspi.com/post/tech/nix-shell-and-awesomeness/</link>
-      <pubDate>Thu, 30 Jul 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-shell-and-awesomeness/</guid>
-      <description>Last year while working with @amitu, I came across this wonderful tool called Nix.
-About Nix, its wiki says:
- Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation
- Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through nix-shell command, we will see below).</description>
     </item>
     
     <item>
@@ -107,52 +62,6 @@ It’s a light, low-level “plugin” system for globally altering Django’s i
       <guid>https://wilspi.com/post/tech/save-production-via-nginx/</guid>
       <description>Quick nginx hack to save your production web server in case the web service starts crashing.
 If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down.</description>
-    </item>
-    
-    <item>
-      <title>Nix Recipe: Setup Python</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/python/</link>
-      <pubDate>Mon, 09 Mar 2020 21:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/python/</guid>
-      <description>This is a nix recipe for building and running python in a virtual nix environment.
-  Create shell.nix with following:
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &amp;#34;python-env&amp;#34;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &amp;#34;${toString ./.}&amp;#34;; # Post Shell Hook shellHook = &amp;#39;&amp;#39; echo &amp;#34;Using ${python37.name}&amp;#34; [ !</description>
-    </item>
-    
-    <item>
-      <title>Nix Recipe: Setup Nodejs</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/nodejs/</link>
-      <pubDate>Fri, 06 Mar 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/nodejs/</guid>
-      <description>This is a nix recipe for building and running nodejs in a virtual nix environment.
-  In your project folder, create a new file nodejs.nix and add following:
-{ nixpkgs ? import &amp;lt;nixpkgs&amp;gt; {}, version, sha256 }: let inherit (nixpkgs) python37 utillinux stdenv autoPatchelfHook fetchurl binutils-unwrapped patchelf xcbuild; inherit (stdenv) mkDerivation; in mkDerivation { inherit version; name = &amp;#34;nodejs-${version}&amp;#34;; src = fetchurl { url = &amp;#34;https://nodejs.org/dist/v${version}/node-v${version}${if stdenv.isDarwin then &amp;#34;-darwin-x64&amp;#34; else &amp;#34;-linux-x64&amp;#34;}.</description>
-    </item>
-    
-    <item>
-      <title>Nix Recipe: Setup Rust</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/rust/</link>
-      <pubDate>Wed, 04 Mar 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/rust/</guid>
-      <description>This is a nix recipe for building and running rust in a virtual nix environment.
-  Create a file rust-toolchain with following:
-1.43.0 We are specifying rust version to install, here using 1.43.0. If using heroku, rust-toolchain file will determine which version will be used to build the application.
-  Create shell.nix with following:
-let # Mozilla Overlay moz_overlay = import ( builtins.fetchTarball &amp;#34;https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz&amp;#34; ); nixpkgs = import (builtins.</description>
-    </item>
-    
-    <item>
-      <title>Nix Recipe: Setup Postgresql</title>
-      <link>https://wilspi.com/post/tech/nix-recipes/postgresql/</link>
-      <pubDate>Mon, 02 Mar 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/nix-recipes/postgresql/</guid>
-      <description>This is a nix recipe for building and running postgresql-12 in a virtual nix environment.
-  Create your project folder and save the following file as shell.nix
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &amp;#34;postgres-env&amp;#34;; buildInputs = []; nativeBuildInputs = [ zsh vim geos gdal nixpkgs-fmt # postgres-12 with postgis support (postgresql_12.withPackages (p: [ p.postgis ])) ]; postgresConf = writeText &amp;#34;postgresql.</description>
     </item>
     
   </channel>

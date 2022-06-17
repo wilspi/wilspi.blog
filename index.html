@@ -184,30 +184,14 @@ The seven deadly sins, also known as the capital vices or cardinal sins, is a gr
   </header>
   <section class="entry-content">
     <p>​
-Whenever we are hurt/harmed or have been at end of an unsatisfying or unfavourable situation, we replay the situation and try to judge each and every action, of ourselves and of others. There are many tools to understand and analyse your/others&#39; actions. A tool that has helped me to judge these situations is “Intention Vs Action”.
+Whenever we are hurt/harmed or have been at the end of an unsatisfying or unfavourable situation, we replay the situation and try to judge each and every action, of ourselves and of others. We often reflect upon the incident from various lenses.
+There are tools to better understand and analyse your/others&#39; actions, one such tool that has helped me to judge these situations is “Intention Vs Action”.
 ​
 Whenever there is a conflict in your life and if you confront the other person, they often don’t acknowledge the harm happened....</p>
   </section>
   <footer class="entry-footer">May 2, 2021&nbsp;·&nbsp;3 min
 </footer>
   <a class="entry-link" aria-label="post link to Intention Vs Action - tool to prioritise yourself" href="https://wilspi.com/post/musing/intention-vs-action/"></a>
-</article>
-<article class="post-entry"> 
-
-  <header class="entry-header">
-    <h2>
-      Setting up Arch Linux from scratch in 2021
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>Few days back my long time running system broke due to some inconsistent package and I was forced to reinstall Arch. There are many tutorials and how-to pages to do so, but I found none to be exhaustive or seemless, so I decided to write my own.
-Here are the steps to install Arch Linux from scratch
-Make a bootable drive Download Arch Linux from here
-If using Windows, download Rufus and create a bootable drive....</p>
-  </section>
-  <footer class="entry-footer">March 14, 2021&nbsp;·&nbsp;5 min
-</footer>
-  <a class="entry-link" aria-label="post link to Setting up Arch Linux from scratch in 2021" href="https://wilspi.com/post/tech/setup-arch-linux/"></a>
 </article>
 <article class="post-entry"> 
 
@@ -230,22 +214,6 @@ Whats the game?  There are some number tiles on the board (4x4). The number on t
 
   <header class="entry-header">
     <h2>
-      Variables and Memory management in Rust
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Let’s look at how Rust does it.
-Note: These are quick short notes, if you want to look in deep check out rustlang docs.
-Ownership In programming languages, either a garbage collector is used which will clean up the memory used by the unused variables or the memory is explicitly freed by the programmer in the code....</p>
-  </section>
-  <footer class="entry-footer">August 5, 2020&nbsp;·&nbsp;6 min
-</footer>
-  <a class="entry-link" aria-label="post link to Variables and Memory management in Rust" href="https://wilspi.com/post/tech/rust-variables-in-memory/"></a>
-</article>
-<article class="post-entry"> 
-
-  <header class="entry-header">
-    <h2>
       Structured Logging using Slog in Rust
     </h2>
   </header>
@@ -258,21 +226,6 @@ Structured logging is a concept that puts events over messages, events are logge
   <footer class="entry-footer">August 3, 2020&nbsp;·&nbsp;3 min
 </footer>
   <a class="entry-link" aria-label="post link to Structured Logging using Slog in Rust" href="https://wilspi.com/post/tech/slogging-multiple-drains/"></a>
-</article>
-<article class="post-entry"> 
-
-  <header class="entry-header">
-    <h2>
-      Setup multi user nix for Arch Linux
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>On multi-user setup, from nix’s page:
- To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users....</p>
-  </section>
-  <footer class="entry-footer">August 1, 2020&nbsp;·&nbsp;2 min
-</footer>
-  <a class="entry-link" aria-label="post link to Setup multi user nix for Arch Linux" href="https://wilspi.com/post/tech/setup-nix-arch-linux/"></a>
 </article>
 <article class="post-entry"> 
 
@@ -293,23 +246,6 @@ Commonly, templates are stored as files, either in git-repo or s3 buckets. Depen
 
   <header class="entry-header">
     <h2>
-      Virtual Environment with Nix shell
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>Last year while working with @amitu, I came across this wonderful tool called Nix.
-About Nix, its wiki says:
- Nix is a package manager and build system that parses reproducible build instructions specified in the Nix Expression Language, a pure functional language with lazy evaluation
- Nix maintains the package versions including system libraries across OS environments and, hence never uses dependencies from the host system. All the version information is saved in your nix recipe (which you invoke through nix-shell command, we will see below)....</p>
-  </section>
-  <footer class="entry-footer">July 30, 2020&nbsp;·&nbsp;3 min
-</footer>
-  <a class="entry-link" aria-label="post link to Virtual Environment with Nix shell" href="https://wilspi.com/post/tech/nix-shell-and-awesomeness/"></a>
-</article>
-<article class="post-entry"> 
-
-  <header class="entry-header">
-    <h2>
       Log requests and responses with Django Middleware
     </h2>
   </header>
@@ -324,11 +260,21 @@ It’s a light, low-level “plugin” system for globally altering Django’s i
 </footer>
   <a class="entry-link" aria-label="post link to Log requests and responses with Django Middleware" href="https://wilspi.com/post/tech/django-middleware-to-log-requests/"></a>
 </article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="next" href="https://wilspi.com/page/2/">Next Page »</a>
-  </nav>
+<article class="post-entry"> 
+
+  <header class="entry-header">
+    <h2>
+      Save the production with Nginx hack
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Quick nginx hack to save your production web server in case the web service starts crashing.
+If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down....</p>
+  </section>
+  <footer class="entry-footer">March 12, 2020&nbsp;·&nbsp;2 min
 </footer>
+  <a class="entry-link" aria-label="post link to Save the production with Nginx hack" href="https://wilspi.com/post/tech/save-production-via-nginx/"></a>
+</article>
 
     </main><footer class="footer">
     <span>&copy; 2022 <a href="https://wilspi.com">wilspi</a></span>

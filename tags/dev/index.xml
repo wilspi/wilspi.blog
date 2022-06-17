@@ -6,19 +6,7 @@
     <description>Recent content in dev on wilspi | Sourabh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Mar 2021 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Setting up Arch Linux from scratch in 2021</title>
-      <link>https://wilspi.com/post/tech/setup-arch-linux/</link>
-      <pubDate>Sun, 14 Mar 2021 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/setup-arch-linux/</guid>
-      <description>Few days back my long time running system broke due to some inconsistent package and I was forced to reinstall Arch. There are many tutorials and how-to pages to do so, but I found none to be exhaustive or seemless, so I decided to write my own.
-Here are the steps to install Arch Linux from scratch
-Make a bootable drive Download Arch Linux from here
-If using Windows, download Rufus and create a bootable drive.</description>
-    </item>
-    
+    <lastBuildDate>Sat, 08 Aug 2020 15:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Introduction to Elm with 2048 game</title>
       <link>https://wilspi.com/post/tech/2048-game-in-elmlang/</link>
@@ -32,17 +20,6 @@ Whats the game?  There are some number tiles on the board (4x4). The number on t
     </item>
     
     <item>
-      <title>Variables and Memory management in Rust</title>
-      <link>https://wilspi.com/post/tech/rust-variables-in-memory/</link>
-      <pubDate>Wed, 05 Aug 2020 23:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/rust-variables-in-memory/</guid>
-      <description>In every programming language, understanding how variables are stored in memory is a crucial point to make your program fast and efficient. Let&amp;rsquo;s look at how Rust does it.
-Note: These are quick short notes, if you want to look in deep check out rustlang docs.
-Ownership In programming languages, either a garbage collector is used which will clean up the memory used by the unused variables or the memory is explicitly freed by the programmer in the code.</description>
-    </item>
-    
-    <item>
       <title>Structured Logging using Slog in Rust</title>
       <link>https://wilspi.com/post/tech/slogging-multiple-drains/</link>
       <pubDate>Mon, 03 Aug 2020 22:00:00 +0530</pubDate>
@@ -52,16 +29,6 @@ Ownership In programming languages, either a garbage collector is used which wil
 Structured logging is a concept that puts events over messages, events are logged with associated key-value data, not plain string messages. This helps in:
  processing log files for analytics searching and debugging (example: search log statements for particular user or request)  Basic Logging with Slog Lets create a simple logger:
 #[macro_use] extern crate slog; extern crate chrono; fn main() { let drain = slog::Discard; let root_logger = slog::Logger::root(drain, o!</description>
-    </item>
-    
-    <item>
-      <title>Setup multi user nix for Arch Linux</title>
-      <link>https://wilspi.com/post/tech/setup-nix-arch-linux/</link>
-      <pubDate>Sat, 01 Aug 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/post/tech/setup-nix-arch-linux/</guid>
-      <description>On multi-user setup, from nix&amp;rsquo;s page:
- To allow a Nix store to be shared safely among multiple users, it is important that users are not able to run builders that modify the Nix store or database in arbitrary ways, or that interfere with builds started by other users. If they could do so, they could install a Trojan horse in some package and compromise the accounts of other users.</description>
     </item>
     
     <item>

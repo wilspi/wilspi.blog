@@ -148,22 +148,6 @@ It’s a light, low-level “plugin” system for globally altering Django’s i
 </footer>
   <a class="entry-link" aria-label="post link to Log requests and responses with Django Middleware" href="https://wilspi.com/post/tech/django-middleware-to-log-requests/"></a>
 </article>
-<article class="post-entry tag-entry"> 
-
-  <header class="entry-header">
-    <h2>
-      Nix Recipe: Setup Python
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>This is a nix recipe for building and running python in a virtual nix environment.
-  Create shell.nix with following:
-let nixpkgs = import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) { overlays = []; config = {}; }; in with nixpkgs; stdenv.mkDerivation { name = &#34;python-env&#34;; nativeBuildInputs = [ zsh vim python37 python37Packages.pip python37Packages.virtualenv ]; # ENV variables PROJDIR = &#34;${toString ./.}&#34;; # Post Shell Hook shellHook = &#39;&#39; echo &#34;Using ${python37.name}&#34; [ !...</p>
-  </section>
-  <footer class="entry-footer">March 9, 2020&nbsp;·&nbsp;1 min
-</footer>
-  <a class="entry-link" aria-label="post link to Nix Recipe: Setup Python" href="https://wilspi.com/post/tech/nix-recipes/python/"></a>
-</article>
 
     </main><footer class="footer">
     <span>&copy; 2022 <a href="https://wilspi.com">wilspi</a></span>
