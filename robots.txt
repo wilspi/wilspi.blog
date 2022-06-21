@@ -1,3 +1,5 @@
-User-agent: *
-Disallow:
 Sitemap: https://wilspi.com/sitemap.xml
+
+User-agent: *
+Disallow: /page/*
+Disallow: /tags/*
