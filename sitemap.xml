@@ -65,33 +65,6 @@
     <loc>https://wilspi.com/post/tech/</loc>
     <lastmod>2020-08-08T15:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://wilspi.com/tags/rust/</loc>
-    <lastmod>2020-08-03T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/tags/slog/</loc>
-    <lastmod>2020-08-03T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/slogging-multiple-drains/</loc>
-    <lastmod>2020-08-03T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/jinja-inheritance-using-db/</loc>
-    <lastmod>2020-07-31T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/tags/jinja/</loc>
-    <lastmod>2020-07-31T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/tags/python/</loc>
-    <lastmod>2020-07-31T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/tags/django/</loc>
-    <lastmod>2020-07-29T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/django-middleware-to-log-requests/</loc>
-    <lastmod>2020-07-29T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/tags/middleware/</loc>
-    <lastmod>2020-07-29T22:00:00+05:30</lastmod>
-  </url><url>
     <loc>https://wilspi.com/tags/devops/</loc>
     <lastmod>2020-03-12T22:00:00+05:30</lastmod>
   </url><url>
@@ -105,44 +78,5 @@
     <lastmod>2020-03-12T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/post/tech/nix-recipes/</loc>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/setup-arch-linux/</loc>
-    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/2048-game-in-elmlang/</loc>
-    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/rust-variables-in-memory/</loc>
-    <lastmod>2020-08-05T23:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/slogging-multiple-drains/</loc>
-    <lastmod>2020-08-03T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/setup-nix-arch-linux/</loc>
-    <lastmod>2020-08-01T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/jinja-inheritance-using-db/</loc>
-    <lastmod>2020-07-31T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/nix-shell-and-awesomeness/</loc>
-    <lastmod>2020-07-30T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/django-middleware-to-log-requests/</loc>
-    <lastmod>2020-07-29T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/save-production-via-nginx/</loc>
-    <lastmod>2020-03-12T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/nix-recipes/python/</loc>
-    <lastmod>2020-03-09T21:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/nix-recipes/nodejs/</loc>
-    <lastmod>2020-03-06T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/nix-recipes/rust/</loc>
-    <lastmod>2020-03-04T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/nix-recipes/postgresql/</loc>
-    <lastmod>2020-03-02T22:00:00+05:30</lastmod>
   </url>
 </urlset>
