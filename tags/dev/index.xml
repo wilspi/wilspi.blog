@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 08 Aug 2020 15:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Introduction to Elm with 2048 game</title>
-      <link>https://wilspi.com/post/tech/2048-game-in-elmlang/</link>
+      <link>https://wilspi.com/p/2048-game-in-elmlang/</link>
       <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
       
-      <guid>https://wilspi.com/post/tech/2048-game-in-elmlang/</guid>
+      <guid>https://wilspi.com/p/2048-game-in-elmlang/</guid>
       <description>In this post I will be creating a small game, 2048 in Elm. 2048 is a game created by gabrielecirulli which went viral in 2014.
 I chose 2048 because the game mechanics are simple which will help us understand Elm clearly. Also, I didn&amp;rsquo;t want to make another todo app.
 You can play here.
@@ -21,10 +21,10 @@ The Game Mechanics?  There are some number tiles on the board (4x4). The number 
     
     <item>
       <title>Save the production with Nginx hack</title>
-      <link>https://wilspi.com/post/tech/save-production-via-nginx/</link>
+      <link>https://wilspi.com/p/save-production-via-nginx/</link>
       <pubDate>Thu, 12 Mar 2020 22:00:00 +0530</pubDate>
       
-      <guid>https://wilspi.com/post/tech/save-production-via-nginx/</guid>
+      <guid>https://wilspi.com/p/save-production-via-nginx/</guid>
       <description>Quick nginx hack to save your production web server in case the web service starts crashing.
 If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down.</description>
     </item>

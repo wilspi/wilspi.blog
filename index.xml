@@ -9,10 +9,10 @@
     <lastBuildDate>Sun, 19 Sep 2021 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Seven Deadly Sins</title>
-      <link>https://wilspi.com/post/musing/7-deadly-sins/</link>
+      <link>https://wilspi.com/p/7-deadly-sins/</link>
       <pubDate>Sun, 19 Sep 2021 22:00:00 +0530</pubDate>
       
-      <guid>https://wilspi.com/post/musing/7-deadly-sins/</guid>
+      <guid>https://wilspi.com/p/7-deadly-sins/</guid>
       <description>The way we behave is mostly influenced by our surroundings (by law of averages you shall become average of folks you spend time with, over a long period of time) until and unless we mindfully start tweaking these behaviours.
 Here, as the title suggests, I write about these conventional vices with the aim to define/understand them better, most of which are the basis of our sufferings.
 The seven deadly sins, also known as the capital vices or cardinal sins, is a grouping and classification of vices within Christian teachings.</description>
@@ -20,10 +20,10 @@ The seven deadly sins, also known as the capital vices or cardinal sins, is a gr
     
     <item>
       <title>Intention Vs Action - framework to prioritise yourself</title>
-      <link>https://wilspi.com/post/musing/intention-vs-action/</link>
+      <link>https://wilspi.com/p/intention-vs-action/</link>
       <pubDate>Sun, 02 May 2021 22:00:00 +0530</pubDate>
       
-      <guid>https://wilspi.com/post/musing/intention-vs-action/</guid>
+      <guid>https://wilspi.com/p/intention-vs-action/</guid>
       <description>​
 Whenever we are hurt/harmed or have been at the end of an unsatisfying or unfavourable situation, we replay the situation and try to judge each and every action, of ourselves and of others. We often reflect upon the incident from various lenses.
 There are frameworks to better understand and analyse your/others&#39; actions, one such framework that has helped me to judge these situations is &amp;ldquo;Intention Vs Action&amp;rdquo;.
@@ -33,10 +33,10 @@ Whenever there is a conflict in your life and if you confront the other person, 
     
     <item>
       <title>Introduction to Elm with 2048 game</title>
-      <link>https://wilspi.com/post/tech/2048-game-in-elmlang/</link>
+      <link>https://wilspi.com/p/2048-game-in-elmlang/</link>
       <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
       
-      <guid>https://wilspi.com/post/tech/2048-game-in-elmlang/</guid>
+      <guid>https://wilspi.com/p/2048-game-in-elmlang/</guid>
       <description>In this post I will be creating a small game, 2048 in Elm. 2048 is a game created by gabrielecirulli which went viral in 2014.
 I chose 2048 because the game mechanics are simple which will help us understand Elm clearly. Also, I didn&amp;rsquo;t want to make another todo app.
 You can play here.
@@ -45,10 +45,10 @@ The Game Mechanics?  There are some number tiles on the board (4x4). The number 
     
     <item>
       <title>Save the production with Nginx hack</title>
-      <link>https://wilspi.com/post/tech/save-production-via-nginx/</link>
+      <link>https://wilspi.com/p/save-production-via-nginx/</link>
       <pubDate>Thu, 12 Mar 2020 22:00:00 +0530</pubDate>
       
-      <guid>https://wilspi.com/post/tech/save-production-via-nginx/</guid>
+      <guid>https://wilspi.com/p/save-production-via-nginx/</guid>
       <description>Quick nginx hack to save your production web server in case the web service starts crashing.
 If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down.</description>
     </item>

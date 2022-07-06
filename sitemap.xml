@@ -11,22 +11,19 @@
     <loc>https://wilspi.com/tags/morals/</loc>
     <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://wilspi.com/post/musing/</loc>
-    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
-  </url><url>
     <loc>https://wilspi.com/tags/philosophy/</loc>
     <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/categories/philosophy/</loc>
     <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://wilspi.com/post/</loc>
+    <loc>https://wilspi.com/posts/</loc>
     <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/tags/pride/</loc>
     <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://wilspi.com/post/musing/7-deadly-sins/</loc>
+    <loc>https://wilspi.com/p/7-deadly-sins/</loc>
     <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/tags/seven-deadly-sins/</loc>
@@ -41,7 +38,7 @@
     <loc>https://wilspi.com/</loc>
     <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://wilspi.com/post/musing/intention-vs-action/</loc>
+    <loc>https://wilspi.com/p/intention-vs-action/</loc>
     <lastmod>2021-05-02T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/categories/musings/</loc>
@@ -56,13 +53,10 @@
     <loc>https://wilspi.com/tags/frontend/</loc>
     <lastmod>2020-08-08T15:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://wilspi.com/post/tech/2048-game-in-elmlang/</loc>
+    <loc>https://wilspi.com/p/2048-game-in-elmlang/</loc>
     <lastmod>2020-08-08T15:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/categories/tech/</loc>
-    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/post/tech/</loc>
     <lastmod>2020-08-08T15:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/tags/devops/</loc>
@@ -74,9 +68,46 @@
     <loc>https://wilspi.com/tags/production/</loc>
     <lastmod>2020-03-12T22:00:00+05:30</lastmod>
   </url><url>
+    <loc>https://wilspi.com/p/save-production-via-nginx/</loc>
+    <lastmod>2020-03-12T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/tech/setup-arch-linux/</loc>
+    <lastmod>2021-03-14T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/tech/2048-game-in-elmlang/</loc>
+    <lastmod>2020-08-08T15:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/tech/rust-variables-in-memory/</loc>
+    <lastmod>2020-08-05T23:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/tech/slogging-multiple-drains/</loc>
+    <lastmod>2020-08-03T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/tech/setup-nix-arch-linux/</loc>
+    <lastmod>2020-08-01T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/tech/jinja-inheritance-using-db/</loc>
+    <lastmod>2020-07-31T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/tech/nix-shell-and-awesomeness/</loc>
+    <lastmod>2020-07-30T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/tech/django-middleware-to-log-requests/</loc>
+    <lastmod>2020-07-29T22:00:00+05:30</lastmod>
+  </url><url>
     <loc>https://wilspi.com/post/tech/save-production-via-nginx/</loc>
     <lastmod>2020-03-12T22:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://wilspi.com/post/tech/nix-recipes/</loc>
+    <loc>https://wilspi.com/post/tech/nix-recipes/python/</loc>
+    <lastmod>2020-03-09T21:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/tech/nix-recipes/nodejs/</loc>
+    <lastmod>2020-03-06T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/tech/nix-recipes/rust/</loc>
+    <lastmod>2020-03-04T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/post/tech/nix-recipes/postgresql/</loc>
+    <lastmod>2020-03-02T22:00:00+05:30</lastmod>
   </url>
 </urlset>
