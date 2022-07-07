@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://wilspi.com/tags/movie-review/</loc>
+    <lastmod>2022-03-05T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/posts/</loc>
+    <lastmod>2022-03-05T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/tags/</loc>
+    <lastmod>2022-03-05T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/</loc>
+    <lastmod>2022-03-05T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/p/batman-2022/</loc>
+    <lastmod>2022-03-05T22:00:00+05:30</lastmod>
+  </url><url>
     <loc>https://wilspi.com/categories/</loc>
     <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
@@ -17,9 +32,6 @@
     <loc>https://wilspi.com/categories/philosophy/</loc>
     <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://wilspi.com/posts/</loc>
-    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
-  </url><url>
     <loc>https://wilspi.com/tags/pride/</loc>
     <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
@@ -29,13 +41,7 @@
     <loc>https://wilspi.com/tags/seven-deadly-sins/</loc>
     <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://wilspi.com/tags/</loc>
-    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
-  </url><url>
     <loc>https://wilspi.com/tags/virtues/</loc>
-    <lastmod>2021-09-19T22:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://wilspi.com/</loc>
     <lastmod>2021-09-19T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/p/intention-vs-action/</loc>
@@ -43,6 +49,15 @@
   </url><url>
     <loc>https://wilspi.com/categories/musings/</loc>
     <lastmod>2021-05-02T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/p/the-count-of-monte-cristo-thoughts-and-notes/</loc>
+    <lastmod>2020-10-28T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/tags/book-summary/</loc>
+    <lastmod>2020-10-28T22:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://wilspi.com/tags/notes/</loc>
+    <lastmod>2020-10-28T22:00:00+05:30</lastmod>
   </url><url>
     <loc>https://wilspi.com/tags/dev/</loc>
     <lastmod>2020-08-08T15:00:00+05:30</lastmod>
