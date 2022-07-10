@@ -1,80 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on wilspi | Sourabh</title>
-    <link>https://wilspi.com/posts/</link>
-    <description>Recent content in Posts on wilspi | Sourabh</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 19 Sep 2021 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Seven Deadly Sins</title>
-      <link>https://wilspi.com/p/7-deadly-sins/</link>
-      <pubDate>Sun, 19 Sep 2021 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/p/7-deadly-sins/</guid>
-      <description>The way we behave is mostly influenced by our surroundings (by law of averages you shall become average of folks you spend time with, over a long period of time) until and unless we mindfully start tweaking these behaviours.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on wilspi | Sourabh</title><link>https://wilspi.com/posts/</link><description>Recent content in Posts on wilspi | Sourabh</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 19 Sep 2021 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Seven Deadly Sins</title><link>https://wilspi.com/p/7-deadly-sins/</link><pubDate>Sun, 19 Sep 2021 22:00:00 +0530</pubDate><guid>https://wilspi.com/p/7-deadly-sins/</guid><description>The way we behave is mostly influenced by our surroundings (by law of averages you shall become average of folks you spend time with, over a long period of time) until and unless we mindfully start tweaking these behaviours.
 Here, as the title suggests, I write about these conventional vices with the aim to define/understand them better, most of which are the basis of our sufferings.
-The seven deadly sins, also known as the capital vices or cardinal sins, is a grouping and classification of vices within Christian teachings.</description>
-    </item>
-    
-    <item>
-      <title>Intention Vs Action - framework to prioritise yourself</title>
-      <link>https://wilspi.com/p/intention-vs-action/</link>
-      <pubDate>Sun, 02 May 2021 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/p/intention-vs-action/</guid>
-      <description>​
+The seven deadly sins, also known as the capital vices or cardinal sins, is a grouping and classification of vices within Christian teachings.</description></item><item><title>Intention Vs Action - framework to prioritise yourself</title><link>https://wilspi.com/p/intention-vs-action/</link><pubDate>Sun, 02 May 2021 22:00:00 +0530</pubDate><guid>https://wilspi.com/p/intention-vs-action/</guid><description>​
 Whenever we are hurt/harmed or have been at the end of an unsatisfying or unfavourable situation, we replay the situation and try to judge each and every action, of ourselves and of others. We often reflect upon the incident from various lenses.
-There are frameworks to better understand and analyse your/others&#39; actions, one such framework that has helped me to judge these situations is &amp;ldquo;Intention Vs Action&amp;rdquo;.
+There are frameworks to better understand and analyse your/others' actions, one such framework that has helped me to judge these situations is &amp;ldquo;Intention Vs Action&amp;rdquo;.
 ​
-Whenever there is a conflict in your life and if you confront the other person, they often don&amp;rsquo;t acknowledge the harm happened.</description>
-    </item>
-    
-    <item>
-      <title>&#39;The Count Of Monte Cristo&#39; - Thoughts and Notes</title>
-      <link>https://wilspi.com/p/the-count-of-monte-cristo-thoughts-and-notes/</link>
-      <pubDate>Wed, 28 Oct 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/p/the-count-of-monte-cristo-thoughts-and-notes/</guid>
-      <description>In 2019, a colleague, with similar appetite as mine, recommended me to read &amp;lsquo;The Count of Monte Cristo&amp;rsquo; describing it as the best revenge story there is, and after deliberating on it for some time, I finally took the plunge.
+Whenever there is a conflict in your life and if you confront the other person, they often don&amp;rsquo;t acknowledge the harm happened.</description></item><item><title>'The Count Of Monte Cristo' - Thoughts and Notes</title><link>https://wilspi.com/p/the-count-of-monte-cristo-thoughts-and-notes/</link><pubDate>Wed, 28 Oct 2020 22:00:00 +0530</pubDate><guid>https://wilspi.com/p/the-count-of-monte-cristo-thoughts-and-notes/</guid><description>In 2019, a colleague, with similar appetite as mine, recommended me to read &amp;lsquo;The Count of Monte Cristo&amp;rsquo; describing it as the best revenge story there is, and after deliberating on it for some time, I finally took the plunge.
 The book is not yet complete, but will keep adding my thoughts and notes here.
 ​
-Thoughts on the book  Hard vocabulary - The book is from centuries back and people spoke and wrote in a different form.</description>
-    </item>
-    
-    <item>
-      <title>&#39;The Cathedral and The Bazaar&#39; By Eric S. Raymond - Thoughts and Notes</title>
-      <link>https://wilspi.com/p/the-cathedral-and-the-bazaar/</link>
-      <pubDate>Sun, 18 Oct 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/p/the-cathedral-and-the-bazaar/</guid>
-      <description>The Cathedral and the Bazaar (abbreviated CatB)
+Thoughts on the book Hard vocabulary - The book is from centuries back and people spoke and wrote in a different form.</description></item><item><title>'The Cathedral and The Bazaar' By Eric S. Raymond - Thoughts and Notes</title><link>https://wilspi.com/p/the-cathedral-and-the-bazaar/</link><pubDate>Sun, 18 Oct 2020 22:00:00 +0530</pubDate><guid>https://wilspi.com/p/the-cathedral-and-the-bazaar/</guid><description>The Cathedral and the Bazaar (abbreviated CatB)
 Musings on Linux and Open Source by an Accidental Revolutionary is an essay, and later a book, by Eric S. Raymond
-Focal points:  Every good work of software starts by scratching a developer&#39;s personal itch.  Too often software developers spend their days grinding away for pay at programs they neither need nor love To solve an interesting problem, start by finding a problem that is interesting to you.</description>
-    </item>
-    
-    <item>
-      <title>Introduction to Elm with 2048 game</title>
-      <link>https://wilspi.com/p/2048-game-in-elmlang/</link>
-      <pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/p/2048-game-in-elmlang/</guid>
-      <description>In this post I will be creating a small game, 2048 in Elm. 2048 is a game created by gabrielecirulli which went viral in 2014.
+Focal points: Every good work of software starts by scratching a developer's personal itch. Too often software developers spend their days grinding away for pay at programs they neither need nor love To solve an interesting problem, start by finding a problem that is interesting to you.</description></item><item><title>Introduction to Elm with 2048 game</title><link>https://wilspi.com/p/2048-game-in-elmlang/</link><pubDate>Sat, 08 Aug 2020 15:00:00 +0530</pubDate><guid>https://wilspi.com/p/2048-game-in-elmlang/</guid><description>In this post I will be creating a small game, 2048 in Elm. 2048 is a game created by gabrielecirulli which went viral in 2014.
 I chose 2048 because the game mechanics are simple which will help us understand Elm clearly. Also, I didn&amp;rsquo;t want to make another todo app.
 You can play here.
-The Game Mechanics?  There are some number tiles on the board (4x4). The number on the tile will be a power of 2 with minimum being 2.</description>
-    </item>
-    
-    <item>
-      <title>Save the production with Nginx hack</title>
-      <link>https://wilspi.com/p/save-production-via-nginx/</link>
-      <pubDate>Thu, 12 Mar 2020 22:00:00 +0530</pubDate>
-      
-      <guid>https://wilspi.com/p/save-production-via-nginx/</guid>
-      <description>Quick nginx hack to save your production web server in case the web service starts crashing.
-If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down.</description>
-    </item>
-    
-  </channel>
-</rss>
+The Game Mechanics? There are some number tiles on the board (4x4). The number on the tile will be a power of 2 with minimum being 2.</description></item><item><title>Save the production with Nginx hack</title><link>https://wilspi.com/p/save-production-via-nginx/</link><pubDate>Thu, 12 Mar 2020 22:00:00 +0530</pubDate><guid>https://wilspi.com/p/save-production-via-nginx/</guid><description>Quick nginx hack to save your production web server in case the web service starts crashing.
+If you have been working in a production environment, you know at certain times your web service can crash due to some unknown reason (code failure). It will take some time to do the RCA and fix the issue. A quick hack is to have multiple web services running on different ports resp. that can take the load off if any of them goes down.</description></item></channel></rss>
