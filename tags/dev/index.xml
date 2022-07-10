@@ -6,7 +6,18 @@
     <description>Recent content in dev on wilspi | Sourabh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Aug 2020 15:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Oct 2020 22:00:00 +0530</lastBuildDate><atom:link href="https://wilspi.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>&#39;The Cathedral and The Bazaar&#39; By Eric S. Raymond - Thoughts and Notes</title>
+      <link>https://wilspi.com/p/the-cathedral-and-the-bazaar/</link>
+      <pubDate>Sun, 18 Oct 2020 22:00:00 +0530</pubDate>
+      
+      <guid>https://wilspi.com/p/the-cathedral-and-the-bazaar/</guid>
+      <description>The Cathedral and the Bazaar (abbreviated CatB)
+Musings on Linux and Open Source by an Accidental Revolutionary is an essay, and later a book, by Eric S. Raymond
+Focal points:  Every good work of software starts by scratching a developer&amp;rsquo;s personal itch.  Too often software developers spend their days grinding away for pay at programs they neither need nor love To solve an interesting problem, start by finding a problem that is interesting to you.</description>
+    </item>
+    
     <item>
       <title>Introduction to Elm with 2048 game</title>
       <link>https://wilspi.com/p/2048-game-in-elmlang/</link>
